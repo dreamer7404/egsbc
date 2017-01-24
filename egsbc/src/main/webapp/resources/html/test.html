@@ -1,0 +1,56 @@
+
+<h1>테스트용 화면입니다.</h1>
+
+<table id="dtTest" class="table table-striped table-bordered table-hover"> 
+<thead> 
+	<tr id="trTest">
+	</tr>
+</thead>
+</table>	
+
+
+<script type="text/javascript">
+var tableTest;
+var pagefunction = function() {
+	
+	
+	$("#trTest").html('<th class="text-center">id</th><th class="text-center">name</th>');
+	
+	
+	tableTest = $('#dtTest').DataTable({
+		"sDom":  sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+	 	"ajax": {
+        	"url": "/getTest",
+        	"type": "post",
+	  	},
+        "columns": [
+					{ "data": "id"},    
+					{ "data": "name"}  
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},
+				{'targets': 1, 'className': 'text-center'}
+    	 ]
+	});
+	
+	
+
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+</script>

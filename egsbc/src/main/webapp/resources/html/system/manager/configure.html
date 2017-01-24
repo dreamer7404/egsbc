@@ -1,0 +1,241 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Configuration </h2>
+				</header>
+				<!-- widget div-->
+				<div style="padding-bottom:15px">
+						
+					<form class="smart-form" id="frmConfigure"  novalidate="novalidate">	
+						<table border="0">
+						<tr>
+							<td class="td-label">
+								* Count of fail for login-limit
+							</td>
+							<td class="td-label">
+								<label class="input">
+									<input type="text" id="limitLoginFailCount" name="limitLoginFailCount">
+								</label>
+							</td>
+							<td class="td-label">
+								(1 ~ 5)
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								* Duration for login-limit
+							</td>
+							<td class="td-label">
+								<label class="input">
+									<input type="text" id="blockDurationByLimit" name="blockDurationByLimit">
+								</label>
+							</td>
+							<td class="td-label">
+								(300 ~ 3600)
+							</td>
+						</tr>
+<!-- 						<tr> -->
+<!-- 							<td class="td-label"> -->
+<!-- 								* Seconds for Screen Lock Mode -->
+<!-- 							</td> -->
+<!-- 							<td class="td-label"> -->
+<!-- 								<label class="input"> -->
+<!-- 									<input type="text" id="sleepModeByNoActionDuration" name="sleepModeByNoActionDuration"> -->
+<!-- 								</label> -->
+<!-- 							</td> -->
+<!-- 							<td class="td-label"> -->
+<!-- 								(60 ~ 600) -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+						<tr>
+							<td class="td-label">
+								* Seconds for forced logout
+							</td>
+							<td class="td-label">
+								<label class="input">
+									<input type="text" id="forceLogoutByActionDuration" name="forceLogoutByActionDuration">
+								</label>
+							</td>
+							<td class="td-label">
+								(60 ~ 600)
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								* Max IP ACL List
+							</td>
+							<td class="td-label">
+								<label class="input">
+									<input type="text" id="maxUser" name="maxUser">
+								</label>
+							</td>
+							<td class="td-label">
+								(1 ~ 100)
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="td-label-right">
+								<button type="button" class="btn btn-default btn-save" id="btnSave">Save</button>
+							</td>
+							<td></td>
+						</tr>
+						</table>
+					</form>
+					
+				</div>
+			</div>
+		</article>
+		
+		
+			
+	</div>			
+</section>	
+
+
+<script type="text/javascript">
+var validatorConfugure, validatorEmail
+
+var pagefunction = function() {
+	
+	
+	showConfigure();
+	
+	$("#frmConfigure #btnSave").click(function(){
+		
+		if(!$("#frmConfigure").valid()){
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to save?");
+ 		
+ 		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmConfigure").submit();
+		});
+		
+	});
+	
+	validatorConfugure = $('#frmConfigure').validate({
+		rules : {
+			limitLoginFailCount:{
+				required : true, 
+				number: true,
+				min:1, 
+				max:5
+			},
+			blockDurationByLimit:{
+				required : true, 
+				number: true,
+				min:300,
+				max:3600
+			},
+// 			sleepModeByNoActionDuration:{
+// 				required : true, 
+// 				number: true,
+// 				min:60, 
+// 				max:600
+// 			},
+			forceLogoutByActionDuration:{
+				required : true, 
+				number: true,
+				min:60, 
+				max:600
+			},
+			maxUser:{
+				required : true, 
+				number: true,
+				min:1, 
+				max:100
+			},
+		},
+		messages : {
+			limitLoginFailCount:{
+				required : 'Input Number!', 
+				number: 'Input Number!', 
+				min:'range is 1~5', 
+				max:'range is 1~5', 
+			},
+			blockDurationByLimit:{
+				required : 'Input Number!', 
+				number: 'Input Number!', 
+				min:'Range is 300~3600', 
+				max:'Range is 300~3600', 
+			},
+// 			sleepModeByNoActionDuration:{
+// 				required : 'Input Number!', 
+// 				number: 'Input Number!', 
+// 				min:'range is 60~600', 
+// 				max:'range is 60~600', 
+// 			},
+			forceLogoutByActionDuration:{
+				required : 'Input Number!', 
+				number: 'Input Number!', 
+				min:'Range is 60~600', 
+				max:'Range is 60~600', 
+			},
+			maxUser:{
+				required : 'Input Number!', 
+				number: 'Input Number!', 
+				min:'Range is 1~100', 
+				max:'Range is 1~100', 
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmConfigure").ajaxForm({
+		url: "/setManagerConfigure",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				showConfigure();
+			}
+			
+		}
+	});
+	
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});;
+
+function showConfigure(){
+	$.post("getManagerConfigure", {}, function(json){
+		var list=json.result;
+		if(list.length == 1){
+			var item = list[0];
+			
+			setControlInput("frmConfigure", "limitLoginFailCount", item.limitLoginFailCount, false);
+			setControlInput("frmConfigure", "blockDurationByLimit", item.blockDurationByLimit, false);
+// 			setControlInput("frmConfigure", "sleepModeByNoActionDuration", item.sleepModeByNoActionDuration, false);
+			setControlInput("frmConfigure", "forceLogoutByActionDuration", item.forceLogoutByActionDuration, false);
+			setControlInput("frmConfigure", "maxUser", item.maxUser, false);
+		}
+	});
+}
+
+
+

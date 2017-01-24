@@ -1,0 +1,711 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2> Current TLS Configuration</h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+						
+						<form class="smart-form" id="frmTlsConfig"  novalidate="novalidate">
+							<table width="100%" class="td-border" border="0" style="margin:0 0 15px 0">
+							<tr>
+								<td width="90px"  class="td-label td-border" style="background:#f1f1f1">
+									Cert Type
+								</td>
+								<td  class="td-label td-border" width="180px"  >
+									<div class="inline-group" style="display:none">
+										<label class="radio" >
+											<input type="radio" name="certType"  value="0">
+											<i></i>RSA</label>
+										<label class="radio">
+											<input type="radio" name="certType" value="1">
+											<i></i>ECC</label>
+									</div>	
+										RSA
+								</td>
+								
+								<td width="90px" class="td-label td-border" style="background:#f1f1f1">
+									File Type
+								</td>
+								<td width="190px" class="td-label td-border" >
+									<div class="inline-group">
+										<label class="radio">
+											<input type="radio" name="fileType" value="0">
+											<i></i>PEM</label>
+										<label class="radio">
+											<input type="radio" name="fileType" value="1">
+											<i></i>DER</label>
+									</div>	
+								</td>
+								<td width="90px" class="td-label td-border" style="background:#f1f1f1">
+									TLS Version
+								</td>
+								<td class="td-label td-border" >
+<!-- 									<div class="inline-group"> -->
+<!-- 										<label class="checkbox"> -->
+<!-- 										  <input type="checkbox"  id="tlsVersion0" class="checkbox style-0" > -->
+<!-- 										  <span>1.0</span> -->
+<!-- 										</label> -->
+<!-- 										<label class="checkbox"> -->
+<!-- 										  <input type="checkbox"  id="tlsVersion1" class="checkbox style-0" > -->
+<!-- 										  <span>1.2</span> -->
+<!-- 										</label> -->
+<!-- 									</div> -->
+									<label id="tlsVersion">
+										1.2
+									</label>
+								</td>
+							</tr>
+							<tr>
+								
+<!-- 								<td class="td-label td-border" style="background:#f1f1f1"> -->
+<!-- 									TLS Verify -->
+<!-- 								</td> -->
+<!-- 								<td class="td-label td-border" > -->
+<!-- 									<div class="inline-group"> -->
+<!-- 											<label class="checkbox"> -->
+<!-- 											  <input type="checkbox"  id="verify2" class="checkbox style-0" > -->
+<!-- 											  <span>Server</span> -->
+<!-- 											</label> -->
+<!-- 											<label class="checkbox"> -->
+<!-- 											  <input type="checkbox"  id="verify1" class="checkbox style-0" > -->
+<!-- 											  <span>Client</span> -->
+<!-- 											</label>	 -->
+<!-- 										</div>	 -->
+<!-- 								</td> -->
+							</tr>
+							</table>
+							<div class="form-group pull-right" style="margin-bottom:10px">
+								<button type="button" class="btn btn-default btn-apply" id="btnApplyTlsConfig"> Apply</button>
+							</div>
+						</form>		
+				
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Certificates List</h2>
+				</header>
+				<!-- widget div-->
+				<div style="padding-bottom:15px">
+				
+						
+						<table id="dtCertification" class="table table-striped table-bordered table-hover"   > 
+							<thead> 
+								<tr>
+									<th rowspan="2" class="text-center"></th>
+									<th rowspan="2" class="text-center">Applied</th>
+									<th rowspan="2" class="text-center">Cert Type</th>
+									<th rowspan="2" class="text-center">File Type</th>
+									<th rowspan="2" class="text-center">File Name</th>
+									<th rowspan="2" class="text-center">File Exist</th>
+									<th colspan="2" class="text-center">Valid Date</th>
+									
+									<th rowspan="2" class="text-center"></th>
+									<th rowspan="2" class="text-center"></th>
+									<th rowspan="2" class="text-center"></th>
+									<th rowspan="2" class="text-center"></th>
+								</tr>
+								<tr>
+									<th  class="text-center">Start</th>
+									<th  class="text-center">End</th>
+								</tr>
+							</thead>
+						</table>
+						
+						<form class="smart-form" id="frmCertification"  novalidate="novalidate">
+						<table width="100%" border="0">
+						<tr>
+							<td class="td-label" width="230px">
+								PEM Private key File encryption
+							</td>
+							<td class="td-label" >
+									<span class="onoffswitch" >
+									<input type="checkbox"  class="onoffswitch-checkbox" id="privateKey" name="privateKey" checked >
+									<label class="onoffswitch-label" for="privateKey"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label" >
+								Preferred Cipher List
+							</td>
+							<td class="td-label" >
+								<label class="input">
+									<textarea id="cipher" name="cipher" class="form-control" rows="4" width="100%"></textarea>
+								</label>	
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<div class="form-group pull-right">
+									<button type="button" class="btn btn-default btn-apply" id="btnApplyCertification"> Apply</button>
+									<button type="button" class="btn btn-default btn-delete" id="btnRemoveCertification"> Delete</button>
+									<button type="button" class="btn btn-default btn-refresh" id="btnRefreshCertification"> Refresh</button>
+								</div>
+							</td>
+						</tr>
+						</table>
+						
+						</form>
+					
+				</div>
+			</div>
+			
+			
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false">
+					<header >
+						<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+						<h2>Private Key File Upload</h2>
+					</header>
+					<!-- widget div-->
+					<div class="div-widget" >
+						
+							<form class="smart-form" id="frmKeyFileUpload"  novalidate="novalidate">
+								<table border="0" >
+								<tr>
+									<td class="td-label text-right" width="120px">Cert Type</td>
+									<td width="200px">
+										<div class="inline-group" style="display:none">
+											<label class="radio">
+												<input type="radio" name="certMode" value="0" checked>
+												<i></i>RSA&nbsp;</label>
+											<label class="radio">
+												<input type="radio" name="certMode" value="1">
+												<i></i>ECC</label>
+										</div>	
+										<label>&nbsp;&nbsp;: RSA</label>
+									</td>
+									<td class="td-label" width="200px">
+										PEM Private key File encryption
+									</td>
+									<td width="300px">
+										<span class="onoffswitch" style="display:none">
+											<input type="checkbox"  class="onoffswitch-checkbox" id="pemFileEncrypt" name="pemFileEncrypt"  >
+											<label class="onoffswitch-label" for="pemFileEncrypt"> 
+												<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+												<span class="onoffswitch-switch"></span> 
+											</label> 
+										</span> 
+										<label>&nbsp;&nbsp;: On</label>
+									</td>
+								</tr>
+								<tr>
+									<td class="td-label text-right" width="120px">File Type</td>
+									<td >
+										<div class="inline-group">
+											<label class="radio">
+												<input type="radio" name="fileType" value="0" checked>
+												<i></i>PEM</label>
+											<label class="radio">
+												<input type="radio" name="fileType" value="1">
+												<i></i>DER</label>
+										</div>	
+									</td>
+									<td class="td-label">
+										DER Private Key File Password
+									</td>
+									<td class="td-label">
+										<label class="input" name="lblClass">
+											<input type="text" class="form-control" id="derPassword" name="derPassword">
+										</label>	
+									</td>
+								</tr>
+								</table>
+								
+									<table border="0"  align="left" style="width:700px" >
+									<tr>
+										<td class="td-label text-right" width="120px">rootCA</td>
+										<td>
+											<label for="file" class="input input-file">
+												<div class="button btn-browse"><input type="file" name="rootCA" id="rootCA" accept=".pem, .der" onchange="this.parentNode.nextSibling.value = this.value" multiple>Browse</div><input type="text" id="txtFile" name="txtFile" placeholder="Include some files" readonly="">
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td class="td-label text-right">chainCA</td>
+										<td>
+											<label for="file" class="input input-file">
+												<div class="button btn-browse"><input type="file"  name="chainCA" id="chainCA" accept=".pem, .der" onchange="this.parentNode.nextSibling.value = this.value" multiple>Browse</div><input type="text" id="txtFile" name="txtFile" placeholder="Include some files" readonly="">
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td class="td-label text-right">localCA</td>
+										<td>
+											<label for="file" class="input input-file">
+												<div class="button btn-browse"><input type="file"  name="localCA" id="localCA" accept=".pem, .der" onchange="this.parentNode.nextSibling.value = this.value" multiple>Browse</div><input type="text" id="txtFile" name="txtFile" placeholder="Include some files" readonly="">
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td class="td-label text-right">localKey</td>
+										<td>
+											<label for="file" class="input input-file">
+												<div class="button btn-browse"><input type="file"  name="localKey" id="localKey" accept=".pem, .der" onchange="this.parentNode.nextSibling.value = this.value" multiple>Browse</div><input type="text" id="txtFile" name="txtFile" placeholder="Include some files" readonly="">
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" style="text-align:right" class="td-label">
+											<button type="button" class="btn btn-default btn-upload" id="btnUpload" >Upload</button>
+										</td>
+									</tr>	
+									</table>
+							</form>
+						</div>
+					</div>	
+			
+			
+		</article>
+	</div>
+</section>	
+
+
+<script type="text/javascript">
+var validatorServiceConfiguration, validatorCertification;
+var tableServiceConfiguration, tableCertification;
+
+var g_appliedValue = '';
+var g_appliedChecked = false; // 같은 radiobox 4개중 처음한개만 check하려고.
+var g_privateKey;
+var g_cipher;
+
+var pagefunction = function() {
+	
+	//----------------- Current TLS Configuration -----------------------------------------------------------
+	
+	// gert data
+	$.post("getTlsConfig", {}, function(json){
+		var list = json.result;
+		if(list.length==1){
+			var item = list[0];
+			setControlRadio("frmTlsConfig", "certType", item.certType, false);
+			
+			setControlRadio("frmTlsConfig", "fileType", item.fileType, false);
+			
+// 			setControlCheck("frmTlsConfig", "tlsVersion0", (item.tlsVersion==0 || item.tlsVersion==2)?true:false, false);
+// 			setControlCheck("frmTlsConfig", "tlsVersion1", (item.tlsVersion==1 || item.tlsVersion==2)?true:false, false);
+// 			if(item.tlsVersion==1 || item.tlsVersion==2){
+// 				$("#tlsVersion").text("1.2");
+// 			}
+			
+			setControlCheck("frmTlsConfig", "verify1", (item.verify==1 || item.verify==3)?true:false, false);
+			setControlCheck("frmTlsConfig", "verify2", (item.verify==2 || item.verify==3)?true:false, false);
+		}
+	});
+	
+	// apply
+	$("#frmTlsConfig #btnApplyTlsConfig").click(function(){
+
+		showConfirm('Confirm', "Do you want to apply?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmTlsConfig").submit();
+		});
+	});
+	
+	$("#frmTlsConfig").ajaxForm({
+		url: "/takeTlsConfig",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+			//----------- checkbox 처리-----------------------------
+// 			var tlsVersion0 = getControlCheck("frmTlsConfig", "tlsVersion0");
+// 			var tlsVersion1 = getControlCheck("frmTlsConfig", "tlsVersion1");
+ 			var tlsVersion=2;
+// 			if(tlsVersion0 && !tlsVersion1) tlsVersion = 0;
+// 			else if(!tlsVersion0 && tlsVersion1) tlsVersion = 1;
+			
+			var verify1 = getControlCheck("frmTlsConfig", "verify1");
+			var verify2 = getControlCheck("frmTlsConfig", "verify2");
+			var verify=3;
+// 			if(!verify1 && !verify2) tlsVersion = 0;
+// 			else if(verify1 && !verify2) tlsVersion = 1;
+// 			else if(!verify1 && verify2) tlsVersion = 2;
+			
+			arr.push({name:'opMode', value: 3}); // edit
+			arr.push({name:'tlsVersion', value: tlsVersion});
+			arr.push({name:'verify', value: verify}); 
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, null, null, null);
+		}
+	});
+
+	//----------------- Certificate List -----------------------------------------------------------
+
+	// tableCertification
+	tableCertification = $('#dtCertification').DataTable({
+		"sDom":  sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "600px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getTlsCertFileInfo", 
+        	"type": "post",
+        },
+       // 'order': [[1, 'asc'], [2, 'asc']],
+       "bSort" : false, // 중요!!!!! true하면, sort후에 group해버려서 안됨.
+        "columns": [
+					{ "data": "fileType"},       
+    				{ "data": "fileType"},       
+    				{ "data": "fileType"},
+    				{ "data": "fileType"},
+    				{ "data": "fileName"},     
+    				{ "data": "fileExist"}, 
+    				{ "data": "validStartDate"},     
+    				{ "data": "validEndDate"},     
+    				
+    				{ "data": "applied"},     
+    				{ "data": "certChainLevel"},   
+    				{ "data": "certMode"},   
+    				{ "data": "orderedCipherList"}, 
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center',  'render': function (data, type, full, meta){ return getApply(full.applied, full.activate, full.certMode+''+full.fileType); }},    
+				{'targets': 1, 'className': 'text-center' , 'render': function (data, type, full, meta){ return getApplied(full.applied, full.activate, full.certMode+''+full.fileType); }},    
+				{'targets': 2, 'className': 'text-center' , 'render': function (data, type, full, meta){ return checkActivate(getCertMode(full.certMode), full.activate); }},    
+				{'targets': 3, 'className': 'text-center',  'render': function (data, type, full, meta){ return checkActivate(getFileType(data), full.activate); }},
+				
+				{'targets': 4, 'className': 'text-center',  'render': function (data, type, full, meta){ return checkFile(data, full.fileExist); }},
+				{'targets': 5, 'className': 'text-center',  'render': function (data, type, full, meta){ return checkFile(getFileExist(data), full.fileExist); }},
+				{'targets': 6, 'className': 'text-center',  'render': function (data, type, full, meta){ return checkFile(data, full.fileExist); }},
+				{'targets': 7, 'className': 'text-center',  'render': function (data, type, full, meta){ return checkFile(data, full.fileExist); }},
+				
+				{'targets': 8, 'className': 'text-center', "visible": false},
+				{'targets': 9, 'className': 'text-center', "visible": false},
+				{'targets': 10, 'className': 'text-center', "visible": false},
+				{'targets': 11, 'className': 'text-center', "visible": false},
+    	 ],
+    	 'rowsGroup': [
+			0,1,2
+    	 ]
+	});
+	
+	
+   
+   //=============================== Certification List ================================
+   
+   // apply
+   $("#btnApplyCertification").click(function(){ 
+	   
+// 	   var rdoType = $(":radio[name='rdoType']:checked").val();
+// 	   alert(rdoType);
+
+		if(!$('#frmCertification').valid()){
+			return;
+		}
+	   
+	   
+	   var orderedCipherList = $("#cipher").val();
+	   if(orderedCipherList.length > 256){
+		   showMsg("Warning", "Preferred Cipher List is too long!");
+		   return;
+	   }
+	   //var g_appliedValue = $(":radio[name='applied']:checked").val();
+	   var val = g_appliedValue;
+	   var privateKey = $("input:checkbox[id='privateKey']").is(":checked")?1:0;
+	   
+	   // 값변경했는지 체크
+	   var changed = true;
+	   if(g_cipher == orderedCipherList){
+		   if(val[1]==0){
+			   if(g_privateKey == privateKey){ // PEM
+				   changed = false;
+			   }
+		   }else{
+			   changed = false;
+		   }
+	   }
+	   if( !changed){
+		   showMsg("Warning", "Value is not changed!");
+		   return;
+	   }
+	   
+	   showConfirm('Confirm', "After applying, You must restart EGIS_VF_SPB block.<br />Do you really want to apply?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+
+			 $.ajax({
+					url: '/takeCertification',
+				    type: "post",
+				    data: {opMode: 3, 
+				    	certMode: val[0], 
+				    	fileType: val[1], 
+				    	orderedCipherList: orderedCipherList, 
+				    	privateKeyFileEncryptFlag: privateKey }, 
+				    success: function(json) {
+				    	processResult(json.result, null, tableCertification, null);
+				    }
+				});
+			 
+		});
+   });
+   
+   validatorCertification = $('#frmCertification').validate({
+		rules : {
+			cipher:{
+				required : true,
+				maxlength: 512,
+				pattern: /^[a-zA-Z0-9-:]+$/
+			},
+		},
+		messages : {
+			cipher:{
+				required : 'Input Cipher List',
+				maxlength: 'Max length is 512',
+				pattern: 'Input proper value'
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+
+	});
+   
+   
+	// 삭제버튼
+	$("#btnRemoveCertification").click(function(){ 
+		
+		var rdoType = $(":radio[name='rdoType']:checked").val();
+		if(typeof rdoType=='undefined'){
+			showMsg("Warning", "Select one of certification list to delete!");
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you really want to delete?");
+		 
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+
+			 $.ajax({
+					url: '/takeCertification',
+				    type: "post",
+				    data: {opMode: 4,  //delete
+				    	certMode: rdoType[0], 
+				    	fileType: rdoType[1], 
+				    	orderedCipherList: orderedCipherList, 
+				    	privateKeyFileEncryptFlag: privateKey }, 
+				    success: function(json) {
+				    	processResult(json.result, null, tableCertification, null);
+				    }
+				});
+			 
+		});
+		
+	});
+   
+   	//  refresh
+	$("#btnRefreshCertification").click(function(){
+		g_appliedChecked = false;
+		tableCertification.ajax.reload(null, false);
+	});
+   	
+
+	
+	//========================== frmKeyFileUpload =============================================
+	
+	// upload fileType click
+	$("#frmKeyFileUpload :radio[name='fileType']").click(function(){
+		setUploadType();
+	});
+   
+	// upload
+	$("#frmKeyFileUpload #btnUpload").click(function(){
+
+		var fileType = getControlRadio("frmKeyFileUpload", "fileType"); // File Type
+		var derPassword = getControlInput("frmKeyFileUpload", "derPassword"); // DER Private Key File Password
+		
+		if(fileType==1){ // DER
+			if(derPassword==''){
+				showMsg("Warning", "Input DER Private Key File Password!");
+				return;
+			}
+		}
+		
+		var rootCA = getControlInput("frmKeyFileUpload", "rootCA");
+		var chainCA = getControlInput("frmKeyFileUpload", "chainCA");
+		var localCA = getControlInput("frmKeyFileUpload", "localCA");
+		var localKey = getControlInput("frmKeyFileUpload", "localKey");
+		
+		if(rootCA=='' && chainCA=='' && localCA=='' &&  localKey==''){
+			showMsg("Info", "Select file to upload.");
+			return;
+		}
+	
+		showConfirm('Confirm', "Do you want to upload now ?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmKeyFileUpload").submit();  
+		});
+
+	});
+	
+	// upload submit
+	$("#frmKeyFileUpload").ajaxForm({
+		url:"uploadCertification",
+		type:"POST",
+		enctype: "multipart/form-data",
+		beforeSubmit: function(arr, $form, options){
+			arr.push({name:'opMode', value: 2});
+			// checkbox pemFileEncrypt
+			var pemFileEncrypt = getControlCheck("frmKeyFileUpload", "pemFileEncrypt");
+			arr.push({name:'pemFileEncrypt', value: pemFileEncrypt});
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, null, null, null);
+		},
+		error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+
+    });
+	
+	//*
+	//========================== Set Init =============================================
+	//*
+	
+	setTimeout(function(){
+		setAddtional ();
+		
+		// upload file type
+		setUploadType();
+		
+	},500);
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function getApply(val, activate, type){
+	//if(activate){
+		return '<input type="radio" name="rdoType" value="'+type+'">';
+	//}else{
+	//	return "";
+	//}
+}
+function getApplied(val, activate, type){
+	if(activate && val==1 && !g_appliedChecked){
+		g_appliedChecked = true;
+		g_appliedValue = type;
+		return 'Applied';
+	}else{
+		return "";
+	}
+				
+}
+function getCertMode(val){
+	if(val==0) return "RSA";
+	else if(val==1) return "ECC";
+	else return "";
+}
+function getFileType(val){
+	if(val==0) return "PEM";
+	else if(val==1) return "DER";
+	else return "";
+}
+
+function getFileExist(val){
+	if(val==0) return "NO";
+	else if(val==1) return "YES";
+	else return "";
+}
+
+function checkFile(val, fileExist){
+	if(fileExist==0) return "<font color='#d1d1d1'>"+val+"</font>";
+	return val;
+}
+
+function checkActivate(val, activate){
+	if(!activate) return "<font color='#d1d1d1'>"+val+"</font>";
+	return val;
+}
+
+
+function setAddtional() {
+
+	var val = g_appliedValue;
+
+ 	tableCertification.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+ 	    var data = this.data();
+ 	    if(data.certMode==val[0] && data.fileType==val[1]){
+ 	    	
+	 	    // orderedCipherList
+	 	   	if(data.orderedCipherList != ''){	
+	 	   		$("#cipher").val(data.orderedCipherList);
+	 	   		g_cipher = data.orderedCipherList; // apply때 비교
+	 	   	}
+	 	   	
+	 	   	// privateKey
+	 	   	var obj=$("input:checkbox[id='privateKey']");
+	 	   	if(val[1]==0){ // PEM
+	 	   		obj.attr("disabled", false);
+	 	       	obj.prop("checked", (data.privateKeyFileEncryptFlag==0)?false:true);
+	 	       	
+	 	       	g_privateKey = data.privateKeyFileEncryptFlag; // apply때 비교
+	 	       	
+	 	   	}else{ // DER => 비활성화
+	 	   		obj.attr("disabled", true);
+	 	   		obj.prop("checked",false);
+	 	   		
+	 	   	}
+	 	   	
+ 	    }
+ 	});
+}
+
+function setUploadType(){
+	var obj=$("#frmKeyFileUpload input:checkbox[id='pemFileEncrypt']");
+	var val = $("#frmKeyFileUpload :radio[name='fileType']:checked").val();
+	
+	if(val==0){ // PEM
+ 	   	obj.attr("disabled", false);
+		
+ 	   $("#frmKeyFileUpload #derPassword").val("");
+		$("#frmKeyFileUpload #derPassword").attr("disabled", true);
+		$("#frmKeyFileUpload [name=lblClass]").addClass("state-disabled");
+	}else{
+		obj.attr("disabled", true);
+		
+		$("#frmKeyFileUpload #derPassword").attr("disabled", false);
+		$("#frmKeyFileUpload [name=lblClass]").removeClass("state-disabled");
+	}
+}
+
+
+
+	

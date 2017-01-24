@@ -1,0 +1,1068 @@
+<section id="widget-grid" class="" style="border:0px solid blue;padding-bottom:0px;margin-bottom:0px">
+	
+	<div class="row" style="border:0px solid red;padding-bottom:0px;margin-bottom:0px">
+		
+		<article class="col-sm-12 col-md-12 col-lg-6">
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-10" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+				<header>
+						<span class="widget-icon"> <i class="fa fa-toggle-on"></i> </span>
+						<h2> System Status </h2>
+					</header>
+					<div>
+						<form class="smart-form" id="frmStatus" novalidate="novalidate">
+							<div style="border:0px solid red;margin:0 0 8px 0">
+								<table width="100%" border="0">
+								<tr>
+									<td width="50%">
+										<table border="0" width="100%">
+										<tr>
+											<td class="subtitle">System-A</td>
+											<td class="subtitle">System-B</td>									
+										</tr>
+										<tr>
+											<td align="center"><img id="imgSysA" src="/resources/img/egis/standby.png" height="52px"></td>
+											<td align="center"><img id="imgSysB" src="/resources/img/egis/standby.png" height="52px"></td>									
+										</tr>
+										<tr>
+											<td align="center" ><label id="lblSysA" class="subtitle"></label></td>
+											<td align="center" ><label id="lblSysB" class="subtitle"></label></td>		
+										</tr>
+										</table>
+									</td>
+									<td style="width:1px;">
+										<div class="vertical-dotted-line"></div>
+									</td>
+									<td>
+										<table border="0" width="100%" >
+										<tr>
+											<td style="width:103px"><label class="subtitle">Component Name :</label></td>
+											<td><label class="subtitle">SABER-V V1.0 (r101)</td>									
+										</tr>
+										<tr>
+											<td style="width:103px"><label class="subtitle">Model Name :</label></td>
+											<td><label class="subtitle">SABER-V 6K</td>									
+										</tr>
+										<tr>
+											<td style="width:103px"><label class="subtitle">Mode:</label></td>
+											<td><label class="subtitle" id="dualFlag"></label></td>									
+										</tr>
+										<tr>
+											<td><label class="subtitle">License:</label></td>
+											<td><label class="subtitle" id="desLicense"></label></td>									
+										</tr>
+										<tr>
+											<td><label class="subtitle">Management IP:</label></td>
+											<td><label class="subtitle" id="mgmtIp"></label></td>									
+										</tr>
+										</table>
+									</td>
+								</tr>
+								</table>
+							</div>
+						</form>
+					</div>
+								
+			</div>
+			
+		</article>
+		
+		<article class="col-sm-12 col-md-12 col-lg-6">
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+				<header>
+						<span class="widget-icon"> <i class="fa fa-area-chart"></i> </span>
+						<h2> Live Chart </h2>
+						<div class="widget-toolbar hidden-mobile">
+							<span class="onoffswitch-title"> Live switch</span>
+							<span class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" checked="checked" id="chartSwitch">
+								<label class="onoffswitch-label" for="chartSwitch"> <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> <span class="onoffswitch-switch"></span> </label> </span>
+						</div>
+					</header>
+					<div>
+							
+						<div class="row" id="divChart" style="border:0px solid red;overflow:auto">
+							
+							<div id="divChart1Head" class="col-md-12" style="margin:0 0px 10px 0;">
+								<span id="chart1Title" style="font-weight:bold"></span>
+								<span class="pull-right" id="chart1Legend"></span>
+							</div>
+							<div class="col-md-12"><canvas class="chart-canvas" id='chart1'></canvas></div>
+							
+							<div id="divChart2Head" class="col-md-12" style="margin:10px 0;padding-top:10px;border-top:2px solid #717781;display:none">
+								<span id="chart2Title" style="font-weight:bold"></span>
+								<span class="pull-right" id="chart2Legend"></span>
+							</div>
+							<div class="col-md-12"><canvas class="chart-canvas" id='chart2'></canvas></div>
+							
+							<div id="divChart3Head" class="col-md-12" style="margin:10px 0;padding-top:10px;border-top:2px solid #717781;display:none">
+								<span id="chart3Title" style="font-weight:bold"></span>
+								<span class="pull-right" id="chart3Legend"></span>
+							</div>
+							<div class="col-md-12"><canvas class="chart-canvas" id='chart3' ></canvas></div>
+							
+							<div id="divChart4Head" class="col-md-12" style="margin:10px 0;padding-top:10px;border-top:2px solid #717781;display:none">
+								<span id="chart4Title" style="font-weight:bold"></span>
+								<span class="pull-right" id="chart4Legend"></span>
+							</div>
+							<div class="col-md-12"><canvas class="chart-canvas" id='chart4'></canvas></div>
+						</div>
+					
+					</div>
+								
+			</div>
+			
+		</article>
+		
+		<article class="col-sm-12 col-md-12 col-lg-6">
+		
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-3" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+				<header>
+						<span class="widget-icon"> <i class="fa fa-info"></i> </span>
+						<h2> System Information</h2>
+						<div class="widget-toolbar ">
+								<form class="smart-form" id="frmSystem">
+									<div class="inline-group">
+										<label class="radio" style="color:white">
+											<input type="radio" name="rdoSystem" value="0" >
+											<i></i>Sys-A</label>
+										<label class="radio noTouch" style="color:white">
+											<input type="radio" name="rdoSystem" value="1">
+											<i></i>Sys-B</label>
+									</div>	
+								</form>						
+						</div>	
+					</header>
+					<div>
+						<form class="smart-form" id="frmSystemInformation" novalidate="novalidate">
+							<table border="0" width="100%">
+							<tr>
+								<td align="center">
+									<div id="usageCpu" class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="60">
+										<span class="percent percent-sign txt-color-blue semi-bold"></span>
+									</div>
+								</td>
+								<td align="center">
+									<div id="usageRamDisp2" class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="60">
+										<span class="percent percent-sign txt-color-blue semi-bold"></span>
+									</div>
+								</td>
+								<td align="center">
+									<div id="usageDisk2Disp" class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="60">
+										<span class="percent percent-sign txt-color-blue semi-bold"></span>
+									</div>
+								</td>
+								<td align="center">
+									<div id="usageTempCur" class="easy-pie-chart txt-color-blue easyPieChart" data-percent="0" data-pie-size="60">
+										<span class="percent degree-sign txt-color-blue semi-bold"></span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="subtitle">CPU</td>
+								<td class="subtitle">Memory</td>
+								<td class="subtitle">Disk</td>
+								<td class="subtitle">Temperature</td>
+							</tr>
+							</table>
+							
+							<div class="hr-form"></div>
+							
+								<div class="col-md-3" style="text-align:right"><label class="subtitle">Started:&nbsp;&nbsp;</label></div>
+								<div class="col-md-3"><label id="bootTime" class="subtitle"></label></div>
+								<div class="col-md-3" style="text-align:right"><label class="subtitle">Package version:&nbsp;&nbsp;</label></div>
+								<div class="col-md-3"><label id="descPkgVer" class="subtitle"></label></div>
+							
+	<!-- 						<tr> -->
+	<!-- 							<td width=""> -->
+	<!-- 								<table border="0" width="100%"> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="width:50px">CPU:</td> -->
+	<!-- 									<td><label id="descCpuType"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="width:50px">MEM:</td> -->
+	<!-- 									<td><label id="usageRamDisp1"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="width:50px">DISK:</td> -->
+	<!-- 									<td><label id="usageDisk1Disp"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								</table> -->
+								
+	<!-- 							</td> -->
+	<!-- 							<td style="width:1px;"> -->
+	<!-- 								<div class="vertical-dotted-line"></div> -->
+	<!-- 							</td> -->
+	<!-- 							<td> -->
+	<!-- 								<table border="0" width="100%"> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="padding-left:5px">Started:</td> -->
+	<!-- 									<td><label id="bootTime"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="padding-left:5px">OS:</td> -->
+	<!-- 									<td><label id="descOs"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								<tr> -->
+	<!-- 									<td style="padding-left:5px">Package version:</td> -->
+	<!-- 									<td><label id="descPkgVer"></label></td> -->
+	<!-- 								</tr> -->
+	<!-- 								</table> -->
+	<!-- 							</td> -->
+	<!-- 						</tr> -->
+							
+						</div>
+					</form>			
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-4" data-widget-editbutton="false" data-widget-fullscreenbutton="false">
+				<header>
+						<span class="widget-icon"> <i class="fa fa-exclamation-triangle"></i> </span>
+						<h2> Alarm </h2>
+						<div class="widget-toolbar">
+							<div class="btn-group">
+								<button class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown" data-title="Level Choice" rel="tooltip">
+									All&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+								</button>
+								<ul class="dropdown-menu js-status-update pull-right">
+									<li>
+										<a href="javascript:void(0);" onclick="changeAlarm(0)">All&nbsp;&nbsp;&nbsp;&nbsp;</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" onclick="changeAlarm('4')">Critical</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" onclick="changeAlarm(3)">Major</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" onclick="changeAlarm(2)">Minor</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" onclick="changeAlarm(1)">Information</a>
+									</li>
+								</ul>
+								<button class="btn btn-xs btn-default" id="btnAlarmSound" data-title="Alarm Sound" rel="tooltip">
+									 <i class="fa fa-volume-up"></i>
+								</button>
+								<button class="btn btn-xs btn-default" id="btnAlarmDataInfo" data-title="Alarm Info" rel="tooltip">
+									 <i class="fa fa-info-circle"></i>
+								</button>
+								<button class="btn btn-xs btn-default" id="btnAlarmPercept" data-title="Percept" rel="tooltip">
+									 <i class="fa fa-eye"></i>
+								</button>
+								<button class="btn btn-xs btn-default" id="btnAlarmRefresh" data-title="Refresh" rel="tooltip">
+									 <i class="fa fa-refresh"></i>
+								</button>
+							
+								
+							</div>
+						</div>	
+					</header>
+					<div>
+						<table id="dtAlarm" class="table  table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th><input type="checkbox"  name="select_all" id="selectAll"></th>
+									<th class="text-center">Level</th>
+									<th class="text-center">Side</th>
+									<th class="text-center">Time</th>
+									<th class="text-center">Code</th>
+									<th class="text-center">Description</th>
+									<th class="text-center">Count</th>
+								</tr>
+							</thead>
+						</table>	
+					</div>
+								
+			</div>
+		
+		</article>
+	</div>
+</section>			
+			
+
+<!--  =========================== Modal ( Alarm List )  ==================================-->
+
+<div class="modal " id="modalAlarmData" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:800px">
+    	<div class="modal-content">
+	        <div class="modal-header " style="height:40px;padding-top:10px;color:white">
+	          	Alarm List
+	          	<div class="pull-right">
+		          	<button class="btn btn-xs btn-default" id="btnAlarmPerceptDetail" data-title="Percept" rel="tooltip">
+						 <i class="fa fa-eye"></i>
+					</button>
+					<button class="btn btn-xs btn-default" id="btnAlarmTrashDetail" data-title="Delete" rel="tooltip">
+						 <i class="fa fa-trash"></i>
+					</button>
+					<button class="btn btn-xs btn-default" id="btnCloseAlarmList" data-title="Close" rel="tooltip">
+						 <i class="fa fa-times"></i>
+					</button>
+				</div>
+	        </div>
+	        <div class="modal-body">
+				<div class="row" style="padding-bottom:35px" >
+				
+					<table id="dtAlarmListDetail" class="table table-striped table-bordered table-hover"   >
+					<thead>
+							<tr>
+								<th><input type="checkbox"  name="select_all" id="selectAllDetail"></th>
+								<th class="text-center">Level</th>
+								<th class="text-center">Side</th>
+								<th class="text-center">Time</th>
+								<th class="text-center">Code</th>
+								<th class="text-center">Description</th>
+							</tr>
+						</thead>
+					</table>	
+					
+		        	
+			        	<div style="width:100%;border-bottom:1px solid #d1d1d1">
+			        		<strong>Alarm List Information</strong>
+			        	</div>
+		        	
+			        	<div>
+			        		<form class="smart-form" id="frmAlarmDetail"  novalidate="novalidate">
+			        		<table border="0" width="100%">
+			        		<tr>
+			        			<td class="td-label" width="150px">Rate Limit</td>
+			        			<td>
+			        				<span class="onoffswitch" >
+										<input type="checkbox"  class="onoffswitch-checkbox" id="rateLimitProfile" >
+										<label class="onoffswitch-label" for="rateLimitProfile"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+			        			</td>
+			        			<td class="td-label" width="150px">Protocol</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text" >
+			        				</label>
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td class="td-label">Rate Limit Category</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text" id="rateLimitCategory">
+			        				</label>
+			        			</td>
+			        			<td class="td-label">Remote IP / Port</td>
+			        			<td>
+			        				<table width="100%">
+			        				<tr>
+			        					<td>
+			        						<label class="input">
+					        					<input type="text" id="remoteIp">
+					        				</label>
+					        			</td>
+					        			<td>&nbsp;/&nbsp;</td>
+					        			<td width="50px">
+			        						<label class="input">
+					        					<input type="text" id="remotePort">
+					        				</label>
+					        			</td>	
+			        				</tr>
+			        				</table>
+			        				
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td class="td-label"></td>
+			        			<td class="td-label"></td>
+			        			<td class="td-label">Local IP / Port</td>
+			        			<td>
+			        				<table width="100%">
+			        				<tr>
+			        					<td>
+			        						<label class="input">
+					        					<input type="text" id="localIp">
+					        				</label>
+					        			</td>
+					        			<td>&nbsp;/&nbsp;</td>
+					        			<td width="50px">
+			        						<label class="input">
+					        					<input type="text" id="localPort">
+					        				</label>
+					        			</td>	
+			        				</tr>
+			        				</table>
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td class="td-label">Alarm Cause Param</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text" id="alarmCauseParam">
+			        				</label>
+			        			</td>
+			        			<td class="td-label">From URI</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text" id="fromUri">
+			        				</label>
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td class="td-label">Cause Real Value</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text" id="alarmCauseRealValue">
+			        				</label>
+			        			</td>
+			        			<td class="td-label">To URI</td>
+			        			<td>
+			        				<label class="input">
+			        					<input type="text"  id="toUri">
+			        				</label>
+			        			</td>
+			        		</tr>
+			        		</table>
+			        		</form>
+			        	
+			        	</div>
+					
+				</div> <!-- row -->	
+			</div><!-- body -->	
+		</div>
+	</div>
+</div>	
+			
+<script type="text/javascript">
+
+var g_systemInfoList;
+var tableAlarm, tableAlarmListDetail;
+var g_selectedAlarmData={side:-1, alarmCode:-1};
+var g_alarmLevel = 0; // default 0: all
+
+
+var pagefunction = function() {
+
+	// get side
+	$.post("getSide", {}, function(json){
+		var localInfo = json.result;
+		setControlRadio("frmSystem", "rdoSystem", localInfo.dupSide, false);
+	});
+	
+	
+	setTimeout(function(){
+		
+		//----------------- status / information ---------------------------------------
+		if(typeof systemStatusTimer=== 'undefined' || systemStatusTimer == null){
+			systemStatusTimer = setInterval(function(){
+				var frmStatus = $("#frmStatus");
+				if(frmStatus.length == 1){
+					getSystemStatus();
+				}
+			}, systemStatusInterval);
+		}
+	
+	
+		getSystemStatus();
+		
+		findControlRadio("frmSystem", "rdoSystem").change(function(){
+			getSystemStatus();
+		});
+		
+	},1000);
+	
+	
+	
+	
+	//----------------- chart -----------------------------------------------------
+	
+	Chart.defaults.global.defaultFontSize = 9;
+	Chart.defaults.global.animation.duration = 0;
+	
+	//-------------------- alarm ------------------------------------------------
+	
+	// dropdown list
+	$(".js-status-update a").click(function() {
+		var selText = $(this).text();
+		var $this = $(this);
+		$this.parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
+		$this.parents('.dropdown-menu').find('li').removeClass('active');
+		$this.parent().addClass('active');
+	});
+	
+	// table
+	tableAlarm = $('#dtAlarm').DataTable({
+ 		"sDom": sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"scrollY" : 'auto',
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getAlarmData",
+        	"type": "post",
+        	"data": function(d){
+        		d.alarmLevel = g_alarmLevel;
+        	}
+        },
+        "ordering":false,
+        "columns": [
+					{ "data": "alarmCode"},      
+    				{ "data": "alarmLevel"},       
+    				{ "data": "side"},  
+    				{ "data": "createDatetime"},  
+    				{ "data": "alarmCode"},       
+    				{ "data": "causeDescription"},   
+    				{ "data": "cnt"},   
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0,
+					'width':'40px',
+					'searchable': false,
+				    'orderable': false,
+					'className': 'text-center',
+					'render': function (data, type, full, meta){
+						return '<input type="checkbox" name="id[]" value="' + full.side+','+data + '">'; 
+					},
+				},      
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getAlarmLevel(data); }}, 
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSide(data); }}, 
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }}, 
+				{'targets': 4, 'className': 'text-center'},
+				{'targets': 5, 'className': 'text-left'},
+				{'targets': 6, 'className': 'text-center'},
+    	 ]
+	});
+	
+	//	click row
+	tableAlarm.on( 'click', 'tr', function () {
+		tableAlarm.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+		
+	});
+	
+	//	dblclick row
+	tableAlarm.on( 'dblclick', 'tr', function () {
+		tableAlarm.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+		
+		showAlarmList();
+	});
+	
+	
+	// click selectAll 
+   $('#selectAll').on('click', function(){
+      var rows = tableAlarm.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
+	
+	
+	
+	// btnAlarmSound
+	$("#btnAlarmSound").click(function(){
+		if(g_alarmSound){
+			g_alarmSound = false;
+			$("#btnAlarmSound").html('<i class="fa fa-volume-up" style="color:#d1d1d1"></i>');
+		}else{
+			g_alarmSound = true;
+			$("#btnAlarmSound").html('<i class="fa fa-volume-up" style="color:#000"></i>');
+		}
+		
+		Egis.showAlarmCount();
+	});
+	
+	
+
+	// btnAlarmDataInfo
+	$("#btnAlarmDataInfo").click(function(){
+		showAlarmList();
+	});
+	
+	// btnAlarmPercept ahnks1
+	$("#btnAlarmPercept").click(function(){
+		
+		var str="";
+		tableAlarm.$('input[type="checkbox"]').each(function(){
+            if(this.checked){
+				if(str!="") str +="@";
+				str += this.value // => side,alarmCode
+            }
+		}); 
+		
+		if(str==""){
+			showMsg("Warning", "Select rows to clear!");
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want percept?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			
+			$.post("setAlarmPercept", {str: str}, function(json){
+				hideConfirm();
+				
+				if(json.result>0){
+					tableAlarm.ajax.reload(null, false);
+				}else{
+					showMsg("Warning", "Fail!");
+				}
+			});
+			
+		});
+	
+	});
+	
+	
+	// btnAlarmRefresh
+	$("#btnAlarmRefresh").click(function(){
+		tableAlarm.ajax.reload(null, false);
+	});
+	
+	
+
+
+	//============================== alarm detail dialog ========================================
+	
+	// tableAlarmListDetail
+	tableAlarmListDetail = $('#dtAlarmListDetail').DataTable({
+ 		"sDom": sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"scrollY" : "220px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getAlarmDataByAlarmCode",
+        	"type": "post",
+        	"data":function(d){
+        		d.side = g_selectedAlarmData.side;
+        		d.alarmCode = g_selectedAlarmData.alarmCode;
+        	}
+        },
+        "ordering":false,
+        "columns": [
+					{ "data": "idx"},       
+    				{ "data": "alarmLevel"},       
+    				{ "data": "side"},  
+    				{ "data": "createDatetime"},  
+    				{ "data": "alarmCode"},       
+    				{ "data": "causeDescription"},   
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0,
+					'width':'40px',
+					'searchable': false,
+				    'orderable': false,
+					'className': 'text-center',
+					'render': function (data, type, full, meta){
+						return '<input type="checkbox" name="id[]" value="' + data + '">'; 
+					},
+				},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getAlarmLevel(data); }}, 
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSide(data); }}, 
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }},
+				{'targets': 4, 'className': 'text-center'},
+				{'targets': 5, 'className': 'text-left'},
+    	 ]//,
+//     	 "initComplete": function(settings, json) {
+//         	$('#dtAlarmListDetail tbody tr:eq(0)').click();
+//     	 } 
+
+	});
+			
+	//	click row detail
+	tableAlarmListDetail.on( 'click', 'tr', function () {
+		tableAlarmListDetail.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+		
+		viewAlarmDetail();
+	});
+	
+	// click selectAllDetail 
+   $('#selectAllDetail').on('click', function(){
+      var rows = tableAlarmListDetail.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
+	
+	// btnAlarmPerceptDetail
+	$("#btnAlarmPerceptDetail").click(function(){
+		perceptDetail(0);
+	});
+	
+	// btnAlarmTrashDetail
+	$("#btnAlarmTrashDetail").click(function(){
+		perceptDetail(1);
+	});
+	
+	// btnCloseAlarmList
+	$("#btnCloseAlarmList").click(function(){
+		$('#modalAlarmData').modal('hide');
+		tableAlarm.ajax.reload(null, false);
+	});
+	
+	//------- destroy chart object (egis.js)------------
+	
+	destroy1 = false;
+	destroy2 = false;
+	destroy3 = false;
+	destroy4 = false;
+	
+	//----------------- wind up ----------------------------
+ 	
+ 	Egis.drawChart();
+	
+	setTimeout(function(){
+		Egis.resize(); 
+	},500);
+	
+	
+}
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", null);
+	});
+});	
+
+// chartjs
+loadScript("/resources/js/plugin/moment/moment.min.js", function(){
+	loadScript("/resources/js/plugin/chartjs/Chart.js", pagefunction);
+}); 
+
+
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+/*
+ * 
+ 	- localinfo.R_DUP_INFO : 내시스템의 status정보만 있음(실시간성, 1 row)
+ 	- statistics.R_SYSTEM_INFO : sysA, sysB 시스템정보(2 row)
+ 	
+ #### System Status ####	
+ 	내시스템상태 (table: localinfo.R_DUP_INFO)
+ 		T_DUP_SIDE : 내시스템 (sysA or sysB), 
+ 		T_DUP_SATUS (0: abnormal, 1:service starting, 2: T_DUP_ROLE참조), 
+ 		T_DUP_ROLE (0:active, 1:standby)
+ 		
+ 	다른시스템 상태(table: statistics.R_SYSTEM_INFO)
+ 		T_SIDE : (sysA or sysB),
+ 		R_STATUS :
+ 		T_ROLE :
+
+ #### System Information ####		
+ 	table : statistics.R_SYSTEM_INFO
+ 	
+ */
+function getSystemStatus(){
+ 		
+	$.post("getSystemStatus",{side:-1}, function(json){
+		
+		var localinfo = json.localinfo;
+		g_systemInfoList = json.list;
+		var pkg = json.pkg;
+		var alarmValue = json.alarmValue;
+		
+		if(localinfo==null){
+			showMsg("Warning", "No localinfo.R_DUP_INFO data!");
+			return;
+		}
+		if(g_systemInfoList==null){
+			showMsg("Warning", "No statistics.R_SYSTEM_INFO data!");
+			return;
+		}
+		
+		//------------------- system status ------------------------------------------
+
+		// local Sys Image
+		if(localinfo.dupMode == 0){ // single
+			
+		}else{ // dual
+			
+		}
+		
+		// status
+		setStatus(localinfo);
+		
+		// license
+		$("#frmStatus #desLicense").html(pkg.license);
+		
+		var side = getControlRadio("frmSystem", "rdoSystem");
+		var item = getSideItem(side);
+		
+		$("#frmStatus #dualFlag").html('');
+		$("#frmStatus #dualFlag").html((localinfo.dupMode==0)?"Single Mode" : "Dual Mode"); // Mode
+		
+		$("#frmStatus #mgmtIp").html('');
+		$("#frmStatus #mgmtIp").html(item.mgmtIp); // management IP
+		
+		//------- System Information ------------------------------------------------------------
+		
+		// pie chart VALUE
+		var cpu = getPieValue(item.usageCpuDisp1);
+		var memory = getPieValue(item.usageRamDisp2);
+		var disk = getPieValue(item.usageDisk2Disp);
+		var temp = getPieValue(item.usageTempCur);
+		$('#usageCpu').data('easyPieChart').update(cpu);
+		$('#usageRamDisp2').data('easyPieChart').update(memory);
+		$('#usageDisk2Disp').data('easyPieChart').update(disk);
+		$('#usageTempCur').data('easyPieChart').update(temp);
+		
+		// pie chart COLOR
+		$('#usageCpu').data('easyPieChart').options.barColor = getAlarmColor(cpu, alarmValue.cpuCritical, alarmValue.cpuMajor, alarmValue.cpuMinor);
+		$('#usageRamDisp2').data('easyPieChart').options.barColor = getAlarmColor(memory, alarmValue.memoryCritical, alarmValue.memoryMajor, alarmValue.memoryMinor);
+		$('#usageDisk2Disp').data('easyPieChart').options.barColor = getAlarmColor(disk, alarmValue.diskCritical, alarmValue.diskMajor, alarmValue.diskMinor);
+		$('#usageTempCur').data('easyPieChart').options.barColor = getAlarmColor(temp, alarmValue.temperatureCritical, alarmValue.temperatureMajor, alarmValue.temperatureMinor);
+			
+		$('#bootTime').html('');
+		$('#descPkgVer').html('');
+		$('#bootTime').html(item.bootTime);
+		$('#descPkgVer').html(item.descPkgVer);
+		
+		
+	});
+}
+
+function getPieValue(val){
+	if(typeof val == 'undefined' || val == '') return 0;
+	else return val;
+}
+
+function getStatusSrc(status, role){
+	var src = "/resources/img/egis/";
+	var img="";
+	if(status==0) img = "abnormal.png";
+	else if(status==1) img = "starting.png";
+	else if(status==2){
+		if(role==1) img = "active.png";
+		else if(role==2) img = "standby.png";
+	}
+	if(img =="") img = "standby.png";
+	
+	return src+img;
+}
+
+function getStatusLabel(status, role){
+	if(status==0) return "Abnormal";
+	else if(status==1) return "Starting";
+	else if(status==2){
+		if(role==1) return "Active";
+		else if(role==2) return "Standby";
+	}
+	return "";
+}
+
+
+function setStatus(localinfo){
+	
+	
+	var img="";
+	var lbl="";
+	
+	var side = (localinfo.dupSide==0)?"A":"B";
+	var status = localinfo.dupStatus;
+	var role = localinfo.dupRole;
+	
+	var sideXs=(localinfo.dupSide==0)?"B":"A";
+	var statusXs = localinfo.dupStatusXs;
+	var roleXs = (role==0)?1:0;
+	
+	//$("#msg").text(side + ' , ' + status + ' , ' + role + ' , ' + sideXs + ' , ' + statusXs);
+	
+	//---------------- local ----------------------------
+	if(status==0){
+		img = "/resources/img/egis/abnormal.png";
+		lbl="Abnormal";
+	}else if(status==1){
+		img = "/resources/img/egis/starting.png";
+		lbl="Starting";
+	}else if(status==2){
+		if(role==0){
+			img = "/resources/img/egis/active.png";
+			lbl="Active";
+		}else if(role==1){
+			img = "/resources/img/egis/standby.png";
+			lbl="Standby";
+		}
+	}
+	
+	$("#imgSys"+side).attr("src", img);
+	$("#lblSys"+side).text(lbl);
+	
+	
+	//------------------ remote ------------------------------------
+	if(statusXs==0){
+		img = "/resources/img/egis/abnormal.png";
+		lbl="Abnormal";
+	}else if(statusXs==1){
+		img = "/resources/img/egis/starting.png";
+		lbl="Starting";
+	}else if(statusXs==2){
+		if(roleXs==0){
+			img = "/resources/img/egis/active.png";
+			lbl="Active";
+		}else if(roleXs==1){
+			img = "/resources/img/egis/standby.png";
+			lbl="Standby";
+		}
+	}
+	
+	$("#imgSys"+sideXs).attr("src", img);
+	$("#lblSys"+sideXs).text(lbl);
+	
+	return side;
+	
+	/*
+	var src = getStatusSrc(localinfo.dupStatus, localinfo.dupRole);
+	var side = (localinfo.dupSide==0)?"A":"B";
+	$("#imgSys"+side).attr("src", src);
+	
+	// local Sys label
+	var lbl = getStatusLabel(localinfo.dupStatus, localinfo.dupRole);
+	$("#lblSys"+side).text(lbl);
+
+	// remote Sys
+	var remoteSide = (localinfo.dupSide==0)?"B":"A";
+	var itemRemote = getSideItem((localinfo.dupSide==0)?1:0);
+
+	// remote Sys Image
+	//src = getStatusSrc(itemRemote.status, itemRemote.role);
+	src = getStatusSrc(localinfo.dupStatusXs, itemRemote.role);
+	$("#imgSys"+remoteSide).attr("src", src);
+	
+	// remote Sys Label
+	lbl = getStatusLabel(itemRemote.status, itemRemote.role);
+	$("#lblSys"+remoteSide).text(lbl);
+	
+	*/
+	
+}
+
+	
+function getSideItem(side){
+	for(var i=0; i<g_systemInfoList.length; i++){
+		var item = g_systemInfoList[i];
+		if(item.side==side){
+			return item;
+		}
+	}
+}
+
+function getAlarmColor(value, critical, major, minor){
+	if(value >= critical) return '#ff0033';
+	else if(value >= major) return '#ff6c00';
+	else if(value >= minor) return '#ffc000';
+	else return '#57889C';
+}
+
+function changeAlarm(alarmLevel){
+	g_alarmLevel = alarmLevel;
+	tableAlarm.ajax.reload(null, false);
+}
+
+function showAlarmList(){
+	var data = tableAlarm.rows('.selected').data();
+	if(data.length==0){
+		showMsg("Warning", "Select one to view alram list.");
+	}else{
+		showModal($("#modalAlarmData"));
+		
+		g_selectedAlarmData = data[0];
+		tableAlarmListDetail.ajax.reload(null, false);
+   		 
+		setTimeout(function(){
+			$('#dtAlarmListDetail tbody tr:eq(0)').click();
+		}, 500);
+	}
+}
+
+function viewAlarmDetail(item){
+	
+	var data = tableAlarmListDetail.rows('.selected').data();
+	if(data.length==0){
+		showMsg("Warning", "Select one to view in detail.");
+	}else{
+		var idx = data[0].idx;
+
+		$.post("getAlarmDataDetail", {idx:data[0].idx}, function(json){
+			var item = json.result;
+			
+			setControlCheck("frmAlarmDetail", "rateLimitProfile", (item.rateLimitProfile==0)?false:true, true);
+			setControlInput("frmAlarmDetail", "rateLimitCategory", getRateLimitCategory(item.rateLimitCategory), true);
+			setControlInput("frmAlarmDetail", "alarmCauseParam", item.alarmCauseParam, true);
+			setControlInput("frmAlarmDetail", "alarmCauseRealValue", item.alarmCauseRealValue, true);
+			
+			setControlInput("frmAlarmDetail", "protocol", getProtocol_2(item.protocol), true);
+			setControlInput("frmAlarmDetail", "remoteIp", item.remoteIp, true);
+			setControlInput("frmAlarmDetail", "remotePort", item.remotePort, true);
+			setControlInput("frmAlarmDetail", "localIp", item.localIp, true);
+			setControlInput("frmAlarmDetail", "localPort", item.localPort, true);
+			setControlInput("frmAlarmDetail", "fromUrl", item.fromUrl, true);
+			setControlInput("frmAlarmDetail", "toUri", item.toUri, true);
+		});
+	}
+	
+}
+// 0:system, 1: un-regi user, 2: regi user, 3: server
+function getRateLimitCategory(value){
+	if(value==0) return "system";
+	else if(value==1) return "un-regi user";
+	else if(value==2) return "regi user";
+	else if(value==3) return "server";
+	else return "";
+	
+}
+// 1:udp, 2:tcp, 4: tls, 5: icmp
+function getProtocol_2(value){
+	if(value==1) return "udp";
+	else if(value==2) return "tcp";
+	else if(value==4) return "tls";
+	else if(value==5) return "icmp";
+	else return "";
+}
+
+
+function perceptDetail(releaseFlag){
+	var str="";
+	tableAlarmListDetail.$('input[type="checkbox"]').each(function(){
+        if(this.checked){
+			if(str!="") str +="@";
+			str += this.value
+        }
+	}); 
+	
+	if(str==""){
+		showMsg("Warning", "Select rows to clear!");
+		return;
+	}
+	
+	if(releaseFlag==0) showConfirm('Confirm', "Do you want percept?");
+	else  showConfirm('Confirm', "Do you want to delete?");
+	
+	$("#btnConfirm").unbind('click');
+	$("#btnConfirm").click(function(){
+		showLoader();
+		
+		$.post("setAlarmPerceptDetail", {str: str, releaseFlag: releaseFlag }, function(json){
+			hideConfirm();
+			
+			if(json.result>0){
+				tableAlarmListDetail.ajax.reload(null, false);
+				tableAlarm.ajax.reload(null, false);
+			}else{
+				showMsg("Warning", "Fail!");
+			}
+		});
+	});
+}
+
+
+</script>

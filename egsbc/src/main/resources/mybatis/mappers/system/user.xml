@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="UserDao" >    
+ 	
+ 	<select id="getUserList" resultType="com.egsbc.system.UserVO">
+ 		SELECT 
+			T_ID 								id,
+			T_PW 							pw,
+			T_LEVEL 						level,
+			T_CREATED_DATE 			createdDate,
+			T_STATUS 						status,
+			T_LOGIN_DATE 				loginDate,
+			T_LOGIN_IP 					loginIp,
+			T_STAY_LOGGED_IN 		stayLoggedIn,
+			T_BLOCKED_DATE 			blockedDate,
+			T_LOGIN_FAIL_COUNT 		loginFailCount,
+			T_MOBILE_NUM_4_SMS 	mobileNum4Sms,
+			T_SMS_SEND_ON 			smsSendOn,
+			T_EMAIL_ADDR_4_EMAIL 	emailAddr4Email,
+			T_EMAIL_SEND_ON 			emailSendOn
+		FROM 
+			R_WEB_USER
+		ORDER BY
+			T_LEVEL, T_ID
+ 	</select>
+ 	
+ 	<select id="getUser"  parameterType="String" resultType="com.egsbc.system.UserVO">
+ 		SELECT 
+			T_ID 								id,
+			T_PW 							pw,
+			T_LEVEL 						level,
+			T_CREATED_DATE 			createdDate,
+			T_STATUS 						status,
+			T_LOGIN_DATE 				loginDate,
+			T_LOGIN_IP 					loginIp,
+			T_STAY_LOGGED_IN 		stayLoggedIn,
+			T_BLOCKED_DATE 			blockedDate,
+			T_LOGIN_FAIL_COUNT 		loginFailCount,
+			T_MOBILE_NUM_4_SMS 	mobileNum4Sms,
+			T_SMS_SEND_ON 			smsSendOn,
+			T_EMAIL_ADDR_4_EMAIL 	emailAddr4Email,
+			T_EMAIL_SEND_ON 			emailSendOn
+		FROM 
+			R_WEB_USER
+		WHERE 
+			T_ID = #{id}
+ 	</select>
+ 	
+ 	<update id="changeUserPw"  parameterType="com.egsbc.system.UserVO">
+ 		UPDATE 
+ 			R_WEB_USER
+ 		SET
+ 			T_PW = #{pw}
+ 		WHERE
+ 			T_ID = #{id}
+ 	</update>
+ 	
+ 	<update id="setUserStatus" parameterType="com.egsbc.system.UserVO">
+ 		UPDATE 
+ 			R_WEB_USER  
+ 		<set>
+ 			<if test="status != -1">
+ 				T_STATUS = #{status},
+ 			</if>
+ 			<if test="loginIp != null and loginIp != ''">	
+ 				T_LOGIN_IP = #{loginIp},
+ 				T_LOGIN_DATE = NOW(), 
+ 			</if>
+ 			<if test="stayLoggedIn != -1">
+ 				T_STAY_LOGGED_IN = #{stayLoggedIn},
+ 			</if>	
+ 			<if test="status == 1">	
+ 				T_LOGIN_FAIL_COUNT = 0,
+ 				<if test="stayLoggedIn != -1">	
+ 					T_STAY_LOGGED_IN = #{stayLoggedIn},
+ 				</if>	
+ 			</if>
+ 			<if test="status == 3">	
+ 				T_BLOCKED_DATE = NOW(),
+ 				T_LOGIN_FAIL_COUNT = 0,
+ 			</if>
+ 			<if test="loginFailCount != 0">
+ 				T_LOGIN_FAIL_COUNT = T_LOGIN_FAIL_COUNT + 1
+ 			</if>
+ 		</set>	
+ 		WHERE
+ 			T_ID = #{id}	
+ 	</update>
+ 	
+ 	<update id="setUserStatusStayLoggedIn" parameterType="com.egsbc.system.UserVO">
+ 		UPDATE 
+ 			R_WEB_USER  
+ 		SET 
+			T_STAY_LOGGED_IN = #{stayLoggedIn}
+		WHERE
+ 			T_ID = #{id}	
+ 	</update>
+ 	
+<!--  	<select resultType="com.egsbc.user.UserVO" id="getUser" parameterType="String">  -->
+<!--  	SELECT T_ID id, T_PW pw, T_LEVEL level, T_STATUS status, T_DATE date FROM R_LOGIN_USER WHERE T_ID = #{id}  -->
+<!-- </select> -->
+
+<!-- 	<select resultType="com.egsbc.user.UserVO" id="selectUserById" parameterType="String">  -->
+<!-- 	SELECT T_ID id, T_PW pw, T_LEVEL level, T_STATUS status, T_DATE date FROM R_LOGIN_USER WHERE T_ID = #{id}  -->
+<!-- 	</select> -->
+
+<!-- 		<insert id="addUser" parameterType="com.egsbc.user.UserVO">  -->
+<!-- 		NSERT INTO R_LOGIN_USER VALUES (#{id}, #{pw}, #{level}, #{status}, NOW())  -->
+<!-- 		</insert> -->
+ 	
+ 	
+ 		<delete id="removeUser"  parameterType="com.egsbc.system.UserVO">
+ 			DELETE FROM 
+ 				R_WEB_USER
+ 			WHERE
+ 				T_ID = #{id}		
+ 		</delete>
+ 		
+ 		<update id="setPassword"  parameterType="com.egsbc.system.UserVO">
+ 			UPDATE
+ 				R_WEB_USER
+ 			SET
+ 				T_PW = #{pw}
+ 			WHERE
+ 				T_ID = #{id}				
+ 		</update>
+ 		
+ 		<insert id="addManager"  parameterType="com.egsbc.system.UserVO">
+ 			INSERT INTO R_WEB_USER (T_ID, T_PW, T_LEVEL, T_CREATED_DATE)
+ 			VALUES (#{id}, #{pw}, 0, NOW())
+ 		</insert>
+ 		
+ 		<select id="checkDupId" resultType="int" parameterType="com.egsbc.system.UserVO">
+ 			SELECT
+ 				 COUNT(*) 
+ 			FROM
+ 				R_WEB_USER
+ 			WHERE
+ 				T_ID = #{id}				
+ 		</select>
+ 		
+ 		<select id="getManagerConfigure" resultType="com.egsbc.system.UserConfigVO">
+ 			SELECT
+ 				T_LIMIT_LOGIN_FAIL_COUNT							limitLoginFailCount,
+ 				T_BLOCK_DURATION_BY_LIMIT						blockDurationByLimit,
+ 				T_SLEEP_MODE_BY_NO_ACTION_DURATION		sleepModeByNoActionDuration,
+ 				T_FORCE_LOGOUT_BY_NO_ACTION_DURATION	forceLogoutByActionDuration,
+ 				T_DEFAULT_ACL_RULE									defaultAclRule,
+ 				T_MAX_USER												maxUser
+ 			FROM
+ 				R_WEB_USER_CONFIG	
+ 			
+ 		</select>
+ 		
+ 		
+ 		<insert id="addManagerConfigure" parameterType="com.egsbc.system.UserConfigVO">
+ 			INSERT INTO R_WEB_USER_CONFIG 
+				(T_LIMIT_LOGIN_FAIL_COUNT, 
+				T_BLOCK_DURATION_BY_LIMIT, 
+				T_SLEEP_MODE_BY_NO_ACTION_DURATION, 
+				T_FORCE_LOGOUT_BY_NO_ACTION_DURATION, 
+				T_MAX_USER)
+ 			VALUES
+ 				(#{limitLoginFailCount}, 
+ 				#{blockDurationByLimit},
+ 				#{sleepModeByNoActionDuration},
+ 				#{forceLogoutByActionDuration},
+ 				#{maxUser})
+ 		</insert>
+ 		
+ 		<update id="setManagerConfigure" parameterType="com.egsbc.system.UserConfigVO">
+			UPDATE  	
+				R_WEB_USER_CONFIG			
+			SET
+ 				T_LIMIT_LOGIN_FAIL_COUNT = #{limitLoginFailCount},
+ 				T_BLOCK_DURATION_BY_LIMIT = #{blockDurationByLimit},
+ 				T_SLEEP_MODE_BY_NO_ACTION_DURATION = #{sleepModeByNoActionDuration},
+ 				T_FORCE_LOGOUT_BY_NO_ACTION_DURATION = #{forceLogoutByActionDuration},
+ 				T_MAX_USER = #{maxUser}
+ 		</update>
+ 		
+ 		
+ 		
+ 		
+ 	
+ 		
+ 		<select id="getManagerUserAcl" resultType="com.egsbc.system.UserAclVO">
+ 			SELECT
+ 				T_ACL_ENABLE   		aclEnable,
+ 				T_ACL_IP_ADDRESS	aclIpAddress
+ 			FROM
+ 				R_WEB_USER_ACL_LIST
+ 		</select>
+ 		
+ 		<insert id="addManagerIpAcl" parameterType="com.egsbc.system.UserAclVO">
+ 			INSERT INTO R_WEB_USER_ACL_LIST
+ 			VALUES (#{aclEnable}, #{aclIpAddress})
+ 		</insert>
+ 		
+ 		<delete id="removeManagerAcl" parameterType="com.egsbc.system.UserAclVO">
+ 			DELETE FROM R_WEB_USER_ACL_LIST
+ 			WHERE T_ACL_IP_ADDRESS=#{aclIpAddress}
+ 		</delete>
+ 		
+ 		<update id="changeManagerAcl" parameterType="com.egsbc.system.UserAclVO">
+ 			UPDATE 
+ 				R_WEB_USER_ACL_LIST
+ 			SET 
+ 				T_ACL_ENABLE = #{aclEnable}
+ 			WHERE
+ 				T_ACL_IP_ADDRESS=#{aclIpAddress}	
+ 		</update>
+ 		
+ 		<select id="getManagerUserAclEnable" parameterType="String" resultType="String">
+ 			SELECT
+ 				T_ACL_ENABLE
+ 			FROM
+ 				R_WEB_USER_ACL_LIST
+ 			WHERE
+ 				T_ACL_IP_ADDRESS=#{aclIpAddress}
+ 		</select>
+ 		
+ 		<select id="getUserCommandLevel" resultType="com.egsbc.system.UserCommandLevelVO">
+ 			SELECT
+ 				T_LEVEL 							level,
+				T_COMMAND_CODE 				commandCode,
+				T_COMMAND_ACTION_CODE 	commandActionCode,
+				T_COMMAND_NAME 				commandName,
+				T_COMMAND_DESC 				commandDesc,
+				T_ETC								etc
+ 			FROM
+ 				R_WEB_USER_COMMAND_LEVEL
+ 		</select>
+ 		
+ 		<select id="getUserActionHistory" parameterType="com.egsbc.system.UserActionHistoryVO" resultType="com.egsbc.system.UserActionHistoryVO">
+ 			SELECT
+ 				T_ID 						id,
+				T_ACTION_TIME 		actionTime,
+				T_ACTION_TYPE 		actionType,
+				T_ACTION_DESC 		actionDesc,
+				T_ACTION_RESULT 	actionResult,
+				T_ERROR_REASON	errorReason
+ 			FROM
+ 				R_WEB_USER_ACTION_HISTORY
+ 			WHERE
+ 				T_ACTION_TIME &gt;= #{date1} AND T_ACTION_TIME  &lt;=  #{date2}
+ 			<if test="id != null and id != ''">
+ 			AND
+ 				T_ID = #{id}
+ 			</if>	
+ 			ORDER BY
+				T_ACTION_TIME DESC	
+			LIMIT 
+				#{offset}, #{pageSize} 	
+ 			
+ 		</select>
+ 		
+ 		<select id="getUserActionHistoryCnt" parameterType="com.egsbc.system.UserActionHistoryVO" resultType="int">
+ 			SELECT
+ 				COUNT(*)
+ 			FROM
+ 				R_WEB_USER_ACTION_HISTORY
+ 			WHERE
+ 				T_ACTION_TIME &gt;= #{date1} AND T_ACTION_TIME  &lt;=  #{date2}
+ 			<if test="id != null and id != ''">
+ 			AND
+ 				T_ID = #{id}
+ 			</if>
+ 		
+ 		</select>
+ 		
+ 		<insert id="addUserActionHistory" parameterType="com.egsbc.system.UserActionHistoryVO">
+ 			INSERT INTO R_WEB_USER_ACTION_HISTORY 
+ 			VALUES (#{id}, NOW(), #{actionType}, #{actionDesc}, #{actionResult}, #{errorReason}) 
+ 		</insert>
+ 		
+ 		
+ 		
+ 		<select id="isBlockedLimitTimeOver" parameterType="com.egsbc.system.UserVO" resultType="int">
+ 			SELECT 
+				CASE WHEN 
+					TIMESTAMPDIFF(SECOND, T_BLOCKED_DATE, NOW()) > (SELECT T_BLOCK_DURATION_BY_LIMIT FROM R_WEB_USER_CONFIG) 
+				THEN 1
+				ELSE 0 END
+			FROM 
+				R_WEB_USER
+			WHERE 
+				T_ID = #{id}
+ 		</select>
+ 		
+ 		
+ 		<select id="getUserEmail" resultType="com.egsbc.system.UserEmailVO">
+ 			SELECT
+ 				T_EMAIL_ADDRESS	emailAddress,
+ 				T_PARAM				param,
+ 				T_PARAM2				param2
+ 			FROM
+ 				R_WEB_USER_EMAIL_LIST	
+ 		</select>
+ 		
+ 		<insert id="addUserEmail" parameterType="com.egsbc.system.UserEmailVO">
+ 			INSERT INTO 
+ 				R_WEB_USER_EMAIL_LIST 
+ 			VALUES 
+ 				(#{emailAddress}, #{param}, #{param2})
+ 		</insert>
+ 		
+ 		<delete id="removeUserEmail" parameterType="com.egsbc.system.UserEmailVO">
+			DELETE FROM
+				R_WEB_USER_EMAIL_LIST
+			WHERE
+				T_EMAIL_ADDRESS = #{emailAddress}
+		</delete>
+ 		
+</mapper>	

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="AlarmCodeDao" >    
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getAlarmCode"  resultType="com.egsbc.system.AlarmCodeVO">
+ 		SELECT 
+			T_ALARM_CODE 								alarmCode,
+		    T_ALARM_CATEGORY_NAME				alarmCategoryName,
+		    T_ALARM_NAME								alarmName,
+		    T_SECURITY_FLAG							securityFlag,
+		    T_RATE_LIMIT_FLAG							rateLimitFlag,
+		    T_ALARM_LEVEL								alarmLevel,
+		    T_ALARM_LEVEL_THRESHOLD_VALUE	alarmLevelThresholdValue,
+		    T_ALARM_ACTION							alarmAction,
+		    T_ALARM_TYPE								alarmType,
+		    T_ALARM_MSG									alarmMsg,
+		    T_ALARM_DESC								alarmDesc,
+		    T_BLOCK_NAME								blockName,
+		    T_SOUND_ON									soundOn,
+		    T_SMS_ON										smsOn,
+		    T_EMAIL_ON									emailOn
+		FROM 
+			R_ALARM_CODE
+		ORDER BY
+			T_ALARM_CODE
+ 	</select>
+ 	
+ 	<update id="setAlarmCode" parameterType="com.egsbc.system.AlarmCodeVO" >
+ 		UPDATE 
+ 			R_ALARM_CODE
+ 		SET
+ 			T_SOUND_ON = #{soundOn},
+ 			T_EMAIL_ON= #{emailOn},
+ 			T_SMS_ON = #{smsOn},
+ 			T_ALARM_LEVEL_THRESHOLD_VALUE = #{alarmLevelThresholdValue},
+ 			T_ALARM_ACTION = #{alarmAction},
+ 			T_ALARM_MSG = #{alarmMsg},
+ 			T_ALARM_DESC = #{alarmDesc}
+ 		WHERE
+ 			T_ALARM_CODE = #{alarmCode}
+ 	</update>
+ 	
+ 	
+ 	
+ 	
+	
+</mapper>	

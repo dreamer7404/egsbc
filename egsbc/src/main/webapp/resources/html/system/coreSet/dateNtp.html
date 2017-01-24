@@ -1,0 +1,448 @@
+<section  class="" >
+
+	<!-- row -->
+	<div class="row" >
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" >
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Date/NTP</h2>
+				</header>
+				<!-- widget div-->
+				<div  id="divDateNtp">
+					
+					<div >
+						
+						<div style="margin-top:15px">
+							<section class="col-md-6">
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-10" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Set System Time</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmSystemDatetime" novalidate="novalidate" >
+										<table border="0" >
+<!-- 										<tr> -->
+<!-- 											<td class="td-label" width="70px">Directly</td> -->
+<!-- 											<td colspan="2" class="td-label"> -->
+<!-- 												 <div class='input-group date' id='datetimepicker1' > -->
+<!-- 								                    <input type='text'  class="form-control" id="txtDatetime"> -->
+<!-- 								                    <span class="input-group-addon"> -->
+<!-- 								                        <span class="glyphicon glyphicon-calendar"></span> -->
+<!-- 								                    </span> -->
+<!-- 								                </div> -->
+<!-- 											</td> -->
+<!-- 											<td> -->
+<!-- 												<button type="button" class="btn btn-default btn-apply" id="btnApplyDirectly">Apply</button> -->
+<!-- 											</td> -->
+<!-- 										</tr>	 -->
+										<tr>
+											<td class="td-label" colspan="3">
+												Use NTP-Server Immediately 
+											</td>
+											<td>
+												<button type="button" class="btn btn-default btn-apply" id="btnApplyImmediately">Apply</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" colspan="2">
+												Use NTP-Server Periodically (AM 01:00) 
+											</td>
+											<td width="100px">
+												<span class="onoffswitch">
+													<input type="checkbox"  class="onoffswitch-checkbox" id="clientFlag"  checked >
+													<label class="onoffswitch-label" for="clientFlag"> 
+														<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+														<span class="onoffswitch-switch"></span> 
+													</label> 
+												</span> 
+											</td>
+											<td>
+												<button type="button" class="btn btn-default btn-apply" id="btnApplyPeriodic" disabled>Apply</button>
+											</td>
+										</tr>
+										</table>
+										</form>
+									</div>
+								</div>
+								
+								
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-2" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>NTP Server List</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmNtpServer" novalidate="novalidate" >
+
+											<table border="0" width="100%">
+											
+											<tr>
+												<td class="td-label" width="100px">order of priority</td>
+												<td class="td-label">IP address</td>
+												<td></td>
+											</tr>
+											<tr>
+												<td colspan="3" style="border-bottom:1px solid #efefef"></td>
+											</tr>
+											<tr>
+												<td class="td-label-center">1</td>
+												<td class="td-label">
+													<label class="input">
+														<input type="text" id="ntpHost1" name="ntpHost1">
+													</label>
+												</td>
+												<td>
+													<button type="button" class="btn btn-default btn-apply" id="btnOrder1" >Add</button>
+												</td>
+											</tr>
+											<tr>
+												<td class="td-label-center">2</td>
+												<td class="td-label">
+													<label class="input">
+														<input type="text" id="ntpHost2"  name="ntpHost2">
+													</label>
+												</td>
+												<td>
+													<button type="button" class="btn btn-default btn-apply" id="btnOrder2" >Add</button>
+												</td>
+											</tr>
+											<tr>
+												<td class="td-label-center">3</td>
+												<td class="td-label">
+													<label class="input">
+														<input type="text" id="ntpHost3"  name="ntpHost3">
+													</label>
+												</td>
+												<td>
+													<button type="button" class="btn btn-default btn-apply" id="btnOrder3" >Add</button>
+												</td>
+											</tr>
+											</table>
+											
+										</form>
+									</div>
+								
+								</div>	
+								
+							</section>
+							
+							<section class="col-md-6" >
+								
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-2" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Set NTP Server Daemon</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmNtpServerDeamon" novalidate="novalidate" >
+										<table border="0" >
+										<tr>
+											<td class="td-label" width="170px">NTP Server Daemon</td>
+											<td>
+												<div class="inline-group">
+													<label class="radio" >
+														<input type="radio" name="ntpServerDeamon" value="1" >
+														<i></i>Start
+													</label>
+													<label class="radio" >
+														<input type="radio" name="ntpServerDeamon" value="0">
+														<i></i>Stop
+													</label>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td class="td-label" style="text-align:right">
+												<button type="button" class="btn btn-default btn-apply" id="btnApplyDeamon" disabled>Apply</button>
+											</td>
+										</tr>
+										</table>
+										</form>
+									</div>
+								</div>
+							</section>
+						</div>
+						
+						
+					</div>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+<script type="text/javascript">
+
+var ntpItem={};
+var validatorServerName;
+
+var validatorSystemDatetime;
+var validatorNtpServerMode;
+
+var g_clientFlag;
+var g_serverFlag;
+
+var pagefunction = function() {
+	
+	//------------------------------ set system time ------------------------------------------
+	
+	// get R_NTP_CONFIG
+	getNtpConfig();
+	
+	
+	// apply Immediately 
+	$("#btnApplyImmediately").click(function(){
+		showConfirm("Confirm", "Do you want to set time by NTP Server immediately?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {opMode: 5, ntpCommand: 2}; // Immediately
+			$.ajax({
+				url: '/takeNtpDate',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	// if change, Enable Periodic button
+	$("#clientFlag").change(function(){
+		var clientFlag=getControlCheck("frmSystemDatetime", "clientFlag")?1:0;
+		if(g_clientFlag!=clientFlag){
+			$("#btnApplyPeriodic").attr("disabled", false);
+		}else{
+			$("#btnApplyPeriodic").attr("disabled", true);
+		}
+	});
+	
+	// apply Periodic
+	$("#btnApplyPeriodic").click(function(){
+		showConfirm("Confirm", "Do you want to set time by NTP Server periodically?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {opMode: 5, ntpCommand: 3, onOffFlag: getControlCheck("frmSystemDatetime", "clientFlag")?1:0}; // Periodic
+			$.ajax({
+				url: '/takeNtpDate',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	
+	//----------------------------- NTP Server List --------------------------------------------------------
+	
+	// get server list
+	getServerList();
+	
+	$("#btnOrder1").click(function(){
+		if($("#btnOrder1").text()=="Delete"){
+			deleteNtpHost($("#ntpHost1").val(), 1);
+		}else{
+			addNtpHost($("#ntpHost1").val(), 1);
+		}
+		getServerList();
+	});
+	
+	$("#btnOrder2").click(function(){
+		if($("#btnOrder2").text()=="Delete"){
+			deleteNtpHost($("#ntpHost2").val(), 2);
+		}else{
+			addNtpHost($("#ntpHost2").val(), 2);
+		}
+		getServerList();
+	});
+	
+	$("#btnOrder3").click(function(){
+		if($("#btnOrder3").text()=="Delete"){
+			deleteNtpHost($("#ntpHost3").val(), 3);
+		}else{
+			addNtpHost($("#ntpHost3").val(), 3);
+		}
+		getServerList();
+	});
+	
+	validatorServerName = $('#frmNtpServer').validate({
+		rules : {
+			ntpHost1:{
+				required : true,
+				AddressChecker: true,
+				maxlength: 100
+			},
+			ntpHost2:{
+				required : true,
+				AddressChecker: true,
+				maxlength: 100
+			},
+			ntpHost3:{
+				required : true,
+				AddressChecker: true,
+				maxlength: 100
+			},
+		},
+		messages : {
+			ntpHost1:{
+				required : 'Input server name.',
+				AddressChecker : 'Input proper address.',
+				maxlength : 'Input proper length name.',
+			},
+			ntpHost2:{
+				required : 'Input server name.',
+				AddressChecker : 'Input proper address.',
+				maxlength : 'Input proper length name.',
+			},
+			ntpHost3:{
+				required : 'Input server name.',
+				AddressChecker : 'Input proper address.',
+				maxlength : 'Input proper length name.',
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$.validator.addMethod('AddressChecker', function(value) {
+	       var arr = value.split('.');
+	       if(arr.length != 4 && arr.length != 3){
+	    	   return false;
+	       }
+	       return true;
+		}, 'Invalid');
+	
+	
+	//----------------------------- Set NTP Server Deamon --------------------------------------------------------
+	
+	
+	findControlRadio("frmNtpServerDeamon","ntpServerDeamon").change(function(){
+		var serverFlag=$(this).val();
+		if(g_serverFlag!=serverFlag){
+			$("#btnApplyDeamon").attr("disabled", false);
+		}else{
+			$("#btnApplyDeamon").attr("disabled", true);
+		}
+	});
+	
+	$("#btnApplyDeamon").click(function(){
+		var serverFlag = getControlRadio("frmNtpServerDeamon","ntpServerDeamon");
+		showConfirm("Confirm", "Do you want to apply ["+((serverFlag==0)?"Stop":"Start")+"] ?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {opMode: 5, ntpCommand: 6, onOffFlag: serverFlag};
+			$.ajax({
+				url: '/takeNtpDate',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    	getServerList();
+			    }
+			});
+			
+		});
+	});
+	
+	
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function getNtpConfig(){
+	$.post("getNtpConfig", {}, function(json){
+		var vo=json.vo;
+		
+		g_clientFlag = vo.clientFlag;
+		setControlCheck("frmSystemDatetime", "clientFlag", (vo.clientFlag==0)?false:true, false);
+		
+		g_serverFlag = vo.serverFlag;
+		setControlRadio("frmNtpServerDeamon","ntpServerDeamon", vo.serverFlag, false);
+	});
+}
+
+
+function getServerList(){
+	$.post("getNtpServer", {}, function(json){
+		var list =json.result;
+
+		if(list != null){
+			for(var i=0; i<list.length; i++){
+				var item = list[i];
+				$("#ntpHost"+item.idx).val(item.ntpHost);
+				
+				if(item.ntpHost != ''){
+					$("#ntpHost"+item.idx).attr("disabled", true);
+					$("#btnOrder"+item.idx).html("Delete");
+				}
+			}
+		}
+
+	});
+}
+
+function deleteNtpHost(ntpHost, order){
+	
+	showConfirm("Confirm", "Do you want to delete ["+ntpHost+"] ?");
+	$("#btnConfirm").unbind('click');
+	$("#btnConfirm").click(function(){
+		showLoader();
+		var param = {opMode: 5, ntpCommand: 5, ntpServerIp: ntpHost, ntpReserved: order};
+		$.ajax({
+			url: '/takeNtpDate',
+		    type: "post",
+		    data: param,
+		    success: function(json) {
+		    	processResult(json.result, null, null, null);
+		    	getServerList();
+		    }
+		});
+	});
+
+}
+
+function addNtpHost(ntpHost, order){
+	if(!$('#frmNtpServer').valid()){
+		return;
+	}
+	
+	showConfirm('Confirm', "Do you want to add [" + ntpHost +"] ?");
+
+	$("#btnConfirm").unbind('click');
+	$("#btnConfirm").click(function(){
+		showLoader();
+		var param = {opMode: 5, ntpCommand: 4, ntpServerIp: ntpHost, ntpReserved: order};
+		$.ajax({
+			url: '/takeNtpDate',
+		    type: "post",
+		    data: param,
+		    success: function(json) {
+		    	processResult(json.result, null, null, null);
+		    	getServerList();
+		    }
+		});
+	});
+}
+
+
+
+
+</script>				

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="NatServiceDao" >  
+
+	<select id="getNatService" resultType="com.egsbc.configuration.NatServiceVO">
+ 		SELECT
+ 			T_INDEX								idx,
+ 			T_NAME								name,
+ 			T_IP_TYPE							iPType,
+ 			T_PROTOCOL						protocol,
+ 			T_PROXY_MODE					proxyMode,
+ 			T_IPKTS								ipkts,
+ 			T_PACKET_PER_SEC				packetPerSec,
+ 			T_PINE_HOLE_DUARTION		pineHoleDuration,
+ 			T_SOURCE_IP						sourceIp,
+ 			T_INCOMMING_INTF_ALIAS	incommingIntfAlias,
+ 			T_INCOMING_INTF_MINPORT	incommingIntfMinPort,
+ 			T_INCOMING_INTF_MAXPORT	incommingIntfMaxPort,
+ 			T_OUTGOING_INTF_ALIAS		outgoingIntfAlias,
+ 			T_DESTINATION_IP				destinationIp,
+ 			T_DESTINATION_MINPORT		destinationMinPort,
+			T_DESTINATION_MAXPORT	destinationMaxPort
+		FROM
+			R_NAT_SERVICE
+		ORDER BY
+			T_NAME	
+	</select>
+
+</mapper>	

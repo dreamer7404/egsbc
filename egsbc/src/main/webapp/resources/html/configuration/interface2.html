@@ -1,0 +1,851 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-2" data-widget-editbutton="false" >
+
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Interface </h2>
+
+				</header>
+
+				<!-- widget div-->
+				<div class="div-widget"  style="background-color:red">
+							<table id="dtInterface" class="table table-striped table-bordered table-hover"   >
+								<thead>
+									<tr>
+<!-- 										<th rowspan="2"><input name="select_all" id="selectAll" type="checkbox" value="1"></th> -->
+<!-- 										<th rowspan="2" class="text-center">순번</th> -->
+										
+										<th rowspan="2" class="text-center">Host</th>
+										<th rowspan="2" class="text-center">Interface</th>
+										<th rowspan="2" class="text-center">연결정보</th>
+										<th rowspan="2" class="text-center">Alias</th>
+										<th rowspan="2" class="text-center">유형</th>
+										<th colspan="4" class="text-center">IP정보</th>
+										<th rowspan="2"  class="text-center">본딩정보</th>
+										<th colspan="2" class="text-center">서비스용도</th>
+										<th rowspan="2" class="text-center">VMAC</th>
+										
+<!-- 										<th rowspan="2" class="text-center">Sindex</th> -->
+<!-- 										<th rowspan="2" class="text-center">Parent</th> -->
+									</tr>
+									<tr>
+										<th class="text-center">방식</th>
+										<th class="text-center">형식</th>
+										<th class="text-center">Address</th>
+										<th class="text-center">Gateway</th>
+										
+										<th class="text-center">VoIP</th>
+										<th class="text-center">NAT</th>
+									</tr>
+								</thead>
+							</table>
+							<div class="form-group text-right">
+								<button class="btn btn-default btn-add" id="btnAdd""> Add</button>
+								<button class="btn btn-default btn-edit" id="btnChange""> Edit</button>
+								<button class="btn btn-default btn-delete" id="btnRemove""> Delete</button>
+								<button class="btn btn-default btn-refresh" id="btnRefresh""> Refresh</button>
+							</div>
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+
+
+<!-- Modal Interface -->
+  <div class="modal " id="modalInterface" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:800px">
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalInterface"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+						<form class="smart-form" id="frmInterface"  novalidate="novalidate">
+						
+							<table width="760px" border="0" style="margin:0 auto;">
+							<tr>
+								<td align="left" style="padding:18px 10px">*호스트</td>
+								<td style="width:230px">
+									<label class="select" name="lblClass">
+										<select name="side" id="side">
+											<option value="" selected="" disabled="">선택</option>
+											<option value="0">A</option>
+											<option value="1">B</option>
+											<option value="2">Both</option>
+										</select> <i></i> 
+									</label>
+								</td>
+								<td width="40px"></td>
+								<td align="left" style="padding:18px 10px">*IP주소</td>
+								<td>
+									<label class="input" name="lblClass">
+										<input type="text" id="ip" name="ip">
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="left" style="padding:18px 10px">*인터페이스</td>
+								<td>
+									<table width="100%" border="0">
+									<tr>
+										<td width="210px">
+											<label class="select" name="lblClass">
+												<select name="intfName" id="intfName">
+												</select> <i></i> 
+											</label>
+										</td>
+										<td style="padding:0 0 0 10px">
+											<button type="button" class="btn btm-sm btn-default" id="btnShowBonding">본딩추가</button>
+										</td>
+									</tr>
+									</table>
+									
+								</td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">넷마스크</td>
+								<td>
+									<label class="select">
+										<select name="ipPrefix" id="ipPrefix">
+										</select> <i></i> 
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="left" style="padding:18px 10px">*연결네트워크</td>
+								<td>
+									<div class="inline-group">
+										<label class="radio" name="lblClass">
+											<input type="radio" name="lrside" value="1" checked>
+											<i></i>내부
+										</label>
+										<label class="radio" name="lblClass">
+											<input type="radio" name="lrside" value="2">
+											<i></i>외부
+										</label>
+									</div>
+								</td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">게이트웨이</td>
+								<td>
+									<label class="input" name="lblClass">
+										<input type="text" id="gateway" name="gateway">
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td align="left" style="padding:18px 10px">*유형</td>
+								<td>
+									<label class="select" name="lblClass">
+										<select name="intfType" id="intfType">
+											<option value="" selected="" disabled="">선택</option>
+											<option value="0">Management</option>
+											<option value="1">Service</option>
+										</select> <i></i> 
+									</label>
+								</td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">*Alias</td>
+								<td>
+									<label class="input" name="lblClass">
+										<input type="text" id="intfAlias" name="intfAlias">
+									</label>
+								</td>
+							</tr>	
+							<tr>
+<!-- 								<td align="left" style="padding:18px 10px">*연결방식</td> -->
+<!-- 								<td> -->
+<!-- 									<div class="inline-group"> -->
+<!-- 										<label class="radio" name="lblClass"> -->
+<!-- 											<input type="radio" name="ipMode" value="0" checked> -->
+<!-- 											<i></i>고정IP -->
+<!-- 										</label> -->
+<!-- 										<label class="radio" name="lblClass"> -->
+<!-- 											<input type="radio" name="ipMode" value="1"> -->
+<!-- 											<i></i>유동IP -->
+<!-- 										</label> -->
+<!-- 									</div> -->
+<!-- 								</td> -->
+								<td align="left" style="padding:18px 10px">*IP형식</td>
+								<td>
+									<div class="inline-group">
+										<label class="radio" name="lblClass">
+											<input type="radio" name="ipType" value="0" checked>
+											<i></i>IPv4
+										</label>
+										<label class="radio" name="lblClass">
+											<input type="radio" name="ipType" value="1">
+											<i></i>IPv6
+										</label>
+									</div>
+								</td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">가상인터페이스</td>
+								<td>
+									<span class="onoffswitch">
+										<input type="checkbox"  class="onoffswitch-checkbox" id="intfSindex" name="intfSindex">
+										<label class="onoffswitch-label" for="intfSindex"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+								</td>
+							</tr>
+							<tr>
+								<td align="left" style="padding:18px 10px"></td>
+								<td></td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">서비스용도</td>
+								<td>
+									<div class="inline-group"  >
+										<label class="checkbox"  >
+											<input type="checkbox"  id=chkUsageVoIP  ><i></i>VoIP
+										</label>
+										<label class="checkbox" name="lblMediaPassFlag" >
+											<input type="checkbox"  id="chkUsageNat" ><i></i>NAT
+										</label>
+									</div>		
+								</td>
+							</tr>
+							<tr>
+								<td align="left" style="padding:18px 10px"></td>
+								<td></td>
+								<td></td>
+								<td align="left" style="padding:18px 10px">VMAC</td>
+								<td>
+									<label class="input">
+										<input type="text" id="vmac" name="vmac">
+									</label>
+								</td>
+							</tr>
+							</table>
+						</form>
+					</div>
+					
+					<input type="hidden" id="hidOpMode"  >
+					<input type="hidden" id="hidInterface1"  />
+					<input type="hidden" id="hidInterface2"  />
+        </div>
+        <div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+        	<button type="button" class="btn btn-primary"  id="btnSave">저장</button>
+          	<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseNew">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Modal Bonding -->
+  <div class="modal" id="modalBonding" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:400px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white">본딩 인터페이스 구성</h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmBonding" novalidate="novalidate">
+							
+							<label class="label col col-4 ">*이름</label>
+							<section class="col col-8" >
+								<label class="input">
+									<input type="text" id="intfNameBonding" name="intfNameBonding" >
+								</label>
+							</section>	
+							
+							<label class="label col col-4 ">*인터페이스 #1</label>
+							<section class="col col-8" >
+								<label class="select">
+									<select  id="selIntfName1Bonding" name="intfName1Bonding">
+									</select> <i></i> </label>
+							</section>	
+							
+							<label class="label col col-4 ">*인터페이스 #2</label>
+							<section class="col col-8" >
+								<label class="select">
+									<select  id="selIntfName2Bonding" name="intfName2Bonding">
+									</select> <i></i> </label>
+							</section>	
+							
+					</form>		
+					</div>
+				
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	        	<button type="button" class="btn btn-primary"  id="btnSaveBonding">저장</button>
+	          	<button type="button" class="btn btn-default" data-dismiss="modal" >취소</button>
+        	</div>
+		</div>
+	</div>	
+</div>	
+
+<script type="text/javascript">
+
+var table;
+var validatorInterfaceAdd;
+var validatorBondingAdd;
+
+var pagefunction = function() {
+		
+		table = $('#dtInterface').DataTable({
+// 			"sDom": "<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-6 hidden-xs'TC>r>"+
+// 			"t"+
+// 			"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'><'col-sm-6 col-xs-12'>>",
+			
+// 			"oLanguage": {
+// 				//"sSearch": '<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i>'
+// 				"sSearch": '<span class="input-group-addon"><i class="fa fa-search"></i>'
+// 			},
+// 			"autoWidth" : true,
+// 			"preDrawCallback" : function() {
+// 				// Initialize the responsive datatables helper once.
+// 				if (!responsiveHelper_datatable_col_reorder) {
+// 					responsiveHelper_datatable_col_reorder = new ResponsiveDatatablesHelper($('#dtInterface'), breakpointDefinition);
+// 				}
+// 			},
+// 			"rowCallback" : function(nRow) {
+// 				responsiveHelper_datatable_col_reorder.createExpandIcon(nRow);
+// 			},
+// 			"drawCallback" : function(oSettings) {
+// 				responsiveHelper_datatable_col_reorder.respond();
+// 			},
+// 			 "tableTools": {
+// 				 "sSwfPath": "/resources/js/plugin/datatables/swf/copy_csv_xls_pdf.swf",
+// 	        	 "aButtons": [
+// 			             "xls",
+// 			                {
+// 			                    "sExtends": "pdf",
+// 			                    "sTitle": "SmartAdmin_PDF",
+// 			                    "sPdfMessage": "SmartAdmin PDF Export",
+// 			                    "sPdfSize": "letter"
+// 			                }
+// 		         ],
+// 	        },
+			"sDom": sDom,
+			"oLanguage": oLanguage,
+			"autoWidth" : true,
+			"tableTools":tableTools,
+			"scrollY" : "400px",
+			"scrollX" : false,
+			"scrollCollapse": true,
+			"paging": false,
+ 			"processing": true,
+	        "ajax": {
+	        	url: "/getInterface",
+	        	type: "post"
+	        },
+		    "columns": [
+// 				{ "data": null},        	
+				{ "data": "side"},        	// 호스트
+		        { "data": "intfName" }, 	// 인터페이스
+		        { "data": "lrside"},		// 연결정보
+		        { "data": "intfAlias" },	// alias
+		        { "data": "intfType" }, 	// 유형 
+		        
+		        { "data": "ipMode"}, 		// 방식
+		        { "data": "ipType"}, 		// 형식
+		        { "data": "ip"},				// 주소
+		        { "data": "gateway"},	// gaeway
+		        
+		        { "data": null},			// 본딩정보
+		        { "data": "intfUsage"},	// 서비스용도 - VoIP
+		        { "data": "intfUsage"},	// 서비스용도 - NAT
+		        { "data": 'vmac' }	,		// vmac
+		       
+		    ],
+			'columnDefs': [
+//                   {'targets': 0,
+//   		        	'width':'40px',
+//   		        	'searchable': false,
+//   		            'orderable': false,
+//   		        	'className': 'text-center',
+//   		        	'render': function (data, type, full, meta){
+//   		               var val=$('<div/>').text(data).html();
+//   		        		return '<input type="checkbox" name="id[]" value="' + val + '">'+val; 
+//   		        		},
+//   					}, 		
+// 				{'targets': 0, 'className': 'text-center',  'searchable': false,  'orderable': false},  
+				{'targets': 0, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSide(data); }}, 
+				{'targets': 1, 'className': 'text-center' },     
+				{'targets': 2, 'className': 'text-center' , 'render': function (data, type, full, meta){ return getLrside(data); }},    
+				{'targets': 3, 'className': 'text-center'},     
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIntfType(data); }}, 
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIpMode(data); }}, 
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIpType(data); }}, 
+				{'targets': 7, 'className': 'text-center'},    
+				{'targets': 8, 'className': 'text-center'},    
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return ""; }}, 
+				{'targets': 10, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIntfUsageVoIP(data); }}, 
+				{'targets': 11, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIntfUsageNat(data); }}, 
+				{'targets': 12, 'className': 'text-center'},
+			],
+ 			'order': [[11, 'desc'],[12, 'desc']],
+			"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+// 				 if ( aData.side == 0 ){ $('td', nRow).css('color', '#00004D'); }
+// 				 else if ( aData.side == 1 ){ $('td', nRow).css('color', '#840000'); }
+// 				 else if ( aData.side == 2 ){ $('td', nRow).css('color', '#008800'); }
+                  
+//                   $(nRow).on('click', function(){
+//                 	  alert(aData.side+','+aData.intfName);
+//                   });
+             }
+		});
+		
+		/*
+			Sequence Number
+		*/
+		table.on( 'order.dt search.dt', function () {
+			table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	            cell.innerHTML = i+1;
+	        } );
+	    } ).draw();
+		
+		
+		/*
+		 	select first row
+		*/
+		table.on( 'draw.dt', function () {
+// 			var length=$('#dtInterface >tbody >tr').length;
+// 			if(length > 0){
+// 				table.$('tr:first').click();
+// 			}
+		});
+
+		
+		/*
+			 click row - view detail 
+		*/
+		$('#dtInterface tbody').on( 'click', 'tr', function () {
+			table.$('tr.selected').removeClass('selected');
+			$(this).addClass('selected');
+			//var data = table.row('.selected').data();
+	    });
+		
+		//====================================== Interface Modal ========================================
+		
+		// Interface 추가버튼
+		$("#btnAdd").click(function(){  
+			validatorInterfaceAdd.resetForm();
+			$("#frmInterface #hidOpMode").val("2"); // add
+			$("#frmInterface [name=lblClass]").removeClass("state-disabled");
+			
+			setControlInput("frmInterface",  "side", '', false); // side 호스트
+			setControlRadio("frmInterface", "lrside", 1, false); // lrside 연결네트워크
+			setControlInput("frmInterface", "intfType", '', false);  //유형
+			setControlRadio("frmInterface", "ipMode", 0, false); // ipMode 연결방식
+			setControlRadio("frmInterface", "ipType", 0, false); // ipType IP형식
+			setControlInput("frmInterface",  "ip", '', false); // IP주소
+			
+			setIpPrefix(0); //넷마스크
+			
+			setControlInput("frmInterface",  "gateway", '', false); // 게이트웨이
+			setControlInput("frmInterface",  "intfAlias", '', false); // Alias
+			setControlCheck("frmInterface", "intfSindex", false, false); // 가상인터페이스
+			
+			setControlCheck("frmInterface", "chkUsageVoIP", false, false); // 서비스용도  VoIP
+			setControlCheck("frmInterface", "chkUsageNat", false, false); // 서비스용도 Nat
+			
+			setControlInput("frmInterface",  "vmac", '', false); // vmac
+
+			$.post("/getInterfaceNameList",{},function(json){
+				var data = json.data;
+				setControlSelect("frmInterface", "intfName", "선택", data, '', false);  //인터페이스
+				
+				// show modal
+				showModal($("#modalInterface"));
+				$("#titleModalInterface").html("Interface 추가");
+				
+			});
+			
+		});
+		
+		// Interface 변경버튼
+		$("#btnChange").click(function(){
+			var data = table.rows('.selected').data();
+			if(data.length==0){
+				showMsg("변경", "변경할 데이타를 선택해 주세요");
+			}else{
+				var item=data[0];
+				validatorInterfaceAdd.resetForm();
+	   			setControlInput("frmInterface", "hidOpMode", 3, false);  // change
+				$("#frmInterface [name=lblClass]").addClass("state-disabled");
+
+				setControlInput("frmInterface",  "side", item.side, true); // side 호스트
+				setControlRadio("frmInterface", "lrside", item.lrside, true); // lrside 연결네트워크
+				setControlInput("frmInterface", "intfType", item.intfType, true);  //유형
+				
+				setControlRadio("frmInterface", "ipMode", item.ipMode, true); // ipMode 연결방식
+				setControlRadio("frmInterface", "ipType", item.ipType, true); // ipType IP형식
+				setControlInput("frmInterface",  "ip", item.ip, true); // IP주소
+				
+				setIpPrefix(item.ipType); // 넷마스크
+				setControlInput("frmInterface", "ipPrefix", item.ipPrefix, false);  // 넷마스크
+				
+				setControlInput("frmInterface",  "gateway", item.gateway, false); // 게이트웨이
+				setControlInput("frmInterface",  "intfAlias", item.intfAlias, true); // Alias
+				setControlCheck("frmInterface", "intfSindex", (item.intfSindex==0)?false:true, false); // 가상인터페이스
+				
+				setControlCheck("frmInterface", "chkUsageVoIP", (item.intfUsage==1||item.intfUsage==3)?true:false, false); // 서비스용도  VoIP
+				setControlCheck("frmInterface", "chkUsageNat", (item.intfUsage==2||item.intfUsage==3)?true:false, false); // 서비스용도 Nat
+				
+				setControlInput("frmInterface",  "vmac", '', false); // vmac
+				
+				$.post("getInterfaceNameList", {}, function(json){
+					var data = json.data;
+					setControlSelect("frmInterface", "intfName", "선택", data, item.intfName, true);  //인터페이스
+					
+					// show modal
+					showModal($("#modalInterface"));
+					$("#titleModalInterface").html("Interface 추가");
+					
+ 				});
+			}
+			
+		});
+		
+		// 삭제버튼
+		$("#btnRemove").click(function(){ 
+			var data = table.rows('.selected').data();
+			if(data.length==0){
+				showMsg("삭제", "삭제할 데이타를 선택해 주세요");
+			}else{
+				showConfirm(data[0].name + "을 삭제 하시겠습니까?");
+				
+				$("#btnConfirm").unbind('click');
+				$("#btnConfirm").click(function(){
+					showLoader();
+					var param = data[0];
+					param.opMode=4; // remove opMode
+					$.ajax({
+						url: '/takeInterface',
+					    type: "post",
+					    data: param,
+					    success: function(json) {
+					    	processResult(json.result, null, table, null);
+					    }
+					});
+				});
+			}
+		});
+		
+		/*
+			가상인터페이스 변경
+		*/
+		$("#intfSindex").change(function(){
+			if($(this).is(':checked')) {
+				$("#side").val(2);
+			}
+		});
+		
+		/*
+			IP형식 변경
+		*/
+		findControlRadio("frmInterface", "ipType").change(function() { 
+			setIpPrefix($(this).val());
+		});
+	
+		
+		//  새로고침
+		$("#btnRefresh").click(function(){
+			table.ajax.reload(null, false);
+		});
+		
+		
+		/*
+			저장버튼
+		*/
+ 		$("#btnSave").click(function(){
+ 			
+ 			var side = getControlInput("frmInterface",  "side");
+ 			var intfName = getControlSelect("frmInterface",  "intfName");
+ 			var ip = getControlInput("frmInterface",  "ip");
+ 			var intfType = getControlSelect("frmInterface",  "intfType");
+ 			var intfAlias = getControlSelect("frmInterface",  "intfAlias");
+ 			
+ 			//alert(side + ' , ' + intfName + ' , ' + ip + ' , ' + intfType + ' , ' + intfAlias);
+ 			
+ 			if(side==null || intfName=='' || ip == '' || intfType==null || intfAlias == '' ){
+				$('#frmInterface').valid(); 
+				return;
+			}
+ 			
+ 			showConfirm(getSideValue(side) + ', ' + intfName + " 인터페이스를 저장 하시겠습니까?");
+			
+ 			$("#btnConfirm").unbind('click');
+ 			$("#btnConfirm").click(function(){
+ 				showLoader();
+ 				$("#frmInterface").submit();
+ 			});
+ 			
+ 		});	
+		
+		/*
+			validator
+		*/
+		validatorInterfaceAdd = $('#frmInterface').validate({
+			onfocusout: function(element) {$(element).valid()},
+			onkeyup: function(element) {$(element).valid();},
+			rules : {
+				side:{required : true},
+				intfName:{required : true},
+				intfType:{required : true},
+				ipMode:{required : true},
+				ipType:{required : true},
+				ip : {
+					required: true, 
+					pattern: /^[\d\.*]+$/,
+				},
+				gateway: {
+					pattern: /^[\d\.*]+$/,
+				},
+				intfAlias : {required : true} 
+			},
+			messages : {
+				side:{required : '호스트를 선택해 주세요'},
+				intfName:{required : '인터페이스를 선택해 주세요'},
+				intfType:{required : '유형을 선택해 주세요'},
+				ipMode:{required : '연결방식을 선택해 주세요'},
+				ipType:{required : 'IP형식을 선택해 주세요'},
+				ip : {
+					required : 'IP주소를 입력해 주세요',
+					pattern : 'IP주소를 정확히 입력해 주세요',
+				},
+				gateway : {
+					pattern : '게이트웨이를 정확히 입력해 주세요',
+				},
+				intfAlias : {required : 'Alias를 입력해 주세요'}
+			},
+			errorPlacement : function(error, element) {
+				// ahnks 
+				if(element.attr('name')=='ipMode'){error.insertAfter("#divIpModeEdit");
+				}else if(element.attr('name')=='ipType'){error.insertAfter("#divIpTypeEdit");
+				}else{error.insertAfter(element.parent());}
+			},
+		});
+		
+	
+		$("#frmInterface").ajaxForm({
+			url: "/takeInterface",
+			type: "POST",
+			beforeSubmit: function(arr, $form, options){
+				
+				var opMode=getControlInput("frmTrunk",  "hidOpMode"); 
+				
+				//----------- checkbox 처리-----------------------------
+				arr.push({name:'intfUsage', value: getIntfUsage()});
+				arr.push({name:'intfSindex', value: getControlCheck("frmInterface", "intfSindex") ? 1 : 0}); // internal use only
+				
+				// 연결방식 '0' 고정처리
+				arr.push({name:'ipMode', value: 0}); 
+				
+				//------------ 추가시 Bonding 추가처리 -----------------------
+				if(opMode=="2"){ // add
+					
+					var interface1 = getControlInput("frmInterface", "hidInterface1");
+					var interface2 = getControlInput("frmInterface", "hidInterface2");
+					
+					if(interface1=='' && interface2==''){
+						arr.push({name:'intfMedia', value: 0}); 
+					}else{
+						arr.push({name:'dummy1', value: interface1}); 
+						arr.push({name:'dummy2', value: interface2}); 
+						arr.push({name:'intfMedia', value: 1}); 
+					}
+				
+				//----------- 변경시 disabled 처리-----------------------------
+				} else if(opMode==3){
+					var item = table.rows('.selected').data()[0];
+				
+					arr.push({name:'idx', value: item.idx}); 
+					
+					arr.push({name:'side', value: item.side}); 
+					arr.push({name:'intfName', value: item.intfName}); 
+					arr.push({name:'lrside', value: item.lrside}); 
+					arr.push({name:'intfType', value: item.intfType}); 
+					arr.push({name:'ipType', value: item.ipType});
+					arr.push({name:'ip', value: item.ip});
+					arr.push({name:'ipPrefix', value: item.ipPrefix});
+					arr.push({name:'gateway', value: item.gateway});
+					arr.push({name:'intfAlias', value: item.intfAlias}); 
+					
+					//------------ internal use only ----------------------
+					arr.push({name:'intfMedia', value: item.intfMedia}); 
+					arr.push({name:'intfParent', value: item.intfParent}); 
+					arr.push({name:'intfUsedFlag', value: item.intfUsedFlag}); 
+				}
+				
+			},
+			success: function(responseText, statusText, xhr, $form){
+				processResult(responseText.result, "modalInterface", table, null);
+			}
+		});
+		
+		/******************************************************************************************
+		
+		 	본딩 추가화면 
+		 
+		*******************************************************************************************/
+		
+		
+		$("#btnShowBonding").click(function(){
+			
+			validatorBondingAdd.resetForm();
+			
+			$.post("getInterfaceNameListForAdd",{},function(json){
+				var data = json.data;
+				
+				$("#selIntfName1Bonding").empty();
+				$("#selIntfName2Bonding").empty();
+				$("#selIntfName1Bonding").append("<option value=''  selected='' disabled=''>선택</option>");
+				$("#selIntfName2Bonding").append("<option value=''  selected='' disabled=''>선택</option>");
+				for(var i=0; i<data.length; i++){
+					$("#selIntfName1Bonding").append("<option value='"+data[i]+"'>"+data[i]+"</option>");
+					$("#selIntfName2Bonding").append("<option value='"+data[i]+"'>"+data[i]+"</option>");
+				}
+				
+				showModal($("#modalBonding"));
+				
+				// clear intfName
+				$("#frmBonding #intfNameBonding").val('');
+				$("#frmBonding #intfNameBonding").focus();
+			});
+		})	;
+		
+		
+		/*
+			본딩추가창 - 저장
+		*/
+		$("#btnSaveBonding").click(function(){
+			$("#frmBonding").submit();
+		});
+		
+		validatorBondingAdd = $('#frmBonding').validate({
+			onfocusout: function(element) {$(element).valid()},
+			onkeyup: function(element) {$(element).valid();},
+			rules : {
+				intfNameBonding:{required : true},
+				intfName1Bonding:{required : true},
+				//intfName2Bonding:{required : true, equalTo: "#intfName1Bonding"}
+				intfName2Bonding:{required : true}
+			},
+			messages : {
+				intfNameBonding:{required : '이름을 입력해 주세요'},
+				intfName1Bonding:{required : '인터페이스1을 선택해 주세요'},
+				intfName2Bonding:{required : '인터페이스2를 선택해 주세요'}
+					//equalTo : '인터페이스1과 다르게 선택해 주세요'}
+			},
+			errorPlacement : function(error, element) {
+				error.insertAfter(element.parent());
+			},
+			submitHandler: function(form) {
+				var infName = $("#txtInfNameBonding").val();
+				var infName1 = $("#selIntfName1Bonding").val();
+				var infName2 = $("#selIntfName2Bonding").val();
+				
+				if(infName1==infName2){
+					alert('인터페이스 #1과 #2를 다르게 설정해주세요');
+					return false;
+				}
+				
+				$("#hidInterface1").val(infName1);
+				$("#hidInterface2").val(infName2);
+				
+				$("#frmInterface #intfName").empty();
+				$("#frmInterface #intfName").append("<option value='"+infName+"' selected='selected'>"+infName+"</option>");
+				
+				if($('#modalBonding').is(':visible')){ 
+					$("#modalBonding").modal('hide');
+				}
+			}
+		});
+		
+}; // pagefunction
+	
+	
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/scripts/common/dataTables.js", function(){
+	loadScript("/resources/scripts/common/controls.js", null);
+});
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/js/plugin/datatables/dataTables.colVis.min.js", function(){
+		loadScript("/resources/js/plugin/datatables/dataTables.tableTools.min.js", function(){
+			loadScript("/resources/js/plugin/datatables/dataTables.bootstrap.min.js", function(){
+				loadScript("/resources/js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
+			});
+		});
+	});
+});
+
+	
+	
+	
+function getIntfUsage(){
+	var voIP = getControlCheck("frmInterface", "chkUsageVoIP");
+	var nat = getControlCheck("frmInterface", "chkUsageNat");
+	if(voIP && !nat) return 1;
+	else if(!voIP && nat) return 2;
+	else if(voIP && nat) return 3;
+	else return 0;
+}
+	
+	
+// 넷마스크
+function setIpPrefix(val){
+	var obj=findControlSelect("frmInterface", "ipPrefix");
+	obj.empty();
+	obj.append("<option value='0'>없음</option>");
+	if(val==0){
+		obj.append("<option value='31'>255.255.255.254</option>");
+		obj.append("<option value='30'>255.255.255.252</option>");
+		obj.append("<option value='29'>255.255.255.248</option>");
+		obj.append("<option value='28'>255.255.255.240</option>");
+		obj.append("<option value='27'>255.255.255.224</option>");
+		obj.append("<option value='26'>255.255.255.192</option>");
+		obj.append("<option value='25'>255.255.255.128</option>");
+		obj.append("<option value='24' selected='selected'>255.255.255.0</option>");
+		obj.append("<option value='23'>255.255.254.0</option>");
+		obj.append("<option value='22'>255.255.252.0</option>");
+		obj.append("<option value='21'>255.255.248.0</option>");
+		obj.append("<option value='20'>255.255.240.0</option>");
+		obj.append("<option value='19'>255.255.224.0</option>");
+		obj.append("<option value='18'>255.255.192.0</option>");
+		obj.append("<option value='17'>255.255.128.0</option>");
+		obj.append("<option value='16'>255.255.0.0</option>");
+		obj.append("<option value='15'>255.254.0.0</option>");
+		obj.append("<option value='14'>255.252.0.0</option>");
+		obj.append("<option value='13'>255.248.0.0</option>");
+		obj.append("<option value='12'>255.240.0.0</option>");
+		obj.append("<option value='11'>255.224.0.0</option>");
+		obj.append("<option value='10'>255.192.0.0</option>");
+		obj.append("<option value='9'>255.128.0.0</option>");
+		obj.append("<option value='8'>255.0.0.0</option>");
+	}else if(val==1){
+		for(var i=128; i>7; i--){
+			obj.append("<option value='"+i+"'>"+i+"</option>");
+		}
+		obj.val(64);
+	}
+}
+	
+
+	
+	
+</script>

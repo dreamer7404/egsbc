@@ -1,0 +1,850 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" style="display:none">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2><span id="title"></span></h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+				
+						<form class="smart-form" id="frmApply"  novalidate="novalidate">
+							<table border="0" style="margin:0 0 20px 20px">
+							<tr>
+								<td width="150px" style="padding:10px 20px 10px 10px;text-align:right">Static ACL Policy</td>
+								<td>
+									<div class="inline-group">
+										<label class="radio">
+											<input type="radio" name="actionACL" value="1" checked>
+											<i></i>Accept
+										</label>
+										<label class="radio" id="lblBlock">
+											<input type="radio" name="actionACL" value="2">
+											<i></i>Block
+										</label>
+									</div>
+								</td>
+								<td>
+									<button type="button" class="btn btn-default btn-apply"  id="btnApply">Apply</button>
+								</td>
+							</tr>
+							</table>
+						</form>		
+				
+				
+						<table id="dtSipNat" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Protocol</th>
+									<th rowspan="2" class="text-center">Action</th>
+									<th colspan="2" class="text-center">Source Side</th>
+									<th rowspan="2" class="text-center">Descripttion</th>
+								</tr>
+								<tr>
+									<th  class="text-center">source address</th>
+									<th  class="text-center">Port</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddSipNat"> Add</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveSipNat"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshSipNat"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Static ACL White list for Local Service</h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtLocal" class="table table-striped table-bordered table-hover"   > 
+							<thead> 
+								<tr>
+									<th rowspan="2" class="text-center">protocol</th>
+									<th colspan="2" class="text-center">Source Side</th>
+									<th colspan="2" class="text-center">Destination(Local) Side</th>
+									<th rowspan="2" class="text-center">Description</th>
+								</tr>
+								<tr>
+									<th  class="text-center">source address</th>
+									<th  class="text-center">Port</th>
+									<th  class="text-center">destination address</th>
+									<th  class="text-center">Port</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-default btn-add" id="btnAddLocal"> Add</button>
+							<button type="button" class="btn btn-default btn-delete" id="btnRemoveLocal"> Delete</button>
+							<button type="button" class="btn btn-default btn-refresh" id="btnRefreshLocal"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			
+		</article>
+	</div>
+</section>	
+
+
+
+
+<!------------------------------------------------ Modal SipNat ------------------------------------------------------------------------>
+<div class="modal" id="modalSipNat" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:480px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalSipNat"></h6>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmSipNat" novalidate="novalidate">
+					
+						<table width="440px" border="0" style="margin:0 auto;">
+						<tr>
+							<td class="td-label">*IP Type</td>
+							<td colspan="2">
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="ipType" value="0" checked>
+										<i></i>IPv4
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="ipType" value="1">
+										<i></i>IPv6
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td> 
+						</tr> 
+						<tr>
+							<td class="td-label">*Protocol</td>
+							<td colspan="2">
+								<div class="inline-group"  id="lblProtocol" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="chkUdp" name="chkUdp" class="Protocol-group"><i></i>UDP
+									</label>
+									<label class="checkbox">
+										<input type="checkbox"  id="chkTcp" name="chkTcp" class="Protocol-group"><i></i>TCP
+									</label>
+								</div>		
+							
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td> 
+						</tr>	
+						<tr>
+							<td class="td-label">*Source Address</td>
+							<td>
+								<label class="input" >
+									<input type="text" id="sourceIp"  name="sourceIp"> 
+								</label>
+							</td>
+							<td>&nbsp;(*: any)</td>
+						</tr>	
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td> 
+						</tr>
+						<tr>
+							<td class="td-label">*Source Port</td>
+							<td>
+								<label class="input" >
+									<input type="text" id="sourcePort"  name="sourcePort">
+								</label>
+							</td>
+							<td>&nbsp;(0: any)</td>
+						</tr>	
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td> 
+						</tr>
+						<tr>
+							<td class="td-label">Description</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="description"  name="description">
+								</label>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>
+					
+				</div>
+				
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	 <button type="button" class="btn btn-default btn-save"  id="btnSaveSipNat">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>
+</div>	
+
+
+<!------------------------------------------------ Modal Local ------------------------------------------------------------------------>
+<div class="modal" id="modalLocal" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:780px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalLocal"></h6>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row">
+					
+					<form class="smart-form" id="frmLocal" novalidate="novalidate">
+					
+						<table width="720px" border="0" style="margin:0 auto;">
+						<tr>
+							<td class="td-label">*IP Type</td>
+							<td colspan="6" style="padding:12px 10px;">
+								<div class="inline-group"  >
+									<label class="radio" name="lblClass">
+										<input type="radio" name="ipType" value="0" checked>
+										<i></i>IPv4
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="ipType" value="1">
+										<i></i>IPv6
+									</label>
+								</div>	
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="7" class="td-hr"><hr class="hr-form" /></td> 
+						</tr> 
+						<tr>
+							<td class="td-label">*Protocol</td>
+							<td colspan="6" style="padding:12px 10px;">
+								<div class="inline-group" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="chkUdpLocal" name="chkUdpLocal" class="Protocol-group-local"><i></i>UDP
+									</label>
+									<label class="checkbox">
+										<input type="checkbox"  id="chkTcpLocal" name="chkTcpLocal" class="Protocol-group-local"><i></i>TCP
+									</label>
+									<label class="checkbox">
+										<input type="checkbox"  id="chkIcmpLocal" name="chkIcmpLocal" class="Protocol-group-local"><i></i>ICMP
+									</label>
+									<div   id="lblProtocolLocal" style="width:250px;border:0px solid red" ></div>
+								</div>	
+							</td>
+							
+						</tr>
+						<tr>
+							<td colspan="7" align="center" style="background-color:#efefef;height:2px"></td>
+						</tr>
+<!-- 						<tr> -->
+<!-- 							<td colspan="7" align="center" style="height:2px"><hr style="border-top: dotted 1px;color:#ccc" /></td> -->
+<!-- 						</tr> -->
+						<tr>
+							<td class="td-label">*Source Address</td>
+							<td colspan="2" style="padding:12px 10px;width:170px">
+								<label class="input" >
+									<input type="text" id="sourceIp" name="sourceIp">
+								</label>
+							</td>
+							<td rowspan="2" >
+								<span style="font-size:24px;color:#9B9B9B" class="glyphicon glyphicon-arrow-right" ></span>
+							</td>
+							<td align="left" style="padding:3px 10px;width:130px" name="tdClass">*Destination Address</td>
+							<td colspan="2" style="padding:3px 10px;width:170px">
+								<label class="input" >
+									<input type="text" id="destinationIp" name="destinationIp">
+								</label>
+							</td>
+						</tr>
+						
+						<tr>			
+							<td class="td-label">*Source Port</td>	
+							<td style="padding:3px 2px 3px 10px;width:90px">
+								<label class="input" >
+									<input type="text" id="sourcePort" name="sourcePort" ">
+								</label>
+							</td>	
+							<td>&nbsp;(0: any)</td>
+							<td class="td-label">*Destination Port</td>
+							<td style="padding:12px 10px;width:90px">
+								<label class="input" >
+									<input type="text" id="destinationPort" name="destinationPort">
+								</label>
+							</td>
+							<td>&nbsp;(0: any)</td>
+							
+						</tr>
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+				</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveLocal">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>					
+
+<script type="text/javascript">
+var validatorSipNat, validatorLocal;
+var tableSipNat, tableLocal;
+
+var pagefunction = function() {
+	// Static ACL (SipNat) 
+	tableSipNat = $('#dtSipNat').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+//		"processing": true,
+//         "ajax": {
+//         	"url": "/getStaticACL",
+//         	"type": "post",
+//         	"data": function(d){
+//         		d.usageACL = 1
+//         	}
+//         },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "protocol"},       
+    				{ "data": "actionACL"},       
+    				{ "data": "sourceIp"},       
+    				{ "data": "sourcePort"},       
+    				{ "data": "description"},       
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center',  'render': function (data, type, full, meta){ return getProtocol(data); }},    
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center'},
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center'},
+    	 ]
+	});	
+	//	click row
+	tableSipNat.on( 'click', 'tr', function () {
+		tableSipNat.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	// Local
+	tableLocal = $('#dtLocal').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getStaticACL",
+        	"type": "post",
+        	"data": function(d){
+        		d.usageACL = 2
+        	},
+			complete: function(data){
+				if(typeof data.responseJSON=='undefined'){
+					alert('Session Expired!');
+					location.href = "/login";
+				}
+			}
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "protocol"},       
+    				{ "data": "sourceIp"},       
+    				{ "data": "sourcePort"}, 
+    				{ "data": "destinationIp"},       
+    				{ "data": "destinationPort"},      
+    				{ "data": "description"},       
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center',  'render': function (data, type, full, meta){ return getProtocol(data); }},    
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center'},
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center'},
+				{'targets': 5, 'className': 'text-center'},
+    	 ]
+	});	
+	//	click row
+	tableLocal.on( 'click', 'tr', function () {
+		tableLocal.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	
+	// Prevent alert message from being displayed
+	$.fn.dataTable.ext.errMode = 'none';
+// 	$(document.body).on('xhr.dt', function (e, settings, json, xhr){
+// 		   // If there is an Ajax error and status code is 401
+// 		   if(json === null || xhr.status === 401 || xhr.status === 403){         
+// 		      alert('Session expired : ' + xhr.status);
+// 		   } 
+// 	});
+	
+	
+	
+	// 적용 버튼 
+	$("#frmApply #btnApply").click(function(){
+		
+		
+		var actionACL = getControlRadio("frmApply", "actionACL");
+		var policy = (actionACL==1) ? "Accept" : "Block";
+		
+		$.post("getPrimitiveConfig", {argString: "MRM_STATIC_ACL_SIPNAT_DEFAULT_POLICY"}, function(json){
+			if(actionACL==json.data){
+				showMsg("Warning", "Already applied [" + policy + "] now.");
+			}else{
+				
+				if(tableSipNat.data().count() > 0){
+					showConfirm('Confirm', "When change policy, All SIP/NAT will delete.<br />Do you want to apply [" + policy + "] ?");
+				}else{
+					showConfirm('Confirm', "Do you want to apply [" + policy + "] ?");
+				}
+				
+				$("#btnConfirm").unbind('click');
+				$("#btnConfirm").click(function(){
+					showLoader();
+					$("#frmApply").submit();  
+				});
+				
+			}
+		});
+	});
+	
+	
+	$("#frmApply").ajaxForm({
+		url: "/takeStaticACL",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			arr.push({name:'opMode', value: 3}); // change mode
+			arr.push({name:'usageACL', value: 1}); // 1: sip/nat usage , 2: local service
+			arr.push({name:'actionACL', value: getControlRadio("frmApply", "actionACL")}); //action
+			arr.push({name:'description', value: 'defaultxxx'}); // description
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, null, tableSipNat, null);
+			showTitle();
+		}
+	});
+	
+	
+	// title 
+	showTitle();
+	
+	
+	//====================================== SipNat Modal ========================================
+	
+	// SipNat 추가버튼
+	$("#btnAddSipNat").click(function(){
+  		validatorSipNat.resetForm();
+		setControlInput("frmSipNat", "hidOpMode", 2, false);  // add
+		$("#frmSipNat [name=lblClass]").removeClass("state-disabled");
+ 		
+		setControlRadio("frmSipNat", "ipType", 0, false); 
+		setControlInput("frmSipNat", "sourceIp", '*.*.*.*', false); 
+		setControlInput("frmSipNat", "sourcePort", '0', false); 
+		setControlInput("frmSipNat", "description", '', false); 
+ 				
+		// show modal
+		showModal($("#modalSipNat"));
+		var actionACL = (getControlRadio("frmSipNat", "actionACL")==1)?"White":"Black";
+		$("#titleModalSipNat").html("Add Static ACL "+ actionACL +" List for SIP/NAT");
+			
+	});
+	
+	// SipNat 삭제버튼
+	$("#btnRemoveSipNat").click(function(){ 
+		var data = tableSipNat.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			var item=data[0];
+			showConfirm('Confirm', "[ "+ item.sourceIp + " :" + item.sourcePort +" ]<br />Do you want yo delete ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeStaticACL',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableSipNat, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	
+	//  새로고침
+	$("#btnRefreshSipNat").click(function(){
+		tableSipNat.ajax.reload(null, false);
+	});
+	
+	//  SipNat 저장
+	$("#btnSaveSipNat").click(function(){
+
+// 		var sourceIp = $("#frmSipNat #sourceIp").val();
+// 		var sourcePort = $("#frmSipNat #sourcePort").val();
+// 		if(sourceIp=='' || sourcePort==''){
+//  			$("#frmSipNat").valid();
+//  			return;
+//  		}
+		// protocol
+// 		var udp = getControlCheck("frmSipNat", "chkUdp");
+// 		var tcp = getControlCheck("frmSipNat", "chkTcp");
+// 		if(!udp && !tcp) {
+// 			$("#frmSipNat").valid();
+//  			return;
+// 		}
+		
+		if(!$("#frmSipNat").valid()){
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmSipNat").submit();  
+		});
+		
+	});
+	
+	
+	// SipNat validator
+	validatorSipNat = $('#frmSipNat').validate({
+		rules : {
+			chkUdp:{ require_from_group: [1, ".Protocol-group"] }, // 1 :  at least one is complete
+			chkTcp:{ require_from_group: [1, ".Protocol-group"] },
+			sourceIp:{ 
+				required: true, 
+				IP4Checker: true
+			},
+ 			sourcePort:{ 
+ 				required: true,
+ 				number: true,
+ 				min:0,
+ 				max:65535,
+ 			},
+ 			description: {
+ 				maxlength:100,
+			},
+		},
+		messages : {
+			chkUdp:{ require_from_group : 'Select a protocol'},
+			chkTcp:{ require_from_group : 'Select a protocol'},
+			sourceIp:{ 
+				required : 'Input source address',
+				IP4Checker : 'Input proper source address',
+			},
+ 			sourcePort:{ 
+ 				required : 'Input source port',
+ 				number : 'Input number',
+ 				min: 'Input proper number',
+ 				max:'Input proper number',
+ 			},
+ 			description: {
+ 				maxlength: 'Input data size is too long.',
+			},
+		},
+		groups: {
+		    protocolGroup: "chkUdp chkTcp"  // srtpGroup : arbitrary name
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr('name')=='chkUdp' || element.attr('name')=='chkTcp'){
+				error.insertAfter("#frmSipNat #lblProtocol");
+			}else{
+				error.insertAfter(element.parent());
+			}
+		}
+	});
+	
+	$("#frmSipNat").ajaxForm({
+		url: "/takeStaticACL",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+
+			var opMode=$("#frmSipNat #hidOpMode").val(); 
+			
+			//----------- checkbox 처리-----------------------------
+			//protocol 
+			var udp = getControlCheck("frmSipNat", "chkUdp");
+			var tcp = getControlCheck("frmSipNat", "chkTcp");
+			var val = 0;
+			if(udp) val+=1;
+			if(tcp) val+=2;
+			arr.push({name:'protocol', value: val});
+			
+			// usage==1
+			arr.push({name:'usageACL', value: 1});
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalSipNat", tableSipNat, null);
+		}
+	});
+	//====================================== local Modal ========================================
+	
+	// local 추가버튼
+	$("#btnAddLocal").click(function(){
+   		validatorLocal.resetForm();
+		setControlInput("frmLocal", "hidOpMode", 2, false);  // add
+		$("#frmLocal [name=lblClass]").removeClass("state-disabled");
+		
+		setControlRadio("frmLocal", "ipType", 0, false); 
+		setControlCheck("frmLocal", "chkUdp", false, false); 
+		setControlCheck("frmLocal", "chkTcp", false, false); 
+		setControlCheck("frmLocal", "chkIcmp", false, false);
+		
+		setControlInput("frmLocal", "sourceIp", '*.*.*.*', false); 
+		setControlInput("frmLocal", "sourcePort", '0', false); 
+		setControlInput("frmLocal", "destinationIp", '*.*.*.*', false); 
+		setControlInput("frmLocal", "destinationPort", '0', false); 
+		
+		setControlInput("frmLocal", "description", '', false); 
+ 		
+		// show modal
+		showModal($("#modalLocal"));
+		$("#titleModalLocal").html("Add White List for Local Service");
+			
+	});
+	
+	// Local 삭제버튼
+	$("#btnRemoveLocal").click(function(){ 
+		var data = tableLocal.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete");
+		}else{
+			var item=data[0];
+			showConfirm('Confirm', "[ "+ item.sourceIp + " <i class='fa fa-arrow-right'></i> " + item.destinationIp +" ]<br />Do you want to delete ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeStaticACL',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableLocal, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  Local 새로고침
+	$("#btnRefreshLocal").click(function(){
+		tableLocal.ajax.reload(null, false);
+	});
+	
+	//  Local 저장
+	$("#btnSaveLocal").click(function(){
+		var sourceIp = $("#frmLocal #sourceIp").val();
+		var sourcePort = $("#frmLocal #sourcePort").val();
+		var destinationIp = $("#frmLocal #destinationIp").val();
+		var destinationPort = $("#frmLocal #destinationPort").val();
+		
+		if(sourceIp=="*.*.*.*" && destinationIp=="*.*.*.*" && sourcePort==0 && destinationPort==0 ){
+			showMsg("Warning", "These contidion is NOT acceptable!");
+			return;
+		}
+		
+		if(!$("#frmLocal").valid()){
+			return;
+		}
+		// protocol
+		var udp = getControlCheck("frmLocal", "chkUdpLocal");
+		var tcp = getControlCheck("frmLocal", "chkTcpLocal");
+		var icmp = getControlCheck("frmLocal", "chkIcmpLocal");
+		if(!udp && !tcp && !icmp) {
+			$("#frmLocal").valid();
+ 			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmLocal").submit();  
+		});
+		
+	});
+	
+	
+	// Local validator
+	validatorLocal = $('#frmLocal').validate({
+// 		onfocusout: function(element) {$(element).valid()},
+// 		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			chkUdpLocal:{ require_from_group: [1, ".Protocol-group-local"] }, // 1 :  at least one is complete
+			chkTcpLocal:{ require_from_group: [1, ".Protocol-group-local"] },
+			chkIcmpLocal:{ require_from_group: [1, ".Protocol-group-local"] },
+			sourceIp:{ 
+				required: true, 
+				IP4Checker: true
+			},
+			destinationIp:{ 
+				required: true, 
+				IP4Checker: true
+			},
+ 			sourcePort:{ 
+ 				required: true,
+ 				number: true,
+ 				min:0,
+ 				max:65535,
+ 			},
+ 			destinationPort:{ 
+ 				required: true,
+ 				number: true,
+ 				min:0,
+ 				max:65535,
+ 			},
+ 			description: {
+ 				maxlength:100,
+			},
+		},
+		messages : {
+			chkUdpLocal:{ require_from_group : 'Input protocol'},
+			chkTcpLocal:{ require_from_group : 'Input protocol'},
+			chkIcmpLocal:{ require_from_group : 'Input protocol'},
+			sourceIp:{ 
+				required : 'Input source address',
+				IP4Checker : 'Input proper source address',
+			},
+			destinationIp:{ 
+				required : 'Input destination address',
+				IP4Checker : 'Input proper destination address',
+			},
+ 			sourcePort:{ 
+ 				required : 'Input source port',
+ 				number : 'Input number',
+ 				min: 'Input proper range value',
+ 				max: 'Input proper range value',
+ 			},
+ 			destinationPort:{ 
+ 				required : 'Input destination port',
+ 				number : 'Input number',
+ 				min: 'Input proper range value',
+ 				max: 'Input proper range value',
+ 			},
+ 			description: {
+ 				maxlength: 'Input data size is too long',
+			},
+		},
+		groups: {
+		    protocolGroup: "chkUdpLocal chkTcpLocal chkIcmpLocal"  // srtpGroup : arbitrary name
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr('name')=='chkUdpLocal' || element.attr('name')=='chkTcpLocal' || element.attr('name')=='chkIcmpLocal'){
+				error.insertAfter("#frmLocal #lblProtocolLocal");
+			}else{
+				error.insertAfter(element.parent());
+			}
+		}
+	});
+	
+	$("#frmLocal").ajaxForm({
+		url: "/takeStaticACL",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+
+			var opMode=$("#frmLocal #hidOpMode").val(); 
+			
+			//----------- checkbox 처리-----------------------------
+			//protocol 
+			var udp = getControlCheck("frmLocal", "chkUdpLocal");
+			var tcp = getControlCheck("frmLocal", "chkTcpLocal");
+			var icmp = getControlCheck("frmLocal", "chkIcmpLocal");
+			var val = 0;
+			if(udp) val+=1;
+			if(tcp) val+=2;
+			if(icmp) val+=4;
+			arr.push({name:'protocol', value: val});
+			
+			// usage==2
+			arr.push({name:'usageACL', value: 2});
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalLocal", tableLocal, null);
+		}
+	});
+	
+	
+	$.validator.addMethod('IP4Checker', function(value) {
+       var arr = value.split('.');
+       if(arr.length != 4){
+    	   return false;
+       }
+       var valid = true;
+       for(var i=0; i<arr.length; i++){
+    	   var val = arr[i];
+    	   if(val == '' || (val != '*' && (isNaN(val) || val < 0 || val > 255))){ // isNaN(문자) => true
+    		  return false;
+    	   }  
+       }
+       return true;
+	}, 'Invalid IP address');
+	
+		
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function showTitle(){
+	var action = (getControlRadio("frmApply", "actionACL")==1)?"Black":"White";
+	$("#title").html("SIP/NAT Static ACL "+ action  +" List");
+}
+function getProtocol(val){
+	if(val==1) return "udp";
+	else if(val==2) return "tcp";
+	else if(val==4) return "icmp";
+	else if(val==7) return "all";
+	else return "";
+}
+
+	
+
+
+	

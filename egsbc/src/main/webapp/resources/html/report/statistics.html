@@ -1,0 +1,399 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Statistics Search </h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+					<form class="smart-form" id="frmStatisticsSearch"  novalidate="novalidate">
+						<table width="100%" border="0">
+						<tr>
+							<td class="td-label" width="55px">Top Item</td>
+							<td class="td-label" width="120px">
+								<label class="select" >
+										<select  id="item1">
+											<option value="10">Resource</option>
+											<option value="20" >Alarm</option>
+											<option value="40">Network</option>
+											<option value="50">SIP Message</option>
+											<option value="70" selected>Call</option>
+											<option value="90">RTP</option>
+											<option value="100">NAT</option>
+											<option value="110">ACL</option>
+											<option value="120">Transport</option>
+								 		</select> <i></i> 
+								 </label>
+							</td>	
+							<td class="td-label" width="55px" ><div name="tdItem2" style="display:none">2nd Item</div></td>
+							<td class="td-label" width="150px">
+								<div name="tdItem2" style="display:none">
+									<label class="select" >
+											<select  id="item2">
+											</select> <i></i> 
+									</label>	
+								</div>
+							</td>
+							<td class="td-label" width="55px"><div name="tdItem3" style="display:none">3nd Item</div></td>
+							<td class="td-label" width="150px">
+								<div name="tdItem3" style="display:none">
+									<label class="select" >
+											<select  id="item3">
+											</select> <i></i> 
+									</label>	
+								</div>
+							</td>
+							<td class="td-label" width="55px"><div name="tdItem4" style="display:none">4nd Item</div></td>
+							<td class="td-label" width="150px">
+								<div name="tdItem4" style="display:none">
+									<label class="select" >
+											<select  id="item4">
+											</select> <i></i> 
+									</label>
+								</div>	
+							</td>
+							<td class="td-label" width="55px"><div name="tdItem5" style="display:none">5nd Item</div></td>
+							<td class="td-label" width="150px">
+								<div name="tdItem5" style="display:none">
+									<label class="select" >
+											<select  id="item5">
+											</select> <i></i> 
+									</label>	
+								</div>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="td-label">Period</td>
+							<td class="td-label">
+								<label class="select" >
+										<select  id="period" name="period">
+<!-- 											<option value="0">Shortest</option> -->
+<!-- 											<option value="1" selected>Hourly</option> -->
+<!-- 											<option value="2">Daily</option> -->
+<!-- 											<option value="3">Weekly</option> -->
+<!-- 											<option value="4">Monthly</option> -->
+<!-- 											<option value="5">Yearly</option> -->
+								 		</select> <i></i> 
+								 </label>
+							</td>	
+							<td colspan="9">
+								<table width="100%">
+								<tr>
+									<td class="td-label" width="120px">Start ~ End Time</td>
+									<td width="280px">
+										<label class="input" >
+												<input class="form-control"  type="text" id="dateTime" >
+											</label>
+									</td>
+									<td  align="right" style="padding-right:20px">
+										<button type="button" class="btn btn-default btn-search"  id="btnSearch">Search</button>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						</table>
+					</form>
+				
+					<div id="divStatisticsSearch"></div>
+						<table id="dtStatisticsSearch" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr id="trStatisticsSearch">
+<!-- 									<th class="text-center">Start Time</th> -->
+<!-- 									<th class="text-center">End Time</th> -->
+<!-- 									<th class="text-center">Side</th> -->
+<!-- 									<th class="text-center">Unit</th> -->
+<!-- 									<th class="text-center">Critical</th> -->
+<!-- 									<th class="text-center">Major</th> -->
+<!-- 									<th class="text-center">Minor</th> -->
+<!-- 									<th class="text-center">Info</th> -->
+<!-- 									<th class="text-center">Clear</th> -->
+<!-- 									<th class="text-center">Switch Over</th> -->
+								</tr>
+							</thead>
+						</table>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>		
+
+<script type="text/javascript">
+var tableStatisticsSearch;
+var g_statisticsInterval;
+var g_code4WebList;
+
+var pagefunction = function() {
+	g_statisticsInterval = setInterval(function(){ 
+		var now = $("#systemDateTime").text();
+		if(now != ''){
+			clearInterval(g_statisticsInterval);
+			init(); 
+		}
+	},500);
+} // pagefunction
+
+
+
+var init = function (){
+	
+	
+	// set Items
+	setItems();
+	
+	$("#item1").change(function(){
+		setItems();
+	});
+	
+	$("#item2").change(function(){
+		if($("#item1 option:selected").text().toLowerCase()=="sip message" && $("#item2 option:selected").text().toLowerCase()=="total"){
+			$("#item3").val(0); // all 고정
+			$("#item3").attr("disabled", true);
+		}else{
+			$("#item3").attr("disabled", false);
+		}	
+	});
+	
+	// date rage setting
+	$('#dateTime').daterangepicker({
+		 timePicker: true, 
+		 timePickerIncrement: 1,
+		 locale: { 
+			 format: 'YYYY-MM-DD HH:mm:ss' 
+		 } 
+	});
+	
+	
+	// date range
+	setDateRange();
+	
+	$("#period").change(function(){
+		setDateRange();
+	});
+	
+	// serarch
+	$("#btnSearch").click(function(){
+		var item1 = $("#item1").val();
+		var item2 = -1;
+		var item3 = -1;
+		var item4 = -1;
+		var item5 = -1;
+		
+		if($("#item2").is(":visible"))  item2=$("#item2").val();
+		if($("#item3").is(":visible"))  item3=$("#item3").val();
+		if($("#item4").is(":visible"))  item4=$("#item4").val();
+		if($("#item5").is(":visible"))  item5=$("#item5").val();
+		
+		var period = $("#period").val();
+		var startDate = $('#dateTime').data('daterangepicker').startDate.format('YYYY-MM-DD HH:mm:ss');
+		var endDate = $('#dateTime').data('daterangepicker').endDate.format('YYYY-MM-DD HH:mm:ss');
+		
+		//alert(item1 + ',' + item2 + ',' +item3 + ', ' + item4);
+		
+		$.post("getStatisticTableInfo", {item1: item1, item2: item2, item3: item3, item4: item4, item5: item5, period: period}, function(json){
+			var item = json.result;
+			createTable(item.dbTablenameOfData, item.dbColumnNames, item.dbTableWhere, startDate, endDate);
+		});
+	});
+	
+	
+	//tableStatisticsSearch = $('#dtStatisticsSearch').DataTable();		
+
+	
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});	
+
+
+
+function setItems(){
+	// top item
+	var item1 = $("#item1").val();
+	
+	
+	// set period
+	var obj = $("#period");
+	obj.empty();
+	obj.append("<option value='0'>Shortest</option>");
+	obj.append("<option value='1' selected>Hourly</option>");
+	obj.append("<option value='2'>Daily</option>");
+	if(item1== 20 || item1 == 40 || item1==70){
+		obj.append("<option value='3'>Weekly</option>");
+		obj.append("<option value='4'>Monthly</option>");
+		obj.append("<option value='5'>Yearly</option>");
+	}
+	
+	var period = $("#period").val();
+	
+	
+	$.post("getStatisticsItems", {item1: item1, period:  period}, function(json){
+		var g_code4WebList = json.result;
+		var itemList2=[], itemList3=[], itemList4=[], itemList5=[];
+		
+		for(var i=0; i<g_code4WebList.length; i++){
+			var item = g_code4WebList[i];
+			
+			// 2nd
+			if(item.t2ndSelectItemCode == -1) continue;
+			if(!isItem(itemList2, item.t2ndSelectItemCode))	{
+				itemList2.push({'text': item.t2ndSelectItemName, 'value':item.t2ndSelectItemCode});
+			}
+			
+			// 3nd
+			if(item.t3ndSelectItemCode == -1) continue;
+			if(!isItem(itemList3, item.t3ndSelectItemCode))	{
+				itemList3.push({'text': item.t3ndSelectItemName, 'value':item.t3ndSelectItemCode});
+			}
+			
+			// 4th
+			if(item.t4thSelectItemCode == -1) continue;
+			if(!isItem(itemList4, item.t4thSelectItemCode))	{
+				itemList4.push({'text': item.t4thSelectItemName, 'value':item.t4thSelectItemCode});
+			}
+			
+			// 5th
+			if(item.t5thSelectItemCode == -1) continue;
+			if(!isItem(itemList5, item.t5thSelectItemCode))	{
+				itemList5.push({'text': item.t5thSelectItemName, 'value':item.t5thSelectItemCode});
+			}
+		}
+		
+		setSelect($("#frmStatisticsSearch #item2"), "tdItem2", itemList2);
+		setSelect($("#frmStatisticsSearch #item3"), "tdItem3", itemList3);
+		setSelect($("#frmStatisticsSearch #item4"), "tdItem4", itemList4);
+		setSelect($("#frmStatisticsSearch #item5"), "tdItem5", itemList5);
+		
+	});
+}
+
+function isItem(itemList, value){
+	for(var i=0; i<itemList.length; i++){
+		if(itemList[i].value==value){
+			return true;
+		}
+	}
+	return false;
+}
+
+function setSelect(obj, tdName, list){
+	if(list.length > 0){
+		
+		$("[name='"+tdName+"']").css("display", "block");
+		
+		obj.empty();
+	
+		for(var i=0; i<list.length; i++){
+			var item = list[i];
+			obj.append("<option value='"+item.value+"'>"+item.text+"</option>");
+		}
+	}else{
+		$("[name='"+tdName+"']").css("display", "none");
+	}
+}
+
+function setDateRange(){
+	// get system time
+	var now = moment($("#systemDateTime").text(), 'YYYY.MM.DD HH:mm:ss');
+	
+	// end date
+	$('#dateTime').data('daterangepicker').setEndDate(now.format('YYYY.MM.DD HH:mm:ss'));
+	
+	// start date
+	var str;
+	var period = $("#period").val();
+	if(period==0 || period==1) str='hour';
+	else if(period==2) str='day';
+	else if(period==3) str='week';
+	else if(period==4) str='month';
+	else if(period==5) str='year';
+	
+	$('#dateTime').data('daterangepicker').setStartDate(now.add(-1, str).format('YYYY-MM-DD HH:mm:ss'));
+}
+
+function createTable(tableName, columnNames, where, startDate, endDate){
+	
+	var arr = columnNames.split(',');
+	
+	var htmlTable = '<table id="dtStatisticsSearch" class="table table-striped table-bordered table-hover">'+
+					'<thead>'+
+					'<tr>TR_CONTENT</tr>'+
+					'</thead>'+	
+					'</table>';
+	var trContent="";
+	var columns = [];
+	var columnDefs=[];
+	
+	for(i=0; i<arr.length; i++){
+		// columns
+		columns.push({ "data": arr[i]}); 
+		
+		// columnDefs
+		if(i==0 || i==1){
+			columnDefs.push({'targets': i, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }});
+		}else{
+			columnDefs.push({'targets': i, 'className': 'text-center'});
+		}
+		
+		// title
+		var title = arr[i].toLowerCase().replace('_', ' ');
+		trContent += '<th class="text-center">'+title+'</th>'
+	}
+	
+	
+	$("#divStatisticsSearch").html(htmlTable.replace('TR_CONTENT', trContent));
+	
+// 	alert(tableName);
+// 	alert(columnNames);
+// 	alert(where);
+// 	alert(startDate);
+// 	alert(endDate);
+	
+	tableStatisticsSearch = $('#dtStatisticsSearch').DataTable({
+		//"destroy": true,
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+	    "ajax": {
+	    	"url": "/getStatisticsDynamic",
+	    	"type": "post",
+	    	"data": function(d){
+	    		d.tableName = tableName;
+	    		d.columnNames = columnNames;
+	    		d.where = where;
+	    		d.startDate = startDate;
+	    		d.endDate = endDate;
+	    	}
+	    },
+	    //'order': [[1, 'asc']],
+	   "ordering": false,
+	    "columns": columns,
+		'columnDefs': columnDefs
+	});	
+	
+	
+}
+
+
+
+

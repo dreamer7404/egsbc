@@ -1,0 +1,463 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>GEO-IP Mamagement</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					
+					<form class="smart-form" id="frmGeoIp" novalidate="novalidate">
+					<div >
+						
+						<table border="0" width="100%">
+						<tr>
+							<td class="td-label" width="140px">GEO-IP DB Mode</td>
+							<td width="200px">
+								<label class="select" >
+									<select  id="geoIpOperMode"  name="geoIpOperMode">
+										<option value="1" selected>Enable</option>
+										<option value="0">Disable</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td colspan="2" align="right">
+								<button type="button" class="btn btn-default btn-apply" id="btnApply">Apply</button>
+							</td>
+							
+						</tr>
+						<tr>	
+							<td class="td-label">Update GEO-IP DB</td>
+							<td>
+								<label class="select" >
+									<select  id="geoIpDbUpdateTime"  name="geoIpDbUpdateTime">
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4" selected>4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="16">16</option>
+										<option value="17">17</option>
+										<option value="18">18</option>
+										<option value="19">19</option>
+										<option value="20">20</option>
+										<option value="21">21</option>
+										<option value="22">22</option>
+										<option value="23">23</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td class="td-label" width="100px">hour everyday</td>
+							<td>
+								<button type="button" class="btn btn-default btn-refreshNow" id="btnRefreshNow">Refresh Now</button>
+							</td>
+						</tr>
+						<tr>	
+							<td class="td-label">Last Update DateTime</td>
+							<td class="td-label">
+								<label id="geoUpdateDate"></label>
+							</td>
+							<td colspan="2"></td>
+						</tr>	
+						<tr>	
+							<td class="td-label">Available Recent</td>
+							<td>
+								<label class="input">
+									<input type="text" id="geoIpDbAvailableTerm" name="geoIpDbAvailableTerm" value="72">
+								</label>
+							</td>
+							<td class="td-label">hours</td>
+							<td>
+								<button type="button" class="btn btn-default btn-testGeoIp" id="btnTestGeoIp">Test GEO-IP</button>
+							</td>
+						</tr>	
+						</table>
+						
+						
+						
+						
+					</div>
+					
+					<div style="margin:15px 0">
+						
+						<button type="button" class="btn btn-default btn-selectAll" id="btnSelectAll">Select All</button>
+						<button type="button" class="btn btn-default btn-unselectAll" id="btnUnSelectAll">Unselect All</button>
+						<div class="pull-right">
+							<table>
+							<tr>
+								<td>Set all selected nations to&nbsp;</td>
+								<td>
+									<label class="select" >
+										<select  id="geoIpNationRule"  name="geoIpNationRule">
+											<option value="" selected="" disabled="">choose...</option>
+											<option value="0">Deny</option>
+											<option value="1">Permit</option>
+										</select>
+									</label>
+								</td>
+							</tr>
+							</table>
+							<input type="hidden" id="geoIpArray" name="geoIpArray" >
+									
+						</div>
+					</div>
+					</form>
+					
+					<form class="smart-form" id="frmGeoIpList" novalidate="novalidate">
+						<div class="row" id="divGeoIpList" style="margin:0 10px 20px 10px;border:1px solid #ddd;overflow:auto">
+						</div>
+					</form>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+
+<!-- Modal modalGeoIp -->
+  <div class="modal " id="modalGeoIp" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:500px">
+      	<div class="modal-content">
+	        <div class="modal-header " style="height:40px;padding-top:10px;">
+	          <div class="modal-title">Test GEO-IP</div>
+	        </div>
+        	<div class="modal-body" style="height:500px">
+          
+					<div class="row">
+					
+						<form class="smart-form" id="frmGeoIpDialog"  novalidate="novalidate">
+							<table width="100%" border="0" style="margin:0 auto;">
+							<tr>
+								<td class="td-label" colspan="3">
+									<label><i class="fa fa-caret-right"></i> Lookup nation by IP Address</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label" width="100px">IP Address</td>
+								<td>
+									<label class="input">
+										<input type='text'  id="ip" name="ip">
+									</label>
+								</td>
+								<td style="padding-left:10px">
+									<button type="button" class="btn btn-default btn-test" id="btnTest">Test</button>
+								</td>
+							</tr>
+							<tr >
+								<td class="td-label"></td>
+								<td colspan="2">
+									<label id="nation" style="font-weight:bold"></label>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label" colspan="3">
+									<label><i class="fa fa-caret-right"></i> Search IP Address by nation</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label">Nation</td>
+								<td>
+									<label class="select" >
+										<select  id="geoIp" class="form-control" >
+										</select>
+									</label>
+								</td>
+								<td style="padding-left:10px">
+									<button type="button" class="btn btn-default btn-search" id="btnSearch">Search</button>
+								</td>
+							</tr>
+							</table>
+						</form>
+					</div>
+					<div id="divGeoIpResult" style="margin:13px 0;border:1px solid #ddd;overflow:auto;height:260px"></div>
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>
+</div>								
+
+
+<script type="text/javascript">
+var validatorIp, validatorNation;
+var pagefunction = function() {
+	
+	
+	getGeoIpConfig();
+	getGeoIpList();	
+	
+	$("#frmGeoIp #btnSelectAll").click(function(){ 
+		$("#frmGeoIpList input[type=checkbox]").prop("checked", true);
+	});
+	
+	$("#frmGeoIp #btnUnSelectAll").click(function(){ 
+		$("#frmGeoIpList input[type=checkbox]").prop("checked", false);
+	});
+	
+	// apply
+	$("#frmGeoIp #btnApply").click(function(){ 
+		
+		// get nation rule
+		var rule = getControlSelect("frmGeoIp", "geoIpNationRule");
+		if(rule == null){
+			showMsg("Warning", "Select nations!");
+			return;
+		}
+		
+		// get checkbox all value
+		var str='';
+		$("#frmGeoIpList input[type=checkbox]").each(function(){
+			if(this.checked){
+				if(str!='') str +='@';
+				str+=this.id +'|'+rule;
+			}
+		});
+		// set geoIp
+		$("#geoIpArray").val(str);
+	
+		if($("#frmGeoIp").valid()){
+			
+			showConfirm('Confirm', "Do you want to apply?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				$("#frmGeoIp").submit();
+			});
+		}
+		
+	});
+	
+	$("#frmGeoIp").ajaxForm({
+		url: "/takeGeoIp",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			arr.push({name:'opMode', value: 5});  // 적용
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, null, null, null);
+		}
+	});
+	
+	
+	// Refresh Now 
+	$("#frmGeoIp #btnRefreshNow").click(function(){ 
+		showConfirm("Confirm", "Do you want to refresh now?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {};
+			param.opMode=8; // 8: 실행모드
+			$.ajax({
+				url: '/takeGeoIp',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	//-------------------------------------------- dailog ---------------------------------------------------------------
+	
+	// Open dialog - Test GEO-IP
+	$("#frmGeoIp #btnTestGeoIp").click(function(){ 
+		$("#frmGeoIp #geoIp").empty();
+		
+		$.post("getGeoIpList", {}, function(json){
+			var list = json.result;
+			
+			$("#frmGeoIpDialog #geoIp").append('<option value="" selected="" disabled="">choose nation...</option>');
+			for(var i=0;i<list.length;i++){
+				var item = list[i];
+				$("#frmGeoIpDialog #geoIp").append('<option value="'+item.abbr+'">'+item.name+'</option>');
+			}
+			showModal($("#modalGeoIp"));
+		});
+		
+		// clear
+		$("#nation").html('');
+		validatorIp.resetForm();
+	});
+	
+	
+	// test lookup
+	$("#frmGeoIpDialog #btnTest").click(function(){
+		$("#nation").html('');
+		var ip=$("#frmGeoIpDialog #ip").val();
+ 		if($('#frmGeoIpDialog').valid()){
+ 			$.post("testLookup", {ip:ip}, function(json){
+ 				$("#nation").html(json.result);
+ 			});
+ 		}
+	});
+	
+
+	
+	validatorIp = $('#frmGeoIpDialog').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			ip : {
+				required: true, 
+				IP4Checker:true
+			}
+		},
+		messages : {
+			ip : {
+				required : 'Input IP address',
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$.validator.addMethod('IP4Checker', function(value) {
+        var ip = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+            return value.match(ip);
+	}, 'Invalid IP address');
+	
+	
+	
+	// search
+	$("#frmGeoIpDialog #btnSearch").click(function(){
+		var nationCode = $("#frmGeoIpDialog #geoIp").val();
+		if(nationCode==null){
+			ShowMsg("Warning", "Select nation.");
+			return;
+		}
+		
+		var w=$("#divGeoIpResult").width();
+		var h=$("#divGeoIpResult").height();
+		
+		$("#divGeoIpResult").html('<div class="middle" style="width:'+w+'px;height:'+h+'px;text-align:center;font-weight:bold">Loading...</div>');
+		
+		
+		$.post("getNationCodeList",{nationCode: nationCode}, function(json){
+			
+			var html=
+				"<table width='100%'>"+
+				"<tr>"+
+					"<td align='left' style='padding-left:5px;color:#415555;background-color:#f1f1f1'>No</td>"+
+					"<td align='left' style='padding-left:5px;color:#415555;background-color:#f1f1f1'>GEO-IP</td>"+
+					"<td align='left' style='padding-left:5px;color:#415555;background-color:#f1f1f1'>Update Date</td>"+
+				"</tr>";	
+			
+			var list=json.result;
+			for(var i=0; i<list.length; i++){
+				var item=list[i];
+				html += 
+// 					"<tr style='border-bottom:1pt solid #efefef'>"+
+// 						"<td style='padding-left:5px'>"+(i+1)+"</td>"+
+// 						"<td style='padding-left:5px'>"+item.geoIp+"</td>"+
+// 						"<td style='padding-left:5px'>"+item.geoUpdateDate+"</td>"+
+// 					"</tr>";
+					"<tr class='tr-underline'>"+
+						"<td>"+(i+1)+"</td>"+
+						"<td>"+item.geoIp+"</td>"+
+						"<td>"+item.geoUpdateDate+"</td>"+
+					"</tr>";
+				
+			}
+			html += "</table>";
+			
+			$("#divGeoIpResult").html(html);
+			
+		});
+		
+	});
+	
+	
+	
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function getGeoIpConfig(){
+	
+	$.post("getGeoIpConfig", {}, function(json){
+		var item=json.result;
+		
+		
+		var geoIpOperMode = item.geoIpOperMode;
+		var geoIpDbUpdateTime = item.geoIpDbUpdateTime;
+		var geoIpDbAvailableTerm =  item.geoIpDbAvailableTerm;
+		var geoUpdateDate = item.geoUpdateDate;
+		
+		//alert(geoIpOperMode +' , ' + geoIpDbUpdateTime +' , ' + geoIpDbAvailableTerm+' , ' + geoIpDbUpdateTime );
+		//return;
+		
+		// GEO-IP DB Mode
+		$("#geoIpOperMode").val(geoIpOperMode);
+		
+		// Update GEO-IP DB
+		if(geoIpDbUpdateTime != ''){
+			$("#geoIpDbUpdateTime").val(geoIpDbUpdateTime);
+		}
+		
+		// Last Update DateTime
+		$("#geoUpdateDate").text(geoUpdateDate);
+		
+		// Available Recent
+		if(geoIpDbAvailableTerm != ''){
+			$("#geoIpDbAvailableTerm").val(geoIpDbAvailableTerm);
+		}
+		
+		
+	});
+	
+}
+
+
+function getGeoIpList(){
+	$.post("getGeoIpList", {}, function(json){
+		var list = json.result;
+		var html ='';
+		for(var i=0;i<list.length;i++){
+			var item = list[i];
+			html += 
+				'<section class="col col-3">'+
+					'<label class="checkbox"  >'+
+						'<input type="checkbox"  id="'+item.abbr+'"><i></i>'+item.name+
+					'</label>'+
+				'</section>';
+		}
+		$("#divGeoIpList").html(html);
+	});
+}
+
+
+</script>				

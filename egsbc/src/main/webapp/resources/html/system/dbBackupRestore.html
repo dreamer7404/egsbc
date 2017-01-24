@@ -1,0 +1,340 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>DB Manage</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					
+					<section class="col-md-12">
+						<div class="jarviswidget jarviswidget-color-grey" id="wid-id-10" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+							<header >
+								<h2>DB Upload</h2>
+							</header>
+							<div>
+							
+								<form class="smart-form" id="frmDbRestore" novalidate="novalidate">
+									<table border="0" width="100%">
+									<tr>
+										<td class="td-label" width="100px">Database Name</td>
+										<td class="td-label" width="200px">
+											<label class="select">
+												<select name="dbName" id="dbName">
+													<option value="" selected="" disabled="">choose db...</option>
+													<option value="egis">egis</option>
+													<option value="alarm">alarm</option>
+													<option value="localinfo">localinfo</option>
+													<option value="statistics">statistics</option>
+												</select> <i></i> 
+											</label>
+										</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="td-label">DB Backup File</td>
+										<td class="td-label" colspan="2" width="300px">
+											<label for="file" class="input input-file">
+													<!-- 주의: Input을 div옆에 붙여야 파일명이 보인다~ -->
+													<div class="button btn-browse">
+														<input type="file" name="dbfile2" id="dbfile2" accept=".gz" onchange="this.parentNode.nextSibling.value = this.value" oninvalid="alert('Please, blah, blah, blah ')" >Browse
+													</div><input type="text" id="dbFile" name="dbFile" placeholder="Include some files" readonly=""> 
+											</label>
+										</td>
+										<td class="td-label">
+											<button type="button" class="btn btn-default btn-upload" id="btnUpload">Upload</button>
+										</td>
+									</tr>
+									</table>
+								</form>
+							</div>
+							
+						</div>
+					</section>		
+					
+					
+					<section class="col-md-12">
+						<div class="jarviswidget jarviswidget-color-grey" id="wid-id-10" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+							<header >
+								<h2>DB Backup</h2>
+							</header>
+							<div>
+								<form class="smart-form" id="frmDbBackup" novalidate="novalidate">
+									<table border="0">
+									<tr>
+										<td class="td-label" width="100px">Database Name</td>
+										<td class="td-label" width="130px">
+											<label class="select">
+												<select name="dbName" id="dbName">
+													<option value="" selected="" disabled="">choose db...</option>
+													<option value="egis">egis</option>
+													<option value="alarm">alarm</option>
+													<option value="localinfo">localinfo</option>
+													<option value="statistics">statistics</option>
+												</select> <i></i> 
+											</label>
+										</td>
+										<td class="td-label">
+											<button type="button" class="btn btn-default btn-download" id="btnBackup">Backup</button>
+										</td>
+									</tr>
+									</table>
+								</form>
+						
+							</div>
+							
+						</div>
+					</section>		
+						
+				</div>
+			</div>
+		</article>
+		
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-6">	
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>DB Backup List </h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					
+					<table id="dtDbBackup" class="table table-striped table-bordered table-hover"   > 
+						<thead> 
+							<tr>
+								<th  class="text-center">Date</th>
+								<th  class="text-center">File Name</th>
+								<th  class="text-center">Size (byte)</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="form-group text-right">
+						<button class="btn btn-default btn-apply" id="btnApply"> Apply</button>
+						<button class="btn btn-default btn-delete" id="btnDeleteList"> Delete</button>
+						<button class="btn btn-default btn-download" id="btnDownloadList"> Download</button>
+						<button class="btn btn-default btn-refresh" id="btnRefresh"> Refresh</button>
+					</div>
+						
+				</div>
+			</div>
+			
+			
+		</article>
+	</div>
+</section>
+
+<script type="text/javascript">
+var validatorDbUpload;
+var table;
+
+var pagefunction = function() {
+	
+	//============== restore upload ===========================================
+	
+	$("#frmDbRestore #btnUpload").click(function(){
+		
+		var dbName = getControlInput("frmDbRestore", "dbName");
+		if(dbName == null || dbName ==''){
+			showMsg("Warning", "Select DB Name.");
+			return;
+		}
+		
+		var filePath = getControlInput("frmDbRestore", "dbFile");
+		if(filePath==''){
+			showMsg("Warning", "Input db backup file.");
+			return;
+		}
+		
+		var fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length);
+		
+		showConfirm('Confirm', "Do you want to upload " + fileName + "?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmDbRestore").submit();  
+		});
+	});
+	
+	
+	$("#frmDbRestore").ajaxForm({
+		url:"uploadDbRestore",
+		type:"POST",
+		enctype: "multipart/form-data",
+		beforeSubmit: function(arr, $form, options){
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==0){
+				hideConfirm();
+				table.ajax.reload(null, false);
+			}else{
+				hideConfirm();
+				showMsg("Error", "Fail, file upload");
+			}
+		},
+		error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+
+    });
+	
+	
+	//============== backup ===========================================
+		
+	$("#frmDbBackup #btnBackup").click(function(){
+		var dbName = getControlInput("frmDbBackup", "dbName");
+		if(dbName == null || dbName ==''){
+			showMsg("Warning", "Select a DB Name.");
+			return;
+		}
+		
+		$.post("dbBackup",{dbName:dbName},function(json){
+			if(json.result==1){ 
+				showMsg("Info", "OK, You can check  Backup List.");
+				hideConfirm();
+				table.ajax.reload(null, false);
+			}else{
+				hideConfirm();
+				showMsg("Error", "Fail, file upload");
+			}
+			
+		});
+	});
+	
+	
+	//==============  backup list  ===========================================
+		
+	table = $('#dtDbBackup').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getPeriodicDbBackupList",
+        	"type": "post"
+        },
+        'order': [[0, 'desc']],
+        "columns": [
+    				{ "data": "date"},       
+    				{ "data": "fileName"},       
+    				{ "data": "size"},       
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return data.formatComma(); }}, 
+    	 ]
+	});	
+	//	click row
+	table.on( 'click', 'tr', function () {
+		table.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});	
+	//	dblclick row
+	table.on( 'dblclick', 'tr', function () {
+		table.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+		
+	// delete	
+	$("#btnDeleteList").click(function(){
+		var data = table.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to delete!");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].fileName + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				$.ajax({
+					url: '/removeDbBackupList',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+			    		hideConfirm();
+			    		table.ajax.reload(null, false);
+				    }
+				});
+			});
+		}
+	});
+	
+	// download from list
+	$("#btnDownloadList").click(function(){
+		var data = table.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to download!");
+		}else{
+			showConfirm('Confirm', "Do you want to download ["+data[0].fileName + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				hideConfirm();
+				window.location.href = "downloadDbBackupByList?fileName="+data[0].fileName;
+			});
+		}
+	});
+	
+	
+	// refresh
+	$("#btnRefresh").click(function(){
+		table.ajax.reload(null, false);
+	});
+	
+	// apply
+	$("#btnApply").click(function(){
+		var data = table.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to apply!");
+		}else{
+			showConfirm('Confirm', "Do you want to apply ["+data[0].fileName + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				$.ajax({
+					url: '/extractDbBackupList',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+			    		hideConfirm();
+			    		showMsg("Apply DB File", "Make sure you want to do this?<br />* Need to be reboot system.");
+				    }
+				});
+			});
+		}
+	});
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+
+
+
+
+</script>				

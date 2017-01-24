@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="AlarmDao" >  
+
+	<select id="getAlarmData" parameterType="int" resultType="com.egsbc.alarm.AlarmDataVO">
+<!--  		SELECT   -->
+<!--  			MAX(T_INDEX)											idx, -->
+<!-- 			T_ALARM_LEVEL										alarmLevel, -->
+<!-- 			T_SIDE													side,								 -->
+<!-- 		    MAX(T_CREATE_DATETIME)						createDatetime, -->
+<!-- 		    T_ALARM_CODE										alarmCode,		 -->
+<!-- 		    T_CAUSE_DESCRIPTION								causeDescription,  -->
+<!-- 		    COUNT(CONCAT(T_SIDE, T_ALARM_CODE)) 	cnt -->
+<!-- 		FROM  -->
+<!-- 			R_ALARM_DATA -->
+<!-- 		WHERE  -->
+<!-- 			(T_ALARM_PERCEPT_FLAG = 0 OR T_RELEASE_DATETIME= '0000-00-00 00:00:00') -->
+<!--        <if test="value != 0"> -->
+<!--         AND  -->
+<!-- 			T_ALARM_LEVEL = #{value} -->
+<!-- 		</if> -->
+<!-- 		GROUP BY  -->
+<!-- 			T_SIDE, T_ALARM_CODE -->
+<!-- 		ORDER BY  -->
+<!-- 			createDatetime DESC -->
+
+			SELECT 
+				a.T_INDEX							idx,
+				a.T_ALARM_LEVEL				alarmLevel,
+				a.T_SIDE							side,								
+				a.T_CREATE_DATETIME			createDatetime,
+				a.T_ALARM_CODE					alarmCode,		
+				a.T_CAUSE_DESCRIPTION		causeDescription,
+			    b.cnt
+			FROM 
+				R_ALARM_DATA a  
+			JOIN (
+				SELECT  
+					MAX(T_INDEX)											idx,
+					COUNT(CONCAT(T_SIDE, T_ALARM_CODE)) 	cnt,
+					T_SIDE													side	
+				FROM 
+					R_ALARM_DATA
+				WHERE 
+<!-- 					(T_ALARM_PERCEPT_FLAG = 0 OR T_RELEASE_DATETIME= '0000-00-00 00:00:00') 시스템에서 정상되었을때 복구하면서 release_datetime을 써주어야하는데 못해서 일단 막았음.-->
+						T_ALARM_PERCEPT_FLAG = 0
+				<if test="value != 0">
+		        AND 
+					T_ALARM_LEVEL = #{value}
+				</if>	
+				GROUP BY 
+					T_SIDE, T_ALARM_CODE
+			    ) b ON a.T_INDEX = b.idx AND a.T_SIDE = b.side
+			 ORDER BY 
+				 createDatetime DESC
+	</select>
+	
+	
+	
+	<select id="getLastAlarmDatetime" resultType="String">
+		SELECT 
+			MAX(T_CREATE_DATETIME)
+		FROM 
+			R_ALARM_DATA 
+		WHERE 
+			T_ALARM_PERCEPT_FLAG = 0	
+	</select>		
+	
+	
+	<select id="getAlarmDataByAlarmCode" parameterType="com.egsbc.alarm.AlarmDataVO" resultType="com.egsbc.alarm.AlarmDataVO">
+		SELECT  
+			T_INDEX													idx,
+			T_ALARM_LEVEL										alarmLevel,
+			T_SIDE													side,								
+		    T_CREATE_DATETIME								createDatetime,
+		    T_ALARM_CODE										alarmCode,		
+		    T_CAUSE_DESCRIPTION								causeDescription
+		 FROM 
+			R_ALARM_DATA
+		WHERE 
+<!-- 			( -->
+			T_ALARM_PERCEPT_FLAG = 0 
+<!-- 			OR T_RELEASE_DATETIME= '0000-00-00 00:00:00' )  -->
+		AND
+			T_SIDE = #{side} 
+		AND 
+			T_ALARM_CODE = #{alarmCode}
+		ORDER BY 
+			T_CREATE_DATETIME DESC 
+	
+	</select>
+	
+	<select id="getAlarmDataDetail" parameterType="int" resultType="com.egsbc.alarm.AlarmDataDetailVO">
+		SELECT  
+			T_RATE_LIMIT_PROFILE					rateLimitProfile,
+			T_RATE_LIMIT_CATEGORY				rateLimitCategory,								
+		    T_ALARM_CAUSE_PARAM				alarmCauseParam,
+		    T_ALARM_CAUSE_REAL_VALUE		alarmCauseRealValue,		
+		    T_PROTOCOL								protocol,
+		    T_REMOTE_IP								remoteIp,
+		    T_REMOTE_PORT							remotePort,
+		    T_LOCAL_IP								localIp,
+		    T_LOCAL_PORT							localPort,
+		    T_FROM_URI								fromUri,
+		    T_TO_URI									toUri
+		 FROM 
+			R_ALARM_DATA
+		WHERE 
+			T_INDEX = #{value}
+	</select>
+	
+	
+	<update id="setAlarmPercept" parameterType="com.egsbc.alarm.AlarmDataVO" >
+		UPDATE 
+			R_ALARM_DATA
+		SET
+			T_ALARM_PERCEPT_FLAG = 1,
+			T_ALARM_PERCEPT_USER = #{userId},
+			T_ALARM_PERCEPT_TIME = NOW()
+		WHERE
+			T_SIDE = #{side}
+		AND
+			T_ALARM_CODE = #{alarmCode}	
+	</update>
+	
+	<update id="setAlarmPerceptDetail" parameterType="com.egsbc.alarm.AlarmDataVO" >
+		UPDATE 
+			R_ALARM_DATA
+		SET
+			<if test="releaseFlag == 1">
+				T_RELEASE_DATETIME = NOW(),
+			</if>
+			T_ALARM_PERCEPT_FLAG = 1,
+			T_ALARM_PERCEPT_USER = #{userId},
+			T_ALARM_PERCEPT_TIME = NOW()
+		WHERE
+			T_INDEX = #{idx}
+	</update>
+	
+	<select id="getAlarmCount" resultType="java.util.HashMap" >
+		SELECT
+			T_ALARM_LEVEL				alarmLevel,		
+			COUNT(T_ALARM_LEVEL)	cnt
+		FROM
+			R_ALARM_DATA
+		WHERE 
+<!-- 			( -->
+			T_ALARM_PERCEPT_FLAG = 0 
+<!-- 			OR T_RELEASE_DATETIME= '0000-00-00 00:00:00' ) 	 -->
+		GROUP BY
+			T_ALARM_LEVEL	
+	</select>
+	
+	<select id="getAlarmTrigger" resultType="com.egsbc.alarm.AlarmTriggerVO">
+		SELECT
+			T_ALARM_OCCURED	alarmOccured,
+			T_ETC					etc
+		FROM
+			R_ALARM_TRIGGER
+	</select>
+	<update id="setAlarmTrigger" parameterType="com.egsbc.alarm.AlarmTriggerVO">
+		UPDATE
+			R_ALARM_TRIGGER
+		SET 	
+			T_ALARM_OCCURED =#{alarmOccured}
+	</update>
+	<update id="setAlarmTriggerEtcZero">
+		UPDATE
+			R_ALARM_TRIGGER
+		SET 	
+			T_ETC = 0
+	</update>
+	
+	<select id="getMaxIndex" resultType="int">
+		SELECT
+			MAX(T_CREATE_DATETIME)
+		FROM 
+			R_ALARM_DATA
+		WHERE 
+<!-- 			( -->
+			T_ALARM_PERCEPT_FLAG = 0 
+<!-- 			OR T_RELEASE_DATETIME= '0000-00-00 00:00:00' ) 	 -->
+	</select>
+	
+	<select id="getAlarmHistory" parameterType="com.egsbc.report.SearchDateVO" resultType="com.egsbc.alarm.AlarmHistoryVO">
+		SELECT
+			a.T_INDEX 								idx,
+			a.T_ALARM_KEY 							alarmKey,
+			a.T_SIDE 									side,
+			a.T_BLOCK_NAME 						blockName,
+			a.T_SERVICE_RELATED 				serviceRelated,
+			a.T_CREATE_DATETIME				createDatetime, 
+			a.T_RELEASE_DATETIME 				releaseDatetime,
+			a.T_ALARM_CODE						alarmCode,
+			a.T_RATE_LIMIT_PROFILE				rateLimitProfile,
+			a.T_RATE_LIMIT_CATEGORY 		rateLimitCategory,
+			a.T_SECURITY_FLAG					securityFlag,
+			a.T_ALARM_TYPE 						alarmType,
+			a.T_ALARM_LEVEL 						alarmLevel,
+			a.T_ALARM_ACTION 					alarmAction,
+			a.T_ALARM_PERCEPT_FLAG 			alarmPerceptFlag,
+			a.T_ALARM_PERCEPT_USER 			alarmPerceptUser,
+			a.T_ALARM_PERCEPT_TIME 			alarmPerceptTime,
+			a.T_ALARM_CAUSE_PARAM 			alarmCauseParam,
+			a.T_ALARM_CAUSE_REAL_VALUE 	alarmCauseRealValue,
+			a.T_CAUSE_DESCRIPTION 			causeDescription,
+			a.T_SOUND_ON							soundOn,
+			a.T_SMS_ON 								smsOn,
+			a.T_EMAIL_ON 							emailOn,
+			a.T_REMOTE_IP 							remoteIp,
+			a.T_REMOTE_PORT 						remotePort,
+			a.T_LOCAL_IP							localIp,
+			a.T_LOCAL_PORT						localPort,
+			a.T_PROTOCOL 							protocol,
+			a.T_FROM_URI 							fromUri,
+			a.T_TO_URI 								toUri,
+			a.T_ETC									etc
+		FROM
+			R_ALARM_DATA a JOIN
+				(
+					SELECT T_ALARM_CODE 
+					FROM egis.R_ALARM_CODE 
+					<if test="alarmLevel != 0" >
+					WHERE T_ALARM_LEVEL = #{alarmLevel}
+					</if>
+				) b 
+				ON a.T_ALARM_CODE = b.T_ALARM_CODE 
+		WHERE
+			a.T_CREATE_DATETIME  &gt;= #{startDate} AND a.T_CREATE_DATETIME &lt;= #{endDate} 	
+		<if test="argArray != null" >
+			AND a.T_ALARM_CODE IN 
+			<foreach collection="argArray" item="item"  index="index" open="(" close=")" separator=",">
+            	#{item}
+        	</foreach>
+		</if>	
+		<if test="causeDescription != null and causeDescription != ''" >
+			AND a.T_CAUSE_DESCRIPTION LIKE  CONCAT('%', #{causeDescription}, '%')
+		</if>
+		ORDER BY
+			a.T_INDEX DESC	
+		LIMIT 
+			#{offset}, #{pageSize} 		
+	</select>
+	
+	<select id="getAlarmHistoryCnt" parameterType="com.egsbc.report.SearchDateVO" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			R_ALARM_DATA a JOIN
+				(
+					SELECT T_ALARM_CODE 
+					FROM egis.R_ALARM_CODE 
+					<if test="alarmLevel != 0" >
+					WHERE T_ALARM_LEVEL = #{alarmLevel}
+					</if>
+				) b 
+				ON a.T_ALARM_CODE = b.T_ALARM_CODE 
+		WHERE
+			a.T_CREATE_DATETIME  &gt;= #{startDate} AND a.T_CREATE_DATETIME &lt;= #{endDate} 	
+		<if test="argArray != null" >
+			AND a.T_ALARM_CODE IN 
+			<foreach collection="argArray" item="item"  index="index" open="(" close=")" separator=",">
+            	#{item}
+        	</foreach>
+		</if>	
+		<if test="causeDescription != null and causeDescription != ''" >
+			AND a.T_CAUSE_DESCRIPTION LIKE  CONCAT('%', #{causeDescription}, '%')
+		</if>
+			
+	</select>
+	
+	
+	<select id="getAlarmDataForEmail"  resultType="com.egsbc.alarm.AlarmDataVO">
+		SELECT 
+			T_INDEX							idx,
+			T_ALARM_LEVEL				alarmLevel,
+			T_SIDE							side,								
+			T_CREATE_DATETIME		createDatetime,
+			T_ALARM_CODE				alarmCode,	
+			T_ALARM_CAUSE_PARAM	alarmCauseParam,
+			T_CAUSE_DESCRIPTION		causeDescription,
+			T_ETC							etc
+		FROM 
+			R_ALARM_DATA
+		WHERE
+			T_EMAIL_ON = 1	AND (T_ETC = '' OR T_ETC = NULL) 
+		AND 
+			T_ALARM_PERCEPT_FLAG = 0	
+		ORDER BY 
+			T_CREATE_DATETIME
+	</select>
+	
+	<update id="setAlarmDataEtcClear" parameterType="int">
+		UPDATE 
+			R_ALARM_DATA
+		SET
+			T_ETC = '1'
+		WHERE
+			T_INDEX = #{value}		
+	</update>
+	
+
+	
+	
+</mapper>	

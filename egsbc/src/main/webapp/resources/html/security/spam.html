@@ -1,0 +1,998 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call SPAM Policy</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					
+					<form class="smart-form" id="frmSpam" novalidate="novalidate">
+						
+						<table border="0" width="100%">
+						<tr>
+							<td class="td-label" width="140px">Rule</td>
+							<td class="td-label" colspan="3">
+								<span class="onoffswitch" >
+										<input type="checkbox"  class="onoffswitch-checkbox" id="enable" name="enable" >
+										<label class="onoffswitch-label" for="enable"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 	
+							</td>		
+						</tr>
+						<tr>
+							<td class="td-label" width="140px">Policy</td>
+							<td class="td-label" colspan="3">
+								<div class="inline-group">
+									<label class="radio" name="lblClass0">
+										<input type="radio" name="actionMode" value="2" checked>
+										<i></i>Permit</label>
+									<label class="radio" name="lblClass0">
+										<input type="radio" name="actionMode" value="1">
+										<i></i>Deny</label>
+								</div>
+							</td>		
+						</tr>
+						<tr>
+							<td class="td-label" width="140px">Monitoring time</td>
+							<td class="td-label" width="100px">
+								<label class="input" name="lblClass">
+									<input type='text'  id="duration" name="duration">
+								</label>
+							</td>	
+							<td colspan="2">
+								(sec)
+							</td>	
+						</tr>
+						<tr>
+							<td class="td-label" width="140px">Blocking time</td>
+							<td class="td-label">
+								<label class="input" name="lblClass">
+									<input type='text'  id="dropDuration" name="dropDuration">
+								</label>
+							</td>	
+							<td>
+								(sec)
+							</td>	
+							<td class="td-label">
+								<div class="form-group pull-right">
+									<button type="button" class="btn btn-default btn-apply" id="btnApply">Apply</button>
+									<button type="button" class="btn btn-default btn-refresh" id="btnRefresh">Refresh</button>
+								</div>
+							</td>
+						</tr>
+						</table>
+					</form>
+					
+					<div style="width:100%;border-bottom:1px solid #000;height:30px;padding:10px 0 2px 0;font-size:14px;color: black">
+						<strong>CALL</strong>
+					</div>
+					
+					<form class="smart-form" id="frmSpamCall" novalidate="novalidate">
+						<table border="0" width="100%">
+						<tr>
+							<td class="td-label" width="170px">Rule 1 : Massive Call(1:N)</td>
+							<td class="td-label">
+									<span class="onoffswitch">
+										<input type="checkbox"  class="onoffswitch-checkbox" id="limitEnable" >
+										<label class="onoffswitch-label" for="limitEnable"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+							</td>	
+							<td class="td-label" width="170px">Rule 2 :  Rejected Call Count</td>
+							<td class="td-label">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="rejectEnable" >
+									<label class="onoffswitch-label" for="rejectEnable"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall1">
+											<input type='text'  id="limitCount" name="limitCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>	
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall2">
+											<input type='text'  id="rejectCount" name="rejectCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>			
+						</tr>
+						<tr>
+							<td colspan="4"  class="td-label">&nbsp;</td>
+						</tr>
+						<tr>
+							<td class="td-label">Rule 3 : Short Holding Time</td>
+							<td class="td-label">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="durationEnable" >
+									<label class="onoffswitch-label" for="durationEnable"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>	
+							<td class="td-label">Rule 4 :  INVITE Msg. Count</td>
+							<td class="td-label">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="intervalEnable" >
+									<label class="onoffswitch-label" for="intervalEnable"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label">Holding Time</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall3">
+											<input type='text'  id="durationS" name="durationS">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(sec)
+									</td>
+								</tr>
+								</table>
+							</td>	
+							<td class="td-label">Count Duration</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall4">
+											<input type='text'  id="intervalS" name="intervalS">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(sec)
+									</td>
+								</tr>
+								</table>
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall3">
+											<input type='text'  id="durationCount" name="durationCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>	
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input" name="lblClassCall4">
+											<input type='text'  id="intervalCount" name="intervalCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label" colspan="4">
+								<div class="form-group pull-right">
+									<button type="button" class="btn btn-default btn-apply" id="btnApplyCall">Apply</button>
+									<button type="button" class="btn btn-default btn-refresh" id="btnRefreshCall">Refresh</button>
+								</div>
+							</td>
+						</tr>
+						</table>
+					</form>	
+					
+					<!-- 막기용 -->
+					<div style="display:none">
+					<div style="width:100%;border-bottom:1px solid #000;height:30px;padding:10px 0 2px 0;font-size:14px;color: black">
+						<strong>Instant Message(SIP)</strong>
+					</div>
+					
+					<form class="smart-form" id="frmSpamIm" novalidate="novalidate">
+						<table border="0" width="100%">
+						<tr>
+							<td class="td-label" width="170px">Rule 1 : Massive Call(1:N)</td>
+							<td class="td-label">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="limitEnableIm" >
+									<label class="onoffswitch-label" for="limitEnableIm"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>	
+							<td class="td-label" width="170px">Rule 2 :  INVITE Msg. Count</td>
+							<td class="td-label">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="intervalEnableIm" >
+									<label class="onoffswitch-label" for="intervalEnableIm"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input"  name="lblClassIm1">
+											<input type='text'  id="limitCount" name="limitCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>	
+							<td class="td-label">Count Duration</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input"  name="lblClassIm2">
+											<input type='text'  id="intervalS" name="intervalS">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(sec)
+									</td>
+								</tr>
+								</table>
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label"></td>
+							<td class="td-label">
+							</td>	
+							<td class="td-label">Threshold</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td width="100px">
+										<label class="input"  name="lblClassIm2">
+											<input type='text'  id="intervalCount" name="intervalCount">
+										</label>
+									</td>
+									<td style="padding-left:8px">
+										(call)
+									</td>
+								</tr>
+								</table>
+							</td>			
+						</tr>
+						<tr>
+							<td class="td-label" colspan="4">
+								<div class="form-group pull-right">
+									<button type="button" class="btn btn-default btn-apply" id="btnApplyIm">Apply</button>
+									<button type="button" class="btn btn-default btn-refresh" id="btnRefreshIm">Refresh</button>
+								</div>
+							</td>
+						</tr>
+						</table>
+					</form>	
+					</div>
+					
+					<!-- //막기용 -->
+					
+				
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="widImSignature" data-widget-editbutton="false" >
+						<header >
+							<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+							<h2>IM SPAM Policy</h2>
+						</header>
+						<!-- widget div-->
+						<div class="div-widget">
+							
+							<form class="smart-form" id="frmImSignature" novalidate="novalidate">
+								<table border="0" width="100%">
+								<tr>
+									<td class="td-label" width="120px">Rule</td>
+									<td class="td-label" >
+										<span class="onoffswitch" >
+												<input type="checkbox"  class="onoffswitch-checkbox" id="chkImSignature">
+												<label class="onoffswitch-label" for="chkImSignature"> 
+													<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+													<span class="onoffswitch-switch"></span> 
+												</label> 
+											</span> 	
+									</td>
+									<td></td>
+								</tr>	
+								<tr>
+									<td class="td-label">
+										Applied Header 
+									</td>
+									<td colspan="2">
+										<table width="100%">
+										<tr>
+											<td class="td-label">
+												<div class="inline-group">
+														<label class="checkbox"  >
+															<input type="checkbox"  id="chkHeaderAll"><i></i>ALL
+														</label>
+														<label class="checkbox">
+															<input type="checkbox" name="header"  value="8" ><i></i>USER-AGENT
+														</label>
+														<label class="checkbox">
+															<input type="checkbox"  name="header" value="1" ><i></i>FROM
+														</label>
+														<label class="checkbox">
+															<input type="checkbox" name="header" value="2" ><i></i>TO
+														</label>
+														<label class="checkbox">
+															<input type="checkbox" name="header" value="16" ><i></i>SUBJECT
+														</label>
+												</div>	
+											</td>
+											<td  class="td-label">
+												<div class="form-group pull-right">
+													<button type="button" class="btn btn-default btn-apply" id="btnApplyImSignature"> Apply</button>
+												</div>
+											</td>	
+										</tr>
+										</table>
+									</td>		
+								</tr>
+								</table>
+							</form>
+							
+							
+							<!-- ========================= IM Signature VAL ===================================== -->
+					        <div style="background:#d1d1d1;height:2px;width:100%;margin:15px 0"></div>
+					        	
+					        <form class="smart-form" id="frmSignatureRegister" novalidate="novalidate">
+								<table border="0" width="100%">
+								<tr>
+									<td class="td-label" width="120px">
+										Signature
+									</td>
+									<td class="td-label" width="222px">
+										<label class="input">
+											<input type="text" id="condVal" name="condVal" >
+										</label>
+									</td>
+									<td  class="td-label">
+										<div class="form-group" style="text-align:left">
+											<button type="button" class="btn btn-default btn-apply" id="btnAddSignatureRegister"> Add</button>
+										</div>
+									</td>	
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="2" style="padding-left:15px">(alphaNumeric, max size: 32)</td>
+								</tr>
+								<tr>
+									<td class="td-label" width="120px"></td>
+									<td class="td-label" width="222px">
+											<label class="select select-multiple" >
+												<select multiple="" id="selImSignatureVal" class="custom-scroll" style="width:200px;height:150px">
+											</select>
+										</label>
+									</td>
+									<td class="td-label" style="vertical-align:top;text-align:left">
+										<button type="button" class="btn btn-default btn-delete" id="btnDeleteImSignatureVal">Delete</button>
+									</td>	
+								</tr>	
+								<tr>
+									<td></td>
+									<td colspan="2"  style="padding-left:15px">
+										(Max count: 1000)
+									</td>
+								</tr>
+								</table>
+							</form>	
+							
+							<br />
+					        	
+						</div>			
+					</div>	
+			
+			
+			
+			
+			
+		</article>
+	</div>
+</section>
+
+
+
+
+<script type="text/javascript">
+
+var validatorSignatureRegister;
+
+var g_enable = false;
+
+var pagefunction = function() {
+	
+	getSecSpam();
+	
+	
+	// frmSpam
+	$("#frmSpam #enable").change(function() {
+		changeSecSpam();
+	});
+	findControlRadio("frmSpam", "actionMode").change(function() {
+		changeSecSpam();
+	});
+	
+	
+	// frmSpamCall
+	$("#frmSpamCall #limitEnable,#rejectEnable, #durationEnable, #intervalEnable").change(function() {
+		changeSecSpam();
+	});
+	
+	// frmSpamIm
+	$("#frmSpamIm #limitEnableIm, #intervalEnableIm").change(function() {
+		changeSecSpam();
+	});
+	
+	
+	
+	// btnApply
+	$("#btnApply").click(function(){
+		
+		var enable = getControlCheck("frmSpam", "enable")?1:0;
+		var actionMode = getControlRadio("frmSpam", "actionMode");
+		var duration = getControlInput("frmSpam", "duration");
+		var dropDuration = getControlInput("frmSpam", "dropDuration");
+		
+		showConfirm('Confirm', "Do you want to apply?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$.ajax({
+				url: '/takeSpam',
+			    type: "post",
+			    data: {
+					opMode: 5, // apply 
+					enable: enable , 
+					actionMode: actionMode, 
+					duration: duration, 
+					dropDuration: dropDuration
+				},
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	// btnApplyCall
+	$("#btnApplyCall").click(function(){
+		var limitEnable = getControlCheck("frmSpamCall", "limitEnable")?1:0;
+		var limitCount = getControlInput("frmSpamCall", "limitCount");
+		
+		var rejectEnable = getControlCheck("frmSpamCall", "rejectEnable")?1:0;
+		var rejectCount = getControlInput("frmSpamCall", "rejectCount");
+		
+		var durationEnable = getControlCheck("frmSpamCall", "durationEnable")?1:0;
+		var durationCount = getControlInput("frmSpamCall", "durationCount");
+		var durationS = getControlInput("frmSpamCall", "durationS");
+		
+		var intervalEnable = getControlCheck("frmSpamCall", "intervalEnable")?1:0;
+		var intervalCount = getControlInput("frmSpamCall", "intervalCount");
+		var intervalS = getControlInput("frmSpamCall", "intervalS");
+		
+		showConfirm('Confirm', "Do you want to apply?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$.ajax({
+				url: '/takeSpamCall',
+			    type: "post",
+			    data: {
+					opMode: 5, // apply 
+					limitEnable: limitEnable , 
+					limitCount: limitCount, 
+					rejectEnable: rejectEnable, 
+					rejectCount: rejectCount,
+					
+					durationEnable: durationEnable,
+					durationCount: durationCount,
+					durationS: durationS,
+					
+					intervalEnable: intervalEnable,
+					intervalCount: intervalCount,
+					intervalS: intervalS
+				},
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	// btnApplyIm
+	$("#btnApplyIm").click(function(){
+		var limitEnable = getControlCheck("frmSpamIm", "limitEnableIm")?1:0;
+		var limitCount = getControlInput("frmSpamIm", "limitCount");
+		
+		var intervalEnable = getControlCheck("frmSpamIm", "intervalEnableIm")?1:0;
+		var intervalCount = getControlInput("frmSpamIm", "intervalCount");
+		var intervalS = getControlInput("frmSpamIm", "intervalS");
+		
+		
+		showConfirm('Confirm', "Do you want to apply?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$.ajax({
+				url: '/takeSpamIm',
+			    type: "post",
+			    data: {
+					opMode: 5, // apply 
+					limitEnable: limitEnable , 
+					limitCount: limitCount, 
+					
+					intervalEnable: intervalEnable,
+					intervalCount: intervalCount,
+					intervalS: intervalS
+				},
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	
+		
+	// ############### IM Signature ######################################## 
+	
+	// checkAll Message	
+	$("#frmImSignature #chkMessageAll").click(function(){
+		var checked=$(this).is(":checked");
+		$("#frmImSignature input[name='message']:checkbox").each(function(){
+			$(this).prop("checked", checked?true:false);
+		});
+	});
+	
+	// checkAll Header	
+	$("#frmImSignature #chkHeaderAll").click(function(){
+		var checked=$(this).is(":checked");
+		$("#frmImSignature input[name='header']:checkbox").each(function(){
+			$(this).prop("checked", checked?true:false);
+		});
+	});
+	
+	
+	// apply IM signature
+	$("#frmImSignature #btnApplyImSignature").click(function(){
+		//--------------------------------- condHeader ----------------------------
+		var from = $("#frmImSignature input:checkbox[name='header'][value=1]").is(":checked");
+		var to = $("#frmImSignature input:checkbox[name='header'][value=2]").is(":checked");
+		var userAgent = $("#frmImSignature input:checkbox[name='header'][value=8]").is(":checked");
+		var subject = $("#frmImSignature input:checkbox[name='header'][value=16]").is(":checked");
+		
+		var condHeader = 0;
+		
+		if(from && to && userAgent && subject){
+			condHeader = 255;
+		}else{
+			if(from) condHeader+=1;
+			if(to) condHeader+=2;
+			if(userAgent) condHeader+=8;
+			if(subject) condHeader+=16;
+		}
+		
+		//--------------------------------- condCheck ----------------------------
+		var condCheck = getControlCheck("frmImSignature", "chkImSignature")?1:0;
+		
+		showConfirm('Confirm', "Do you want to apply?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {condHeader: condHeader, condCheck: condCheck};
+			param.opMode=5; // apply
+			$.ajax({
+				url: '/takeSecImSignature',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    	getSecImSignatureHdr();
+			    	getSecImSignatureVal();
+			    }
+			});
+		});
+		
+	});
+	
+	
+	// btnAddSignatureRegister
+	$("#frmSignatureRegister #btnAddSignatureRegister").click(function(){
+		
+		// check signature cnt
+		var len = $("#selImSignatureVal > option").length;
+		if(len >= 1000){
+			showMsg("Warning", "Signature max count is 1000.");
+			return;
+		}
+		
+		
+		var condVal = getControlInput("frmSignatureRegister", "condVal");
+		
+		if(!$('#frmSignatureRegister').valid()){
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to add?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			var param = {condVal: condVal};
+			param.opMode=2; // add 
+			$.ajax({
+				url: '/takeSecImSignatureVal',
+			    type: "post",
+			    data: param,
+			    success: function(json) {
+			    	processResult(json.result, null, null, null);
+			    }
+			});
+		});
+	});
+	
+	validatorSignatureRegister = $('#frmSignatureRegister').validate({
+		rules : {
+			condVal:{
+				required : true,
+				maxlength: 32,
+				pattern: /^[A-Za-z0-9]+$/
+			}
+		},
+		messages : {
+			condVal:{ 
+				required : "Input value",
+				maxlength: "Max length is 32",
+				pattern: "Input proper value"
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	
+	// btnDeleteImSignatureVal
+	$("#btnDeleteImSignatureVal").click(function(){ // ahnks
+		
+		var arr = $("#selImSignatureVal").val();
+		if(arr==null){
+			showMsg('Warning', 'Select a item to delete.')
+		}else if(arr.length>1){
+			showMsg('Warning', 'Select a item to delete.')
+		}else{
+			var item = arr[0];
+			showConfirm("Confirm", "Do you want to delete ["+item+"] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = {opMode: 4, condVal: item};
+				$.ajax({
+					url: '/takeSecImSignatureVal',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	hideConfirm();
+				    	getSecImSignatureVal();
+				    }
+				});
+			});
+		}
+	});
+	
+	
+	getSecImSignatureHdr();
+	getSecImSignatureVal();
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function getSecSpam(){
+	g_enable = $("#frmSpam #enable").is(":checked");
+	
+	$.post("getSecSpam", {}, function(json){
+		var spam = json.spam;
+		var spamCall = json.spamCall;
+		var spamIm = json.spamIm;
+		
+		if(spam!=null){
+			g_enable = (spam.enable==1)?true:false;
+			setControlCheck("frmSpam", "enable", g_enable, false);
+			
+			$("#frmSpam input:radio[name=actionMode]:radio[value='"+spam.actionMode+"']").attr("checked", true);
+			$("#frmSpam #duration").val(spam.duration);
+			$("#frmSpam #dropDuration").val(spam.dropDuration);
+		}
+		
+		
+		if(spamCall!=null){
+			// frmSpamCall
+			setControlCheck("frmSpamCall", "limitEnable", (spamCall.limitEnable==0)?false:true, false);
+			$("#frmSpamCall #limitCount").val(spamCall.limitCount);
+			
+			setControlCheck("frmSpamCall", "rejectEnable", (spamCall.rejectEnable==0)?false:true, false);
+			$("#frmSpamCall #rejectCount").val(spamCall.limitCount);
+			
+			setControlCheck("frmSpamCall", "durationEnable", (spamCall.durationEnable==0)?false:true, false);
+			$("#frmSpamCall #durationCount").val(spamCall.durationCount);
+			$("#frmSpamCall #durationS").val(spamCall.durationS);
+			
+			
+			setControlCheck("frmSpamCall", "intervalEnable", (spamCall.intervalEnable==0)?false:true, false);
+			$("#frmSpamCall #intervalCount").val(spamCall.intervalCount);
+			$("#frmSpamCall #intervalS").val(spamCall.intervalS);
+		}
+		
+		if(spamIm!=null){
+			setControlCheck("frmSpamIm", "limitEnableIm", (spamIm.limitEnable==0)?false:true, false);
+			$("#frmSpamIm #limitCount").val(spamIm.limitCount);
+			
+			setControlCheck("frmSpamIm", "intervalEnableIm", (spamIm.intervalEnable==0)?false:true, false);
+			$("#frmSpamIm #intervalS").val(spamIm.intervalS);
+			$("#frmSpamIm #intervalCount").val(spamIm.intervalCount);
+		}
+		
+		changeSecSpam();
+		
+	});
+}
+
+function changeSecSpam(){
+	var enable = $("#frmSpam #enable").is(":checked");
+	
+	if(enable){
+		
+		//-------------- frmSpam---------------------------------------------
+		$("#frmSpam input:radio[name=actionMode]").prop('disabled', false);
+		$("#frmSpam [name=lblClass0]").removeClass("state-disabled");
+		
+		var actionMode = getControlRadio("frmSpam", "actionMode");
+		if(actionMode==1){ // 차단(ediable)
+			$("#frmSpam [name=lblClass]").removeClass("state-disabled");
+			$("#frmSpam #duration").prop('disabled', false); 
+			$("#frmSpam #dropDuration").prop('disabled', false); 
+		}else{
+			$("#frmSpam [name=lblClass]").addClass("state-disabled");
+			$("#frmSpam #duration").prop('disabled', true); 
+			$("#frmSpam #dropDuration").prop('disabled', true); 
+		}
+		
+		//------------ frmSpamCall----------------------------------------------
+		
+		$("#frmSpamCall #limitEnable").prop('disabled', false);
+		var limitEnable = getControlCheck("frmSpamCall", "limitEnable");
+		if(limitEnable){ // 사용(ediable)
+			$("#frmSpamCall [name=lblClassCall1]").removeClass("state-disabled");
+			$("#frmSpamCall #limitCount").prop('disabled', false); 
+		}else{
+			$("#frmSpamCall [name=lblClassCall1]").addClass("state-disabled");
+			$("#frmSpamCall #limitCount").prop('disabled', true); 
+		}
+		
+		
+		$("#frmSpamCall #rejectEnable").prop('disabled', false);
+		var rejectEnable = getControlCheck("frmSpamCall", "rejectEnable");
+		if(rejectEnable){ // 사용(ediable)
+			$("#frmSpamCall [name=lblClassCall2]").removeClass("state-disabled");
+			$("#frmSpamCall #rejectCount").prop('disabled', false); 
+		}else{
+			$("#frmSpamCall [name=lblClassCall2]").addClass("state-disabled");
+			$("#frmSpamCall #rejectCount").prop('disabled', true); 
+		}
+		
+		
+		$("#frmSpamCall #durationEnable").prop('disabled', false);
+		var durationEnable = getControlCheck("frmSpamCall", "durationEnable");
+		if(durationEnable){ // 사용(ediable)
+			$("#frmSpamCall [name=lblClassCall3]").removeClass("state-disabled");
+			$("#frmSpamCall #durationCount").prop('disabled', false); 
+			$("#frmSpamCall #durationS").prop('disabled', false); 
+		}else{
+			$("#frmSpamCall [name=lblClassCall3]").addClass("state-disabled");
+			$("#frmSpamCall #durationCount").prop('disabled', true); 
+			$("#frmSpamCall #durationS").prop('disabled', true); 
+		}
+		
+		
+		$("#frmSpamCall #intervalEnable").prop('disabled', false);
+		var intervalEnable = getControlCheck("frmSpamCall", "intervalEnable");
+		if(intervalEnable){ // 사용(ediable)
+			$("#frmSpamCall [name=lblClassCall4]").removeClass("state-disabled");
+			$("#frmSpamCall #intervalCount").prop('disabled', false); 
+			$("#frmSpamCall #intervalS").prop('disabled', false); 
+		}else{
+			$("#frmSpamCall [name=lblClassCall4]").addClass("state-disabled");
+			$("#frmSpamCall #intervalCount").prop('disabled', true); 
+			$("#frmSpamCall #intervalS").prop('disabled', true); 
+		}
+		
+		
+		//------------------- frmSpamIm---------------------------------------------
+		
+		$("#frmSpamIm #limitEnableIm").prop('disabled', false);
+		var limitEnable = getControlCheck("frmSpamIm", "limitEnableIm");
+		if(limitEnable){ // 사용(ediable)
+			$("#frmSpamIm [name=lblClassIm1]").removeClass("state-disabled");
+			$("#frmSpamIm #limitCount").prop('disabled', false); 
+		}else{
+			$("#frmSpamIm [name=lblClassIm1]").addClass("state-disabled");
+			$("#frmSpamIm #limitCount").prop('disabled', true); 
+		}
+		
+		$("#frmSpamIm #intervalEnableIm").prop('disabled', false);
+		var intervalEnable = getControlCheck("frmSpamIm", "intervalEnableIm");
+		if(intervalEnable){ // 사용(ediable)
+			$("#frmSpamIm [name=lblClassIm2]").removeClass("state-disabled");
+			$("#frmSpamIm #intervalS").prop('disabled', false); 
+			$("#frmSpamIm #intervalCount").prop('disabled', false); 
+		}else{
+			$("#frmSpamIm [name=lblClassIm2]").addClass("state-disabled");
+			$("#frmSpamIm #intervalS").prop('disabled', true); 
+			$("#frmSpamIm #intervalCount").prop('disabled', true); 
+		}
+		
+		
+	}else{ // 모두 diaabled
+		$("#frmSpam [name=lblClass0]").addClass("state-disabled");
+		$("#frmSpam [name=lblClass]").addClass("state-disabled");
+		
+		$("#frmSpamCall [name=lblClassCall1]").addClass("state-disabled");
+		$("#frmSpamCall [name=lblClassCall2]").addClass("state-disabled");
+		$("#frmSpamCall [name=lblClassCall3]").addClass("state-disabled");
+		$("#frmSpamCall [name=lblClassCall4]").addClass("state-disabled");
+		
+		$("#frmSpamIm [name=lblClassIm1]").addClass("state-disabled");
+		$("#frmSpamIm [name=lblClassIm2]").addClass("state-disabled");
+		
+		
+		// frmSpamCall
+		$("#frmSpam input:radio[name=actionMode]").prop('disabled', true); // radio
+		
+		$("#frmSpam #duration").prop('disabled', true);
+		$("#frmSpam #dropDuration").prop('disabled', true); 
+		
+		$("#frmSpamCall #limitEnable").prop('disabled', true);
+		$("#frmSpamCall #limitCount").prop('disabled', true); 
+		
+		$("#frmSpamCall #rejectEnable").prop('disabled', true);
+		$("#frmSpamCall #rejectCount").prop('disabled', true);
+		
+		$("#frmSpamCall #durationEnable").prop('disabled', true);
+		$("#frmSpamCall #durationCount").prop('disabled', true); 
+		$("#frmSpamCall #durationS").prop('disabled', true); 
+		
+		$("#frmSpamCall #intervalEnable").prop('disabled', true);
+		$("#frmSpamCall #intervalCount").prop('disabled', true); 
+		$("#frmSpamCall #intervalS").prop('disabled', true); 
+		
+		// frmSpamIm
+		$("#frmSpamIm #limitEnableIm").prop('disabled', true);
+		$("#frmSpamIm #limitCount").prop('disabled', true);
+		
+		$("#frmSpamIm #intervalEnableIm").prop('disabled', true);
+		$("#frmSpamIm #intervalS").prop('disabled', true); 
+		$("#frmSpamIm #intervalCount").prop('disabled', true); 
+		
+	}
+	
+}
+
+//############### IM Signature ######################################## 
+
+function getSecImSignatureHdr(){
+	$.post("getSecImSignatureHdr", {}, function(json){
+		var item = json.result;
+		if(item != null){
+			// header
+			var header=item.condHeader;
+			if(header==255){
+				setControlCheck("frmImSignature", "chkHeaderAll", true, false);
+				
+				$("#frmImSignature input[name='header']:checkbox").each(function(){
+					$(this).prop("checked", true);
+				});
+			}
+			if(intToBitDigitValue(header, 0)) $("#frmImSignature input:checkbox[name='header'][value=1]").attr("checked", true);
+			if(intToBitDigitValue(header, 1)) $("#frmImSignature input:checkbox[name='header'][value=2]").attr("checked", true);
+			if(intToBitDigitValue(header, 3)) $("#frmImSignature input:checkbox[name='header'][value=8]").attr("checked", true);
+			if(intToBitDigitValue(header, 4)) $("#frmImSignature input:checkbox[name='header'][value=16]").attr("checked", true);
+			
+		}
+	});
+}
+
+function getSecImSignatureVal(){
+	$.post("getSecImSignatureVal", {}, function(json){
+		var list = json.result;
+		
+		var obj=$("#selImSignatureVal");
+		obj.empty();
+		for(var i=0; i<list.length; i++){ //ahnks
+			obj.append("<option val='"+list[i].condVal+"'>"+list[i].condVal+"</option>");
+		}
+		
+	});
+}
+
+</script>				

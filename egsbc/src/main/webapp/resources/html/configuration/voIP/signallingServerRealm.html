@@ -1,0 +1,2200 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Realm List </h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+						<table id="dtRealm" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Domain</th>
+									<th rowspan="2" class="text-center">Group Name</th>
+									<th colspan="1" class="text-center">Signal</th>
+									<th colspan="3" class="text-center">Media</th>
+									<th colspan="3" class="text-center">Register Express</th>
+									<th colspan="3" class="text-center">Session</th>
+								</tr>
+								<tr>
+									<th class="text-center">Transport</th>
+									
+									<th class="text-center">Transport</th>
+									<th class="text-center">Relay</th>
+									<th class="text-center">RTP</th>
+									
+									<th class="text-center">Public</th>
+									<th class="text-center">NAT</th>
+									<th class="text-center">BYPASS</th>
+									
+									<th class="text-center">Express</th>
+									<th class="text-center">MINSE</th>
+									<th class="text-center">Interlock-Reg</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddRealm"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeRealm"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveRealm"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshRealm"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Realm Group List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtRealmGroup" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Service Name</th>
+									<th colspan="10" class="text-center">Realm List</th>
+								</tr>
+								<tr>
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddRealmGroup"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeRealmGroup"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveRealmGroup"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshRealmGroup"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Server List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtServer" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Domain</th>
+									<th rowspan="2" class="text-center">Group Name</th>
+									
+									<th colspan="2" class="text-center">Server</th>
+									<th colspan="1" class="text-center">Signal</th>
+									<th colspan="2" class="text-center">Media</th>
+									<th colspan="1" class="text-center">Register Express</th>
+									<th colspan="3" class="text-center">Max Limit</th>
+								</tr>
+								<tr>
+								
+									<th class="text-center">IP Type</th>
+									<th class="text-center">IP/Port</th>
+									
+									<th class="text-center">Transport</th>
+									
+									<th class="text-center">Transport</th>
+									<th class="text-center">RTP</th>
+									
+									<th class="text-center">Public</th>
+									
+									<th class="text-center">CPS</th>
+									<th class="text-center">Session</th>
+									<th class="text-center">RPS</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddServer"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeServer"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveServer"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshServer"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Server Group List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtServerGroup" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Operate Mode</th>
+									<th rowspan="2" class="text-center">HEALTH-CHECK</th>
+									<th rowspan="2" class="text-center">Service Name</th>
+									<th colspan="10" class="text-center">Server List</th>
+								</tr>
+								<tr>
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddServerGroup"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeServerGroup"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveServerGroup"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshServerGroup"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Service List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtService" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Service Type</th>
+									<th colspan="10" class="text-center">L-Group</th>
+									<th colspan="10" class="text-center">R-Group</th>
+									<th rowspan="2" class="text-center">Routing Setting</th>
+								</tr>
+								<tr>
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+									
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddService"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeService"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveService"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshService"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+		</article>
+	</div>			
+</section>	
+
+<!-- Modal Realm -->
+<div class="modal" id="modalRealm" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:440px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalRealm"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmRealm" novalidate="novalidate">
+					
+						<table width="400px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="140px" class="td-label" name="tdClass">*Name</td>
+							<td colspan="3">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label" >Domain</td>
+							<td colspan="3">
+								<label class="input">
+									<input type="text" id="domain" name="domain">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label" >*Signal Transport</td>
+							<td colspan="3">
+								<label class="select" >
+									<select  id="sigTransName" name="sigTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Media Relay</td>
+							<td colspan="3">
+								<div class="inline-group">
+									<label class="radio" >
+										<input type="radio" name="mediaPassFlag" value="1" checked>
+										<i></i>On
+									</label>
+									<label class="radio" >
+										<input type="radio" name="mediaPassFlag" value="0">
+										<i></i>Off
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Media Transport</td>
+							<td colspan="3">
+								<label class="select" name="lblMediaPassFlag" >
+									<select  id="mediaTransName" name="mediaTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*RTP</td>
+							<td colspan="3">
+								<div class="inline-group"  id="lblRTP">
+									<label class="checkbox"  name="lblMediaPassFlag">
+										<input type="checkbox"  id="chkRTP"  name="chkRTP" class="RTP-group"><i></i>RTP
+									</label>
+									<label class="checkbox" name="lblMediaPassFlag" >
+										<input type="checkbox"  id="chkSRTP" name="chkSRTP" class="RTP-group"><i></i>SRTP
+									</label>
+								</div>		
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr> 
+						<tr>
+							<td rowspan="7" class="td-label" style="vertical-align:top">Register Duration</td>
+							<td colspan="3" class="td-label">
+								<label class="checkbox">
+										<input type="checkbox"  id="chkRegPeriodBypass" ><i></i>Not Involved in R/D
+									</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">
+								- Public
+							</td>
+							<td>
+								<label class="input" name="lblRegPeriodBypass">
+									<input type="text" id="regPeriod" name="regPeriod"  style="width:150px">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">
+								- Nat
+							</td>
+							<td>
+								<label class="input" name="lblRegPeriodBypass">
+									<input type="text" id="regPeriodNat" name="regPeriodNat" style="width:150px">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="4" class="td-label">
+								<label class="checkbox">
+										<input type="checkbox"  id="chkDeregDeactFlag" ><i></i>Call-disconnect after expiry time
+									</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr>
+						<tr>
+							<td rowspan="5" class="td-label" style="vertical-align:top">Session Refresh Duration</td>
+							<td colspan="3" style="padding:12px 0px;">
+								<label class="checkbox" >
+										<input type="checkbox"  id="chkSessionFlag" ><i></i>Not Use
+									</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" style="padding:12px 0px;">
+								- Expires
+							</td>
+							<td>
+								<label class="input" name="lblSessionRefresh">
+									<input type="text" id="sessionExpires" name="sessionExpires"  style="width:150px">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" style="padding:12px 0px;">
+								- MINSE
+							</td>
+							<td>
+								<label class="input" name="lblSessionRefresh">
+									<input type="text" id="sessionMinse" name="sessionMinse"  style="width:150px">
+								</label>
+							</td>
+						</tr>
+						
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+						<input type="hidden" id="hidElemType" name="elemType"  value="0">	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+        		<button type="button" class="btn btn-default btn-save"  id="btnSaveRealm">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal Realm Group -->
+<div class="modal" id="modalRealmGroup" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:450px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalRealmGroup"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmRealmGroup" novalidate="novalidate">
+					
+						<table width="380px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="140px" class="td-label">*Name</td>
+							<td colspan="3">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">*Group List</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<td colspan="4" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList" id="nameList">
+								</select>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveRealmGroup">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal Server -->
+<div class="modal" id="modalServer" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:420px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalServer"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmServer" novalidate="novalidate">
+					
+						<table width="380px" border="0" style="margin:0 auto;">
+						<tr>
+							<td colspan="2" width="140px" class="td-label" name="tdClass">*Name</td>
+							<td colspan="2">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label" >Domain</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="domain" name="domain">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label" >*Signal Transport</td>
+							<td colspan="2">
+								<label class="select" >
+									<select  id="sigTransName" name="sigTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label" >*서버</td>
+							<td name="tdClass">-IP Type</td>
+							<td colspan="2">
+								<div class="inline-group">
+									<label class="radio" >
+										<input type="radio" name="serverIPType" value="0" checked>
+										<i></i>IPv4
+									</label>
+									<label class="radio" >
+										<input type="radio" name="serverIPType" value="1">
+										<i></i>IPv6
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">&nbsp;</td>
+							<td >-IP/Port</td>
+							<td colspan="2">
+								<table>
+								<tr>
+									<td width="150px">
+										<label class="input" >
+											<input type="text" id=serverIP name="serverIP">
+										</label>
+									</td>
+									<td width="20px" align="center">/</td>
+									<td>
+										<label class="input" >
+											<input type="text" id="serverPort" name="serverPort" >
+										</label>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label" >Media Transport</td>
+							<td colspan="2">
+								<label class="select" >
+									<select  id="mediaTransName" name="mediaTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">RTP</td>
+							<td colspan="2">
+								<div class="inline-group" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="chkRTP"  checked><i></i>RTP
+									</label>
+									<label class="checkbox"  >
+										<input type="checkbox"  id="chkSRTP" ><i></i>SRTP
+									</label>
+								</div>		
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="3" class="td-label">Register Duration(Sec)</td>
+							<td colspan="1">
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td align="left" style="padding:0px 10px"></td>
+							<td align="left" ></td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="regPeriod" name="regPeriod" >
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">Max CPS</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="maxCps" name="maxCps" >
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">Max Session</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="maxSession" name="maxSession" >
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">Max Rps</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="maxRps" name="maxRps" >
+								</label>
+							</td>
+						</tr>
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveServer">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal Server Group -->
+<div class="modal" id="modalServerGroup" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:500px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalServerGroup"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmServerGroup" novalidate="novalidate">
+					
+						<table width="460px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="150px" class="td-label">*Name</td>
+							<td colspan="3">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Operation Mode</td>
+							<td colspan="3">
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="opModeServerGroup" value="0" checked>
+										<i></i>Active/Stanby
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="opModeServerGroup" value="1">
+										<i></i>Round Robin
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Periodic Server Status Check</td>
+							<td colspan="3" align="left">
+								<div class="inline-group"  >
+									<span class="onoffswitch">
+										<input type="checkbox"  class="onoffswitch-checkbox" id="pollFlag" >
+										<label class="onoffswitch-label" for="pollFlag"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+								</div>		
+							</td>		
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="4" class="td-label">Group List</td>
+						</tr>
+						<tr>
+							<td colspan="4" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList" id="nameList">
+								</select>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveServerGroup">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal Service -->
+<div class="modal" id="modalService" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:800px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalService"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmService" novalidate="novalidate">
+					
+						<table width="760px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="110px" class="td-label">*Name</td>
+							<td width="250px">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label" name="tdClass">*Operation Mode</td>
+							<td >
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="mode" value="0"  checked>
+										<i></i>Server/Realm
+									</label>
+									<label class="radio"  name="lblClass">
+										<input type="radio" name="mode" value="1" >
+										<i></i>Trunking
+									</label>
+								</div>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">L_GROUP</td>
+							<td></td>
+							<td class="td-label">R_GROUP</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList1" id="nameList1">
+								</select>
+							</td>
+							<td colspan="2" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList2" id="nameList2">
+								</select>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveService">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<script type="text/javascript">
+var validatorRealm, validatorRealmGroup, validatorServer, validatorServerGroup, validatorService;
+var tableRealm, tableRealmGroup, tableServer, tableServerGroup, tableService;
+
+var pagefunction = function() {
+	//============================== Realm =============================================
+	tableRealm = $('#dtRealm').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipRealm",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "domain"},	
+    		        { "data": "groupName"},	
+    		        { "data": "sigTransName"},	
+    		        { "data": "mediaTransName"},	
+    		        { "data": "mediaPassFlag"},	
+    		        { "data": "srtpFlag"},	
+    		        { "data": "regPeriod"},	
+    		        { "data": "regPeriodNat"},	
+    		        { "data": "regPeriodBypass"},	
+    		        { "data": "sessionExpires"},	
+    		        { "data": "sessionMinse"},	
+    		        { "data": "deregDeactFlag"},	
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center'},    
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return getOnOff(data); }},  
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSrtpFlag(data); }},       
+				{'targets': 7, 'className': 'text-center'},    
+				{'targets': 8, 'className': 'text-center'},
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCheck(data); }},  
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+				{'targets': 12, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCheck(data); }},  
+    	 ]
+	});	
+	//	click row
+	tableRealm.on( 'click', 'tr', function () {
+		tableRealm.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	//============================== Realm Group =============================================
+	tableRealmGroup = $('#dtRealmGroup').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipRealmGroup",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "serviceName"},	
+    		        { "data": "elem0"},	
+    		        { "data": "elem1"},	
+    		        { "data": "elem2"},	
+    		        { "data": "elem3"},	
+    		        { "data": "elem4"},	
+    		        { "data": "elem5"},	
+    		        { "data": "elem6"},	
+    		        { "data": "elem7"},	
+    		        { "data": "elem8"},	
+    		        { "data": "elem9"}	
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center'},    
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center'},    
+				{'targets': 6, 'className': 'text-center'},    
+				{'targets': 7, 'className': 'text-center'},    
+				{'targets': 8, 'className': 'text-center'},
+				{'targets': 9, 'className': 'text-center'},
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'}
+    	 ]
+	});
+	//	click row
+	tableRealmGroup.on( 'click', 'tr', function () {
+		tableRealmGroup.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	//============================== Server =============================================
+	tableServer = $('#dtServer').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipServer",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "domain"},	
+    		        { "data": "groupName"},	
+    		        { "data": "serverIPType"},	
+    		        { "data":  "IPPort"},
+    		        { "data": "sigTransName"},	
+    		        { "data": "mediaTransName"},	
+    		        { "data": "srtpFlag"},	
+    		        { "data": "regPeriod"},	
+    		        { "data": "maxCps"},	
+    		        { "data": "maxSession"},	
+    		        { "data": "maxRps"},	
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getServerIPType(data); }}, 
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return full.serverIP + "/" + full.serverPort; }},    
+				{'targets': 5, 'className': 'text-center'},    
+				{'targets': 6, 'className': 'text-center'},    
+				{'targets': 7, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSrtpFlag(data); }},       
+				{'targets': 8, 'className': 'text-center'},
+				{'targets': 9, 'className': 'text-center'},
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+    	 ]
+	});
+	//	click row
+	tableServer.on( 'click', 'tr', function () {
+		tableServer.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	//============================== Server Group =============================================
+	tableServerGroup = $('#dtServerGroup').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipServerGroup",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "opModeServer"},	
+    		        { "data": "pollFlag"},	
+    		        { "data": "serviceName"},	
+    		        { "data": "elem0"},
+    		        { "data": "elem1"},	
+    		        { "data": "elem2"},	
+    		        { "data": "elem3"},	
+    		        { "data": "elem4"},	
+    		        { "data": "elem5"},	
+    		        { "data": "elem6"},	
+    		        { "data": "elem7"},	
+    		        { "data": "elem8"},	
+    		        { "data": "elem9"},
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getOpMode(data); }},
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getPollFlag(data); }},    
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus0, full.pollingTime0); }}, 
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus1, full.pollingTime1); }}, 
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus2, full.pollingTime2); }}, 
+				{'targets': 7, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus3, full.pollingTime3); }}, 
+				{'targets': 8, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus4, full.pollingTime4); }}, 
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus5, full.pollingTime5); }}, 
+				{'targets': 10, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus6, full.pollingTime6); }}, 
+				{'targets': 11, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus7, full.pollingTime7); }}, 
+				{'targets': 12, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus8, full.pollingTime8); }}, 
+				{'targets': 13, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus9, full.pollingTime9); }}, 
+    	 ]
+	});
+	//	click row
+	tableServerGroup.on( 'click', 'tr', function () {
+		tableServerGroup.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	//============================== Service =============================================
+
+	tableService = $('#dtService').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipService",
+        	"type": "post",
+        	"data": function(d){
+        		d.mode = 0
+        	}
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "mode"},	
+    		        { "data": "lGroup0"},	
+    		        { "data": "lGroup1"},	
+    		        { "data": "lGroup2"},	
+    		        { "data": "lGroup3"},	
+    		        { "data": "lGroup4"},	
+    		        { "data": "lGroup5"},	
+    		        { "data": "lGroup6"},	
+    		        { "data": "lGroup7"},	
+    		        { "data": "lGroup8"},	
+    		        { "data": "lGroup9"},	
+    		        { "data": "rGroup0"},	
+    		        { "data": "rGroup1"},	
+    		        { "data": "rGroup2"},	
+    		        { "data": "rGroup3"},	
+    		        { "data": "rGroup4"},	
+    		        { "data": "rGroup5"},	
+    		        { "data": "rGroup6"},	
+    		        { "data": "rGroup7"},	
+    		        { "data": "rGroup8"},	
+    		        { "data": "rGroup9"},	
+    		        { "data": "name"}
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getMode(data); }},    
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center'},    
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center'},    
+				{'targets': 6, 'className': 'text-center'},    
+				{'targets': 7, 'className': 'text-center'},    
+				{'targets': 8, 'className': 'text-center'},
+				{'targets': 9, 'className': 'text-center'},
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+				{'targets': 12, 'className': 'text-center'},
+				{'targets': 13, 'className': 'text-center'},
+				{'targets': 14, 'className': 'text-center'},
+				{'targets': 15, 'className': 'text-center'},
+				{'targets': 16, 'className': 'text-center'},
+				{'targets': 17, 'className': 'text-center'},
+				{'targets': 18, 'className': 'text-center'},
+				{'targets': 19, 'className': 'text-center'},
+				{'targets': 20, 'className': 'text-center'},
+				{'targets': 21, 'className': 'text-center'},
+				{'targets': 22, 'className': 'text-center', 'render': 
+					function (data, type, full, meta){ 
+						return "<button type='button' class='btn btn-xs btn-warning' onclick='moveRouting(\""+data+"\")'>go to setting</button>";
+						}
+				}
+    	 ]
+	});
+	//	click row
+	tableService.on( 'click', 'tr', function () {
+		tableService.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	//====================================== Realm Modal ========================================
+	
+	// Realm 추가버튼
+	$("#btnAddRealm").click(function(){ 
+		validatorRealm.resetForm();
+		$("#frmRealm #hidOpMode").val("2"); // add
+		$("#frmRealm [name=lblClass]").removeClass("state-disabled");
+		$("#frmRealm [name=tdClass]").removeClass("state-disabled-color");
+		
+		setControlInput("frmRealm", "name", '', false); // name
+		
+		var data = tableRealm.rows('.selected').data();
+		var item;
+		if(data.length==0){ // 선택된 item이 없을때
+			
+			setControlInput("frmRealm", "domain", '', false); // domain
+			setControlRadio("frmRealm", "mediaPassFlag", 1, false); // mediaPassFlag
+			setControlCheck("frmRealm", "chkRTP", false, false); // chkRTP
+			setControlCheck("frmRealm", "chkSRTP", false, false); // chkSRTP
+			setControlCheck("frmRealm", "chkRegPeriodBypass", false, false);  // 등록주기관여 
+			setControlCheck("frmRealm", "chkSessionFlag", true, false); // session refresh 사용안함 체크
+			setControlInput("frmRealm", "regPeriod", '3600', false); // public
+			setControlInput("frmRealm", "regPeriodNat", '60', false); // nat
+			
+			listenerRegPeriodBypass(false); // 등록주기관여 
+			listenerSessionRefresh(true); // SESSION Refresh주기
+		
+		}else{ // 선택된 item이 있을때
+			item=data[0];
+		
+			setControlInput("frmRealm", "domain", item.domain, false); // domain
+			
+			//---------------- changable -------------------------------------------
+			setControlRadio("frmRealm", "mediaPassFlag", item.mediaPassFlag, false); // mediaPassFlag
+			setRTP("frmRealm" , item.srtpFlag); // 미디어 Replay 체크
+
+			setControlCheck("frmRealm", "chkRegPeriodBypass", (item.regPeriodBypass==0)?false:true, false);  // 등록주기관여 
+			listenerRegPeriodBypass((item.regPeriodBypass==0)?false:true); // 등록주기관여 
+
+			setControlInput("frmRealm", "regPeriod", item.regPeriod, false); // public
+			setControlInput("frmRealm", "regPeriodNat", item.regPeriodNat, false); // nat
+			setControlCheck("frmRealm", "chkDeregDeactFlag", (item.deregDeactFlag==0)?false:true, false); // 등록해지시 호 자동종료
+			setControlCheck("frmRealm", "chkSessionFlag", (item.sessionFlag==0)?false:true, false); // session refresh 사용안함
+			//setControlInput("frmRealm", "sessionExpires", item.sessionExpires, false); // sessionExpires
+			setControlInput("frmRealm", "sessionExpires", "0", false); // sessionExpires
+			setControlInput("frmRealm", "sessionMinse", item.sessionMinse, false); // sessionMinse
+			
+			listenerMediaPassFlag(item.mediaPassFlag); // 미디어 Replay 체크
+			listenerRegPeriodBypass((item.deregDeactFlag==0)?false:true); // 등록주기관여 
+			listenerSessionRefresh((item.sessionFlag==0)?false:true); // SESSION Refresh주기
+			
+		}
+		
+		$.post("getSipTransportName", {svcType:-1}, function(json2){
+			var data2 = json2.data;
+			if(data.length==0){ // 선택된 item이 없을때
+				setControlSelect("frmRealm", "sigTransName", "Select", data2, '', false);  //시그널 transport 
+			}else{ // 선택된 item이 있을때
+				setControlSelect("frmRealm", "sigTransName", "Select", data2, item.sigTransName, false);  //시그널 transport 
+			}
+		
+			$.post("/getMediaTransportName", {}, function(json){ 
+				var data3 = json.data;
+				
+				if(data.length==0){ // 선택된 item이 없을때
+					setControlSelect("frmRealm", "mediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+					listenerMediaPassFlag(1); // 미디어 Replay 체크
+				}else{ // 선택된 item이 있을때
+					setControlSelect("frmRealm", "mediaTransName", "Select", data, item.mediaTransName, false);  //미디어 TRANSPORT
+				}
+				// show modal
+				showModal($("#modalRealm"));
+				$("#titleModalRealm").html("Add Realm");
+			});
+			
+		});
+	});
+	
+	// Realm 변경버튼
+	$("#btnChangeRealm").click(function(){
+		
+		var data = tableRealm.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit");
+		}else{
+			var item=data[0];
+			validatorRealm.resetForm();
+			$("#frmRealm #hidOpMode").val("3"); // change
+			$("#frmRealm #hidElemType").val(item.elemType);
+			$("#frmRealm [name=lblClass]").addClass("state-disabled");
+			$("#frmRealm [name=tdClass]").addClass("state-disabled-color");
+			
+			setControlInput("frmRealm", "name", item.name, true); // name
+			setControlInput("frmRealm", "domain", item.domain, false); // domain
+			
+			//---------------- changable -------------------------------------------
+			setControlRadio("frmRealm", "mediaPassFlag", item.mediaPassFlag, false); // mediaPassFlag
+			setRTP("frmRealm" , item.srtpFlag); // 미디어 Replay 체크
+
+			setControlCheck("frmRealm", "chkRegPeriodBypass", (item.regPeriodBypass==0)?false:true, false);  // 등록주기관여 
+			listenerRegPeriodBypass((item.regPeriodBypass==0)?false:true); // 등록주기관여 
+
+			setControlInput("frmRealm", "regPeriod", item.regPeriod, false); // public
+			setControlInput("frmRealm", "regPeriodNat", item.regPeriodNat, false); // nat
+			setControlCheck("frmRealm", "chkDeregDeactFlag", (item.deregDeactFlag==0)?false:true, false); // 등록해지시 호 자동종료
+			setControlCheck("frmRealm", "chkSessionFlag", (item.sessionFlag==0)?false:true, false); // session refresh 사용안함
+			//setControlInput("frmRealm", "sessionExpires", item.sessionExpires, false); // sessionExpires
+			setControlInput("frmRealm", "sessionExpires", "0", false); // sessionExpires
+			setControlInput("frmRealm", "sessionMinse", item.sessionMinse, false); // sessionMinse
+			
+			listenerMediaPassFlag(item.mediaPassFlag); // 미디어 Replay 체크
+			listenerRegPeriodBypass((item.deregDeactFlag==0)?false:true); // 등록주기관여 
+			listenerSessionRefresh((item.sessionFlag==0)?false:true); // SESSION Refresh주기
+			
+			//------------------------------------------------------------------------
+			
+			$.post("/getSipTransportName", {svcType:-1}, function(json2){
+				var data2 = json2.data;
+				setControlSelect("frmRealm", "sigTransName", "Select", data2, item.sigTransName, false);  //시그널 transport 
+				
+				$.post("/getMediaTransportName", {}, function(json){
+					var data3 = json.data;
+					setControlSelect("frmRealm", "mediaTransName", "Select", data3, item.mediaTransName, false);  //미디어 TRANSPORT
+					
+					// show modal
+					showModal($("#modalRealm"))	;
+					$("#titleModalRealm").html("Edit Realm");
+				});
+			});	
+		}
+	});
+	
+	// 미디어 Replay 체크
+	$("#frmRealm input:radio[name='mediaPassFlag']").change(function(){
+		listenerMediaPassFlag($(this).val());
+	});
+	
+	// 등록주기관여 체크
+	$("#frmRealm #chkRegPeriodBypass").change(function(){
+		listenerRegPeriodBypass($(this).is(":checked"));
+	});
+	
+	// SESSION Refresh주기 체크
+	$("#frmRealm #chkSessionFlag").change(function(){ 
+		listenerSessionRefresh($(this).is(":checked"));
+		$("#frmRealm").valid();
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveRealm").click(function(){ 
+		var data = tableRealm.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeRealm',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableRealm, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshRealm").click(function(){
+		tableRealm.ajax.reload(null, false);
+	});
+	
+	//  Realm 저장버튼
+	$("#btnSaveRealm").click(function(){
+		var name = $("#frmRealm #name").val();
+		var sigTransName = $("#frmRealm #sigTransName").val();
+		
+		if(name=='' || sigTransName==''){
+ 			$("#frmRealm").valid();
+ 			return;
+ 		}
+		var mediaPassFlag = $("#frmRealm input:radio[name='mediaPassFlag']:checked").val();
+		var mediaTransName = $("#frmRealm #mediaTransName").val();
+		var isRTP=$("#frmRealm input:checkbox[id='chkRTP']").is(":checked"); 
+		var isSRTP=$("#frmRealm input:checkbox[id='chkSRTP']").is(":checked"); 
+		if(mediaPassFlag==1){ //ON
+			if(mediaTransName=='' || (!isRTP && !isSRTP)){
+				$("#frmRealm").valid();
+				return;
+			}
+		}
+// 		var sessionRefresh = getControlCheck("frmRealm", "chkSessionFlag");
+// 		if(!sessionRefresh){
+// 			if($("#frmRealm #sessionExpires").val()=='' || $("#frmRealm #sessionMinse").val()==''){
+// 				$("#frmRealm").valid();
+// 				return;
+// 			}
+// 		}
+		showConfirm('Confirm',  "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmRealm").submit();  
+		});
+	});
+	
+	validatorRealm = $('#frmRealm').validate({
+		rules : {
+			name:{required : true},
+			sigTransName:{required : true},
+			mediaTransName:{ required: function(element){
+					var mediaPassFlag = $("#frmRealm input:radio[name='mediaPassFlag']:checked").val();
+					var mediaTransName = $("#frmRealm #mediaTransName").val();
+					if(mediaPassFlag==1 && mediaTransName=='') return true;
+					return false
+			}},
+			chkRTP:{ require_from_group: [1, ".RTP-group"] }, // 1 :  at least one is complete
+			chkSRTP:{ require_from_group: [1, ".RTP-group"] },
+		},
+		messages : {
+			name:{required : 'Input name'},
+			sigTransName:{required : 'Select a Signal Transport'},
+			mediaTransName:{required : 'Select a Media Transport'},
+ 			chkRTP:{ require_from_group : 'Select RTP'},
+  			chkSRTP:{ require_from_group : 'Select RTP'},
+		},
+		groups: {
+		    srtpGroup: "chkRTP chkSRTP"  // srtpGroup : arbitrary name
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr('name')=='chkRTP' || element.attr('name')=='chkSRTP'){
+				error.insertAfter("#frmRealm #lblRTP");
+			}else{
+				error.insertAfter(element.parent());
+			}
+		}
+	});
+	
+	
+	$("#frmRealm").ajaxForm({
+		url: "/takeRealm",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+
+			var opMode=$("#frmRealm #hidOpMode").val(); 
+			
+			//----------- checkbox 처리-----------------------------
+			//RTP
+			var srtpFlag = getSrtpValue("frmRealm");
+			arr.push({name:'srtpFlag', value: srtpFlag});   
+			
+			//등록주기관여(체크==1)
+			var regPeriodBypass=$("#frmRealm input:checkbox[id='chkRegPeriodBypass']").is(":checked");  
+			arr.push({name:'regPeriodBypass', value: regPeriodBypass?1:0});
+			
+			// 등록해지 호 자동종료 (체크==1)
+			var deregDeactFlag=$("#frmRealm input:checkbox[id='chkDeregDeactFlag']").is(":checked"); 
+			arr.push({name:'deregDeactFlag', value: deregDeactFlag?1:0});
+			
+			// sessionFlag(체크==0)
+			var sessionFlag=$("#frmRealm input:checkbox[id='chkSessionFlag']").is(":checked"); 
+			arr.push({name:'sessionFlag', value: sessionFlag?0:1});
+
+		
+			if(opMode==3){
+				var item = tableRealm.rows('.selected').data()[0];
+				//------------ disable fileds 처리 ------------------------
+//  				arr.push({name:'name', value: item.name}); 
+//  				arr.push({name:'domain', value: item.domain}); 
+//  				arr.push({name:'sigTransName', value: item.sigTransName}); 
+//  				arr.push({name:'mediaPassFlag', value: item.mediaPassFlag}); 
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalRealm", tableRealm, null);
+		}
+	});
+	
+	
+	//====================================== Realm Group Modal ========================================
+	
+	// Realm Group 추가버튼
+	$("#btnAddRealmGroup").click(function(){
+		
+		validatorRealmGroup.resetForm();
+		$("#frmRealmGroup #hidOpMode").val("2"); // add
+		$("#frmRealmGroup [name=lblClass]").removeClass("state-disabled");
+
+		setControlInput("frmRealmGroup", "name", '', false); 
+
+		$.post("getSipRealmNameList", {elemType:0}, function(json){
+			var data=json.data;
+			setControlDualList("frmRealmGroup", "nameList", null, data, '', false);
+
+			showModal($("#modalRealmGroup"))	;
+			$("#titleModalRealmGroup").html("Add Realm Group");
+			
+		});
+	});
+	
+	// Realm Group 변경버튼
+	$("#btnChangeRealmGroup").click(function(){
+		var data = tableRealmGroup.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			validatorRealmGroup.resetForm();
+			$("#frmRealmGroup #hidOpMode").val("3"); // change
+			$("#frmRealmGroup [name=lblClass]").addClass("state-disabled");
+			
+			setControlInput("frmRealmGroup", "name", item.name, true); 
+			
+			$.post("getSipRealmNameList", {elemType:0}, function(json){
+				var data=json.data;
+				setControlDualList("frmRealmGroup", "nameList", getElemList(item), data, '', false);
+				
+				showModal($("#modalRealmGroup"))	;
+				$("#titleModalRealmGroup").html("Edit Realm Group");
+				
+			});
+		}
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveRealmGroup").click(function(){ 
+		var data = tableRealmGroup.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete");
+		}else{
+			showConfirm('Confirm', "Do you want to delete [" +data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeRealmGroup',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableRealmGroup, null);
+				    	tableRealm.ajax.reload(null, false); // realm도 refresh~
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshRealmGroup").click(function(){
+		tableRealmGroup.ajax.reload(null, false);
+	});
+	
+	
+	//  Realm Group 저장
+	$("#btnSaveRealmGroup").click(function(){
+		
+// 		var values = $.map($('#nameList option'), function(ele) {return ele.value });
+// 		var selected = $.map($('#nameList option:selected'), function(ele) {return ele.value });
+// 		var not_selected = $.map($('#nameList option:not(:selected)'), function(ele) {return ele.value });
+		
+		var name = $("#frmRealmGroup #name").val();
+		if(name=='' ){
+ 			$("#frmRealmGroup").valid();
+ 			return;
+ 		}
+		
+		var selected = $.map($('#frmRealmGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+		if(selected==''){
+			showMsg("Warning", "Input Group List");
+			return;
+		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmRealmGroup").submit();  
+		});
+		
+	});
+	
+	//  Realm Group validator
+	validatorRealmGroup = $('#frmRealmGroup').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			name:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmRealmGroup").ajaxForm({
+		url: "/takeRealmGroup",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			var selected = $.map($('#frmRealmGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<selected.length; i++){
+				arr.push({name:'elem'+i, value:selected[i]}); 
+			}
+			
+			var opMode=$("#frmRealmGroup #hidOpMode").val(); 
+			if(opMode==3){
+				var item = tableRealmGroup.rows('.selected').data()[0];
+ 				arr.push({name:'name', value: item.name}); 
+ 				arr.push({name:'serviceName', value: item.serviceName}); 
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalRealmGroup", tableRealmGroup, null);
+			tableRealm.ajax.reload(null, false); // realm도 refresh~
+		}
+	});
+	
+	//====================================== Server Modal ========================================
+	
+	// Server 추가버튼
+	$("#btnAddServer").click(function(){ 
+		validatorServer.resetForm();
+		$("#frmServer #hidOpMode").val("2"); // add
+		$("#frmServer [name=lblClass]").removeClass("state-disabled");
+		$("#frmServer [name=tdClass]").removeClass("state-disabled-color");
+		
+ 		setControlInput("frmServer", "name", '', false); // name
+ 		
+ 		var data = tableServer.rows('.selected').data();
+ 		var item;
+		if(data.length==0){
+	 		setControlInput("frmServer", "domain", '', false); // domain
+	 		setControlRadio("frmServer", "serverIPType",  0, false); // serverIPType
+	 		setControlInput("frmServer", "serverIP", '', false); // serverIP
+	 		setControlInput("frmServer", "serverPort", '', false); // serverPort
+	 		
+	 		setControlInput("frmServer", "regPeriod", "3600", false);
+	 		setControlInput("frmServer", "maxCps", "100", false);
+	 		setControlInput("frmServer", "maxSession", "100", false);
+	 		setControlInput("frmServer", "maxRps", "1000", false);
+		}else{
+			item=data[0];
+			
+			setControlInput("frmServer", "domain",  item.domain, false); // domain
+	 		setControlRadio("frmServer", "serverIPType",  item.serverIPType, false); // serverIPType
+	 		setControlInput("frmServer", "serverIP",  item.serverIP, false); // serverIP
+	 		setControlInput("frmServer", "serverPort",  item.serverPort, false); // serverPort
+	 		
+	 		setRTP("frmServer", item.srtpFlag);
+	 		
+	 		setControlInput("frmServer", "regPeriod", item.regPeriod, false);
+	 		setControlInput("frmServer", "maxCps", item.maxCps, false);
+	 		setControlInput("frmServer", "maxSession", item.maxSession, false);
+	 		setControlInput("frmServer", "maxRps", item.maxRps, false);
+		}
+ 		
+		$.post("/getSipTransportName", {svcType:-1}, function(json2){
+			var data2 = json2.data;
+			if(data.length==0){
+				setControlSelect("frmServer", "sigTransName", "Select", data2, '', false);  //시그널 transport 
+			}else{
+				setControlSelect("frmServer", "sigTransName", "Select", data2, item.sigTransName, false);  //시그널 transport 
+			}
+		
+			$.post("/getMediaTransportName", {}, function(json){ 
+				var data3 = json.data;
+				if(data.length==0){
+					setControlSelect("frmServer", "mediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+				}else{
+					setControlSelect("frmServer", "mediaTransName", "Select", data, item.mediaTransName, false);  //미디어 TRANSPORT
+				}
+				// show modal
+				showModal($("#modalServer"));
+ 				$("#titleModalServer").html("Add Server");
+			});
+			
+		});		
+			
+	});
+	
+	// Server 변경버튼
+	$("#btnChangeServer").click(function(){
+		var data = tableServer.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+  			validatorServer.resetForm();
+		
+			$("#frmServer #hidOpMode").val("3"); // change
+			$("#frmServer #hidElemType").val(item.elemType); // T_ELEM_TYPE
+			$("#frmServer [name=lblClass]").addClass("state-disabled");
+			$("#frmServer [name=tdClass]").addClass("state-disabled-color");
+			
+			setControlInput("frmServer", "name", item.name, true); // name
+	 		setControlInput("frmServer", "domain",  item.domain, false); // domain
+	 		setControlRadio("frmServer", "serverIPType",  item.serverIPType, false); // serverIPType
+	 		setControlInput("frmServer", "serverIP",  item.serverIP, false); // serverIP
+	 		setControlInput("frmServer", "serverPort",  item.serverPort, false); // serverPort
+	 		
+	 		setRTP("frmServer", item.srtpFlag);
+	 		
+	 		setControlInput("frmServer", "regPeriod", item.regPeriod, false);
+	 		setControlInput("frmServer", "maxCps", item.maxCps, false);
+	 		setControlInput("frmServer", "maxSession", item.maxSession, false);
+	 		setControlInput("frmServer", "maxRps", item.maxRps, false);
+			
+ 			$.post("/getSipTransportName", {svcType:-1}, function(json2){
+				var data2 = json2.data;
+				setControlSelect("frmServer", "sigTransName", "Select", data2, item.sigTransName, false);  //시그널 transport 
+			
+				$.post("/getMediaTransportName", {}, function(json){ 
+					var data = json.data;
+					setControlSelect("frmServer", "mediaTransName", "Select", data, item.mediaTransName, false);  //미디어 TRANSPORT
+					
+					// show modal
+					showModal($("#modalServer"));
+	 				$("#titleModalServer").html("Edit Server");
+				});
+				
+			});	
+		}
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveServer").click(function(){ 
+		var data = tableServer.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeServer',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableServer, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshServer").click(function(){
+		tableServer.ajax.reload(null, false);
+	});
+	
+	//  Server 저장버튼
+	$("#btnSaveServer").click(function(){ 
+
+		var name = $("#frmServer #name").val();
+ 		var sigTransName = $("#frmServer #sigTransName").val();
+ 		var serverIP = $("#frmServer #serverIP").val();
+ 		var serverPort = $("#frmServer #serverPort").val();
+ 		//var mediaTransName = $("#frmServer #mediaTransName").val();
+ 		
+		if(name=='' || sigTransName=='' || serverIP=='' || serverPort=='' ){
+ 			$("#frmServer").valid();
+ 			return;
+ 		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmServer").submit();  
+		});
+	});
+	
+	validatorServer = $('#frmServer').validate({
+		rules : {
+			name:{required : true},
+			sigTransName:{required : true},
+			serverIP:{required : true},
+			serverPort:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+			sigTransName:{required : 'Select Signal Transport'},
+			serverIP:{required : 'Input IP'},
+			serverPort:{required : 'Input port'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	
+	$("#frmServer").ajaxForm({
+		url: "/takeServer",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			//------------- checkbox 처리 ----------------------
+			//RTP
+			var srtpFlag = getSrtpValue("frmServer");
+			arr.push({name:'srtpFlag', value: srtpFlag});   
+			
+			
+			var opMode=$("#frmServer #hidOpMode").val(); 
+			if(opMode==3){
+				var item = tableServer.rows('.selected').data()[0];
+				
+//  				arr.push({name:'name', value: item.name}); 
+//  				arr.push({name:'domain', value: item.domain}); 
+//  				arr.push({name:'sigTransName', value: item.sigTransName}); 
+//  				arr.push({name:'serverIPType', value: item.serverIPType}); 
+//  				arr.push({name:'serverIP', value: item.serverIP}); 
+//  				arr.push({name:'serverPort', value: item.serverPort}); 
+//  				arr.push({name:'mediaTransName', value: item.mediaTransName}); 
+ 				
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalServer", tableServer, null);
+		}
+	});
+	
+	//====================================== Server Group Modal ========================================
+	
+	// Server Group 추가버튼
+	$("#btnAddServerGroup").click(function(){
+ 		validatorServerGroup.resetForm();
+		$("#frmServerGroup #hidOpMode").val("2"); // add
+		$("#frmServerGroup [name=lblClass]").removeClass("state-disabled");
+		
+		setControlInput("frmServerGroup", "name", '', false); 
+		setControlRadio("frmServerGroup", "opModeServerGroup", 0, false); 
+		setControlCheck("frmServerGroup", "pollFlag", false, false); 
+		
+ 		$.post("getSipServerNameList", {elemType:1}, function(json){
+ 			var data=json.data;
+			
+			setControlDualList("frmServerGroup", "nameList", null, data, '', false);
+			
+			showModal($("#modalServerGroup"));
+			$("#titleModalServerGroup").html("Add Server Group");
+			
+ 		});
+	});
+	
+	// Server Group 변경버튼
+	$("#btnChangeServerGroup").click(function(){
+		var data = tableServerGroup.rows('.selected').data(); 
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			validatorServerGroup.resetForm();
+			$("#frmServerGroup #hidOpMode").val("3"); // change
+			$("#frmServerGroup [name=lblClass]").addClass("state-disabled");
+			
+			setControlInput("frmServerGroup", "name", item.name, true); 
+			setControlRadio("frmServerGroup", "opModeServerGroup", item.opModeServerGroup, false);
+			setControlCheck("frmServerGroup", "pollFlag", (item.pollFlag==0)?false:true, false); 
+			
+			$.post("getSipServerNameList", {elemType:1}, function(json){
+				var data=json.data;
+				setControlDualList("frmServerGroup", "nameList", getElemList(item), data, '', false);
+				
+				showModal($("#modalServerGroup"))	;
+				$("#titleModalServerGroup").html("Edit Server Group");
+				
+			});
+		}
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveServerGroup").click(function(){ 
+		var data = tableServerGroup.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeServerGroup',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableServerGroup, null);
+				    	tableServer.ajax.reload(null, false); // server도 refresh~
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshServerGroup").click(function(){
+		tableServerGroup.ajax.reload(null, false);
+	});
+	
+	//  Server Group 저장
+	$("#btnSaveServerGroup").click(function(){
+		
+		var name = $("#frmServerGroup #name").val();
+		if(name==''){
+ 			$("#frmServerGroup").valid();
+ 			return;
+ 		}
+		
+		var selected = $.map($('#frmServerGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+		if(selected==''){
+			showMsg("Warning", "Input Group List");
+			return;
+		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmServerGroup").submit();  
+		});
+		
+	});
+	
+	// Server Group validator
+	validatorServerGroup = $('#frmServerGroup').validate({
+		rules : {
+			name: {required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmServerGroup").ajaxForm({
+		url: "/takeServerGroup",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			//--------------- check 처리 ---------------------------
+			var pollFlag = getControlCheck("frmServerGroup", "pollFlag");
+			arr.push({name:'pollFlag', value: (pollFlag)?1:0}); 
+			
+			
+			//--------------- group list ------------------------------
+			var selected = $.map($('#frmServerGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<selected.length; i++){
+				arr.push({name:'elem'+i, value:selected[i]}); 
+			}
+			
+			var opMode=$("#frmServerGroup #hidOpMode").val(); 
+
+			if(opMode==3){
+				var item = tableServerGroup.rows('.selected').data()[0];
+				
+				arr.push({name:'name', value: item.name}); 
+ 				
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalServerGroup", tableServerGroup, null);
+			tableServer.ajax.reload(null, false); // server도 refresh~
+		}
+	});
+	
+	
+	//====================================== Service Modal ========================================
+	
+	// Service Group 추가버튼
+	$("#btnAddService").click(function(){ 
+		validatorService.resetForm();
+		$("#frmService #hidOpMode").val("2"); // add
+		//$("#frmService [name=lblClass]").removeClass("state-disabled");
+		$("#frmService [name=lblClass]").addClass("state-disabled"); // ==> 일단 disabled
+		$("#frmService [name=tdClass]").addClass("state-disabled-color");
+		
+		setControlInput("frmService", "name", '', false); 
+ 		setControlRadio("frmService", "mode", 0, true);  // default : Server/Realm 
+ 		
+ 		setServiceGroupList(null, "Add");
+	});	
+	
+	// Service Group 변경버튼
+	$("#btnChangeService").click(function(){
+		var data = tableService.rows('.selected').data(); 
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			validatorService.resetForm();
+			$("#frmService #hidOpMode").val("3"); // change
+			$("#frmService [name=lblClass]").addClass("state-disabled");
+			$("#frmService [name=tdClass]").addClass("state-disabled-color");
+			
+			setControlInput("frmService", "name", item.name, true); 
+			setControlRadio("frmService", "mode", item.mode, false);
+
+			setServiceGroupList(item, "Edit");
+		}
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveService").click(function(){ 
+		var data = tableService.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeService',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableService, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshService").click(function(){
+		tableService.ajax.reload(null, false);
+	});
+	
+	//  Server Group 저장
+	$("#btnSaveService").click(function(){
+		
+		var name = $("#frmService #name").val();
+		if(name=='' ){
+ 			$("#frmService").valid();
+ 			return;
+ 		}
+		
+		var selected1 = $.map($('#frmService #nameList1 option:not(:selected)'), function(ele) { return ele.value });
+		if(selected1==''){
+			showMsg("Warning", "Input L_GROUP List");
+			return;
+		}
+		var selected2 = $.map($('#frmService #nameList2 option:not(:selected)'), function(ele) { return ele.value });
+		if(selected2==''){
+			showMsg("Warning", "Input R_GROUP List");
+			return;
+		}
+		
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmService").submit();  
+		});
+		
+	});
+	
+	// Service validator
+	validatorService = $('#frmService').validate({
+		rules : {
+			name:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmService").ajaxForm({
+		url: "/takeService",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			var serverList = $.map($('#frmService #nameList1 option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<serverList.length; i++){
+				arr.push({name:'lGroup'+i, value:serverList[i]}); 
+			}
+			
+			var realmList = $.map($('#frmService #nameList2 option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<realmList.length; i++){
+				arr.push({name:'rGroup'+i, value:realmList[i]}); 
+			}
+			
+ 			var opMode=$("#frmServerGroup #hidOpMode").val(); 
+ 			if(opMode==3){
+ 				var item = tableService.rows('.selected').data()[0];
+  				arr.push({name:'name', value: item.name}); 
+  				arr.push({name:'mode', value: item.mode}); 
+ 			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalService", tableService, null);
+			tableServerGroup.ajax.reload(null, false); // ServerGroup도 refresh~
+			tableRealmGroup.ajax.reload(null, false); // RealmGroup도 refresh~
+		}
+	});
+	
+	
+
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+loadScript("/resources/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", function(){
+	loadScript("/resources/scripts/voIP/dualList.js", null);
+});
+
+
+//======================== functions ===================================================================
+
+function moveRouting(val){
+	$("#hidRoutingServiceName").val(val);
+	$("#menuRouting").click();
+}
+
+
+function listenerMediaPassFlag(val){ 
+	if(val==0){ //OFF
+		// disable 
+		$("#frmRealm [name=lblMediaPassFlag]").addClass("state-disabled");
+		
+		$("#frmRealm #mediaTransName").attr("disabled", true);
+		$("#frmRealm input:checkbox[id='chkRTP']").attr("disabled", true);
+		$("#frmRealm input:checkbox[id='chkSRTP']").attr("disabled", true);
+	}else{ // ON
+		$("#frmRealm [name=lblMediaPassFlag]").removeClass("state-disabled");
+		
+		$("#frmRealm #mediaTransName").attr("disabled", false);
+		$("#frmRealm input:checkbox[id='chkRTP']").attr("disabled", false);
+		$("#frmRealm input:checkbox[id='chkSRTP']").attr("disabled", false);
+	}
+}
+
+function listenerRegPeriodBypass(val){
+	if(val){
+		$("#frmRealm [name=lblRegPeriodBypass]").addClass("state-disabled");
+		
+		$("#frmRealm #regPeriod").attr("disabled", true);
+		$("#frmRealm #regPeriodNat").attr("disabled", true);
+		
+		//$("#frmRealm #regPeriod").val(3600);
+		//$("#frmRealm #regPeriodNat").val(60);
+		
+	}else{
+		$("#frmRealm [name=lblRegPeriodBypass]").removeClass("state-disabled");
+		
+		$("#frmRealm #regPeriod").attr("disabled", false);
+		$("#frmRealm #regPeriodNat").attr("disabled", false);
+		
+		//$("#frmRealm #regPeriod").val('');
+		//$("#frmRealm #regPeriodNat").val('');
+	}
+}
+
+function listenerSessionRefresh(val){
+	if(!val){
+		$("#frmRealm [name=lblSessionRefresh]").removeClass("state-disabled");
+		$("#frmRealm #sessionExpires").attr("disabled", false);
+		$("#frmRealm #sessionMinse").attr("disabled", false);
+		
+		$("#frmRealm #sessionExpires").val('');
+		$("#frmRealm #sessionMinse").val('');
+// 		$("#frmRealm #sessionExpires").rules("add",{
+// 			required: true,
+// 			messages: {
+// 				required : ' Expires를 입력해 주세요'
+// 			}
+// 		});
+// 		$("#frmRealm #sessionMinse").rules("add",{
+// 			required: true,
+// 			messages: {
+// 				required : 'MINSE를 입력해 주세요'
+// 			}
+// 		});
+	}else{ // 사용안함체크
+		$("#frmRealm [name=lblSessionRefresh]").addClass("state-disabled");
+	
+		$("#frmRealm #sessionExpires").attr("disabled", true);
+		$("#frmRealm #sessionMinse").attr("disabled", true);
+		
+		$("#frmRealm #sessionExpires").val(0);
+		$("#frmRealm #sessionMinse").val(0);
+		
+// 		$("#frmRealm #sessionExpires").rules("remove");
+// 		$("#frmRealm #sessionMinse").rules("remove");
+		
+		
+		
+	}
+}	
+
+
+
+
+
+
+function getElemList(item){
+	var list = [];
+	if(item.elem0 != '') list.push(item.elem0);
+	if(item.elem1 != '') list.push(item.elem1);
+	if(item.elem2 != '') list.push(item.elem2);
+	if(item.elem3 != '') list.push(item.elem3);
+	if(item.elem4 != '') list.push(item.elem4);
+	if(item.elem5 != '') list.push(item.elem5);
+	if(item.elem6 != '') list.push(item.elem6);
+	if(item.elem7 != '') list.push(item.elem7);
+	if(item.elem8 != '') list.push(item.elem8);
+	if(item.elem9 != '') list.push(item.elem9);
+	return list;
+}
+function getLGroupList(item){
+	var list = [];
+	if(item.lGroup0 != '') list.push(item.lGroup0);
+	if(item.lGroup1 != '') list.push(item.lGroup1);
+	if(item.lGroup2 != '') list.push(item.lGroup2);
+	if(item.lGroup3 != '') list.push(item.lGroup3);
+	if(item.lGroup4 != '') list.push(item.lGroup4);
+	if(item.lGroup5 != '') list.push(item.lGroup5);
+	if(item.lGroup6 != '') list.push(item.lGroup6);
+	if(item.lGroup7 != '') list.push(item.lGroup7);
+	if(item.lGroup8 != '') list.push(item.lGroup8);
+	if(item.lGroup9 != '') list.push(item.lGroup9);
+	return list;
+}
+function getRGroupList(item){
+	var list = [];
+	if(item.rGroup0 != '') list.push(item.rGroup0);
+	if(item.rGroup1 != '') list.push(item.rGroup1);
+	if(item.rGroup2 != '') list.push(item.rGroup2);
+	if(item.rGroup3 != '') list.push(item.rGroup3);
+	if(item.rGroup4 != '') list.push(item.rGroup4);
+	if(item.rGroup5 != '') list.push(item.rGroup5);
+	if(item.rGroup6 != '') list.push(item.rGroup6);
+	if(item.rGroup7 != '') list.push(item.rGroup7);
+	if(item.rGroup8 != '') list.push(item.rGroup8);
+	if(item.rGroup9 != '') list.push(item.rGroup9);
+	return list;
+}
+
+function getElem(data, activateElemName, pollingStatus, pollingTime){
+	if(data=='') return data;
+	if(data==activateElemName){
+		data+="(*)";
+	}
+	
+	var color='';
+	if(pollingStatus==0) color = 'black';
+	else if(pollingStatus==1) color = 'red';
+	else if(pollingStatus==2) color = 'blue';
+	
+	return '<a href="javascript:void(0);" title="'+pollingTime+'" style="color:'+color+'">'+data+'</a>';
+}
+// function getElem(elem, activateElemName){
+// 	if(elem=='' || elem != activateElemName) return elem;
+// 	else return elem + "(*)";
+// }
+
+</script>

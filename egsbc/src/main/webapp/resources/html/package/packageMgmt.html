@@ -1,0 +1,460 @@
+<!-- widget grid -->
+<section id="widget-grid" >
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="true" >
+
+				<header>
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Package </h2>
+				</header>
+
+				<!-- widget div-->
+				<div class="div-widget" >
+<!-- 					<form class="smart-form" id="frmUpload" novalidate="novalidate" > -->
+<!-- 						<table border="0" style="width:800px"> -->
+<!-- 						<tr >	 -->
+<!-- 							<td style="width:100px" class="td-label">Host</td> -->
+<!-- 							<td style="width:250px"> -->
+<!-- 								<label class="select" > -->
+<!-- 									<select  id="host" name="host"> -->
+<!-- 										<option value="">choose host...</option> -->
+<!-- 										<option value="0">A</option> -->
+<!-- 										<option value="1">B</option> -->
+<!-- 									</select> <i></i>  -->
+<!-- 								</label> -->
+<!-- 							</td> -->
+<!-- 							<td></td> -->
+<!-- 							<td></td> -->
+<!-- 						</tr> -->
+<!-- 						<tr>	 -->
+<!-- 							<td class="td-label">Package File</td> -->
+<!-- 							<td style="width:500px" colspan="2"> -->
+<!-- 								<label for="file" class="input input-file"> -->
+<!-- 										<div class="button btn-browse"> -->
+<!-- 											<input type="file" name="file" onchange="this.parentNode.nextSibling.value = this.value" >Browse -->
+<!-- 										</div><input type="text" id="txtFile" name="txtFile" placeholder="Include some files" readonly=""> -->
+<!-- 								</label> -->
+<!-- 							</td> -->
+<!-- 							<td class="td-label"> -->
+<!-- 								<button type="button" class="btn btn-default btn-upload" id="btnUpload">Upload</button> -->
+<!-- 							</td> -->
+<!-- 						</tr> -->
+<!-- 						</table> -->
+<!-- 					</form> -->
+					
+					
+					<table id="dtPackage" class="table table-striped table-bordered table-hover"   >
+						<thead>
+						<tr>
+							<th rowspan="2" class="text-center">Host</th>
+							<th colspan="3" class="text-center">Package Information</th>
+							<th rowspan="2" class="text-center">Validation</th>
+							<th rowspan="2" class="text-center">Running Status</th>
+						</tr>
+						<tr>
+							<th class="text-center">Version</th>
+							<th class="text-center">Creation Date</th>
+							<th class="text-center">Installation Date</th>
+						</tr>
+					</thead>
+					</table>
+					<div class="form-group text-right">
+						<button class="btn btn-default btn-checkValidity" id="btnCheckValidity" >Check Validity</button>
+						<button class="btn btn-default btn-detail" id="btnDetail" >Detail</button>
+						<button class="btn btn-default btn-apply" id="btnApply">Apply</button>
+						<button class="btn btn-default btn-delete" id="btnRemove" >Delete</button>
+						<button class="btn btn-default btn-refresh" id="btnRefresh">Refresh</button>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+<!-- Modal Package -->
+  <div class="modal " id="modalPackage" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:800px">
+      <div class="modal-content">
+        <div class="modal-header " style="height:40px;padding-top:10px;">
+          <div class="modal-title" id="titleModalPackage"></div>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row" style="border:0px solid red;padding:0 10px">
+				
+					<form class="smart-form" id="frmPackage"  novalidate="novalidate">
+						
+						<div  style="float:left;border:0px solid red;width:260px">
+							
+							<table width="100%" border="0" style="margin:0 auto;">
+							<tr>
+								<td colspan="2" class="td-label"><strong><i class="fa fa-caret-right"></i> Package Details</strong></td>
+							</tr>
+							<tr>
+								<td class="td-label"><strong>Item</strong></td>
+								<td class="td-label"><strong>Content</strong></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">Version</td>
+								<td><label id="version"></label></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">Creation Date</td>
+								<td><label id="dateBuild"></label></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">Installation Date</td>
+								<td><label id="dateInstall"></label></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">File Size</td>
+								<td><label id="size"></label></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">Builder</td>
+								<td><label id="builder"></label></td>
+							</tr>
+							<tr> 
+ 								<td colspan="2" class="td-hr"><hr class="hr-form" /></td> 
+ 							</tr> 
+							<tr>	
+								<td class="td-label">License</td>
+								<td><label id="license"></label></td>
+							</tr>
+							</table>
+						</div>
+						<div style="float:left;border:0px solid red;width:450px;padding-left:20px">
+							<table width="100%" border="0" style="margin:0 auto;">
+							<tr>
+								<td colspan="2" class="td-label"><strong><i class="fa fa-caret-right"></i> Package Configuration Details</strong></td>
+							</tr>
+							<tr> 
+ 								<table width="100%" border="0" style="margin:0 auto;" id="tblDetail">
+ 								<tr>
+ 									<td class="td-label" ><strong>Binary Name</strong></td>
+ 									<td class="td-label" ><strong>Version</strong></td>
+ 									<td class="td-label" ><strong>Size(bytes)</strong></td>
+ 								</tr>
+ 								
+ 								</table>
+ 							</tr> 
+							</table>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;margin-top:10px;">
+		          	<button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+	        	</div>
+					
+			</div>
+		</div>
+	</div>
+</div>								
+
+
+<script type="text/javascript">
+
+var tablePackage;
+var validatorUpload;
+
+var pagefunction = function() {
+	
+	//alert('load');
+		
+	tablePackage = $('#dtPackage').DataTable({
+		"sDom": sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+			"processing": true,
+        "ajax": {
+        	url: "/getPackage",
+        	type: "post",
+        	"data": function(d){
+        		d.side = -1
+        	}
+        },
+	    "columns": [
+			{ "data": "side"},        	
+	        { "data": "pkgVer" }, 	 
+	        { "data": "dateBuild"},		
+	        { "data": "dateInstall" },	
+	        { "data": "validate" }, 	 
+	        { "data": "running"}, 		
+	       
+	    ],
+		'columnDefs': [
+			{'targets': 0, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSide(data); }}, 
+			{'targets': 1, 'className': 'text-center' },
+			{'targets': 2, 'className': 'text-center' },    
+			{'targets': 3, 'className': 'text-center'},     
+			{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return (data==1)?"OK":"<span style='color:"+PACKAGE_NOT_VALIDATE+"'>NOK</span>"; }},
+			{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return  (data==1)?"Running":"";}}, 
+		],
+			'order': [[0, 'asc'],[1, 'asc']],
+		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+			if(aData.running=="1"){
+				$('td', nRow).css('color', PACKAGE_RUNNING_COLOR);
+			}
+            }
+	});
+	
+	//		click row
+	tablePackage.on( 'click', 'tr', function () {
+		tablePackage.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	
+	//============== upload ===========================================
+	
+	$("#frmUpload #btnUpload").click(function(){
+		var host = getControlInput("frmUpload", "host");
+		if(host ==''){
+			$("#frmUpload").valid();
+			return;
+		}
+		
+		var filePath = getControlInput("frmUpload", "txtFile");
+		if(filePath==''){
+			showMsg("Warning", "Input a file to upload.");
+			return;
+		}
+		
+		var fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length);
+		
+		//showConfirm('Confirm', "Side " + getSideValue(host) + "시스템에 선택하신 패키지 " + fileName + "을 업로드 하시겠습니까?");
+		showConfirm('Confirm', "Do you want to upload [ host : " + getSideValue(host) + ", package :  " + fileName + "] ?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmUpload").submit();  
+		});
+	});
+	
+	validatorUpload = $('#frmUpload').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			host:{required : true},
+		},
+		errorPlacement : function(error, element) {
+				error.insertAfter(element.parent());
+		},
+	});
+	
+	
+	$("#frmUpload").ajaxForm({
+		url:"uploadPackage",
+		type:"POST",
+		enctype: "multipart/form-data",
+		beforeSubmit: function(arr, $form, options){
+		},
+		success: function(responseText, statusText, xhr, $form){
+			
+			//alert(responseText.result);
+			
+			// reset form control
+			setControlInput("frmUpload", "host", '', false);
+			setControlInput("frmUpload", "txtFile", '', false);
+			
+			//tablePackage.ajax.reload(null, false);
+			processResult(responseText.result, null, tablePackage, null);
+			
+			// refresh this page (같은페이지에서 upload여러번 못함)
+			var thisUrl = location.href;
+			var emptyUrl = thisUrl.substring(0, thisUrl.indexOf("/html/")+6) + "empty.html";
+			location.href =  emptyUrl;
+			location.href = thisUrl;
+			
+		},
+		error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+
+    });
+	
+	//============== modal ===========================================
+	// Detail
+	$("#btnDetail").click(function(){  
+		var data = tablePackage.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to view detail.");
+		}else{
+			var item=data[0];
+			
+			$("#frmPackage #version").html(item.pkgVer);
+			$("#frmPackage #dateBuild").html(item.dateBuild);
+			$("#frmPackage #dateInstall").html(item.dateInstall);
+			
+			$("#frmPackage #size").html(item.size);
+			$("#frmPackage #builder").html(item.builder);
+			$("#frmPackage #license").html(item.license);
+			
+			
+			$.post("getPackageBlock", {side: item.side, pkgVer: item.pkgVer}, function(json){
+				var data = json.data;
+				for(var i=0; i<data.length; i++){
+					
+					$("#tblDetail").append(
+					'<tr>'+ 
+						'<td colspan="3" class="td-hr"><hr class="hr-form" /></td>'+ 
+					'</tr>'+ 
+					'<tr>'+
+						'<td class="td-label" >'+data[i].blkName+'</td>'+
+						'<td class="td-label" >'+data[i].pkgVer+'</td>'+
+						'<td class="td-label" >'+data[i].blkSize+'</td>'+
+					'</tr>');
+				}
+				
+				
+				// show modal
+				showModal($("#modalPackage"));
+				$("#titleModalPackage").html(PACKAGE_DETAIL_TITLE);
+			});
+			
+		
+		}
+	});
+	
+	// Check Validity
+	$("#btnCheckValidity").click(function(){  
+		var data = tablePackage.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to check validity.");
+		}else{
+			showConfirm('Confirm', "Do you want to check validity [ host : " + getSideValue(data[0].side) + ", version : " + data[0].pkgVer + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=1; //  check
+				$.ajax({
+					url: '/takePackage',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tablePackage, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	// Apply
+	$("#btnApply").click(function(){  
+		var data = tablePackage.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to apply.");
+		}else{
+			showConfirm('Confirm', "Do you want to apply [ host : " + getSideValue(data[0].side) + ", version : " + data[0].pkgVer + "] ?<br /><i class='fa fa-exclamation-triangle' style='color:red'></i> you must restart sysem to apply the revised configutations.");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=5; // apply opMode
+				$.ajax({
+					url: '/takePackage',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tablePackage, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	// delete
+	$("#btnRemove").click(function(){ 
+		var data = tablePackage.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete [ host : " + getSideValue(data[0].side) + ", version : " + data[0].pkgVer + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takePackage',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tablePackage, null);
+				    }
+				});
+			});
+		}
+	});
+			
+	//  새로고침
+	$("#btnRefresh").click(function(){
+		tablePackage.ajax.reload(null, false);
+	});
+		
+}; // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function errorFn (jqXHR, exception) {
+    var msg = '';
+    if (jqXHR.status === 0) {
+        msg = 'Not connect.\n Verify Network.';
+    } else if (jqXHR.status == 404) {
+        msg = 'Requested page not found. [404]';
+    } else if (jqXHR.status == 500) {
+        msg = 'Internal Server Error [500].';
+    } else if (exception === 'parsererror') {
+        msg = 'Requested JSON parse failed.';
+    } else if (exception === 'timeout') {
+        msg = 'Time out error.';
+    } else if (exception === 'abort') {
+        msg = 'Ajax request aborted.';
+    } else {
+        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+    }
+}
+
+
+	
+	
+	
+</script>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="CertificationDao" >  
+
+
+	<select id="getTlsConfig" resultType="com.egsbc.configuration.TlsConfigVO">
+		SELECT
+			T_TLS_VERSION	tlsVersion,
+			T_CERT_TYPE		certType,
+			T_FILE_TYPE		fileType,
+			T_VERIFY			verify,
+			T_ETC_1				etc1
+		FROM
+			R_TLS_CONFIG
+	</select>
+	
+	<select id="getTlsCertFileInfo" resultType="com.egsbc.configuration.TlsCertFileInfoVO">
+		SELECT  
+			T_FILE_EXIST									fileExist,
+		    T_APPLIED										applied,
+		    T_CERT_CHAIN_LEVEL						certChainLevel,
+		    T_CERT_MODE									certMode,
+		    T_FILE_TYPE									fileType,
+		    T_FILE_NAME									fileName,
+		    T_VALID_START_DATE						validStartDate,
+		    T_VALID_END_DATE							validEndDate,
+		    T_ORDERED_CIPHER_LIST					orderedCipherList,
+		    T_DER_PASSWORD							derPassword,
+		    T_PRIVATE_KEY_FILE_ENCRYPT_FLAG	privateKeyFileEncryptFlag
+		FROM 
+			R_TLS_CERTFILE_INFO
+		ORDER BY
+			T_CERT_MODE, T_FILE_TYPE, T_CERT_CHAIN_LEVEL
+	</select>
+	
+	<select id="getTlsCertFileInfoApplied" resultType="com.egsbc.configuration.TlsCertFileInfoVO">
+		SELECT 
+		  	T_CERT_MODE		certMode, 
+		  	T_FILE_TYPE		fileType
+        FROM 
+        	R_TLS_CERTFILE_INFO
+        WHERE 
+        	T_APPLIED = 1
+	</select>
+	
+	<select id="getSipConfigCertification"  resultType="com.egsbc.configuration.SipConfigCertificationVO">
+ 		SELECT
+ 			T_TLS_VERSION 		tlsVersion,	
+			T_TLS_MODE			tlsMode, 	
+			T_CERT_TYPE			certType,
+			T_DER_PASSWORD	DerPassword, 	
+			T_VERIFY				verify
+		FROM
+			R_SIP_CONFIG_CERTIFICATION
+	</select>
+	
+	
+</mapper>	

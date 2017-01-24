@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="SecurityCallDao" >    
+ 	
+ 	<select id="getSecOverview"  resultType="com.egsbc.securityIp.SecOverviewVO">
+ 		SELECT 
+			T_SEC_OV_UAGENT_MODE					secOvUagentMode,
+			T_SEC_OV_UAGENT_POLICY				secOvUagentPolicy,
+			T_SEC_OV_GEOIP_MODE					secOvGeoIpMode,
+			T_SEC_OV_CALL_PATTERN_MODE		secOvCallPatternMode,
+			T_SEC_OV_CALL_OVERSEAS_MODE		secOvCallOverseasMode,
+			T_SEC_OV_CALL_OVERSEAS_POLICY	secOvCallOverseasPolicy,
+			T_SEC_OV_CALL_GAPPING_MODE		secOvCallGappingMode,
+			T_SEC_OV_IM_SIGNATURE_MODE			secOvImSignatureMode
+		FROM 
+			R_SEC_OVERVIEW
+ 	</select>
+ 	
+ 	<select id="getSecGeoIp"  resultType="com.egsbc.securityIp.SecGeoIpVO">
+ 		SELECT 
+			T_POLICY_MODE				policyMode,
+			T_COND_VAL					condVal
+		FROM 
+			R_SEC_GEOIP
+ 	</select>
+ 	
+ 	
+ 	<select id="getGeoIpConfig"  resultType="com.egsbc.configuration.PrimitiveConfigVO">
+ 		SELECT 
+			T_ARG_STRING 		argString,
+		    T_VALUE_STRING		valueString
+		FROM 
+			R_PRIMITIVE_CONFIG
+		WHERE 
+			T_ARG_STRING 
+			IN ('GEO_IP_OPER_MODE', 'GEO_IP_OPER_TIME', 'GEO_IP_AVAILABLE_TIME')
+ 	</select>
+ 	
+ 	<select id="getSecurityGeoIp"  resultType="String">
+		SELECT 
+			MAX(T_GEO_UPDATE_DATE) 
+		FROM 
+			R_SECURITY_GEO_IP;
+ 	</select>
+ 	
+ 	
+ 	<select id="getGeoIpList"  resultType="com.egsbc.securityIp.GeoIpVO">
+ 		SELECT 
+			a.T_ABBR				geoNationCode, 
+		    a.T_NAME				geoNation,
+		    b.T_GEO_NATION_ACTION	geoNationAction
+		FROM 
+			R_GEOIP_COUNTRY a 
+		LEFT JOIN 
+			R_SEC_GEO_NATION_ACL b ON a.T_ABBR = b.T_GEO_NATION_CODE
+		ORDER BY
+			T_NAME	
+ 	</select>
+ 	
+ 	
+ 	<insert id="setGeoIp"  parameterType="com.egsbc.securityIp.GeoIpVO">
+ 		INSERT INTO  R_GEOIP_COUNTRY VALUES (#{name}, #{abbr})
+ 	</insert>
+ 	
+ 	<select id="getNationCodeList"  parameterType="String" resultType="com.egsbc.securityIp.GeoIpDateVO">
+ 		SELECT 
+ 			T_GEO_IP					geoIp,
+ 			T_GEO_UPDATE_DATE	geoUpdateDate
+ 		FROM
+ 			R_SECURITY_GEO_IP
+ 		WHERE
+ 			T_GEO_NATION_CODE=#{nationCode}	
+ 		ORDER BY
+ 			T_GEO_IP
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getSecGeoExcludeList" resultType="com.egsbc.securityIp.GeoIpExcludeVO">
+ 		SELECT
+ 			T_GEO_EX_IP_KEY				geoExIpKey,
+ 			T_GEO_EX_IP_MATCH_TYPE	geoExIpMatchType
+ 		FROM
+ 			R_SEC_GEO_EXCLUDE_LIST	
+ 	</select>
+ 	
+ 	<select id="getSecUserAgent"  resultType="com.egsbc.securityIp.SecUserAgentVO">
+ 		SELECT 
+			T_POLICY_MODE		policyMode,
+			T_COND_METHOD		condMethod,
+			T_COND_HEADER		condHeader,
+			T_COND_VAL			condVal
+		FROM 
+			R_SEC_UAGENT
+ 	</select>
+ 	
+ 	<select id="getSecCallPattern" resultType="com.egsbc.securityIp.SecCallPatternVO">
+ 		SELECT
+ 			T_LIMIT_ENABLE			limitEnable,
+ 			T_LIMIT_MAXCALLS 		limitMaxCalls,
+ 			T_LIMIT_DURATION_M	limitDurationM,
+ 			T_TOTAL_ENABLE			totalEnable,
+ 			T_TOTAL_DURATION_M	totalDurationM,
+ 			T_TOTAL_DURATION_H	totalDurationH
+ 		FROM
+ 			R_SEC_CALL_PATTERN	
+ 	</select>
+ 	
+ 	<select id="getSecCallOverseas" resultType="com.egsbc.securityIp.SecCallOverseasVO">
+ 		SELECT
+ 			T_POLICY_MODE			policyMode,
+ 			T_LIMIT_MAXCALLS 		limitMaxCalls,
+ 			T_LIMIT_DURATION_S	limitDurationS,
+ 			T_COND_VAL				condVal
+ 		FROM
+ 			R_SEC_CALL_OVERSEAS
+ 	</select>
+ 	
+ 	<select id="getSecCallOverseasUser" resultType="com.egsbc.securityIp.SecCallOverseasVO">
+ 		SELECT
+ 			T_POLICY_MODE			policyMode,
+ 			T_COND_VAL				condVal
+ 		FROM
+ 			R_SEC_CALL_OVERSEAS_USER
+ 	</select>
+ 	
+ 	<select id="getSecCallGapping" resultType="com.egsbc.securityIp.SecCallOverseasVO">
+ 		SELECT
+ 			T_LIMIT_MAXCALLS 		limitMaxCalls,
+ 			T_LIMIT_DURATION_S	limitDurationS,
+ 			T_COND_VAL				condVal
+ 		FROM
+ 			R_SEC_CALL_GAPPING
+ 	</select>
+ 	
+ 	<select id="getSecImSignatureHdr" resultType="com.egsbc.securityIp.SecImSignaturesVO">
+ 		SELECT
+ 			T_COND_HEADER 	condHeader,
+ 			T_COND_CHECK	condCheck
+ 		FROM
+ 			R_SEC_IM_SIGNATURE_HDR
+ 	</select>
+ 	
+ 	<select id="getSecImSignatureVal" resultType="com.egsbc.securityIp.SecImSignaturesValVO">
+ 		SELECT
+ 			T_COND_VAL	condVal
+ 		FROM
+ 			R_SEC_IM_SIGNATURE_VAL
+ 	</select>
+ 	
+ 	
+ 	
+ </mapper>	

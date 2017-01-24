@@ -1,0 +1,541 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Routing Rule List </h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+						<form class="smart-form" id="frmRouting"  novalidate="novalidate">
+							<table border="0" class="search-table" >
+							<tr>
+								<td class="td-label">Service Name:</td>
+								<td width="150px">
+									<label class="select">
+										<select name="serviceName"  id="serviceName">
+										</select> <i></i> 
+									</label>
+								</td>
+								<td style="text-align:right;padding-left:10px">
+									Routing Rule:
+								</td>
+								<td >
+										<table border="0">
+										<tr>
+											<td>
+												<div class="checkbox" >
+													<label>
+													  <input type="checkbox"  id="chkAll" class="checkbox style-0" >
+													  <span>All&nbsp;&nbsp;</span>
+													</label>
+												</div>
+											</td>
+											<td>
+												<div class="checkbox">
+													<label>
+													  <input type="checkbox" id="chkStatic" name="chkStatic"  class="checkbox style-0" checked="checked">
+													  <span>Static</span>
+													</label>
+												</div>											
+											</td>
+											<td>
+													<div class="checkbox">
+													<label>
+													  <input type="checkbox" id="chkDomain" name="chkDomain" class="checkbox style-0" checked="checked">
+													  <span>Domain</span>
+													</label>
+												</div>										
+											</td>
+											<td>
+												<div class="checkbox">
+													<label>
+													  <input type="checkbox" id="chkPrefix" name="chkPrefix" class="checkbox style-0" checked="checked">
+													  <span>Prefix</span>
+													</label>
+												</div>											
+											</td>
+										</tr>
+										</table>
+								</td>
+								<td  class="td-label">
+									<button type="button" class="btn btn-default btn-search" id="btnSearch">Search</button>
+								</td>
+							</tr>
+							</table>
+						</form>
+				
+						<table id="dtRouting" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Service Name</th>
+									<th rowspan="2" class="text-center">Rule</th>
+									<th colspan="3" class="text-center">Static Rule</th>
+									<th colspan="4" class="text-center">Domain Rule</th>
+									<th colspan="5" class="text-center">Prefix Rule</th>
+								</tr>
+								<tr>
+									<th class="text-center">Source Group</th>
+									<th class="text-center">Target Group</th>
+									<th class="text-center">Reverse Flag</th>
+									
+									<th class="text-center">Domain</th>
+									<th class="text-center">Source Group</th>
+									<th class="text-center">Target Group</th>
+									<th class="text-center">Reverse Flag</th>
+									
+									<th class="text-center">Prefix</th>
+									<th class="text-center">Refer</th>
+									<th class="text-center">Source Group</th>
+									<th class="text-center">Target Group</th>
+									<th class="text-center">Reverse Flag</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAdd"> Add</button>
+<!-- 							<button class="btn btn-default btn-edit" id="btnChange"> Edit</button> -->
+							<button class="btn btn-default btn-delete" id="btnRemove"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefresh"> Refresh</button>
+						</div>
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+<!-- Modal Edit -->
+<div class="modal" id="modalEdit" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:470px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalEdit"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmEdit" novalidate="novalidate">
+					
+						<table border="0" style="margin:0 auto;">
+						<tr>
+							<td width="140px" class="td-label">*Service Name</td>
+							<td colspan="3">
+								<label class="select" name="lblClass">
+									<select  id="serviceName" name="serviceName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Rule Type</td>
+							<td colspan="3">
+								<div class="inline-group">
+									<label class="radio">
+										<input type="radio" name="ruleType" value="0" checked>
+										<i></i>Static
+									</label>
+									<label class="radio" >
+										<input type="radio" name="ruleType" value="1">
+										<i></i>Domain
+									</label>
+									<label class="radio" >
+										<input type="radio" name="ruleType" value="2">
+										<i></i>Prefix
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Rule</td>
+							<td colspan="3">
+								<label class="input" id="lblRule" >
+									<input type="text" id="rule" name="rule" >
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Prefix Rule Refer Field</td>
+							<td colspan="3">
+								<div class="inline-group">
+									<label class="radio"  name="lblReferField">
+										<input type="radio" name="referField" value="0" checked>
+										<i></i>to/ruri
+									</label>
+									<label class="radio" name="lblReferField">
+										<input type="radio" name="referField" value="1">
+										<i></i>from
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Reverse Same Rule</td>
+							<td colspan="3">
+								<label class="checkbox">
+									<input type="checkbox" id="reverseFlag" name="reverseFlag" >
+									<i></i>지원</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Source Group</td>
+							<td colspan="3">
+								<label class="select" >
+									<select  id="sourceGroup" name="sourceGroup">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Target Group</td>
+							<td colspan="3">
+								<label class="select" >
+									<select  id="targetGroup" name="targetGroup">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSave">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" id="btnCloseNew">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<script type="text/javascript">
+var validatorRouting;
+var tableRouting;
+
+var pagefunction = function() {
+	
+	// 서비스명
+	$.post("/getSipServiceName", {}, function(json){
+		var data=json.data;
+		
+		setControlSelect("frmRouting", "serviceName", "All", data, $("#hidRoutingServiceName").val(), false); 
+		
+		loadTable();
+		
+		$("#hidRoutingServiceName").val('');
+	});
+	
+	
+	// Routing규칙
+	$('#chkAll').change(function() {
+		var chk=$(this).is(':checked');
+		$("input:checkbox[id='chkStatic']").prop("checked", chk); 
+		$("input:checkbox[id='chkDomain']").prop("checked", chk); 
+		$("input:checkbox[id='chkPrefix']").prop("checked", chk); 
+	});
+	$("input:checkbox[id='chkAll']").prop("checked", true);
+	$("input:checkbox[id='chkStatic']").prop("checked", true); 
+	$("input:checkbox[id='chkDomain']").prop("checked", true); 
+	$("input:checkbox[id='chkPrefix']").prop("checked", true); 
+	
+	// 시스템 적용
+	$("#btnSearch").click(function(){
+		tableRouting.ajax.reload(null, false).draw();
+	});
+	
+	
+	//====================================== Modal ========================================
+	
+	$("#btnAdd").click(function(){  
+		validatorRouting.resetForm();
+		$("#frmEdit #hidOpMode").val("2"); // add
+		$("#frmEdit [name=lblClass]").removeClass("state-disabled");
+		
+		setControlRadio("frmEdit", "ruleType", 0, false); // Rule유형
+		setControlInput("frmEdit", "rule", '', false); // Rule
+		setControlRadio("frmEdit", "referField", 0, false); // Prefix Rule참조필드 
+		setControlCheck("frmEdit", "reverseFlag", false, false); // 역방향 동일 Rule reverseFlag
+		
+		// Prefix Rule참조필드
+		setRule(0);
+		
+		$.post("/getSipServiceName", {}, function(json){
+			var data = json.data;
+			
+			setControlSelect("frmEdit", "serviceName", "Choose..", data, '', false); // serviceName
+			
+			$.post("/getSipServiceSourceTargetGroup",{},function(result){
+				setControlSelect("frmEdit", "sourceGroup", "Choose..", result.sourceGroup, '', false); //  source group
+				setControlSelect("frmEdit", "targetGroup", "Choose..", result.targetGroup, '', false); //  target group
+			}); 
+			
+			// show modal
+			$("#modalEdit").modal({backdrop: 'static',keyboard: false});
+			$("#titleModalEdit").html("Add Routing");
+		});
+	
+	});
+	
+	// 변경버튼 
+	$("#btnChange").click(function(){
+		var data = tableRouting.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to edit.");
+		}else{
+			var item=data[0];
+ 			validatorRouting.resetForm();
+			$("#frmEdit #hidOpMode").val("3"); // change opMode
+			$("#frmEdit [name=lblClass]").addClass("state-disabled"); // state-disabled
+
+			setControlRadio("frmEdit", "ruleType", item.ruleType, false); // Rule유형
+			setControlInput("frmEdit", "rule", item.rule, false); // Rule
+			setControlRadio("frmEdit", "referField", item.referField, false); // Prefix Rule참조필드 
+			setControlCheck("frmEdit", "reverseFlag", false, false); // 역방향 동일 Rule reverseFlag
+			
+			setRule(item.ruleType);
+			
+			// 역방향 동일 Rule reverseFlag
+			if(item.reverseFlag==1){
+				setControlCheck("frmEdit", "reverseFlag", true, true);
+			}
+
+			$.post("getSipServiceName", {}, function(json){
+				var data = json.data;
+				
+				setControlSelect("frmEdit", "serviceName", "선택", data, item.serviceName, true); // serviceName
+				
+				$.post("getSipServiceSourceTargetGroup",{},function(result){
+					setControlSelect("frmEdit", "sourceGroup", "Choose..", result.sourceGroup, item.sourceGroup, false); //  source group
+					setControlSelect("frmEdit", "targetGroup", "Choose..", result.targetGroup, item.targetGroup, false); //  target group
+				}); 
+				
+				// show modal
+				$("#modalEdit").modal({backdrop: 'static',keyboard: false});
+				$("#titleModalEdit").html("Edit Routing");
+			});
+		}
+	});
+	
+	// ruleType change 체크 ::: (rule == prefix) ? Prefix Rule참조필드 enable : disable
+	$('#frmEdit :radio[name="ruleType"]').change(function(){
+		setRule($(this).val());
+	});
+	
+	// 삭제버튼
+	$("#btnRemove").click(function(){ 
+		var data = tableRouting.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete [" + data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeRouting',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableRouting, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefresh").click(function(){
+		tableRouting.ajax.reload(null, false);
+	});
+	
+	//  Modal 저장버튼
+	$("#btnSave").click(function(){
+		var serviceName = $("#frmEdit #serviceName").val();
+ 		if(serviceName=='' ){
+ 			$("#frmEdit").valid();
+ 			return;
+ 		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmEdit").submit();  
+		});
+	});
+	
+	validatorRouting = $('#frmEdit').validate({
+		rules : {
+			serviceName:{required : true},
+			sourceGroup: {required : true},
+			targetGroup: {required : true},
+		},
+		messages : {
+			serviceName:{required : 'select name'},
+			sourceGroup:{required : 'select sourceGroup'},
+			targetGroup:{required : 'select targetGroup'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmEdit").ajaxForm({
+		url: "/takeRouting",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			var opMode=$("#frmEdit #hidOpMode").val(); 
+			if(opMode==3){
+				var item = tableRouting.rows('.selected').data()[0];
+				
+ 				arr.push({name:'idx', value: item.idx}); 
+ 				arr.push({name:'serviceName', value: item.serviceName}); 
+ 				
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalEdit", tableRouting, null);
+		},
+// 		error: function (jqXHR, exception){
+// 			errorFunction (jqXHR, exception);
+// 		}
+	});
+
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+//======================== functions ===================================================================
+
+function loadTable(){
+	
+	tableRouting = $('#dtRouting').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipServiceRule",
+        	"type": "post",
+        	"data": function(d){
+        		d.serviceName = $("#serviceName").val()
+        		d.isStatic=$("input:checkbox[id='chkStatic']").is(":checked")?1:0;
+        		d.isDomain = $("input:checkbox[id='chkDomain']").is(":checked")?1:0;
+        		d.isPrefix = $("input:checkbox[id='chkPrefix']").is(":checked")?1:0;
+        	}
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "serviceName"},       
+    		        { "data": "ruleType"},	
+    		        { "data": "sourceGroup"},	
+    		        { "data": "targetGroup"},	
+    		        { "data": "reverseFlag"},
+    		        
+    		        { "data": "rule"},
+    		        { "data": "sourceGroup"},	
+    		        { "data": "targetGroup"},	
+    		        { "data": "reverseFlag"},
+    		        
+    		        { "data": "rule"},
+    		        { "data": "referField"},
+    		        { "data": "sourceGroup"},	
+    		        { "data": "targetGroup"},	
+    		        { "data": "reverseFlag"},
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getRuleType(data); }},  
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==0) ? data:""; }},  
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==0) ? data:""; }},   
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==0) ? getReverseFlag(data):""; }},  
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==1) ? data:""; }},  
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==1) ? data:""; }},  
+				{'targets': 7, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==1) ? data:""; }},   
+				{'targets': 8, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==1) ? getReverseFlag(data):""; }},  
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==2) ? data:""; }},   
+				{'targets': 10, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==2) ? getReferField(data):""; }}, 
+				{'targets': 11, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==2) ? data:""; }},   
+				{'targets': 12, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==2) ? data:""; }},   
+				{'targets': 13, 'className': 'text-center', 'render': function (data, type, full, meta){ return (full.ruleType==2) ? getReverseFlag(data):""; }},  
+    	 ]
+	});
+	
+	//	click row
+	tableRouting.on( 'click', 'tr', function () { 
+		tableRouting.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+}
+
+
+function setRule(val){
+	var obj1, obj2;
+	
+	// Rule Text lblRule
+	obj2=$("#frmEdit [name=lblRule]");
+	obj1=$("#frmEdit #rule");
+	if(val==0){ // disable
+		obj2.addClass("state-disabled");
+		obj1.attr("disabled", true);
+	}else{ // enable
+		obj2.removeClass("state-disabled");
+		obj1.attr("disabled", false);
+	}
+	
+	// 참조필드
+	obj1=$("#frmEdit [name=lblReferField]");
+	if(val==0){ // enable
+		obj1.removeClass("state-disabled");
+		obj1.attr("disabled", false);
+	}else{ // disable
+		obj1.addClass("state-disabled");
+		obj1.attr("disabled", true);
+	}
+	
+}
+
+
+
+</script>

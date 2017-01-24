@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="StatisticsDao" >    
+
+	<select id="getPrimitiveSysDup" parameterType="String"  resultType="com.egsbc.system.PrimitiveSysDupVO">
+ 		SELECT 
+ 			T_SIDE 							side,
+			T_ROLE 							role,
+			T_DUAL_FLAG 					dualFlag,
+			T_STATUS 						status,
+			T_MGMT_IP 					mgmtIp,
+			T_HEARTBEAT_STATUS		heartbeatStatus,	
+			T_SYSUPTIME 					sysUpTime,
+			T_BOOTTIME 					bootTime,
+			T_DESC_OS 					descOs,
+			T_DESC_CPU_TYPE 			descCpuType,
+			T_DESC_CPU_SPEED 		descCpuSpeed,
+			T_DESC_PKG_VER 			descPkgVer,
+			T_DESC_LICENSE 			descLicense,
+			T_USAGE_NUM_CPU 			numCpu,
+			T_USAGE_NUM_CORE		numCore, 
+			T_USAGE_CPU_USER			usageCpuUser,
+			T_USAGE_CPU_NICE 			usageCpuNice,
+			T_USAGE_CPU_SYST 		usageCpuSyst,
+			T_USAGE_CPU_IDLE 			usageCpuIdle,
+			T_USAGE_CPU_DISP1 		usageCpuDisp1,
+			T_USAGE_CPU_DISP2 		usageCpuDisp2,
+			T_USAGE_RAM_TOTAL 		usageRamTotal,
+			T_USAGE_RAM_FREE 		usageRamFree,
+			T_USAGE_RAM_DISP1 		usageRamDisp1,
+			T_USAGE_RAM_DISP2		usageRamDisp2, 
+<!-- 			T_USAGE_RAM_DISP3 		usageRamDisp3, -->
+<!-- 			T_USAGE_DISK_TOTAL 		usageDiskTotal, -->
+<!-- 			T_USAGE_DISK_FREE 		usageDiskFree, -->
+			T_USAGE_DISK1_DISP 		usageDisk1Disp,
+			T_USAGE_DISK2_DISP 		usageDisk2Disp,
+<!-- 			T_USAGE_DISK3_DISP 		usageDisk3Disp, -->
+			T_USAGE_TEMP_CUR 		usageTempCur,
+			T_USAGE_TEMP_DISP 		usageTempDisp,
+			T_CONFIG_CPU_MAJOR 		configCpuMajor,
+			T_CONFIG_CPU_MINOR 		configCpuMinor,
+			T_CONFIG_MEM_MAJOR 	configMemMajor,
+			T_CONFIG_MEM_MINOR 	configMemMinor,
+			T_CONFIG_TEMP_MAJOR 	configTempMajor,
+			T_CONFIG_TEMP_MINOR	configTempMinor
+ 		FROM 
+			R_SYSTEM_INFO
+		<if test="value != -1">
+		WHERE
+			T_SIDE = #{value}
+		</if>	
+		ORDER BY 
+			T_SIDE, T_ROLE	
+ 	</select>
+ 	
+ 	
+ 	<!-- ================================ Subscriber ====================================== -->
+ 	
+	<select id="getStaticSubscriber"  parameterType="com.egsbc.statistics.StaticSubscriberVO" resultType="com.egsbc.statistics.StaticSubscriberVO">
+			SELECT
+				T_KEY						keySubscriber,
+				T_USER_ID 					userId,
+				T_DOMAIN					domain,
+				T_FORKING_INDEX		forkingIndex,
+				T_REG_STATE 				regState,
+				T_REASON 					reason,
+				T_INTF_LOCAL_IP 		intfLocalIp,
+				T_INTF_LOCAL_PORT 	intfLocalPort,
+				T_INTF_PEER_IP  			intfPeerIp,
+				T_INTF_PEER_PORT 		intfPeerPort,
+				T_TIME_REG 				timeReg,
+				T_TIME_EXPIRE  			timeExpire,
+				T_TIME_UNREG  			timeUnreg,
+				T_EXT_RESERVED1 		extReserved1,
+				T_EXT_RESERVED2 		extReserved2,
+				T_EXT_RESERVED3  		extReserved3,
+				T_EXT_RESERVED4 		extReserved4
+			FROM
+				R_STATIC_SUBSCRIBER	
+			WHERE 
+				1=1
+			AND 
+				(T_REG_STATE =  0 OR T_REG_STATE =  1)
+			
+			<if test="userId != null and userId != ''">
+				AND T_USER_ID LIKE  CONCAT(#{userId}, '%')
+			</if>
+			
+			<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+				AND T_TIME_REG &gt;= #{date1}  
+				AND T_TIME_REG &lt;= #{date2}
+			</if>
+			
+		  	ORDER BY 
+		  		T_USER_ID, T_TIME_REG DESC
+		    LIMIT 
+		    	#{offset}, #{pageSize} 
+	</select>
+	
+	<select id="getStaticSubscriberCnt"  parameterType="com.egsbc.statistics.StaticSubscriberVO" resultType="int">
+		
+			SELECT
+				COUNT(*)
+			FROM
+				R_STATIC_SUBSCRIBER	
+			WHERE 
+				1=1
+			AND 
+				(T_REG_STATE =  0 OR T_REG_STATE =  1)
+			
+			<if test="userId != null and userId != ''">
+				AND T_USER_ID LIKE  CONCAT(#{userId}, '%')
+			</if>
+			
+			<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+				AND T_TIME_REG &gt;= #{date1}  
+				AND T_TIME_REG &lt;= #{date2}
+			</if>
+			
+	</select>
+	
+	<select id="getStaticSubscriberDate" resultType="com.egsbc.statistics.StaticMaxMinDateVO">
+		SELECT 
+			MAX(T_TIME_REG) maxDate, MIN(T_TIME_REG) minDate
+		FROM
+			R_STATIC_SUBSCRIBER	
+		WHERE 
+			T_TIME_REG != 0	
+	</select>
+	
+	
+	<select id="getStaticSubscriberUserId" resultType="String">
+		SELECT
+			T_USER_ID
+		FROM
+			R_STATIC_SUBSCRIBER	
+		ORDER BY
+			T_USER_ID
+	</select>
+	
+	
+	<select id="getStaticSubscriberRegCnt" resultType="hashmap">
+		SELECT a.cnt cntAll, b.cnt cntReg 
+		FROM
+		(
+			SELECT 
+				COUNT(DISTINCT T_USER_ID) cnt 
+			FROM 
+				R_STATIC_SUBSCRIBER
+		) a,	
+		(
+			SELECT 
+				COUNT(DISTINCT T_USER_ID) cnt
+			FROM 
+				R_STATIC_SUBSCRIBER	
+			WHERE 
+				T_REG_STATE=1
+		) b
+	</select>
+	
+	
+	<!-- ================================ call ====================================== -->
+	
+	<select id="getStaticCall"  parameterType="com.egsbc.statistics.StaticCallVO" resultType="com.egsbc.statistics.StaticCallVO">
+			SELECT
+				T_KEY 							keyCall,
+				T_CALLER						caller, 
+				T_CALLEE 						callee,
+				T_TYPE 							type,
+				T_CALL_STATE 				callState,
+				T_INTF_CALLER_IP 			intfCallerIp,
+				T_INTF_CALLER_PORT 		intfCallerPort,
+				T_INTF_CALLEE_IP 			intfCalleeIp,
+				T_INTF_CALLEE_PORT		intfCalleePort,
+				T_TIME_STARTED				timeStarted,
+				T_TIME_CONNECTED 		timeConnected,
+				T_TIME_DISCONNECTED 	timeDisconnected,
+				IF(
+					T_TIME_CONNECTED=CONVERT(0,DATETIME) OR T_TIME_DISCONNECTED=CONVERT(0,DATETIME), 
+					-1, 
+					T_TIME_DISCONNECTED-T_TIME_CONNECTED
+				) timeCall,
+				T_DROPPER 					dropper,
+				T_RCODE 						rCode,
+				T_REASON 						reason,
+				T_DEBUG_INFO 				debugInfo,
+				T_EXT_RESERVED1 			extReserved1,
+				T_EXT_RESERVED2 			extReserved2,
+				T_EXT_RESERVED3 			extReserved3,
+				T_EXT_RESERVED4			extReserved4
+			FROM
+				R_STATIC_CALL	
+			WHERE 1=1
+			
+			<if test="userId != null and userId != ''">
+				AND (T_CALLER LIKE  CONCAT(#{userId}, '%') OR T_CALLEE LIKE  CONCAT(#{userId}, '%'))
+			</if>
+			
+			<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+				AND T_TIME_STARTED &gt;= #{date1}  
+				AND T_TIME_STARTED &lt;= #{date2}
+			</if>
+			
+		  	ORDER BY 
+		  		T_TIME_STARTED, T_CALLER
+				  	
+		    LIMIT #{offset}, #{pageSize} 
+	</select>
+	
+	<select id="getStaticCallCnt"  parameterType="com.egsbc.statistics.StaticCallVO" resultType="int">
+			SELECT
+				COUNT(*)
+			FROM
+				R_STATIC_CALL	
+			WHERE 1=1
+			
+			<if test="userId != null and userId != ''">
+				AND (T_CALLER LIKE  CONCAT(#{userId}, '%') OR T_CALLEE LIKE  CONCAT(#{userId}, '%'))
+			</if>
+			
+			<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+				AND T_TIME_STARTED &gt;= #{date1}  
+				AND T_TIME_STARTED &lt;= #{date2}
+			</if>
+			
+	</select>
+	
+	<select id="getStaticCallDate" resultType="com.egsbc.statistics.StaticMaxMinDateVO">
+		SELECT 
+			MAX(T_TIME_STARTED) maxDate, MIN(T_TIME_STARTED) minDate
+		FROM
+			R_STATIC_CALL	
+		WHERE 
+			T_TIME_STARTED != 0	
+	</select>
+	
+	<select id="getStaticCallCntCalling" resultType="hashmap">
+		SELECT a.cnt cntAll, b.cnt cntCalling 
+		FROM
+		(
+			SELECT 
+				COUNT(DISTINCT T_CALLER) cnt 
+			FROM 
+				R_STATIC_CALL
+            WHERE
+				T_CALL_STATE = 0 OR T_CALL_STATE = 1
+		) a,	
+		(
+			SELECT 
+				COUNT(DISTINCT T_CALLER) cnt
+			FROM 
+				R_STATIC_CALL	
+			WHERE 
+				T_CALL_STATE = 1
+		) b
+        
+	</select>
+	
+	<select id="getStatisticsDynamic" parameterType="String" resultType="java.util.HashMap" >
+ 		${value}
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!-- ========================= Current Call ============================================== -->
+ 	
+ 	<select id="getStaticCallCurrent" parameterType="com.egsbc.statistics.StaticCallVO" resultType="com.egsbc.statistics.StaticCallVO" >
+ 		SELECT
+				T_KEY 							keyCall,
+				T_CALLER						caller, 
+				T_CALLEE 						callee,
+				T_TYPE 							type,
+				T_CALL_STATE 				callState,
+				T_INTF_CALLER_IP 			intfCallerIp,
+				T_INTF_CALLER_PORT 		intfCallerPort,
+				T_INTF_CALLEE_IP 			intfCalleeIp,
+				T_INTF_CALLEE_PORT		intfCalleePort,
+				T_TIME_STARTED				timeStarted,
+				T_TIME_CONNECTED 		timeConnected,
+				T_TIME_DISCONNECTED 	timeDisconnected,
+				IF(
+					T_TIME_CONNECTED=CONVERT(0,DATETIME) OR T_TIME_DISCONNECTED=CONVERT(0,DATETIME), 
+					-1, 
+					T_TIME_DISCONNECTED-T_TIME_CONNECTED
+				) timeCall,
+				T_DROPPER 					dropper,
+				T_RCODE 						rCode,
+				T_REASON 						reason,
+				T_DEBUG_INFO 				debugInfo,
+				T_EXT_RESERVED1 			extReserved1,
+				T_EXT_RESERVED2 			extReserved2,
+				T_EXT_RESERVED3 			extReserved3,
+				T_EXT_RESERVED4			extReserved4
+			FROM
+				R_STATIC_CALL
+			WHERE 
+				T_CALL_STATE = 1
+			AND
+				(T_CALLER  LIKE  CONCAT(#{userId}, '%') OR T_CALLEE  LIKE  CONCAT(#{userId}, '%'))
+			ORDER BY 
+		  		T_TIME_STARTED, T_CALLER
+		    LIMIT 
+		    	#{offset}, #{pageSize} 	
+ 	</select>
+ 	
+ 	<select id="getStaticCallCurrentCnt"  parameterType="com.egsbc.statistics.StaticCallVO" resultType="int">
+			SELECT
+				COUNT(*)
+			FROM
+				R_STATIC_CALL	
+			WHERE 
+				T_CALL_STATE = 1
+			AND
+				(T_CALLER  LIKE  CONCAT(#{userId}, '%') OR T_CALLEE  LIKE  CONCAT(#{userId}, '%'))
+	</select>
+	
+	<!-- ========================= Current Subscriber ============================================== -->
+	
+	<select id="getStaticSubscriberCurrent"  parameterType="com.egsbc.statistics.StaticSubscriberVO" resultType="com.egsbc.statistics.StaticSubscriberVO">
+			SELECT
+				T_KEY						keySubscriber,
+				T_USER_ID 					userId,
+				T_DOMAIN					domain,
+				T_FORKING_INDEX		forkingIndex,
+				T_REG_STATE 				regState,
+				T_REASON 					reason,
+				T_INTF_LOCAL_IP 		intfLocalIp,
+				T_INTF_LOCAL_PORT 	intfLocalPort,
+				T_INTF_PEER_IP  			intfPeerIp,
+				T_INTF_PEER_PORT 		intfPeerPort,
+				T_TIME_REG 				timeReg,
+				T_TIME_EXPIRE  			timeExpire,
+				T_TIME_UNREG  			timeUnreg,
+				T_EXT_RESERVED1 		extReserved1,
+				T_EXT_RESERVED2 		extReserved2,
+				T_EXT_RESERVED3  		extReserved3,
+				T_EXT_RESERVED4 		extReserved4
+			FROM
+				R_STATIC_SUBSCRIBER	
+			WHERE
+				T_REG_STATE =  1
+			AND 
+				T_USER_ID LIKE  CONCAT(#{userId}, '%')
+		  	ORDER BY 
+		  		T_USER_ID, T_TIME_REG DESC
+		     LIMIT 
+		    	#{offset}, #{pageSize} 	
+	</select>
+	
+	<select id="getStaticSubscriberCurrentCnt"  parameterType="com.egsbc.statistics.StaticSubscriberVO" resultType="int">
+			SELECT
+				COUNT(*)
+			FROM
+				R_STATIC_SUBSCRIBER	
+			WHERE 
+				T_REG_STATE =  1
+			AND
+				T_USER_ID LIKE  CONCAT(#{userId}, '%')
+	</select>
+	
+</mapper>	

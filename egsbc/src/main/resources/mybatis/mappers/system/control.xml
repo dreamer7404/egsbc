@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="ControlDao" >    
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getPrimitiveSysProcess"  resultType="com.egsbc.system.PrimitiveSysProcessVO">
+ 		SELECT 
+ 			a.T_SIDE 				side,
+			a.T_PKG_VER 			pkgVer,
+			a.T_BLK_NAME 		blkName,
+			a.T_DATE_INSTALL 	dateInstall,
+			a.T_DATE_START		dateStart,
+			a.T_STATUS			status,
+            c.T_BLK_VER			blkVer
+ 		FROM 
+			R_PRIMITIVE_SYS_PROCESS a 
+			
+		LEFT JOIN R_PRIMITIVE_SYS_PACKAGE b  
+		ON a.T_SIDE 			= b.T_SIDE 
+		AND a.T_PKG_VER 	= b.T_PKG_VER
+		AND b.T_RUNNING 	= 1
+		
+        LEFT JOIN R_PRIMITIVE_SYS_PACKAGE_BLOCK c    
+        ON a.T_SIDE 			= c.T_SIDE 
+        AND a.T_PKG_VER 	= c.T_PKG_VER
+        AND a.T_BLK_NAME 	= c.T_BLK_NAME	
+		
+		ORDER BY
+			a.T_BLK_NAME
+ 	</select>
+ 	
+ 	
+	
+</mapper>	

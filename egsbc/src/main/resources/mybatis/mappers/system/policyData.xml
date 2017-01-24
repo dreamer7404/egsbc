@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="PolicyDataDao" >    
+ 	
+ 	<select id="getPolicyDataBackup"  resultType="com.egsbc.system.PolicyDataBackupVO">
+ 		SELECT 
+			T_BACKUP_DB_ON 					backupDbOn,
+			T_BACKUP_DB_NAME 				backupDbName,
+			T_BACKUP_DB_DAY 					backupDbDay,
+			T_BACKUP_DB_HOUR 				backupDbHour,
+			T_BACKUP_LOG_ON 					backupLogOn,
+			T_BACKUP_DEFAULT_LOG_DAY 	backupDefaultLogDay,
+			T_BACKUP_DEFAULT_LOG_HOUR backupDefaultLogHour,
+			T_BACKUP_SPB_LOG_DAY 			backupSpbLogDay,
+			T_BACKUP_SPB_LOG_HOUR 		backupSpbLogHour
+		FROM 
+			R_POLICY_DATA_BACKUP
+ 	</select>
+ 	
+ 	<update id="setPolicyDataBackup" parameterType="com.egsbc.system.PolicyDataBackupVO">
+ 		UPDATE
+ 			R_POLICY_DATA_BACKUP
+ 		<set>
+ 			T_BACKUP_DB_ON = 	#{backupDbOn},
+ 			<if test="backupDbOn == 1">	
+	 			T_BACKUP_DB_NAME = 	#{backupDbName},
+	 			T_BACKUP_DB_DAY = 	#{backupDbDay},
+	 			T_BACKUP_DB_HOUR = 	#{backupDbHour}
+ 			</if>
+ 		</set>	
+	</update>
+	
+	<select id="getPolicyDataDelete" resultType="com.egsbc.system.PolicyDataDeleteVO">
+		SELECT
+			T_DB_STATS_HISTORY_DATA					dbStatsHistoryData, 
+			T_DB_STATS_RAW_DATA 						dbStatsRawData, 
+			T_DB_STATS_SHORTEST_HOURLY_DATA 	dbStatsShortestHourlyData, 
+			T_DB_ALARM_DATA 								dbAlarmData, 
+			T_FILE_DEFAULT_LOG 							fileDefaultLog, 
+			T_FILE_SPB_LOG 									fileSpbLog, 
+			T_FILE_WEB_LOG 								fileWebLog, 
+			T_FILE_ETC_FILE 								fileEtcFile, 
+			T_FILE_DB_BACKUP_FILE 						fileDbBackupFile, 
+			T_FILE_LOG_BACKUP_FILE 						fileLogBackupFile
+		FROM
+			R_POLICY_DATA_DELETE	
+	</select>
+	
+	<update id="setPolicyDataDelete" parameterType="com.egsbc.system.PolicyDataDeleteVO">
+ 		UPDATE
+ 			R_POLICY_DATA_DELETE
+ 		SET
+ 			T_DB_STATS_HISTORY_DATA = 	#{dbStatsHistoryData},
+	 		T_DB_STATS_RAW_DATA = 	#{dbStatsRawData},
+	 		T_DB_STATS_SHORTEST_HOURLY_DATA = 	#{dbStatsShortestHourlyData},
+	 		T_DB_ALARM_DATA = 	#{dbAlarmData}
+	</update>
+	
+	<update id="setPolicyFileDelete" parameterType="com.egsbc.system.PolicyDataDeleteVO">
+ 		UPDATE
+ 			R_POLICY_DATA_DELETE
+ 		SET
+ 			T_FILE_DEFAULT_LOG = 	#{fileDefaultLog},
+	 		T_FILE_SPB_LOG = 	#{fileSpbLog},
+<!-- 	 		T_FILE_WEB_LOG = 	#{fileWebLog}, -->
+<!-- 	 		T_FILE_ETC_FILE = 	#{fileEtcFile}, -->
+	 		T_FILE_DB_BACKUP_FILE = 	#{fileDbBackupFile},
+	 		T_FILE_LOG_BACKUP_FILE = 	#{fileLogBackupFile}
+	</update>
+	
+	
+	<select id="getPolicyCheckValidity" resultType="com.egsbc.system.PolicyCheckValidityVO">
+		SELECT
+			T_CHECK_VALID_ON				checkValidOn,
+			T_INVALID_ACTION_TYPE		invalidActionType,
+			T_CHECK_VALID_HOUR			checkValidHour,
+			T_CHECK_VALID_MINUTE		checkValidMinute,
+			T_ETC								etc
+		FROM 		
+			R_POLICY_CHECK_VALIDITY	
+	</select>
+	
+	<update id="setPolicyCheckValidity" parameterType="com.egsbc.system.PolicyCheckValidityVO">
+ 		UPDATE
+ 			R_POLICY_CHECK_VALIDITY
+ 		SET
+ 			T_CHECK_VALID_ON = #{checkValidOn},
+ 			T_INVALID_ACTION_TYPE = #{invalidActionType},
+ 			T_CHECK_VALID_HOUR = #{checkValidHour},
+ 			T_CHECK_VALID_MINUTE = #{checkValidMinute}
+ 	</update>	
+	
+</mapper>	

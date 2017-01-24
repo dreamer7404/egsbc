@@ -1,0 +1,89 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Ping</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					
+					<div >
+					
+						<form class="smart-form" id="frmPing" novalidate="novalidate">
+						<table border="0">
+						<tr>
+							<td class="td-label">Ping to</td>
+							<td>
+								<label class="input">
+									<input type="text" id="toIP"  style="width:150px">
+								</label>
+							</td>
+							<td class="td-label">from</td>
+							<td>
+								<label class="input">
+									<input type="text" id="fromIP"  style="width:150px">
+								</label>
+							</td>
+							<td class="td-label">(option)</td>
+							
+							<td><button type="button" class="btn btn-default btn-ping" id="btnPing">Ping</button></td>
+						</tr>
+						</table>
+						</form>
+					</div>
+					<div id="divPingMsg" style="margin-bottom:20px;border:1px solid #ddd;overflow:auto"></div>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+<script type="text/javascript">
+
+var pagefunction = function() {
+	
+	$("#btnPing").click(function(){
+		
+		var toIP = $("#toIP");
+		var fromIP = $("#fromIP");
+		
+		if(toIP.val().length > 0){
+			$("#divPingMsg").html('');
+			Egis.sendPing(toIP.val(), fromIP.val());
+			
+			$("#btnPing").prop('disabled', true);
+		}
+		
+		
+	});
+	
+	
+	
+	Egis.resize();
+	
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+
+
+
+</script>				

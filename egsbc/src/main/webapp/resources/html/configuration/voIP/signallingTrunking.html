@@ -1,0 +1,1458 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+<!-- 					<h2>Trunk List </h2> --> 
+							<div style="font-size:14px;margin:5px 0 0 32px;width:200px;border:0px solid red">Trunk List</div>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+						<table id="dtTrunk" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Domain</th>
+									<th rowspan="2" class="text-center">Group</th>
+									
+									<th colspan="2" class="text-center">Pear</th>
+									<th colspan="1" class="text-center">Signal</th>
+									<th colspan="3" class="text-center">Media</th>
+									<th colspan="6" class="text-center">Register</th>
+									<th colspan="2" class="text-center">Max Limit</th>
+								</tr>
+								<tr>
+									<th class="text-center">IP Type</th>
+									<th class="text-center">IP/Port</th>
+									
+									<th class="text-center">Transport</th>
+									
+									<th class="text-center">Transport</th>
+									<th class="text-center">BYPASS</th>
+									<th class="text-center">RTP</th>
+									
+									<th class="text-center">Registration</th>
+									<th class="text-center">Expires</th>
+									<th class="text-center">User ID</th>
+									<th class="text-center">Domain</th>
+									<th class="text-center">Auth ID</th>
+									<th class="text-center">Auth PW</th>
+									
+									<th class="text-center">CPS</th>
+									<th class="text-center">Session</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddTrunk"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeTrunk"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveTrunk"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshTrunk"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-2" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Trunk Group List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtTrunkGroup" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Operation Mode</th>
+									<th colspan="2" class="text-center">Health Check</th>
+									<th rowspan="2" class="text-center">Service Name</th>
+									<th colspan="10" class="text-center">Server List</th>
+								</tr>
+								<tr>
+									<th class="text-center">Flag</th>
+									<th class="text-center">Response Flag</th>
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddTrunkGroup"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeTrunkGroup"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveTrunkGroup"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshTrunkGroup"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Service List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						<table id="dtService" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Name</th>
+									<th rowspan="2" class="text-center">Service Type</th>
+									<th colspan="10" class="text-center">L-Group</th>
+									<th colspan="10" class="text-center">R-Group</th>
+									<th rowspan="2" class="text-center">Routing Setting</th>
+								</tr>
+								<tr>
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+									
+									<th class="text-center">#0</th>
+									<th class="text-center">#1</th>
+									<th class="text-center">#2</th>
+									<th class="text-center">#3</th>
+									<th class="text-center">#4</th>
+									<th class="text-center">#5</th>
+									<th class="text-center">#6</th>
+									<th class="text-center">#7</th>
+									<th class="text-center">#8</th>
+									<th class="text-center">#9</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add" id="btnAddService"> Add</button>
+							<button class="btn btn-default btn-edit" id="btnChangeService"> Edit</button>
+							<button class="btn btn-default btn-delete" id="btnRemoveService"> Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefreshService"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			
+			
+		</article>
+	</div>			
+</section>	
+
+
+<!------------------------------------------------ Modal Trunk ------------------------------------------------------------------------>
+<div class="modal" id="modalTrunk" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:480px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalTrunk"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmTrunk" novalidate="novalidate">
+					
+						<table width="440px" border="0" style="margin:0 auto;">
+						<tr>
+							<td colspan="2"  class="td-label">*Name</td>
+							<td colspan="2">
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">Domain</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="domain" name="domain">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2"  class="td-label">*Signal Transport</td>
+							<td colspan="2">
+								<label class="select"  >
+									<select  id="sigTransName" name="sigTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr> 
+						<tr>
+							<td rowspan="3" width="80px" class="td-label" style="vertical-align:top">Peer</td>
+							<td style="width:80px" class="td-label">-IP Type</td>
+							<td colspan="2" style="padding:12px 0px;">
+								<div class="inline-group">
+									<label class="radio">
+										<input type="radio" name="peerIpType" value="0" checked>
+										<i></i>IPv4
+									</label>
+									<label class="radio" >
+										<input type="radio" name="peerIpType" value="1">
+										<i></i>IPv6
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">
+								- IP/Port
+							</td>
+							<td>
+								<table>
+								<tr>
+									<td style="width:160px">
+										<label class="input" >
+											<input type="text" id=peerIp name="peerIp">
+										</label>
+									</td>
+									<td width="20px" align="center">/</td>
+									<td>
+										<label class="input" >
+											<input type="text" id="peerPort"  name="peerPort">
+										</label>
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="2" class="td-label">*Media Relay</td>
+							<td colspan="2">
+								<div class="inline-group">
+									<label class="radio" >
+										<input type="radio" name="mediaPassFlag" value="1" checked>
+										<i></i>On
+									</label>
+									<label class="radio" >
+										<input type="radio" name="mediaPassFlag" value="0">
+										<i></i>Off
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">Media Transport</td>
+							<td colspan="2">
+								<label class="select" name="lblMediaPassFlag" >
+									<select  id="mediaTransName" name="mediaTransName">
+									</select> <i></i> </label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">RTP</td>
+							<td colspan="2">
+								<div class="inline-group"  id="lblRTP">
+									<label class="checkbox"  name="lblMediaPassFlag">
+										<input type="checkbox"  id="chkRTP" name="chkRTP" class="RTP-group"><i></i>RTP
+									</label>
+									<label class="checkbox" name="lblMediaPassFlag" >
+										<input type="checkbox"  id="chkSRTP" name="chkSRTP" class="RTP-group"><i></i>SRTP
+									</label>
+								</div>		
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">Registration</td>
+							<td colspan="2">
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="registerFlag">
+									<label class="onoffswitch-label" for="registerFlag"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="4" class="td-label">Register Duration(Sec)</td>
+						</tr>
+						<tr>
+							<td rowspan="9" class="td-label">&nbsp;</td>
+							<td class="td-label">-Public</td>
+							<td colspan="2">
+								<label class="input" name="lblRegisterFlag">
+									<input type="text" id="regPeriod" name="regPeriod" >
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">-Domain</td>
+							<td colspan="2">
+								<label class="input" name="lblRegisterFlag">
+									<input type="text" id="registerDomain" name="registerDomain">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">-User ID</td>
+							<td colspan="2">
+								<label class="input" name="lblRegisterFlag">
+									<input type="text" id="registerUserId" name="registerUserId">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">-Auth ID</td>
+							<td colspan="2">
+								<label class="input" name="lblRegisterFlag">
+									<input type="text" id="registerAuthId" name="registerAuthId">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">-Auth PW</td>
+							<td colspan="2">
+								<label class="input" name="lblRegisterFlag">
+									<input type="text" id="registerAuthPw" name="registerAuthPw">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2"  class="td-label">Max-CPS</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="maxCps"  name="maxCps">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2"  class="td-label">Max-Session</td>
+							<td colspan="2">
+								<label class="input" >
+									<input type="text" id="maxSession" name="maxSession">
+								</label>
+							</td>
+						</tr>
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+				</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveTrunk">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+<!------------------------------------------------  Modal Trunk Group ------------------------------------------------------------------------>
+<div class="modal" id="modalTrunkGroup" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:540px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalTrunkGroup"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmTrunkGroup" novalidate="novalidate">
+					
+						<table width="500px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="220px" class="td-label">*Name</td>
+							<td >
+								<label class="input" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="2" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">*Operation Mode</td>
+							<td >
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="opModeServerGroup" value="0" checked>
+										<i></i>Active/Stanby
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="opModeServerGroup" value="1">
+										<i></i>Round Robin
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="2" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Periodical Server Status Check</td>
+							<td  align="left">
+								<div class="inline-group"  >
+									<span class="onoffswitch">
+										<input type="checkbox"  class="onoffswitch-checkbox" id="pollFlag" >
+										<label class="onoffswitch-label" for="pollFlag"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+								</div>		
+							</td>		
+						</tr>
+						<tr> 
+							<td colspan="2" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">Response to OPTIONs based on Server Status</td>
+							<td  align="left">
+								<div class="inline-group"  >
+									<span class="onoffswitch">
+										<input type="checkbox"  class="onoffswitch-checkbox" id="pollResFlag" >
+										<label class="onoffswitch-label" for="pollResFlag"> 
+											<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+											<span class="onoffswitch-switch"></span> 
+										</label> 
+									</span> 
+								</div>		
+							</td>		
+						</tr>
+						<tr> 
+							<td colspan="2" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td colspan="2" class="td-label">Group List</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList" id="nameList">
+								</select>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveTrunkGroup">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!------------------------------------- Modal Service ---------------------------------------------------------------->
+<div class="modal" id="modalService" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:800px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalService"></h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmService" novalidate="novalidate">
+					
+						<table width="760px" border="0" style="margin:0 auto;">
+						<tr>
+							<td width="110px" class="td-label">*Name</td>
+							<td width="250px">
+								<label class="input">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label" name="tdClass">*Operation Mode</td>
+							<td >
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="mode" value="0" checked>
+										<i></i>Server/Realm
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="mode" value="1">
+										<i></i>Trunking
+									</label>
+								</div>
+							</td>
+							<td colspan="2"></td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Left GROUP</td>
+							<td></td>
+							<td class="td-label">Right GROUP</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList1" id="nameList1">
+								</select>
+							</td>
+							<td colspan="2" style="padding:0 20px">
+								<select multiple="multiple" size="10" name="nameList2" id="nameList2">
+								</select>
+							</td>
+						</tr>	
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+					</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveService">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+<script type="text/javascript">
+var validatorTrunk, validatorTrunkGroup, validatorService;
+var tableTrunk, tableTrunkGroup,  tableService;
+
+var pagefunction = function() {
+	//============================== Trunk =============================================
+	tableTrunk = $('#dtTrunk').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipTrunk",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "domain"},	
+    		        { "data": "groupName"},
+    		        
+    		        { "data": "peerIpType"},	
+    		        { "data": "peerIp"},	
+    		        
+    		        { "data": "sigTransName"},	
+    		        
+    		        { "data": "mediaTransName"},	
+    		        { "data": "mediaPassFlag"},	
+    		        { "data": "srtpFlag"},	
+    		        
+    		        { "data": "registerFlag"},	
+    		        { "data": "regPeriod"},	
+    		        { "data": "registerUserId"},	
+    		        { "data": "registerDomain"},	
+    		        { "data": "registerAuthId"},	
+    		        { "data": "registerAuthPw"},	
+    		        
+    		        { "data": "maxCps"},	
+    		        { "data": "maxSession"},	
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getIpType(data); }}, 
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return full.peerIp + "/" + full.peerPort; }},    
+				{'targets': 5, 'className': 'text-center'}, 
+				{'targets': 6, 'className': 'text-center'}, 
+				{'targets': 7, 'className': 'text-center', 'render': function (data, type, full, meta){ return getMediaPassFlag(data); }}, 
+				{'targets': 8, 'className': 'text-center', 'render': function (data, type, full, meta){ return getSrtpFlag(data); }}, 
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCheck(data); }}, 
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+				{'targets': 12, 'className': 'text-center'}, 
+				{'targets': 13, 'className': 'text-center'}, 
+				{'targets': 14, 'className': 'text-center'}, 
+				{'targets': 15, 'className': 'text-center'}, 
+				{'targets': 16, 'className': 'text-center'}, 
+    	 ]
+	});	
+	//	click row
+	tableTrunk.on( 'click', 'tr', function () {
+		tableTrunk.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	//============================== Trunk Group =============================================
+	tableTrunkGroup = $('#dtTrunkGroup').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipTrunkGroup",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "opModeTrunkGroup"},	
+    		        { "data": "pollFlag"},
+    		        
+    		        { "data": "pollResFlag"},	
+    		        { "data": "serviceName"},	
+    		        
+    		        { "data": "elem0"},
+    		        { "data": "elem1"},	
+    		        { "data": "elem2"},	
+    		        { "data": "elem3"},	
+    		        { "data": "elem4"},	
+    		        { "data": "elem5"},	
+    		        { "data": "elem6"},	
+    		        { "data": "elem7"},	
+    		        { "data": "elem8"},	
+    		        { "data": "elem9"},
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getOpMode(data); }}, 
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCheck(data); }}, 
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCheck(data); }}, 
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus0, full.pollingTime0); }}, 
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus1, full.pollingTime1); }}, 
+				{'targets': 7, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus2, full.pollingTime2); }}, 
+				{'targets': 8, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus3, full.pollingTime3); }}, 
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus4, full.pollingTime4); }},  
+				{'targets': 10, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus5, full.pollingTime5); }}, 
+				{'targets': 11, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus6, full.pollingTime6); }}, 
+				{'targets': 12, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus7, full.pollingTime7); }}, 
+				{'targets': 13, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus8, full.pollingTime8); }},  
+				{'targets': 14, 'className': 'text-center', 'render': function (data, type, full, meta){ return getElem(data, full.activateElemName, full.pollingStatus9, full.pollingTime9); }},  
+    	 ]
+	});	
+	//	click row
+	tableTrunkGroup.on( 'click', 'tr', function () {
+		tableTrunkGroup.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	//============================== Service =============================================
+
+	tableService = $('#dtService').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getSipService",
+        	"type": "post",
+        	"data": function(d){
+        		d.mode = 1
+        	}
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    		        { "data": "mode"},	
+    		        { "data": "lGroup0"},	
+    		        { "data": "lGroup1"},	
+    		        { "data": "lGroup2"},	
+    		        { "data": "lGroup3"},	
+    		        { "data": "lGroup4"},	
+    		        { "data": "lGroup5"},	
+    		        { "data": "lGroup6"},	
+    		        { "data": "lGroup7"},	
+    		        { "data": "lGroup8"},	
+    		        { "data": "lGroup9"},	
+    		        { "data": "rGroup0"},	
+    		        { "data": "rGroup1"},	
+    		        { "data": "rGroup2"},	
+    		        { "data": "rGroup3"},	
+    		        { "data": "rGroup4"},	
+    		        { "data": "rGroup5"},	
+    		        { "data": "rGroup6"},	
+    		        { "data": "rGroup7"},	
+    		        { "data": "rGroup8"},	
+    		        { "data": "rGroup9"},	
+    		        { "data": "name"}
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getMode(data); }},    
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center'},    
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center'},    
+				{'targets': 6, 'className': 'text-center'},    
+				{'targets': 7, 'className': 'text-center'},    
+				{'targets': 8, 'className': 'text-center'},
+				{'targets': 9, 'className': 'text-center'},
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+				{'targets': 12, 'className': 'text-center'},
+				{'targets': 13, 'className': 'text-center'},
+				{'targets': 14, 'className': 'text-center'},
+				{'targets': 15, 'className': 'text-center'},
+				{'targets': 16, 'className': 'text-center'},
+				{'targets': 17, 'className': 'text-center'},
+				{'targets': 18, 'className': 'text-center'},
+				{'targets': 19, 'className': 'text-center'},
+				{'targets': 20, 'className': 'text-center'},
+				{'targets': 21, 'className': 'text-center'},
+				{'targets': 22, 'className': 'text-center', 'render': 
+					function (data, type, full, meta){ 
+						return "<button type='button' class='btn btn-xs btn-warning' onclick='moveRouting(\""+data+"\")'>go to setting</button>";
+						}
+				}
+    	 ]
+	});
+	//	click row
+	tableService.on( 'click', 'tr', function () {
+		tableService.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	//====================================== Trunk Modal ========================================
+	
+	// Trunk 추가버튼
+	$("#btnAddTrunk").click(function(){ 
+ 		validatorTrunk.resetForm();
+		setControlInput("frmTrunk", "hidOpMode", 2, false);  // add
+		$("#frmTrunk [name=lblClass]").removeClass("state-disabled");
+ 		
+		setControlInput("frmTrunk", "name", '', false); // name
+		
+		var data = tableTrunk.rows('.selected').data();
+		var item;
+		if(data.length==0){
+	 		setControlInput("frmTrunk", "domain", '', false); // domain 
+	 		setControlRadio("frmTrunk", "peerIpType", 0, false); // peerIp
+	 		setControlInput("frmTrunk", "peerIp", '', false); // peerIp
+	 		setControlInput("frmTrunk", "peerPort", '', false); // peerPort
+	 		setControlRadio("frmTrunk", "mediaPassFlag", 1, false); // mediaPassFlag
+	 		setControlCheck("frmTrunk", "chkRTP", true, false); // chkRTP
+	 		setControlCheck("frmTrunk", "chkSRTP", false, false); // chkSRTP 
+	 		setControlCheck("frmTrunk", "registerFlag", false, false);  // 데리레지 
+	 		setControlInput("frmTrunk", "regPeriod", '3600', false); // public
+	 		setControlInput("frmTrunk", "registerDomain", '', false); // registerDomain
+	 		setControlInput("frmTrunk", "registerUserId", '', false); // registerUserId
+	 		setControlInput("frmTrunk", "registerAuthId", '', false); // registerAuthId
+	 		setControlInput("frmTrunk", "registerAuthPw", '', false); // registerAuthPw
+	 		setControlInput("frmTrunk", "maxCps", '', false); // maxCps
+	 		setControlInput("frmTrunk", "maxSession", '', false); // maxSession
+	 		listenerRegisterFlag(false); // 데리레지 
+		}else{
+			item=data[0];
+			setControlInput("frmTrunk", "domain", item.domain, false); // domain 
+	 		setControlRadio("frmTrunk", "peerIp", item.peerIp, false); // peerIp
+	 		setControlInput("frmTrunk", "peerIp", item.peerIp, false); // peerIp
+	 		setControlInput("frmTrunk", "peerPort", item.peerPort, false); // peerPort
+	 		//------------------------- editable -----------------------------
+	 		setControlRadio("frmTrunk", "mediaPassFlag",  item.mediaPassFlag, false); // mediaPassFlag
+	 		setRTP("frmTrunk" , item.srtpFlag);
+	 
+	 		setControlCheck("frmTrunk", "registerFlag", (item.registerFlag==0)?false:true, false);  // 데리레지 
+	 		listenerRegisterFlag((item.registerFlag==0)?false:true);
+	 		
+	 		setControlInput("frmTrunk", "regPeriod", item.regPeriod, false); // public
+	 		setControlInput("frmTrunk", "registerDomain", item.registerDomain, false); // registerDomain
+	 		setControlInput("frmTrunk", "registerUserId", item.registerUserId, false); // registerUserId
+	 		setControlInput("frmTrunk", "registerAuthId", item.registerAuthId, false); // registerAuthId
+	 		setControlInput("frmTrunk", "registerAuthPw", item.registerAuthPw, false); // registerAuthPw
+	 		setControlInput("frmTrunk", "maxCps", item.maxCps, false); // maxCps
+	 		setControlInput("frmTrunk", "maxSession", item.maxSession, false); // maxSession
+		}
+		
+		
+ 		$.post("/getSipTransportName", {svcType:1}, function(json){
+ 			var data2 = json.data;
+ 			if(data.length==0){
+ 				setControlSelect("frmTrunk", "sigTransName", "Select", data2, '', false);  //시그널 transport 
+ 			}else{
+ 				setControlSelect("frmTrunk", "sigTransName", "Select", data, item.sigTransName, false);  //시그널 transport 
+ 			}
+ 			
+ 			$.post("/getMediaTransportName",{}, function(json2){
+ 				var data3 = json2.data;
+ 				if(data.length==0){
+ 					setControlSelect("frmTrunk", "mediaTransName", "Select", data3, '', false);  //미디어 transport 
+ 				}else{
+ 					setControlSelect("frmTrunk", "mediaTransName", "Select", data2, item.mediaTransName, false);  //미디어 transport 
+ 	 			}
+ 				// show modal
+ 				showModal($("#modalTrunk"));
+ 				$("#titleModalTrunk").html("Add Trunk");
+ 				
+ 			});
+			
+ 		});
+	});
+	
+	// Trunk 변경버튼
+	$("#btnChangeTrunk").click(function(){
+		var data = tableTrunk.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+   			validatorTrunk.resetForm();
+   			setControlInput("frmTrunk", "hidOpMode", 3, false);  // change
+			$("#frmTrunk [name=lblClass]").addClass("state-disabled");
+
+			setControlInput("frmTrunk", "name", item.name, false); // name
+	 		setControlInput("frmTrunk", "domain", item.domain, false); // domain 
+	 		setControlRadio("frmTrunk", "peerIp", item.peerIp, false); // peerIp
+	 		setControlInput("frmTrunk", "peerIp", item.peerIp, false); // peerIp
+	 		setControlInput("frmTrunk", "peerPort", item.peerPort, false); // peerPort
+	 		//------------------------- editable -----------------------------
+	 		setControlRadio("frmTrunk", "mediaPassFlag",  item.mediaPassFlag, false); // mediaPassFlag
+	 		setRTP("frmTrunk" , item.srtpFlag);
+	 
+	 		setControlCheck("frmTrunk", "registerFlag", (item.registerFlag==0)?false:true, false);  // 데리레지 
+	 		listenerRegisterFlag((item.registerFlag==0)?false:true);
+	 		
+	 		setControlInput("frmTrunk", "regPeriod", item.regPeriod, false); // public
+	 		setControlInput("frmTrunk", "registerDomain", item.registerDomain, false); // registerDomain
+	 		setControlInput("frmTrunk", "registerUserId", item.registerUserId, false); // registerUserId
+	 		setControlInput("frmTrunk", "registerAuthId", item.registerAuthId, false); // registerAuthId
+	 		setControlInput("frmTrunk", "registerAuthPw", item.registerAuthPw, false); // registerAuthPw
+	 		setControlInput("frmTrunk", "maxCps", item.maxCps, false); // maxCps
+	 		setControlInput("frmTrunk", "maxSession", item.maxSession, false); // maxSession
+
+	 		$.post("/getSipTransportName", {svcType:1}, function(json){
+	 			var data = json.data;
+	 			setControlSelect("frmTrunk", "sigTransName", "Select", data, item.sigTransName, false);  //시그널 transport 
+	 			
+	 			$.post("/getMediaTransportName",{}, function(json2){
+	 				var data2 = json2.data;
+	 				setControlSelect("frmTrunk", "mediaTransName", "Select", data2, item.mediaTransName, false);  //미디어 transport 
+	 				
+	 				// show modal
+	 				showModal($("#modalTrunk"));
+	 				$("#titleModalTrunk").html("Edit Trunk");
+	 			});
+				
+	 		});
+
+		}
+	});
+	
+	// 미디어Relay 변경
+	$("#frmTrunk input:radio[name='mediaPassFlag']").change(function(){ 
+		listenerMediaPassFlag($(this).val());
+	});
+	
+	
+	// 데리레지  체크
+	$("#frmTrunk #registerFlag").change(function(){
+		listenerRegisterFlag($(this).is(":checked"));
+	});
+	
+	// 삭제버튼
+	$("#btnRemoveTrunk").click(function(){ 
+		var data = tableTrunk.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+ data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeTrunk',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableTrunk, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshTrunk").click(function(){
+		tableTrunk.ajax.reload(null, false);
+	});
+	
+	//  Trunk 저장버튼
+	$("#btnSaveTrunk").click(function(){
+		var name = $("#frmTrunk #name").val();
+		var sigTransName = $("#frmTrunk #sigTransName").val();
+		
+		if(name=='' || sigTransName==''){
+ 			$("#frmTrunk").valid();
+ 			return;
+ 		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmTrunk").submit();  
+		});
+	});
+	
+	validatorTrunk = $('#frmTrunk').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			name:{required : true},
+			sigTransName:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+			sigTransName:{required : 'Select a Signal Transport'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	// Trunk 저장
+	$("#frmTrunk").ajaxForm({
+		url: "/takeTrunk",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			var opMode=$("#frmTrunk #hidOpMode").val(); 
+			
+			//----------- checkbox 처리-----------------------------
+			//RTP
+			var srtpFlag = getSrtpValue("frmTrunk");
+			arr.push({name:'srtpFlag', value: srtpFlag});   
+			
+			//데리레지
+			var registerFlag=$("#frmTrunk input:checkbox[id='registerFlag']").is(":checked");  
+			arr.push({name:'registerFlag', value: registerFlag?0:1});
+			
+			//---------- 숫자형 input 처리 ------------------------------- 
+			// 주의 : 여기서는 컨트롤에 값 val()로 직접넣어도 인식못함. arr.push 할려면 컨트롤name과 이름이 중복되면 안됨.
+			// 그래서 txt[Name]으로 입력받은후 , arr.push로 진짜name에 옮겨보낸다! => form show할때 disabled=false 시킨다.
+			
+// 			var peerPort=$("#frmTrunk #txtPeerPort").val();
+// 			arr.push({name:'peerPort', value: peerPort==''?0:peerPort}); 
+			
+// 			var regPeriod=$("#frmTrunk #txtRegPeriod").val();
+// 			arr.push({name:'regPeriod', value: regPeriod==''?3600:peerPort}); 
+			
+// 			var maxCps=$("#frmTrunk #txtMaxCps").val();
+// 			arr.push({name:'maxCps', value: maxCps==''?0:maxCps}); 
+			
+// 			var maxSession=$("#frmTrunk #txtMaxSession").val();
+// 			arr.push({name:'maxSession', value: maxSession==''?0:maxSession}); 
+			
+			
+			//----------- 변경모드시 disabled fileds 처리-----------------------------
+			// 컨트롤을 disabled 하면 name이 없어져서, arr.push로 하면 name중복 안되서 가능.
+			
+			if(opMode==3){
+				var item = tableTrunk.rows('.selected').data()[0];
+				
+//  				arr.push({name:'name', value: item.name}); 
+//  				arr.push({name:'domain', value: item.domain}); 
+//  				arr.push({name:'sigTransName', value: item.sigTransName}); 
+//  				arr.push({name:'peerIpType', value: item.peerIpType}); 
+//  				arr.push({name:'peerIp', value: item.peerIp}); 
+//  				arr.push({name:'peerPort', value: item.peerPort}); 
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalTrunk", tableTrunk, null);
+		}
+	});
+	
+	//========================================== Trunk Group ================================================
+	
+	// Trunk Group 추가버튼
+	$("#btnAddTrunkGroup").click(function(){
+ 		validatorTrunkGroup.resetForm();
+		$("#frmTrunkGroup #hidOpMode").val("2"); // add
+		$("#frmTrunkGroup [name=lblClass]").removeClass("state-disabled");
+		
+		setControlInput("frmTrunkGroup", "name", '', false); 
+		setControlRadio("frmTrunkGroup", "opModeTrunkGroup", 0, false); 
+		setControlCheck("frmTrunkGroup", "pollFlag", false, false); 
+		setControlCheck("frmTrunkGroup", "pollResFlag", false, false); 
+
+  		$.post("getSipTrunkNameList", {}, function(json){
+  			var data=json.data;
+ 			setControlDualList("frmTrunkGroup", "nameList", null, data, '', false);
+
+			showModal($("#modalTrunkGroup"));
+			$("#titleModalTrunkGroup").html("Add Trunk Group");
+  		});
+	});
+	
+	// Trunk Group 변경버튼
+	$("#btnChangeTrunkGroup").click(function(){
+		var data = tableTrunkGroup.rows('.selected').data(); 
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			validatorTrunkGroup.resetForm();
+			$("#frmTrunkGroup #hidOpMode").val("3"); // change
+			$("#frmTrunkGroup [name=lblClass]").addClass("state-disabled");
+			
+			setControlInput("frmTrunkGroup", "name", item.name, true); 
+			setControlRadio("frmTrunkGroup", "opModeTrunkGroup", item.opModeTrunkGroup, false);
+			setControlCheck("frmTrunkGroup", "pollResFlag", (item.pollResFlag==0)?false:true, false); 
+
+			$.post("getSipTrunkNameList", {}, function(json){
+				var data=json.data;
+	
+				setControlDualList("frmTrunkGroup", "nameList", getElemList(item), data, '', false); //ahnks
+				
+				showModal($("#modalTrunkGroup"))	;
+				$("#titleModalTrunkGroup").html("Edit Trunk Group");
+				
+			});
+		}
+	});
+	
+	// Trunk Group 삭제버튼
+	$("#btnRemoveTrunkGroup").click(function(){ 
+		var data = tableTrunkGroup.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete ["+data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeTrunkGroup',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableTrunkGroup, null);
+				    	tableTrunk.ajax.reload(null, false); // Trunk도 refresh~
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshTrunkGroup").click(function(){
+		tableTrunkGroup.ajax.reload(null, false);
+	});
+	
+	//  Trunk Group 저장
+	$("#btnSaveTrunkGroup").click(function(){
+		
+		var name = $("#frmTrunkGroup #name").val();
+		if(name=='' ){
+ 			$("#frmTrunkGroup").valid();
+ 			return;
+ 		}
+		
+		var selected = $.map($('#frmTrunkGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+		if(selected==''){
+			showMsg("Warning", "Input Group List.");
+			return;
+		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmTrunkGroup").submit();  
+		});
+		
+	});
+	
+	// Trunk Group validator
+	validatorTrunkGroup = $('#frmTrunkGroup').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			name:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmTrunkGroup").ajaxForm({
+		url: "/takeTrunkGroup",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			var opMode=$("#frmTrunkGroup #hidOpMode").val(); 
+			var item = tableTrunkGroup.rows('.selected').data()[0];
+			
+			//------------------- checkbox 처리 -----------------------
+			var pollFlag=$("#frmTrunkGroup input:checkbox[id='pollFlag']").is(":checked");   //주기적 서버 상태 
+			arr.push({name:'pollFlag', value:pollFlag?1:0});
+			
+			var pollResFlag=$("#frmTrunkGroup input:checkbox[id='pollResFlag']").is(":checked");   //상위 서버 상태에 
+			arr.push({name:'pollResFlag', value: pollResFlag?1:0});
+			
+			//------------------- elem 처리 ----------------------------
+			var selected = $.map($('#frmTrunkGroup #nameList option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<selected.length; i++){
+				arr.push({name:'elem'+i, value:selected[i]}); 
+			}
+			
+			
+			//------------------- disabled fields 처리 -------------------
+			if(opMode==3){
+ 				arr.push({name:'name', value: item.name}); 
+ 				
+ 				//------------------- invisible fileds 처리 -------------------
+ 				arr.push({name:'serviceName', value: item.serviceName}); 
+ 				arr.push({name:'activateElemName', value: item.activateElemName}); 
+			}
+			
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalTrunkGroup", tableTrunkGroup, null);
+			// Trunk reload
+			tableTrunk.ajax.reload(null, false);
+		}
+	});
+	
+//====================================== Service Modal ========================================
+	
+	// Service Group 추가버튼
+	$("#btnAddService").click(function(){
+ 		validatorService.resetForm();
+		$("#frmService #hidOpMode").val("2"); // add
+		//$("#frmService [name=lblClass]").removeClass("state-disabled");
+		$("#frmService [name=lblClass]").addClass("state-disabled"); // ==> 일단 disabled
+		$("#frmService [name=tdClass]").addClass("state-disabled-color");
+		
+		setControlInput("frmService", "name", '', false); 
+ 		setControlRadio("frmService", "mode", 1, true);  // default : Trunking
+ 		
+ 		setServiceGroupList(null, "Add");
+	});	
+	
+	// Service Group 변경버튼
+	$("#btnChangeService").click(function(){
+		var data = tableService.rows('.selected').data(); 
+		if(data.length==0){
+			showMsg("Edit", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			validatorService.resetForm();
+			$("#frmService #hidOpMode").val("3"); // change
+			$("#frmService [name=lblClass]").addClass("state-disabled");
+			$("#frmService [name=tdClass]").addClass("state-disabled-color");
+			
+			setControlInput("frmService", "name", item.name, true); 
+			setControlRadio("frmService", "mode", item.mode, true);
+			
+			setServiceGroupList(item, "Edit");
+		}
+	});
+	
+	
+	// 운용모드 변경
+	$("#frmService input:radio[name='mode']").change(function(){
+		
+		var opMode=$("#frmService #hidOpMode").val(); 
+ 		if(opMode==3){
+ 			var data = tableService.rows('.selected').data(); 
+ 			var item=data[0];
+ 			
+ 			setServiceGroupList(item);
+ 		}else{
+ 			setServiceGroupList(null);
+ 		}
+		
+	});
+	
+	
+	
+	
+	
+	// 삭제버튼
+	$("#btnRemoveService").click(function(){ 
+		var data = tableService.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete");
+		}else{
+			showConfirm('Confirm', "Do you want to save ["+ data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeService',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableService, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshService").click(function(){
+		tableService.ajax.reload(null, false);
+	});
+	
+	//  Server Group 저장
+	$("#btnSaveService").click(function(){
+		
+		var name = $("#frmService #name").val();
+		if(name=='' ){
+ 			$("#frmService").valid();
+ 			return;
+ 		}
+ 		
+		showConfirm('Confirm', "Do you want to save?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmService").submit();  
+		});
+		
+	});
+	
+	// Service validator
+	validatorService = $('#frmService').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			name:{required : true},
+		},
+		messages : {
+			name:{required : 'Input name'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmService").ajaxForm({
+		url: "/takeService",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			var serverList = $.map($('#frmService #nameList1 option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<serverList.length; i++){
+				arr.push({name:'lGroup'+i, value:serverList[i]}); 
+			}
+			
+			var realmList = $.map($('#frmService #nameList2 option:not(:selected)'), function(ele) { return ele.value });
+			for(var i=0; i<realmList.length; i++){
+				arr.push({name:'rGroup'+i, value:realmList[i]}); 
+			}
+			
+ 			var opMode=$("#frmService #hidOpMode").val(); 
+ 			if(opMode==3){
+ 				var item = tableService.rows('.selected').data()[0];
+  				arr.push({name:'name', value: item.name}); 
+  				arr.push({name:'mode', value: item.mode}); 
+ 			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalService", tableService, null);
+		}
+	});
+	
+
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+loadScript("/resources/js/plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox.min.js", function(){
+	loadScript("/resources/scripts/voIP/dualList.js", null);
+});
+
+
+
+function listenerMediaPassFlag(val){ 
+	if(val==0){ //OFF
+		// disable 
+		$("#frmTrunk [name=lblMediaPassFlag]").addClass("state-disabled");
+		
+		$("#frmTrunk #mediaTransName").attr("disabled", true);
+		$("#frmTrunk input:checkbox[id='chkRTP']").attr("disabled", true);
+		$("#frmTrunk input:checkbox[id='chkSRTP']").attr("disabled", true);
+	}else{ // ON
+		$("#frmTrunk [name=lblMediaPassFlag]").removeClass("state-disabled");
+		
+		$("#frmTrunk #mediaTransName").attr("disabled", false);
+		$("#frmTrunk input:checkbox[id='chkRTP']").attr("disabled", false);
+		$("#frmTrunk input:checkbox[id='chkSRTP']").attr("disabled", false);
+	}
+}
+
+function listenerRegisterFlag(val){
+	if(val){ // true: checked => enable
+		$("#frmTrunk [name='lblRegisterFlag']").removeClass("state-disabled");
+		
+		$("#frmTrunk #regPeriod").attr("disabled", false);
+		$("#frmTrunk #registerDomain").attr("disabled", false);
+		$("#frmTrunk #registerUserId").attr("disabled", false);
+		$("#frmTrunk #registerAuthId").attr("disabled", false);
+		$("#frmTrunk #registerAuthPw").attr("disabled", false);
+	}else{ // disable
+		$("#frmTrunk [name='lblRegisterFlag']").addClass("state-disabled");
+	
+		$("#frmTrunk #regPeriod").attr("disabled", true);
+		$("#frmTrunk #registerDomain").attr("disabled", true);
+		$("#frmTrunk #registerUserId").attr("disabled", true);
+		$("#frmTrunk #registerAuthId").attr("disabled", true);
+		$("#frmTrunk #registerAuthPw").attr("disabled", true);
+	}
+}
+
+
+function getElem(data, activateElemName, pollingStatus, pollingTime){
+	if(data=='') return data;
+	if(data==activateElemName){
+		data+="(*)";
+	}
+	
+	var color='';
+	if(pollingStatus==0) color = 'black';
+	else if(pollingStatus==1) color = 'red';
+	else if(pollingStatus==2) color = 'blue';
+	
+	return '<a href="javascript:void(0);" title="'+pollingTime+'" style="color:'+color+'">'+data+'</a>';
+}
+function getElemList(item){
+	var list = [];
+	if(item.elem0 != '') list.push(item.elem0);
+	if(item.elem1 != '') list.push(item.elem1);
+	if(item.elem2 != '') list.push(item.elem2);
+	if(item.elem3 != '') list.push(item.elem3);
+	if(item.elem4 != '') list.push(item.elem4);
+	if(item.elem5 != '') list.push(item.elem5);
+	if(item.elem6 != '') list.push(item.elem6);
+	if(item.elem7 != '') list.push(item.elem7);
+	if(item.elem8 != '') list.push(item.elem8);
+	if(item.elem9 != '') list.push(item.elem9);
+	return list;
+}
+function getLGroupList(item){
+	var list = [];
+	if(item.lGroup0 != '') list.push(item.lGroup0);
+	if(item.lGroup1 != '') list.push(item.lGroup1);
+	if(item.lGroup2 != '') list.push(item.lGroup2);
+	if(item.lGroup3 != '') list.push(item.lGroup3);
+	if(item.lGroup4 != '') list.push(item.lGroup4);
+	if(item.lGroup5 != '') list.push(item.lGroup5);
+	if(item.lGroup6 != '') list.push(item.lGroup6);
+	if(item.lGroup7 != '') list.push(item.lGroup7);
+	if(item.lGroup8 != '') list.push(item.lGroup8);
+	if(item.lGroup9 != '') list.push(item.lGroup9);
+	return list;
+}
+function getRGroupList(item){
+	var list = [];
+	if(item.rGroup0 != '') list.push(item.rGroup0);
+	if(item.rGroup1 != '') list.push(item.rGroup1);
+	if(item.rGroup2 != '') list.push(item.rGroup2);
+	if(item.rGroup3 != '') list.push(item.rGroup3);
+	if(item.rGroup4 != '') list.push(item.rGroup4);
+	if(item.rGroup5 != '') list.push(item.rGroup5);
+	if(item.rGroup6 != '') list.push(item.rGroup6);
+	if(item.rGroup7 != '') list.push(item.rGroup7);
+	if(item.rGroup8 != '') list.push(item.rGroup8);
+	if(item.rGroup9 != '') list.push(item.rGroup9);
+	return list;
+}
+
+</script>	

@@ -1,0 +1,247 @@
+<!-- Modal Message -->
+  <div class="modal" id="modalMsg" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:400px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalAlert"></h6>
+        </div>
+        <div class="modal-body">
+        	<span id="msgModalAlert"></span>
+		</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-close" data-dismiss="modal" id="btnModalMsgOK">OK</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal Confirm -->
+<div class="modal" id="modalConfirm" role="dialog">
+ 		<div class="modal-dialog modal-vertical-centered"  style="width:400px">
+     		<!-- Modal content-->
+     		<div class="modal-content">
+       		<div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+<!--          			<h6 class="modal-title txt-color-white" id=""> Confirm</h6> -->
+         			<h6 class="modal-title txt-color-white" id="titleModalConfirm"></h6>
+       		</div>
+	        <div class="modal-body">
+	        	<div id="msgModalConfirm"></div>
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+				 <spqn id='ajaxLoader' style="display: none;margin-right:30px">
+		    		<label style="margin-right:10px">Processing...</label><img src="/resources/img/loading.gif"></img>
+				</spqn>
+	          	<button type="button" class="btn btn-default btn-confirm" id="btnConfirm">Confirm</button>
+	          	<button type="button" class="btn btn-default btn-close" data-dismiss="modal" id="btnConfirmCancel" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+<!-- // Modal Confirm -->
+
+
+<!-- Modal Error  -->
+  <div class="modal" id="modalError" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:450px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white"><i class="fa fa-exclamation-triangle"></i> Error</h6>
+        </div>
+        <div class="modal-body">
+				<div class="row" style="border:0px solid red;padding:10px 10px">
+					<div class="text-left" style="padding:0 0 10px 15px">
+						<strong><span style="color:red"><i class="fa fa-info"></i></span> An error has occured as follows.</strong>
+					</div>
+					
+					<div class="col-sm-3 text-right" style="padding-bottom:7px">
+						Code:
+					</div>
+					<div class="col-sm-9"  style="padding-bottom:7px" id="divModalErrorCode">
+					</div>
+					
+					<div class="col-sm-3 text-right" style="padding-bottom:7px">
+						Items:
+					</div>
+					<div class="col-sm-9"  style="padding-bottom:7px" id="divModalErrorItem">
+					</div>
+					
+					<div class="col-sm-3" style="padding-bottom:7px"></div>
+					<div class="col-sm-9">
+						<label class="select select-multiple">
+									<select multiple="" class="custom-scroll" id="selErrorMsg" style="width:300px">
+									</select> </label>
+					</div>
+				</div>
+		</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+ 
+ <script type="text/javascript">
+function showConfirm(title, msg){
+	$("#titleModalConfirm").html(title);
+	$("#msgModalConfirm").html(msg);
+	$("#modalConfirm").modal({backdrop: 'static',keyboard: false });
+}
+function hideConfirm(){
+	hideLoader();
+	if($('#modalConfirm').is(':visible')){ 
+		$("#modalConfirm").modal('hide');
+	}
+}
+
+function showLoader(){
+	$("#ajaxLoader").show();
+	$("#btnConfirm").attr("disabled",true);
+	$("#btnConfirmCancel").attr("disabled",true);
+}
+function hideLoader(){
+	$("#ajaxLoader").hide();
+	$("#btnConfirm").attr("disabled",false);
+	$("#btnConfirmCancel").attr("disabled",false);
+}
+
+function showMsg(title, msg){
+	$("#titleModalAlert").html(title);
+	$("#msgModalAlert").html(msg);
+	$("#modalMsg").modal({backdrop: 'static',keyboard: false });
+}
+
+function showError(result){
+	$("#divModalErrorCode").html(result[0]);
+	$("#selErrorMsg").empty();
+	for(var i=1; i<result.length; i++){
+		$("#selErrorMsg").append("<option value='"+result[i]+"'>"+result[i]+"</option>");
+	}
+	$("#modalError").modal({backdrop: 'static',keyboard: false });
+}
+
+
+//==================================================================
+function showModal(obj){
+	obj.modal({ backdrop: 'static', keyboard: true });
+	obj.draggable({ handle: ".modal-header" });
+}
+
+function processResult(result, modal, $table, msg){
+	hideConfirm();
+	if(result[0]==0){ // ok, refresh
+		if(modal !=null){
+			$("#"+modal).modal('hide');
+		}
+		if($table !=null){
+			$table.ajax.reload(null, false);
+		}
+		if(msg != null){
+			showMsg("Info", msg);
+		}
+	}else{
+		showError(result);
+	}
+}
+
+
+
+function isElem(unselData, elem){
+	for(var i=0; i<unselData.length; i++){
+		if(unselData[i]==elem) return true;
+	}
+	return false;
+}
+function setRTP(frm, val){
+	if(val==1){
+		$("#"+frm+" input:checkbox[id='chkRTP']").prop("checked",true);
+		$("#"+frm+" input:checkbox[id='chkSRTP']").prop("checked",false);
+	}else if (val==2){
+		$("#"+frm+" input:checkbox[id='chkRTP']").prop("checked",false);
+		$("#"+frm+" input:checkbox[id='chkSRTP']").prop("checked",true);
+	}else if(val==3){ // all
+		$("#"+frm+" input:checkbox[id='chkRTP']").prop("checked",true);
+		$("#"+frm+" input:checkbox[id='chkSRTP']").prop("checked",true);
+	}else{
+		$("#"+frm+" input:checkbox[id='chkRTP']").prop("checked",false);
+		$("#"+frm+" input:checkbox[id='chkSRTP']").prop("checked",false);	
+	}
+}
+function getSrtpValue(frm){
+	var isRTP=$("#"+frm+" input:checkbox[id='chkRTP']").is(":checked"); 
+	var isSRTP=$("#"+frm+" input:checkbox[id='chkSRTP']").is(":checked"); 
+	if(isRTP && !isSRTP) return "1";
+	else if(!isRTP && isSRTP) return "2";
+	else if(isRTP && isSRTP) return "3";
+	else return "0";
+}
+ 
+ pageSetUp();
+ 
+ 
+ var adminButtons = [
+	"btn-add",
+	"btn-delete",
+	"btn-edit",
+	"btn-apply",
+	"btn-save",
+	"btn-bonding",
+	"btn-upload",
+	"btn-update",
+	"btn-cancel",
+	"btn-confirm",
+	
+	"btn-browse",
+	"btn-traceview",
+	"btn-tracelist",
+	"btn-filesave",
+	"btn-ping",
+	"btn-start",
+	"btn-stop",
+	
+	"btn-download",
+	"btn-testGeoIp",
+	"btn-selectAll",
+	"btn-unselectAll",
+	"btn-modify",
+	
+	"btn-add-wide",
+	"btn-logout",
+	"btn-forcedBlock",
+	"btn-releaseBlock",
+	
+	"btn-checkDup",
+	"btn-enable",
+	"btn-disable",
+	"btn-terminateCall",
+	"btn-unregister"
+];
+ 
+function hideButtonsByUserLevel(){
+	if($("#hidLevel").val()==0){
+		var s="";
+		for(var i=0; i<adminButtons.length; i++){
+			if(s != "") s+= ","
+			s += "."+adminButtons[i];
+		}
+		$(s).attr("disabled", true);
+		$("input:radio").attr('disabled',true);
+		$(".onoffswitch-checkbox").attr('disabled',true);
+		
+		// dashboard 일때
+		if($("#modalAlarmData").length==1){
+			$("#btnAlarmPercept").attr('disabled',true); // percept  막아라
+			$("#frmSystem [name=rdoSystem]").attr('disabled', false); // sys-A,sys-B 는 풀러라.
+			$("#btnAlarmPerceptDetail").attr('disabled',true); // perceptDetail  막아라
+			$("#btnAlarmTrashDetail").attr('disabled',true); // TrashDetail  막아라
+		}
+	}
+} 
+setTimeout(function(){
+	hideButtonsByUserLevel();
+},1000);
+
+ 
+
+ </script> 

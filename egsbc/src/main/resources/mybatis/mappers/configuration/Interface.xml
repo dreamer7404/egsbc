@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="InterfaceDao" >    
+ 	
+ 	<select id="getInterface" resultType="com.egsbc.configuration.PrimitiveNwIntfVO">
+		SELECT 
+			T_INDEX  				idx, 
+			T_SIDE 					side,
+			T_INTF_NAME 			intfName,
+			T_INTF_ALIAS 		intfAlias,
+			T_INTF_TYPE 			intfType,
+			T_INTF_MEDIA 		intfMedia,
+			T_INTF_USAGE 		intfUsage,
+			T_INTF_SINDEX 		intfSindex,
+			T_INTF_PARENT 		intfParent,
+			T_INTF_USED_FLAG 	intfUsedFlag,
+			T_IP_MODE 			ipMode,
+			T_IP_TYPE 				ipType,
+			T_IP 						ip,				
+			T_IP_PREFIX 			ipPrefix,			
+			T_GATEWAY 			gateway,		
+			T_VMAC 				vmac,
+			T_LRSIDE 				lrside,
+			T_EXT_LINK			extLink
+		FROM 
+			R_PRIMITIVE_NW_INTF
+		WHERE
+			T_INTF_USED_FLAG=1	AND T_INTF_TYPE &lt;&gt; 2
+	</select>
+	
+	
+	<select id="getInterfaceNameList" resultType="String">
+		SELECT
+			DISTINCT T_INTF_NAME intfName
+		FROM
+			R_PRIMITIVE_NW_INTF
+		WHERE 
+<!-- 			T_INTF_NAME &lt;&gt; '' AND T_INTF_TYPE &lt;&gt; 2 -->
+			T_INTF_USED_FLAG = 1 AND T_INTF_SINDEX = 0
+		ORDER BY T_INTF_NAME
+
+	
+	</select>
+	
+	<select id="getInterfaceAliasList" resultType="com.egsbc.configuration.PrimitiveNwIntfVO">
+		SELECT
+			T_INTF_ALIAS	intfAlias,
+			T_IP 	ip
+		FROM
+			R_PRIMITIVE_NW_INTF
+		WHERE 
+			T_SIDE =2
+		AND 
+			T_INTF_NAME &lt;&gt; '' 
+        AND	
+        	T_INTF_SINDEX &gt; 0    
+		AND 
+			T_INTF_TYPE =1
+		ORDER BY 
+			T_INTF_ALIAS
+	</select>
+	
+	<select id="getInterfaceNameListForAdd" resultType="String">
+		SELECT
+			DISTINCT T_INTF_NAME intfName
+		FROM
+			R_PRIMITIVE_NW_INTF
+		WHERE 
+			T_INTF_NAME &lt;&gt; '' AND T_INTF_TYPE &lt;&gt; 2 AND T_INTF_SINDEX=0  AND (T_INTF_PARENT IS NULL OR T_INTF_PARENT = '')
+		ORDER BY 
+			T_INTF_NAME
+	</select>
+	
+	
+	<select id="getInterfaceAliasForNat" resultType="String">
+		SELECT
+			T_INTF_ALIAS
+		FROM
+			R_PRIMITIVE_NW_INTF
+		WHERE 
+			T_INTF_ALIAS &lt;&gt; ''
+		AND	
+			(T_INTF_USAGE =2 OR T_INTF_USAGE =3)
+		ORDER BY 
+			T_INTF_ALIAS
+	</select>
+	
+</mapper>	

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="TransportDao" >    
+ 	
+ 	<select id="getSipTransport" resultType="com.egsbc.configuration.TransportVO">
+		SELECT 
+			T_NAME 						name,
+			T_VIP_NAME 				vipName,
+			T_SIG_PORT 				sigPort,
+			T_SVC_TYPE 				svcType,
+			T_TRANS_TYPE 			transType,
+			T_QOS_TYPE 				qosType,
+			T_QOS_VALUE 			qosValue,
+			T_FORKING_MINPORT 	forkingMinPort,
+			T_FORKING_MAXPORT 	forkingMaxPort
+		FROM 
+			R_TRANSPORT_SIG
+	</select>
+	
+	<select id="getMediaTransport" resultType="com.egsbc.configuration.TransportVO">
+		SELECT 
+			T_NAME 			name,
+			T_VIP_NAME 	vipName,
+			T_QOS_TYPE 	qosType,
+			T_QOS_VALUE	qosValue,
+			T_MINPORT 	minPort,
+			T_MAXPORT 	maxPort
+		FROM 
+			R_TRANSPORT_MEDIA
+	</select>
+	
+	<select id="getNatTransport" resultType="com.egsbc.configuration.TransportVO">
+		SELECT 
+			T_NAME 			name,
+			T_VIP_NAME 	vipName,
+			T_MINPORT 	minPort,
+			T_MAXPORT 	maxPort,
+			T_PROTOCOL	protocal
+		FROM 
+			R_TRANSPORT_NAT
+	</select>
+	
+	<select id="getMediaTransportName" resultType="String">
+		SELECT 
+			T_NAME
+		FROM 
+			R_TRANSPORT_MEDIA 
+		ORDER BY 
+			T_NAME
+	</select>
+	
+	<select id="getSipTransportName" parameterType="int" resultType="String">
+		SELECT 
+			T_NAME
+		FROM 
+			R_TRANSPORT_SIG
+		<if test="value == 0 or value == 1">	
+		WHERE
+			T_SVC_TYPE= #{value}
+		</if>		
+		ORDER BY 
+			T_NAME
+	</select>
+	
+	
+</mapper>	

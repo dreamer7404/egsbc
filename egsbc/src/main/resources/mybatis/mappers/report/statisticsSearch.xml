@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="StatisticsSearchDao" >    
+ 	
+ 	<select id="getStatCode4Web"  parameterType="com.egsbc.report.StatisticsSearchVO" resultType="com.egsbc.report.StatCode4WebVO">
+ 		SELECT 
+			T_STAT_INTERVAL					statInterval,
+			T_TOP_SELECT_ITEM_CODE		topSelectItemCode,
+			T_TOP_SELECT_ITEM_NAME		topSelectItemName,
+			
+			T_2ND_SELECT_ITEM_CODE		t2ndSelectItemCode,
+			T_2ND_SELECT_ITEM_NAME 		t2ndSelectItemName,
+			
+			T_3RD_SELECT_ITEM_CODE 		t3ndSelectItemCode,
+			T_3RD_SELECT_ITEM_NAME 		t3ndSelectItemName,
+			
+			T_4TH_SELECT_ITEM_CODE 		t4thSelectItemCode,
+			T_4TH_SELECT_ITEM_NAME 		t4thSelectItemName,
+			
+			T_5TH_SELECT_ITEM_CODE 		t5thSelectItemCode,
+			T_5TH_SELECT_ITEM_NAME 		t5thSelectItemName,
+			
+			T_DB_TABLE_NAME_OF_DATA 	dbTablenameOfData,
+			T_DB_COLUMN_NAMES 				dbColumnNames,
+			T_DB_TABLE_WHERE 				dbTableWhere,
+			T_ETC 									etc
+		FROM 
+			R_STAT_CODE_4WEB
+		WHERE
+			T_TOP_SELECT_ITEM_CODE = #{item1} 
+		<if test="item2 != null and item2 != ''">
+		AND 
+			T_2ND_SELECT_ITEM_CODE = #{item2}
+		</if>
+		<if test="item3 != null and item3 != '' and item3 != 0">
+		AND 
+			T_3RD_SELECT_ITEM_CODE = #{item3}
+		</if>
+		<if test="item4 != null and item4 != ''">
+		AND 
+			T_4TH_SELECT_ITEM_CODE = #{item4}
+		</if>
+		<if test="item5 != null and item5 != ''">
+		AND 
+			T_5TH_SELECT_ITEM_CODE = #{item5}
+		</if>
+		AND 
+			T_STAT_INTERVAL = #{period} 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ </mapper>	

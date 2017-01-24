@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="StaticACLDao" >  
+
+	<select id="getStaticACL" parameterType="int" resultType="com.egsbc.configuration.StaticACLVO">
+ 		SELECT
+ 			T_INDEX 					idx,
+			T_USAGE 					usageACL,
+			T_IP_TYPE 					ipType,
+			T_PROTOCOL 				protocol,
+			T_ACTION					actionACL,
+			T_SOURCE_IP 				sourceIp,
+			T_SOURCE_PORT 			sourcePort,
+			T_DESTINATION_IP 		destinationIp,
+			T_DESTINATION_PORT 	destinationPort,
+			T_DESCRIPTION			description
+		FROM
+			R_STATIC_ACL_LIST
+		WHERE 1=1
+		<if test="value==1 or value==2">
+			AND T_USAGE = #{value}
+		</if>	
+		ORDER BY
+			T_INDEX	
+	</select>
+	
+	<select id="getPrimitiveConfig"  parameterType="String" resultType="String">
+		SELECT 
+			T_VALUE_STRING
+		FROM 
+			R_PRIMITIVE_CONFIG
+		WHERE 
+			T_ARG_STRING = #{value}
+	</select>
+	
+</mapper>	

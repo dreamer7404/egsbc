@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="VoIPDao" >    
+ 	
+ 	<select id="getSipServiceName"  resultType="String">
+ 		SELECT 
+ 			T_NAME 
+ 		FROM 
+			R_SIP_SERVICE
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+ 	
+ 	<select id="getSipServiceRule" resultType="com.egsbc.configuration.SipServiceRuleVO">
+ 		SELECT 
+ 			T_INDEX					idx,
+ 			T_SERVICE_NAME		serviceName,
+ 			T_RULE_TYPE			ruleType,
+ 			T_RULE					rule,
+ 			T_REFER_FIELD		referField,
+ 			T_SOURCE_GROUP	sourceGroup,
+ 			T_TARGET_GROUP	targetGroup,
+ 			T_REVERSE_FLAG		reverseFlag
+ 		FROM 
+			R_SIP_SERVICE_RULE
+		WHERE 1=1 
+		<if test="serviceName != null and serviceName != ''">
+			AND T_SERVICE_NAME = #{serviceName} 	
+		</if>	
+		<if test="isStatic == 1 or isDomain == 1 or isPrefix ==1">
+			AND T_RULE_TYPE IN
+			<foreach collection="ruleTypeList" item="item"  index="index" open="(" close=")" separator=",">
+            	#{item}
+        	</foreach>
+		</if>
+		<if test="isStatic == 0 and isDomain == 0 and isPrefix ==0">
+			AND T_RULE_TYPE NOT IN (0,1,2)
+		</if>
+		ORDER BY 
+			T_SERVICE_NAME 	
+ 	</select>
+ 	
+ 	<select id="getSipService" parameterType="com.egsbc.configuration.SipServiceVO" resultType="com.egsbc.configuration.SipServiceVO">
+		SELECT 
+			T_NAME 						name,
+			T_MODE 					mode,
+			
+			T_L_GROUP0 		lGroup0,
+			T_L_GROUP1 		lGroup1,
+			T_L_GROUP2 		lGroup2,
+			T_L_GROUP3 		lGroup3,
+			T_L_GROUP4 		lGroup4,
+			T_L_GROUP5 		lGroup5,
+			T_L_GROUP6 		lGroup6,
+			T_L_GROUP7 		lGroup7,
+			T_L_GROUP8 		lGroup8,
+			T_L_GROUP9 		lGroup9,
+			
+			T_R_GROUP0 		rGroup0,
+			T_R_GROUP1 		rGroup1,
+			T_R_GROUP2 		rGroup2,
+			T_R_GROUP3 		rGroup3,
+			T_R_GROUP4 		rGroup4,
+			T_R_GROUP5 		rGroup5,
+			T_R_GROUP6 		rGroup6,
+			T_R_GROUP7 		rGroup7,
+			T_R_GROUP8 		rGroup8,
+			T_R_GROUP9 		rGroup9
+		FROM 
+			R_SIP_SERVICE
+		WHERE T_MODE = #{mode} 	
+		<if test="name != null and name != ''">
+			AND T_NAME = #{name} 	
+		</if>
+		ORDER BY T_NAME 	
+	</select>
+	
+	<select id="getSipServiceSourceTargetGroup" resultType="com.egsbc.configuration.SipServiceVO">
+		SELECT 
+			CONCAT(
+				IFNULL(T_L_GROUP0,''), ',', 
+				IFNULL(T_L_GROUP1,''), ',', 
+				IFNULL(T_L_GROUP2,''), ',', 
+				IFNULL(T_L_GROUP3,''), ',', 
+				IFNULL(T_L_GROUP4,''), ',', 
+				IFNULL(T_L_GROUP5,''), ',', 
+				IFNULL(T_L_GROUP6,''), ',', 
+				IFNULL(T_L_GROUP7,''), ',', 
+				IFNULL(T_L_GROUP8,''), ',', 
+				IFNULL(T_L_GROUP9,'')) sourceGroup,
+			CONCAT(
+				IFNULL(T_R_GROUP0,''), ',', 
+				IFNULL(T_R_GROUP1,''), ',', 
+				IFNULL(T_R_GROUP2,''), ',', 
+				IFNULL(T_R_GROUP3,''), ',', 
+				IFNULL(T_R_GROUP4,''), ',', 
+				IFNULL(T_R_GROUP5,''), ',', 
+				IFNULL(T_R_GROUP6,''), ',', 
+				IFNULL(T_R_GROUP7,''), ',', 
+				IFNULL(T_R_GROUP8,''), ',', 
+				IFNULL(T_R_GROUP9,'')) targetGroup	
+	
+		FROM 
+			R_SIP_SERVICE
+	</select>
+	
+	
+	<select id="getSipRealm"  resultType="com.egsbc.configuration.SipRealmVO">
+ 		SELECT 
+ 			T_NAME 						name,
+ 			T_ELEM_TYPE				elemType,
+ 			T_DOMAIN					domain,
+ 			T_GROUP_NAME			groupName,
+ 			T_SIG_TRANS_NAME		sigTransName,
+ 			T_MEDIA_TRANS_NAME	mediaTransName,
+ 			T_MEDIA_PASS_FLAG	mediaPassFlag,
+ 			T_SRTP_FLAG				srtpFlag,
+ 			T_REG_PERIOD				regPeriod,
+ 			T_REG_PERIOD_NAT		regPeriodNat,
+ 			T_REG_PERIOD_BYPASS	regPeriodBypass,
+ 			T_SESSION_FLAG			sessionFlag,
+ 			T_SESSION_EXPIRES		sessionExpires,
+ 			T_SESSION_MINSE		sessionMinse,
+ 			T_DEREG_DEACT_FLAG	deregDeactFlag,
+ 			T_ENDPOINT_TYPE 		endPointType
+ 		FROM
+ 			R_SIP_REALM
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+ 	
+ 	<select id="getSipRealmNameList" parameterType="int"  resultType="String">
+ 		SELECT 
+ 			T_NAME
+ 		FROM
+ 			R_SIP_REALM
+ 		WHERE 1=1
+ 		<if test="value == 0 or value == 1">	
+ 		AND T_ELEM_TYPE = #{value} 
+ 		</if>
+ 		AND (T_GROUP_NAME IS NULL OR T_GROUP_NAME='')
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+ 	
+ 	
+ 	<select id="getSipRealmGroup" resultType="com.egsbc.configuration.SipRealmGroupVO">
+ 		SELECT
+ 			T_NAME		name,
+ 			T_SERVICE_NAME		serviceName,
+ 			T_ELEM0		elem0,
+ 			T_ELEM1		elem1,
+ 			T_ELEM2		elem2,
+ 			T_ELEM3		elem3,
+ 			T_ELEM4		elem4,
+ 			T_ELEM5		elem5,
+ 			T_ELEM6		elem6,
+ 			T_ELEM7		elem7,
+ 			T_ELEM8		elem8,
+			T_ELEM9		elem9
+		FROM
+			R_SIP_REALM_GROUP
+		ORDER BY
+			T_NAME	
+	</select>
+	
+	<select id="getSipRealmGroupNameList"  resultType="String">
+ 		SELECT 
+ 			T_NAME
+ 		FROM
+ 			R_SIP_REALM_GROUP
+ 		WHERE 
+ 			T_SERVICE_NAME IS NULL OR T_SERVICE_NAME = ''
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+	
+	<select id="getSipServer" resultType="com.egsbc.configuration.SipServerVO">
+ 		SELECT
+ 			T_NAME							name,
+ 			T_ELEM_TYPE					elemType,
+ 			T_DOMAIN						domain,
+ 			T_GROUP_NAME				groupName,
+ 			T_SERVER_IP_TYPE			serverIPType,
+ 			T_SERVER_IP					serverIP,
+ 			T_SERVER_PORT				serverPort,
+ 			T_SIG_TRANS_NAME			sigTransName,
+ 			T_MEDIA_TRANS_NAME		mediaTransName,
+ 			T_SRTP_FLAG					srtpFlag,
+			T_REG_PERIOD					regPeriod,
+			T_MAX_CPS					maxCps,
+			T_MAX_SESSION				maxSession,
+			T_MAX_RPS						maxRps,
+			T_POLLING_STATUS			pollingStatus,
+			T_POLLING_TIME				pollingTime
+		FROM
+			R_SIP_SERVER
+		ORDER BY
+			T_NAME	
+	</select>
+	
+	<select id="getSipServerNameList" parameterType="int"  resultType="String">
+ 		SELECT 
+ 			T_NAME
+ 		FROM
+ 			R_SIP_SERVER
+ 		WHERE 1=1
+ 		<if test="value == 0 or value == 1">	
+ 		AND T_ELEM_TYPE = #{value} 
+ 		</if>
+ 		AND (T_GROUP_NAME IS NULL OR T_GROUP_NAME='')
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+	
+	<select id="getSipServerGroup" resultType="com.egsbc.configuration.SipServerGroupVO">
+ 		SELECT
+ 			T_NAME					name,
+ 			T_SERVICE_NAME 		serviceName,
+ 			T_OP_MODE				opModeServerGroup,
+ 			T_POLL_FLAG			pollFlag,
+ 			T_ELEM0					elem0,
+ 			T_ELEM1					elem1,
+ 			T_ELEM2					elem2,
+ 			T_ELEM3					elem3,
+ 			T_ELEM4					elem4,
+ 			T_ELEM5					elem5,
+ 			T_ELEM6					elem6,
+ 			T_ELEM7					elem7,
+ 			T_ELEM8					elem8,
+			T_ELEM9					elem9,
+			T_ACTIVATE_ELEM_NAME	activateElemName
+		FROM
+			R_SIP_SERVER_GROUP
+		ORDER BY
+			T_NAME	
+	</select>
+	
+	<select id="getSipServerGroupNameList"  resultType="String">
+ 		SELECT 
+ 			T_NAME
+ 		FROM
+ 			R_SIP_SERVER_GROUP
+ 		WHERE 
+ 			T_SERVICE_NAME IS NULL OR T_SERVICE_NAME = ''
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+	
+	<select id="getSipTrunk" resultType="com.egsbc.configuration.SipTrunkVO">
+		SELECT
+			T_NAME 							name,
+			T_ELEM_TYPE 					elemType,
+			T_DOMAIN 						domain,
+			T_GROUP_NAME 				groupName,
+			T_PEER_IP_TYPE 				peerIpType,
+			T_PEER_IP 						peerIp,
+			T_PEER_PORT					peerPort,
+			T_SIG_TRANS_NAME 		sigTransName,
+			T_MEDIA_TRANS_NAME 	mediaTransName,
+			T_MEDIA_PASS_FLAG 		mediaPassFlag,
+			T_SRTP_FLAG 					srtpFlag,
+			T_REG_PERIOD 				regPeriod,
+			T_REGISTER_FLAG 			registerFlag,
+			T_REGISTER_USER_ID 		registerUserId,
+			T_REGISTER_DOMAIN 		registerDomain,
+			T_REGISTER_AUTH_ID 		registerAuthId,
+			T_REGISTER_AUTH_PW 		registerAuthPw,
+			T_POLICY_SPAM_FLAG 		policySpamFlag,
+			T_MAX_CPS 					maxCps,
+			T_MAX_SESSION 				maxSession,
+			T_POLLING_STATUS 			pollingStatus,
+			T_POLLING_TIME				pollingTime
+		FROM 
+			R_SIP_TRUNK
+		ORDER BY
+			T_NAME	
+	
+	</select>
+	
+	<select id="getSipTrunkGroup" resultType="com.egsbc.configuration.SipTrunkGroupVO">
+ 		SELECT
+ 			T_NAME							name,
+ 			T_SERVICE_NAME 			serviceName,
+ 			T_OP_MODE					opModeTrunkGroup,
+ 			T_POLL_FLAG					pollFlag,
+ 			T_POLL_RES_FLAG	pollResFlag,
+ 			T_ELEM0							elem0,
+ 			T_ELEM1							elem1,
+ 			T_ELEM2							elem2,
+ 			T_ELEM3							elem3,
+ 			T_ELEM4							elem4,
+ 			T_ELEM5							elem5,
+ 			T_ELEM6							elem6,
+ 			T_ELEM7							elem7,
+ 			T_ELEM8							elem8,
+			T_ELEM9							elem9,
+			T_ACTIVATE_ELEM_NAME	activateElemName
+		FROM
+			R_SIP_TRUNK_GROUP  
+		ORDER BY
+			T_NAME	
+	</select>
+	
+	<select id="getSipTrunkNameList"   resultType="String">
+ 		SELECT 
+ 			T_NAME
+ 		FROM
+ 			R_SIP_TRUNK
+ 		WHERE 
+ 			T_GROUP_NAME IS NULL OR T_GROUP_NAME=''
+		ORDER BY 
+			T_NAME 	
+ 	</select>
+ 	
+ 	
+ 	
+ 	<!-- ========================== Easy=============================================== -->
+ 	
+ 	<select id="getSipRealmByGroupByService" resultType="com.egsbc.configuration.SipRealmVO">
+ 	
+ 		SELECT 
+ 			b.serviceName 					serviceName,
+			rlm.T_NAME 						name,
+ 			rlm.T_ELEM_TYPE					elemType,
+ 			rlm.T_DOMAIN						domain,
+ 			rlm.T_GROUP_NAME				groupName,
+ 			rlm.T_SIG_TRANS_NAME		sigTransName,
+ 			rlm.T_MEDIA_TRANS_NAME	mediaTransName,
+ 			rlm.T_MEDIA_PASS_FLAG		mediaPassFlag,
+ 			rlm.T_SRTP_FLAG					srtpFlag,
+ 			rlm.T_REG_PERIOD				regPeriod,
+ 			rlm.T_REG_PERIOD_NAT			regPeriodNat,
+ 			rlm.T_REG_PERIOD_BYPASS	regPeriodBypass,
+ 			rlm.T_SESSION_FLAG			sessionFlag,
+ 			rlm.T_SESSION_EXPIRES		sessionExpires,
+ 			rlm.T_SESSION_MINSE			sessionMinse,
+ 			rlm.T_DEREG_DEACT_FLAG		deregDeactFlag,
+ 			rlm.T_ENDPOINT_TYPE 			endPointType
+    	
+    	FROM R_SIP_REALM rlm JOIN ( 
+    	
+			SELECT svc.T_NAME serviceName, grp.T_NAME, grp.T_ELEM0 
+			FROM R_SIP_REALM_GROUP grp  JOIN (
+				SELECT T_NAME, T_R_GROUP0
+				FROM R_SIP_SERVICE
+				WHERE T_MODE=0
+			) svc ON grp.T_NAME=svc.T_R_GROUP0 AND grp.T_SERVICE_NAME=svc.T_NAME
+			
+		) b ON rlm.T_NAME=b.T_ELEM0 AND rlm.T_GROUP_NAME=b.T_NAME 
+ 	
+ 	</select>
+ 	
+ 	<select id="getSipTrunkRGroupByGroupByService" resultType="com.egsbc.configuration.SipTrunkVO">
+ 	
+ 	SELECT 
+ 			b.serviceName 					serviceName,
+ 			b.T_ELEM1							elem1,
+ 			
+			trk.T_NAME 						name,
+			trk.T_ELEM_TYPE 				elemType,
+			trk.T_DOMAIN 						domain,
+			trk.T_GROUP_NAME 				groupName,
+			trk.T_PEER_IP_TYPE 			peerIpType,
+			trk.T_PEER_IP 						peerIp,
+			trk.T_PEER_PORT					peerPort,
+			trk.T_SIG_TRANS_NAME 		sigTransName,
+			trk.T_MEDIA_TRANS_NAME 	mediaTransName,
+			trk.T_MEDIA_PASS_FLAG 		mediaPassFlag,
+			trk.T_SRTP_FLAG 				srtpFlag,
+			trk.T_REG_PERIOD 				regPeriod,
+			trk.T_REGISTER_FLAG 			registerFlag,
+			trk.T_REGISTER_USER_ID 		registerUserId,
+			trk.T_REGISTER_DOMAIN 		registerDomain,
+			trk.T_REGISTER_AUTH_ID 		registerAuthId,
+			trk.T_REGISTER_AUTH_PW 	registerAuthPw,
+			trk.T_POLICY_SPAM_FLAG 		policySpamFlag,
+			trk.T_MAX_CPS 					maxCps,
+			trk.T_MAX_SESSION 			maxSession,
+			trk.T_POLLING_STATUS 		pollingStatus,
+			trk.T_POLLING_TIME				pollingTime
+    FROM R_SIP_TRUNK trk JOIN ( 
+   
+			SELECT svc.T_NAME serviceName, grp.T_NAME, grp.T_ELEM0, grp.T_ELEM1 
+			FROM R_SIP_TRUNK_GROUP grp  JOIN (
+				SELECT T_NAME, T_R_GROUP0
+				FROM R_SIP_SERVICE
+				WHERE T_MODE=1
+			) svc ON grp.T_NAME=svc.T_R_GROUP0 AND grp.T_SERVICE_NAME=svc.T_NAME
+
+	) b ON trk.T_NAME=b.T_ELEM0 AND trk.T_GROUP_NAME=b.T_NAME  
+ 	
+ 	</select>
+ 	
+ 	
+ 	<select id="getSipServerByGroupByService" resultType="com.egsbc.configuration.SipServerVO">
+ 		SELECT
+ 			b.serviceName 					serviceName,
+ 			b.T_POLL_FLAG 					pollFlag,
+ 			svr.T_NAME							name,
+ 			svr.T_ELEM_TYPE					elemType,
+ 			svr.T_DOMAIN						domain,
+ 			svr.T_GROUP_NAME				groupName,
+ 			svr.T_SERVER_IP_TYPE			serverIPType,
+ 			svr.T_SERVER_IP					serverIP,
+ 			svr.T_SERVER_PORT				serverPort,
+ 			svr.T_SIG_TRANS_NAME		sigTransName,
+ 			svr.T_MEDIA_TRANS_NAME	mediaTransName,
+ 			svr.T_SRTP_FLAG					srtpFlag,
+			svr.T_REG_PERIOD				regPeriod,
+			svr.T_MAX_CPS					maxCps,
+			svr.T_MAX_SESSION				maxSession,
+			svr.T_MAX_RPS					maxRps,
+			svr.T_POLLING_STATUS			pollingStatus,
+			svr.T_POLLING_TIME				pollingTime
+		FROM R_SIP_SERVER svr JOIN ( 
+	   
+				SELECT svc.T_NAME serviceName, grp.T_NAME, grp.T_ELEM0, grp.T_POLL_FLAG  
+				FROM R_SIP_SERVER_GROUP grp  JOIN (
+					SELECT T_NAME, T_L_GROUP0
+					FROM R_SIP_SERVICE
+					WHERE T_MODE=0
+				) svc ON grp.T_NAME=svc.T_L_GROUP0 AND grp.T_SERVICE_NAME=svc.T_NAME
+	
+		) b ON svr.T_NAME=b.T_ELEM0 AND svr.T_GROUP_NAME=b.T_NAME	
+ 	
+	</select>
+	
+	
+	<select id="getSipTrunkLGroupByGroupByService" resultType="com.egsbc.configuration.SipTrunkVO">
+ 	
+ 	SELECT 
+ 			b.serviceName 					serviceName,
+ 			b.T_ELEM1							elem1,
+ 			 
+			trk.T_NAME 						name,
+			trk.T_ELEM_TYPE 				elemType,
+			trk.T_DOMAIN 						domain,
+			trk.T_GROUP_NAME 				groupName,
+			trk.T_PEER_IP_TYPE 			peerIpType,
+			trk.T_PEER_IP 						peerIp,
+			trk.T_PEER_PORT					peerPort,
+			trk.T_SIG_TRANS_NAME 		sigTransName,
+			trk.T_MEDIA_TRANS_NAME 	mediaTransName,
+			trk.T_MEDIA_PASS_FLAG 		mediaPassFlag,
+			trk.T_SRTP_FLAG 				srtpFlag,
+			trk.T_REG_PERIOD 				regPeriod,
+			trk.T_REGISTER_FLAG 			registerFlag,
+			trk.T_REGISTER_USER_ID 		registerUserId,
+			trk.T_REGISTER_DOMAIN 		registerDomain,
+			trk.T_REGISTER_AUTH_ID 		registerAuthId,
+			trk.T_REGISTER_AUTH_PW 	registerAuthPw,
+			trk.T_POLICY_SPAM_FLAG 		policySpamFlag,
+			trk.T_MAX_CPS 					maxCps,
+			trk.T_MAX_SESSION 			maxSession,
+			trk.T_POLLING_STATUS 		pollingStatus,
+			trk.T_POLLING_TIME				pollingTime
+	   FROM R_SIP_TRUNK trk JOIN (   
+				SELECT svc.T_NAME serviceName, grp.T_NAME, grp.T_ELEM0, grp.T_ELEM1 
+				FROM R_SIP_TRUNK_GROUP grp  JOIN (
+					SELECT T_NAME, T_L_GROUP0
+					FROM R_SIP_SERVICE
+					WHERE T_MODE=1
+				) svc ON grp.T_NAME=svc.T_L_GROUP0 AND grp.T_SERVICE_NAME=svc.T_NAME
+	
+		) b ON trk.T_NAME=b.T_ELEM0 AND trk.T_GROUP_NAME=b.T_NAME
+ 	</select>
+	
+	<select id="getSipTrunkByElem1" parameterType="String" resultType="com.egsbc.configuration.SipTrunkVO">
+		SELECT
+			T_PEER_IP 						peerIp,
+			T_PEER_PORT					peerPort,
+			T_SIG_TRANS_NAME 		sigTransName
+		FROM 
+			R_SIP_TRUNK
+		WHERE
+			T_NAME = ${name}
+	</select>
+	
+	
+	
+</mapper>	

@@ -1,0 +1,362 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Resource Monitoring</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					
+					<div >
+					
+						<form class="smart-form" id="frmResourceMonitoring" novalidate="novalidate">
+						<table border="0" width="90%">
+						<tr>
+							<td></td>
+							<td class="td-label">Minor Threshold</td>
+							<td class="td-label">Major Threshold</td>
+							<td class="td-label">Critical Threshold</td>
+							<td class="td-label">Switchover on Critical</td>
+						</tr>
+						<tr>
+							<td class="td-label">CPU</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="cpu1"  name="cpu1">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="10">10%</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="cpu2"  name="cpu2">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="cpu3"  name="cpu3">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="cpu4"  name="cpu4">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="1">None</option>
+										<option value="4">Switchover</option>
+									</select> <i></i> 
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">Memory</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="memory1"  name="memory1">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="10">10%</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="memory2"  name="memory2">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="memory3"  name="memory3">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="memory4"  name="memory4">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="1">None</option>
+										<option value="4">Switchover</option>
+									</select> <i></i> 
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">Disk</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="disk1"  name="disk1">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="10">10%</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="disk2"  name="disk2">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="disk3"  name="disk3">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="disk4"  name="disk4">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="1">None</option>
+										<option value="4">Switchover</option>
+									</select> <i></i> 
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">Temperature</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="temp1"  name="temp1">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="10">10%</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="temp2"  name="temp2">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="20">20%</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="temp3"  name="temp3">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="30">30%</option>
+										<option value="40">40%</option>
+										<option value="50">50%</option>
+										<option value="60">60%</option>
+										<option value="70">70%</option>
+										<option value="80">80%</option>
+										<option value="90">90%</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td style="padding-right:20px">
+								<label class="select" >
+									<select  id="temp4"  name="temp4">
+										<option value="" selected="" disabled="">choose...</option>
+										<option value="1">None</option>
+										<option value="4">Switchover</option>
+									</select> <i></i> 
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="5">
+							
+							</td>
+						</tr>
+						</table>
+						
+						<div style="border:0px solid red;width:100%;text-align:center;margin:20px">
+							<button type="button" class="btn btn-default btn-save" id="btnSave">Save</button>
+						</div>
+						</form>
+					</div>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+<script type="text/javascript">
+
+var g_alarm=[];
+
+var pagefunction = function() {
+	
+	
+	getResourceMonitoring();
+	
+	
+	
+	$("#frmResourceMonitoring #btnSave").click(function(){
+		
+		showConfirm('Confirm', "Do you want to save?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmResourceMonitoring").submit();  
+		});
+		
+	});
+	
+	
+	$("#frmResourceMonitoring").ajaxForm({
+		url: "/chgResourceMonitoring",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==12){
+				getResourceMonitoring();
+				hideConfirm();
+			}else{
+				ShowMsg("Error!", "Save resource monitoring.")
+			}
+		},
+		error:function(request,status,error){
+	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+	});
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function getResourceMonitoring(){
+	$.post("getResourceMonitoring",{},function(json){
+		g_alarm = json.result;
+		
+		$("#frmResourceMonitoring #cpu1").val(getAlarmLevelThresholdValue(301));
+		$("#frmResourceMonitoring #cpu2").val(getAlarmLevelThresholdValue(302));
+		$("#frmResourceMonitoring #cpu3").val(getAlarmLevelThresholdValue(303));
+		$("#frmResourceMonitoring #cpu4").val(getAlarmAction(301));
+		
+		$("#frmResourceMonitoring #memory1").val(getAlarmLevelThresholdValue(304));
+		$("#frmResourceMonitoring #memory2").val(getAlarmLevelThresholdValue(305));
+		$("#frmResourceMonitoring #memory3").val(getAlarmLevelThresholdValue(306));
+		$("#frmResourceMonitoring #memory4").val(getAlarmAction(304));
+		
+		$("#frmResourceMonitoring #disk1").val(getAlarmLevelThresholdValue(307));
+		$("#frmResourceMonitoring #disk2").val(getAlarmLevelThresholdValue(308));
+		$("#frmResourceMonitoring #disk3").val(getAlarmLevelThresholdValue(309));
+		$("#frmResourceMonitoring #disk4").val(getAlarmAction(307));
+		
+		$("#frmResourceMonitoring #temp1").val(getAlarmLevelThresholdValue(310));
+		$("#frmResourceMonitoring #temp2").val(getAlarmLevelThresholdValue(311));
+		$("#frmResourceMonitoring #temp3").val(getAlarmLevelThresholdValue(312));
+		$("#frmResourceMonitoring #temp4").val(getAlarmAction(310));
+	});
+}
+
+function getAlarmLevelThresholdValue(code){
+	for(var i=0; i<g_alarm.length; i++){
+		if(g_alarm[i].alarmCode==code){
+			return g_alarm[i].alarmLevelThresholdValue;
+		}
+	}
+	return null;
+}
+function getAlarmAction(code){
+	for(var i=0; i<g_alarm.length; i++){
+		if(g_alarm[i].alarmCode==code){
+			return g_alarm[i].alarmAction;
+		}
+	}
+	return null;
+}
+
+
+</script>				

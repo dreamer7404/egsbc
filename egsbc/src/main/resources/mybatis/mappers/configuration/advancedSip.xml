@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="AdvancedSipDao" >    
+ 	
+ 	<select id="getSipConfigStack" resultType="com.egsbc.configuration.SipConfigStackVO">
+		SELECT 
+			T_WORKTHREAD_COUNT 		workThreadCount,
+			T_DISPATCHTHREAD_COUNT 	dispatchThreadCount,
+			T_CALLOBJECT_COUNT 			callObjectCount,
+			T_TCP_TIMEOUT					tcpTimeout,
+			T_TCP_MSG_SIZE 				tcpMsgSize,
+			T_UDP_MSG_SIZE					udpMsgSize,
+			T_KEEPALIVE_TIME				keepAliveTime
+		FROM 
+			R_SIP_CONFIG_STACK
+		
+	</select>
+	
+	<select id="getSipConfigTimer" resultType="com.egsbc.configuration.SipConfigTimerVO">
+		SELECT 
+			T_TIMERT1 		timerT1,
+			T_TIMERK 		timerK,
+			T_TIMERJ 			timerJ,
+			T_TIMERD					timerD,
+			T_TIMERI 				timerI
+		FROM 
+			R_SIP_CONFIG_TIMER
+	</select>
+	
+	<select id="getSipConfigService" resultType="com.egsbc.configuration.SipConfigServiceVO">
+		SELECT 
+			T_PROVIDER 		provider,
+			T_RINGBACK_TIMEOUT 		ringBackTimeout,
+			T_RESPONSE_TIMEOUT 			responseTimeout,
+			T_ACT_COUNT					actCount,
+			T_ACT_INTERVAL 				actInterval,
+			
+			T_FAIL_COUNT 				failCount,
+			T_FAIL_INTERVAL 				failInterval,
+			T_SWITCH_ON 				switchOn,
+			T_PASSERT_MODE 				passertMode,
+			T_CA_ENABLE 				caEnable,
+			T_CA_INTERVAL 				caInterval,
+			T_CA_FORCE_DROP 				caForceDrop,
+			T_SRTP_ENC_TYPE 				srtpEncType
+		FROM 
+			R_SIP_CONFIG_SERVICE
+	</select>
+	
+	<select id="getSipConfigExt" resultType="com.egsbc.configuration.SipConfigExtVO">
+		SELECT 
+			T_LOG_SUPPORT 		logSupport,
+			T_LOG_MSG 			logMsg,
+			T_LOG_INFO_LEVEL 	logInfoLevel,
+			T_LOG_INFO_CLASS	logInfoClass
+		FROM 
+			R_SIP_CONFIG_EXT
+	</select>
+	
+	
+	
+</mapper>	

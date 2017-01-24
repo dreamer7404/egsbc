@@ -1,0 +1,647 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Manager List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-default btn-changePw" id="btnChangePw">Change Password</button>
+							<button type="button" class="btn btn-default btn-refresh" id="btnRefresh">Refresh</button>
+						</div>
+						
+						<table id="dtManager" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th>User ID</th>
+									<th>Level</th>
+									<th>Status</th>
+									<th>Last Login Date</th>
+									<th>Last Login IP</th>
+								</tr>
+							</thead>
+						</table>
+						<div>
+							(max. 20 monitor user) 
+						</div>
+						<div class="form-group text-right"  id="divButtons">
+							<button type="button" class="btn btn-default btn-add" id="btnAdd">Add</button>
+							<button type="button" class="btn btn-default btn-delete" id="btnDelete">Delete</button>
+							<button type="button" class="btn btn-default btn-logout" id="btnLogout" >Logout</button>
+							<button type="button" class="btn btn-default btn-forcedBlock" id="btnForcedBlock" disabled>Forced Block</button>
+							<button type="button" class="btn btn-default btn-releaseBlock" id="btnReleaseBlock" disabled>Release Block</button>
+						</div>
+						
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+<!-- Modal Add Manager -->
+<div class="modal" id="modalAddManager" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:600px">
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white">Add User</h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmAddManager" novalidate="novalidate">
+					
+						<table border="0" style="margin:0 auto;">
+						<tr>
+							<td width="120px" class="td-label">User ID</td>
+							<td class="td-label">
+								<label class="input" >
+									<input type="text" id="id" name="id">
+								</label>
+							</td>
+							<td class="td-label">
+								<button type="button" class="btn btn-default btn-checkDup"  id="btnCheckDup">Check Duplication</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" style="padding-left:10px">
+								<label>(4 ~ 32 alphanumeric characters)</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">*Password</td>
+							<td colspan="2" class="td-label">
+								<label class="input" >
+									<input type="password" id="pw" name="pw">
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" style="padding-left:10px">
+								<label>(10 ~ 64 characters : alphabet + number + “!@#$”)</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">*Confirm Password</td>
+							<td colspan="2" class="td-label">
+								<label class="input" >
+									<input type="password" id="pw2" name="pw2">
+								</label>
+							</td>
+						</tr>
+						</table>
+						<input type="hidden" id="dupFlag" value="0">
+					</form>		
+					</div>
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveAddManager">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+
+<!-- Modal Change Pw -->
+<div class="modal" id="modalChangePw" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:480px">
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white">Change Password</h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmPw" novalidate="novalidate">
+					
+						<table border="0" style="margin:0 auto;">
+						<tr>
+							<td width="120px" class="td-label">User ID</td>
+							<td  class="td-label">
+								<label id="id"></label>
+								<input type="hidden" id="hidId" name="id">
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">*Password</td>
+							<td class="td-label">
+								<label class="input" >
+									<input type="password" id="pw" name="pw">
+								</label>
+								<label>(10 ~ 64 characters : alphabet + number + “!@#$”)</label>
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+						</tr>
+						<tr>
+							<td class="td-label">*Confirm Password</td>
+							<td class="td-label">
+								<label class="input" >
+									<input type="password" id="pw2" name="pw2">
+								</label>
+							</td>
+						</tr>
+						</table>
+					</form>		
+					</div>
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSavePw">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" >Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<div id="divCommon"></div>
+<script type="text/javascript">
+var validatorPw, validatorAdd;
+var tableManager;
+
+var pagefunction = function() {
+	
+	if($("#hidLevel").val()==0){
+		$("#divButtons").hide();
+	}
+	
+	tableManager = $('#dtManager').DataTable({
+		"sDom":  sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getUserList",
+        	"type": "post",
+        },
+        'order': [[0, 'asc']],
+        "columns": [
+			        { "data": "id" },
+			        { "data": "level" },
+			        { "data": "status" },
+			        { "data": "loginDate"},
+			        { "data": "loginIp" }
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getUserLevel(data); }},    
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getUserStatus(data); }},  
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }},  
+				{'targets': 4, 'className': 'text-center'},   
+    	 ]
+	});
+	
+	
+	//	click row
+	tableManager.on( 'click', 'tr', function () {
+		tableManager.$('tr.selected').removeClass('selected');getDatetime
+		$(this).addClass('selected');
+		
+		toggleButtons();
+	});
+	//	dblclick row
+	tableManager.on( 'dblclick', 'tr', function () {
+		tableManager.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+		
+		toggleButtons();
+	});
+	
+	
+	// refresh
+	$("#btnRefresh").click(function(){
+		tableManager.ajax.reload(null, false);
+	});
+	
+	//==================== add =============================================
+	$("#btnAdd").click(function(){ 
+		
+		validatorAdd.resetForm();
+		$("#frmAddManager #id").val("");
+		$("#frmAddManager #pw").val("");
+		$("#frmAddManager #pw2").val("");
+		$("#frmAddManager #dupFlag").val('0');
+		
+		showModal($("#modalAddManager"));
+	});
+	
+	// check Dup
+	$("#btnCheckDup").click(function(){ 
+		var id = $("#frmAddManager #id").val();
+		if(id==''){
+			showMsg("Warning", "Input id!");
+			return;
+		}
+		
+		var chk_id = /[a-zA-Z0-9]/g; 
+		if(!chk_id.test(id)){
+ 			showMsg("Warning", "Input proper id!");
+ 			return;
+ 		}
+		
+		$.ajax({
+			url: '/checkDupId',
+		    type: "post",
+		    data: {id:id},
+		    success: function(json) {
+		    	if(json.result==0){
+		    		$("#frmAddManager #dupFlag").val('1');// no dup
+		    		showMsg("OK", "This id is available!");
+		    	}else{
+		    		showMsg("Warn", "This id is NOT available!");
+		    	}
+		    }
+		});
+		
+	});
+	
+	
+	
+	// add 
+	$("#btnSaveAddManager").click(function(){ 
+		
+		// check user list Count
+		if(tableManager.data().count() > 20){
+			showMsg("Warning", "User count must not be over 20.");
+			return;
+		}
+	
+		
+		if(!$('#frmAddManager').valid()){
+			return;
+		}
+		
+		if($("#frmAddManager #dupFlag").val()=="0"){
+			showMsg("Warning", "Check dupliacation of user-id");
+			return;
+		}
+		
+		var pw = $("#frmAddManager #pw").val();
+ 		var chk_num = /[0-9]/g; 
+ 		var chk_char = /[a-zA-Z]/g; 
+ 		var chk_spec =  /[!@#$]/gi; 
+ 		
+ 		if(!chk_num.test(pw) || !chk_char.test(pw) || !chk_spec.test(pw)){
+ 			showMsg("Warning", "Input proper password! (alphabet and number and !@#$)");
+ 			return;
+ 		}
+ 		
+ 		
+ 		if(pw!=$("#frmAddManager #pw2").val()){
+ 			showMsg("Warning", "Confirm Passowrd is wrong!");
+ 			return;
+ 		}
+		
+		showConfirm('Confirm', "Do you want to save?");
+		 
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmAddManager").submit();  
+		});
+	});
+
+	validatorAdd = $('#frmAddManager').validate({
+		rules : {
+			id:{
+				required : true,
+				minlength: 4,
+				maxlength: 32,
+				pattern:/^([a-zA-Z0-9]+)$/
+			},
+			pw:{
+				required : true,
+				minlength: 10,
+				maxlength: 64,
+				pattern: /^[\A-Za-z0-9\!@#$]+$/
+			},
+			pw2:{
+				required : true,
+				minlength: 10,
+				maxlength: 64,
+				pattern: /^[\A-Za-z0-9\!@#$]+$/
+			},
+		},
+		messages : {
+			id:{
+				required : 'Input id!',
+				minlength : 'Input over 4 charactoers!',
+				maxlength : 'Input under 32 charactoers!',
+				pattern : 'Input proper id!',
+			},
+			pw:{
+				required : 'Input password!',
+				minlength : 'Input over 10 charactoers!',
+				maxlength : 'Input under 64 charactoers!',
+				pattern : 'Input proper password!',
+			},
+			pw2:{
+				required : 'Input password!',
+				minlength : 'Input over 10 charactoers!',
+				maxlength : 'Input under 64 charactoers!',
+				pattern : 'Input proper password!',
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmAddManager").ajaxForm({
+		url: "/addManager",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+	    		hideConfirm();
+	    		$("#modalAddManager").modal('hide');
+	    		tableManager.ajax.reload(null, false);
+	    	}
+		}
+	});
+	//==================== delete =============================================
+		
+ 	$("#btnDelete").click(function(){ 
+		var data = tableManager.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Choose a user to delete!");
+		}else{
+			showConfirm('Confirm', "Once you delete your account ["+data[0].id+"],<br /> "+
+					"there’s no getting it back.<br /> "+
+					"Make sure you want to do this?");
+			 
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				$.ajax({
+					url: '/removeUser',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	if(json.result==1){
+				    		hideConfirm();
+				    		tableManager.ajax.reload(null, false);
+				    	}
+				    }
+				});
+				
+			});
+		}
+ 	});
+	
+ 	//==================== change password =============================================
+ 		
+ 	$("#btnChangePw").click(function(){ 
+		var data = tableManager.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Choose a user to change password!");
+		}else{
+			
+			validatorPw.resetForm();
+			$("#frmPw #id").text(data[0].id);
+			$("#frmPw #hidId").val(data[0].id);
+			$("#frmPw #pw").focus();
+			
+			showModal($("#modalChangePw"));
+		}
+ 	});
+ 	
+	 // save password
+ 	$("#btnSavePw").click(function(){ 
+ 		
+ 		if(!$('#frmPw').valid()){
+ 			return;
+ 		}
+ 		
+ 		var pw = $("#frmPw #pw").val();
+ 		var chk_num = /[0-9]/g; 
+ 		var chk_char = /[a-zA-Z]/g; 
+ 		var chk_spec =  /[!@#$]/gi; 
+ 		
+ 		if(!chk_num.test(pw) || !chk_char.test(pw) || !chk_spec.test(pw)){
+ 			showMsg("Warning", "Input proper password! (alphabet and number and !@#$)");
+ 			return;
+ 		}
+ 		
+ 		
+ 		if(pw!=$("#frmPw #pw2").val()){
+ 			showMsg("Warning", "Confirm Passowrd is wrong!");
+ 			return;
+ 		}
+ 		
+ 		
+		showConfirm('Confirm', "Do you want to save?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmPw").submit();  
+		});
+ 	});
+	 
+	 
+ 	validatorPw = $('#frmPw').validate({
+ 		//onfocusout: function(element) {$(element).valid()},
+		//onkeyup: function(element) {$(element).valid();},
+		rules : {
+			pw:{
+				required : true,
+				minlength: 10,
+				maxlength: 64,
+				pattern: /^[\A-Za-z0-9\!@#$]+$/
+			},
+			pw2:{
+				required : true,
+				minlength: 10,
+				maxlength: 64,
+				pattern: /^[\A-Za-z0-9\!@#$]+$/
+			},
+		},
+		messages : {
+			pw:{
+				required : 'Input password!',
+				minlength : 'Input over 10 charactoers!',
+				maxlength : 'Input under 64 charactoers!',
+				pattern : 'Input proper password!',
+			},
+			pw2:{
+				required : 'Input password!',
+				minlength : 'Input over 10 charactoers!',
+				maxlength : 'Input under 64 charactoers!',
+				pattern : 'Input proper password!',
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmPw").ajaxForm({
+		url: "/setPassword",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+	    		hideConfirm();
+	    		$("#modalChangePw").modal('hide');
+	    		tableManager.ajax.reload(null, false);
+	    	}
+		}
+	});
+	
+	//==================== force logout =============================================
+		
+	$("#btnLogout").click(function(){
+		
+		var data = tableManager.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Choose a user to enforce logout!");
+		}else{
+			var id = data[0].id;
+			
+			showConfirm('Confirm', "Do you want forcefully logout site, user ["+id+"]?");
+			 
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				$.post("/logoutForce", { id:id}, function(json){
+					if(json.result==1){
+						hideConfirm();
+						tableManager.ajax.reload(null, false);
+					}else{
+						showMsg("Fail", "There is no user in session!");
+					}
+					
+				});
+			});
+		}
+		
+	});
+	
+	//==================== block =============================================
+	
+	$("#btnForcedBlock").click(function(){
+		
+		var data = tableManager.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Choose a user to block!");
+		}else{
+			var id = data[0].id;
+			
+			showConfirm('Confirm', "Do you want forcefully block user ["+id+"]?");
+			 
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				$.post("/blockManager", { id:id}, function(json){
+					if(json.result==1){
+						hideConfirm();
+						tableManager.ajax.reload(null, false);
+						
+						$("#btnForcedBlock").attr("disabled", true);
+						$("#btnReleaseBlock").attr("disabled", true);
+					}
+				});
+			});
+		}
+		
+	});
+	
+	//==================== release =============================================
+	
+	$("#btnReleaseBlock").click(function(){
+		
+		var data = tableManager.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Choose a user to release!");
+		}else{
+			var id = data[0].id;
+			
+			showConfirm('Confirm', "Do you want release block user ["+id+"]?");
+			 
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				$.post("/releaseManager", { id:id}, function(json){
+					if(json.result==1){
+						hideConfirm();
+						tableManager.ajax.reload(null, false);
+						
+						$("#btnForcedBlock").attr("disabled", true);
+						$("#btnReleaseBlock").attr("disabled", true);
+					}
+				});
+			});
+		}
+		
+	});
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});;
+
+function getUserLevel(val){
+	if(val==0) return "Monitor";
+	else if(val==1) return "Admin";
+	else return "";
+}
+
+function getUserStatus(val){
+	if(val==0) return "Logout";
+	else if(val==1) return "Login";
+	else if(val==2) return "Screen-lock";
+	else if(val==3) return "Temp blocked by fail limit";
+	else if(val==4) return "Forced blocked  ";
+	else return "";
+}
+
+function toggleButtons(){
+	var data = tableManager.rows('.selected').data();
+	var status=data[0].status;
+	
+	if(status!=4){
+		$("#btnForcedBlock").attr("disabled", false);
+		$("#btnReleaseBlock").attr("disabled", true);
+	}else{
+		$("#btnForcedBlock").attr("disabled", true);
+		$("#btnReleaseBlock").attr("disabled", false);
+	}
+}
+

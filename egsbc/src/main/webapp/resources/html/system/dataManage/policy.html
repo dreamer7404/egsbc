@@ -1,0 +1,871 @@
+<section  class="" >
+
+	<!-- row -->
+	<div class="row" >
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false" >
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Policy</h2>
+				</header>
+				<!-- widget div-->
+				<div  id="divDateNtp">
+					
+					<div >
+						
+						<div style="margin-top:15px">
+							<section class="col-md-6">
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-1" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Periodic Backup Policy For DB</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmDataBackup" novalidate="novalidate" >
+										<table border="0" >
+										<tr>
+											<td class="td-label" width="120px">Backup</td>
+											<td >
+												<span class="onoffswitch">
+													<input type="checkbox"  class="onoffswitch-checkbox" id="backupDbOn"  >
+													<label class="onoffswitch-label" for="backupDbOn"> 
+														<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+														<span class="onoffswitch-switch"></span> 
+													</label> 
+												</span> 
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" >DB Names</td>
+											<td>
+												<table>
+												<tr>
+													<td>
+														<label class="input" name="lblClass">
+															<input type="text" id="backupDbName" name="backupDbName">
+														</label>
+													</td>
+													<td>
+														&nbsp;(comma separate)
+													</td>
+												</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" >Period</td>
+											<td>
+												<div class="inline-group">
+													<label class="radio" name="lblClass">
+														<input type="radio" name="period" value="1">
+														<i></i>Daily</label>
+													<label class="radio" name="lblClass">
+														<input type="radio" name="period" value="2">
+														<i></i>Monthly</label>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" ></td>
+											<td>
+												<table border="0">
+												<tr>
+													<td class="td-label" >Day of month</td>
+													<td>
+														<label class="select" name="lblClass2">
+															<select name="backupDbDay" id="backupDbDay">
+																<option value="0" selected="" disabled="">choose day...</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+																<option value="24">24</option>
+																<option value="25">25</option>
+																<option value="26">26</option>
+																<option value="27">27</option>
+																<option value="28">28</option>
+																<option value="29">29</option>
+																<option value="30">30</option>
+																<option value="31">31</option>
+															</select> <i></i> 
+														</label>
+													</td>
+												</tr>
+												<tr>
+													<td class="td-label" >Hour of day</td>
+													<td>
+														<label class="select" name="lblClass">
+															<select name="backupDbHour" id="backupDbHour">
+																<option value="-1" selected="" disabled="">choose hour...</option>
+																<option value="0">0</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
+																<option value="4">4</option>
+																<option value="5">5</option>
+																<option value="6">6</option>
+																<option value="7">7</option>
+																<option value="8">8</option>
+																<option value="9">9</option>
+																<option value="10">10</option>
+																<option value="11">11</option>
+																<option value="12">12</option>
+																<option value="13">13</option>
+																<option value="14">14</option>
+																<option value="15">15</option>
+																<option value="16">16</option>
+																<option value="17">17</option>
+																<option value="18">18</option>
+																<option value="19">19</option>
+																<option value="20">20</option>
+																<option value="21">21</option>
+																<option value="22">22</option>
+																<option value="23">23</option>
+															</select> <i></i> 
+														</label>
+													
+													</td>
+												</tr>
+												</table>
+											</td>
+										</tr>			
+										</table>
+										<div style="margin-top:15px;text-align:right">
+											<button type="button" class="btn btn-default btn-add" id="btnSaveDataBackup">Save</button>
+										</div>
+										
+										</form>
+									</div>
+								</div>
+								
+								
+								
+								
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-2" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Periodic Check Validity​</h2>
+									</header>
+									
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmCheckValidity" novalidate="novalidate" >
+										<table border="0" >
+										<tr>
+											<td class="td-label" width="100px">Check</td>
+											<td >
+<!-- 												<span class="onoffswitch"> -->
+<!-- 													<input type="checkbox"  class="onoffswitch-checkbox" id="checkValidOn"  > -->
+<!-- 													<label class="onoffswitch-label" for="checkValidOn">  -->
+<!-- 														<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>  -->
+<!-- 														<span class="onoffswitch-switch"></span>  -->
+<!-- 													</label>  -->
+<!-- 												</span>  -->
+												<label id="lblCheck" style="font-weight:bold"></label>
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" width="100px">Action on invalid</td>
+											<td >
+												<div class="inline-group">
+													<label class="radio" >
+														<input type="radio" name="invalidActionType" value="0" >
+														<i></i>Alarm Only
+													</label>
+													<label class="radio" >
+														<input type="radio" name="invalidActionType" value="1">
+														<i></i>Alarm & Power-off
+													</label>
+													<label class="radio" >
+														<input type="radio" name="invalidActionType" value="2">
+														<i></i>Alarm & Reboot
+													</label>
+												</div>
+												
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" width="100px">Period</td>
+											<td >
+												<div class="inline-group">
+													<label class="radio" >
+														<input type="radio" name="period" value="0" >
+														<i></i>Daily
+													</label>
+													<label class="radio" >
+														<input type="radio" name="period" value="1">
+														<i></i>Hourly
+													</label>
+												</div>	
+											</td>
+										</tr>	
+										<tr>
+											<td class="td-label">Hour of day</td>
+											<td class="td-label">
+												<table>
+												<tr>
+													<td>
+														<label class="select" name="lblHour">
+															<select name="checkValidHour" id="checkValidHour">
+															</select> <i></i> 
+														</label>
+													</td>
+													<td class="td-label">Minute of hour</td>
+													<td>
+														<label class="select" name="lblMinute">
+															<select name="checkValidMinute" id="checkValidMinute">
+															</select> <i></i> 
+														</label>
+													</td>
+												</tr>
+												</table>
+											</td>
+										</tr>
+										</table>
+										<div style="margin-top:15px;text-align:right">
+											<button type="button" class="btn btn-default btn-save" id="btnSaveCheckValid">Save</button>
+										</div>
+										</form>
+									</div>	
+									
+								</div>	
+							</section>
+							
+							
+							
+							<section class="col-md-6" >
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-2" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Periodic Delete(Backup) Policy For DB​</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmDeleteData" novalidate="novalidate" >
+										<table border="0" >
+										<tr>
+											<td class="td-label" colspan="3">
+												<strong>Execute daily at 04:33</strong>​
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" width="210px">Raw Data Before</td> 
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="dbStatsRawData" name="dbStatsRawData">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										<tr>
+											<td class="td-label" >History Data Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="dbStatsHistoryData" name="dbStatsHistoryData">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										<tr>
+											<td class="td-label">Stat Shortest/Hourly  Data Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="dbStatsShortestHourlyData" name="dbStatsShortestHourlyData">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										<tr>
+											<td class="td-label">Alarm Data Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="dbAlarmData" name="dbAlarmData">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										</table>
+										<div style="margin-top:15px;text-align:right">
+											<button type="button" class="btn btn-default btn-save" id="btnSaveDeleteData">Save</button>
+										</div>
+										</form>
+									</div>
+								
+								</div>
+								
+								
+								
+								<div class="jarviswidget jarviswidget-color-grey" id="wid-id-12" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false"	>
+									<header >
+										<h2>Periodic Delete(Backup) Policy For File</h2>
+									</header>
+									<div style="padding-bottom:10px">
+										<form class="smart-form" id="frmDeleteFile" novalidate="novalidate" >
+										<table border="0" >
+										<tr>
+											<td class="td-label" colspan="3">
+												<strong>Execute daily at 04:43</strong>​
+											</td>
+										</tr>
+										<tr>
+											<td class="td-label" width="210px">Default Log Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="fileDefaultLog" name="fileDefaultLog">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										<tr>
+											<td class="td-label" >Signal Log Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="fileSpbLog" name="fileSpbLog">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+<!-- 										<tr> -->
+<!-- 											<td class="td-label">Web Log Before</td> -->
+<!-- 											<td width="60px"> -->
+<!-- 												<label class="input"> -->
+<!-- 													<input type="text" id="fileWebLog" name="fileWebLog"> -->
+<!-- 												</label> -->
+<!-- 											</td> -->
+<!-- 											<td>&nbsp;Days(1~365)</td> -->
+<!-- 										</tr> -->
+<!-- 										<tr> -->
+<!-- 											<td class="td-label">ETC File Before</td> -->
+<!-- 											<td width="60px"> -->
+<!-- 												<label class="input"> -->
+<!-- 													<input type="text" id="fileEtcFile" name="fileEtcFile"> -->
+<!-- 												</label> -->
+<!-- 											</td> -->
+<!-- 											<td>&nbsp;Days(1~365)</td> -->
+<!-- 										</tr> -->
+										<tr>
+											<td class="td-label">DB Backup File Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="fileDbBackupFile" name="fileDbBackupFile">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										<tr>
+											<td class="td-label">Log Backup File Before</td>
+											<td width="60px">
+												<label class="input">
+													<input type="text" id="fileLogBackupFile" name="fileLogBackupFile">
+												</label>
+											</td>
+											<td>&nbsp;Days(1~365)</td>
+										</tr>
+										</table>
+										<div style="margin-top:15px;text-align:right">
+											<button type="button" class="btn btn-default btn-save" id="btnSaveDeleteFile">Save</button>
+										</div>
+										</form>
+									</div>
+								
+								</div>		
+															
+							</section>
+						</div>
+						
+						
+					</div>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+<script type="text/javascript">
+
+var validatorDataBackup, validatorDataDelete, validatorFileDelete;
+var pagefunction = function() {
+	
+	//================================== backup =====================================
+	getPolicyDataBackup();
+	
+	
+	$("#frmDataBackup #backupDbOn").change(function(){
+		toggleBackupPolicy();
+	});
+	
+	toggleBackupPolicy();
+	
+	$("#frmDataBackup [name=period]").change(function(){
+		toggleDayOfMonth();
+	});
+	
+	
+	// save  backup
+	$("#btnSaveDataBackup").click(function(){
+		$("#backupDbName").val($("#backupDbName").val().replace(/ /g, ''));
+		if(!$('#frmDataBackup').valid()){
+			return;
+		}
+		showConfirm('Confirm', "Do you want to save?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmDataBackup").submit();
+		});
+	});
+	
+	validatorDataBackup = $('#frmDataBackup').validate({
+		rules : {
+			backupDbName:{
+				required : true,
+				DbNameChecker: true
+			}
+		},
+		messages : {
+			backupDbName:{
+				required: 'Input DB Names.',
+				DbNameChecker: 'Input proper DB Names.'
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	$.validator.addMethod('DbNameChecker', function(value) {
+	       var arr = value.split(',');
+	       if(arr.length > 4){
+	    	   return false;
+	       }
+	       var valid = true;
+	       for(var i=0; i<arr.length; i++){
+	    	   var val = arr[i];
+	    	   if(val != 'egis' && val != 'alarm' && val != 'localinfo' && val != 'statistics'){
+	    		  return false;
+	    	   }
+	       }
+	       for(var i=0; i<arr.length; i++){
+	    	   var sameCnt = 0;
+    		   for(var k=0; k<arr.length; k++){
+    			   if(arr[i]==arr[k]){
+    				   if(++sameCnt==2){
+    					   return false;
+    				   }
+    			   }
+    		   }
+	       }
+	       return true;
+		}, 'Invalid Value');
+	
+	$("#frmDataBackup").ajaxForm({
+		url: "/setPolicyDataBackup",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			var backupDbOn=$("#backupDbOn").is(":checked")?1:0;
+			arr.push({name:'backupDbOn', value: backupDbOn});  
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				getPolicyDataBackup();
+			}
+		}
+	});
+	
+	//================================== Check Validity =====================================
+		
+	getCheckValidity();
+		
+	// checkValidHour
+	var obj = $("#checkValidHour");
+	obj.empty();
+	obj.append("<option value='-1' selected='' disabled=''>choose hour...</option>");
+	for(var i=0; i<24; i++){
+		obj.append("<option value='"+i+"'>"+i+"</option>");
+	}
+	
+	//setValidMinute
+	var obj = $("#checkValidMinute");
+	obj.empty();
+	obj.append("<option value='-1' selected='' disabled=''>choose minute...</option>");
+	for(var i=0; i<60; i++){
+		obj.append("<option value='"+i+"'>"+i+"</option>");
+	}
+	
+	
+	findControlRadio("frmCheckValidity", "period").change(function(){
+		togglePeriod();
+	});
+	
+	
+	
+	// save Check Valid
+	$("#btnSaveCheckValid").click(function(){
+		showConfirm('Confirm', "Do you want to save?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmCheckValidity").submit();
+		});
+	});
+	
+	$("#frmCheckValidity").ajaxForm({
+		url: "/setPolicyCheckValidity",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			if(getControlRadio("frmCheckValidity", "period")==1){
+				arr.push({name:'checkValidHour', value: -1})
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				getPolicyCheckValidity();
+			}
+		}
+	});
+	
+	//================================== delete data & file=====================================
+		
+	getPolicyDataDelete();
+		
+	//----------------------------------- save db---------------------------------------------
+	$("#btnSaveDeleteData").click(function(){
+		if(!$('#frmDeleteData').valid()){
+			return;
+		}
+		showConfirm('Confirm', "Do you want to save?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmDeleteData").submit();
+		});
+	});	
+	
+	validatorDataDelete = $('#frmDeleteData').validate({
+		rules : {
+			dbStatsHistoryData:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+			dbStatsRawData:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+			dbStatsShortestHourlyData:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+			dbAlarmData:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			}
+		},
+		messages : {
+			dbStatsHistoryData:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365', 
+			},
+			dbStatsRawData:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365', 
+			},
+			dbStatsShortestHourlyData:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365', 
+			},
+			dbAlarmData:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365', 
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	$("#frmDeleteData").ajaxForm({
+		url: "/setPolicyDataDelete",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				getPolicyDataDelete();
+			}
+		}
+	});
+		
+	//----------------------------------- save file---------------------------------------------
+	$("#btnSaveDeleteFile").click(function(){
+		if(!$('#frmDeleteFile').valid()){
+			return;
+		}
+		showConfirm('Confirm', "Do you want to save?");
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmDeleteFile").submit();
+		});
+	});
+	validatorFileDelete = $('#frmDeleteFile').validate({
+		rules : {
+			fileDefaultLog:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+			fileSpbLog:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+// 			fileWebLog:{
+// 				required : true,
+// 				number: true,
+// 				min:1,
+// 				max:365
+// 			},
+// 			fileEtcFile:{
+// 				required : true,
+// 				number: true,
+// 				min:1,
+// 				max:365
+// 			},
+			fileLogBackupFile:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+			fileDbBackupFile:{
+				required : true,
+				number: true,
+				min:1,
+				max:365
+			},
+		},
+		messages : {
+			fileDefaultLog:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365',
+			},
+			fileSpbLog:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365',
+			},
+// 			fileWebLog:{
+// 				required: 'Input Day',
+// 				number: 'Input Day',
+// 				min: 'Range is 1~365',
+// 				max: 'Range is 1~365',
+// 			},
+// 			fileEtcFile:{
+// 				required: 'Input Day',
+// 				number: 'Input Day',
+// 				min: 'Range is 1~365',
+// 				max: 'Range is 1~365',
+// 			},
+			fileLogBackupFile:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365',
+			},
+			fileDbBackupFile:{
+				required: 'Input Day',
+				number: 'Input Day',
+				min: 'Range is 1~365',
+				max: 'Range is 1~365',
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	$("#frmDeleteFile").ajaxForm({
+		url: "/setPolicyFileDelete",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				getPolicyDataDelete();
+			}
+		}
+	});
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function getPolicyDataBackup(){
+	$.post("getPolicyDataBackup",{},function(json){
+		if(json.result!=null){
+			var vo = json.result;
+			
+			setControlCheck("frmDataBackup", "backupDbOn", vo.backupDbOn, false);
+			setControlInput("frmDataBackup", "backupDbName", vo.backupDbName, false);
+			setControlRadio("frmDataBackup", "period", (vo.backupDbDay==0)?1:2, false);
+			setControlInput("frmDataBackup", "backupDbDay", vo.backupDbDay, false);
+			setControlInput("frmDataBackup", "backupDbHour", vo.backupDbHour, false);
+			
+			toggleBackupPolicy();
+			
+			if(vo.backupDbOn==1){
+				toggleDayOfMonth();
+			}
+		}
+		
+	});
+}
+
+function toggleBackupPolicy(){
+	var val=$("#backupDbOn").is(":checked");
+	if(val){
+		$("#frmDataBackup [name=lblClass]").removeClass("state-disabled");
+		$("#frmDataBackup [name=lblClass2]").removeClass("state-disabled");
+		$("#frmDataBackup #backupDbName").attr("disabled", false);
+		$("#frmDataBackup [name=period]").attr("disabled", false);
+		$("#frmDataBackup #backupDbDay").attr("disabled", false);
+		$("#frmDataBackup #backupDbHour").attr("disabled", false);
+		
+	}else{
+		$("#frmDataBackup [name=lblClass]").addClass("state-disabled");
+		$("#frmDataBackup [name=lblClass2]").addClass("state-disabled");
+		$("#frmDataBackup #backupDbName").attr("disabled", true);
+		$("#frmDataBackup [name=period]").attr("disabled", true);
+		$("#frmDataBackup #backupDbDay").attr("disabled", true);
+		$("#frmDataBackup #backupDbHour").attr("disabled", true);
+	}
+}
+
+function toggleDayOfMonth(){
+	var val=getControlRadio("frmDataBackup", "period");
+	if(val==1){ // daily
+		$("#frmDataBackup [name=lblClass2]").addClass("state-disabled");
+		$("#frmDataBackup #backupDbDay").attr("disabled", true);
+		$("#frmDataBackup #backupDbDay").val(0);
+	}else if(val==2){ // monthly
+		$("#frmDataBackup [name=lblClass2]").removeClass("state-disabled");
+		$("#frmDataBackup #backupDbDay").attr("disabled", false);
+	}
+}
+
+function getPolicyDataDelete(){
+	$.post("getPolicyDataDelete",{},function(json){
+		if(json.result!=null){
+			var vo = json.result;
+			
+			// db
+			setControlInput("frmDeleteData", "dbStatsHistoryData", vo.dbStatsHistoryData, false);
+			setControlInput("frmDeleteData", "dbStatsRawData", vo.dbStatsRawData, false);
+			setControlInput("frmDeleteData", "dbStatsShortestHourlyData", vo.dbStatsShortestHourlyData, false);
+			setControlInput("frmDeleteData", "dbAlarmData", vo.dbAlarmData, false);
+			
+			// file
+			setControlInput("frmDeleteFile", "fileDefaultLog", vo.fileDefaultLog, false);
+			setControlInput("frmDeleteFile", "fileSpbLog", vo.fileSpbLog, false);
+// 			setControlInput("frmDeleteFile", "fileWebLog", vo.fileWebLog, false);
+// 			setControlInput("frmDeleteFile", "fileEtcFile", vo.fileEtcFile, false); 
+			setControlInput("frmDeleteFile", "fileDbBackupFile", vo.fileDbBackupFile, false);
+			setControlInput("frmDeleteFile", "fileLogBackupFile", vo.fileLogBackupFile, false);
+		}
+	});
+}
+
+function getCheckValidity(){
+	$.post("getPolicyCheckValidity", {}, function(json){
+		var vo = json.result;
+		if(vo!=null){
+			//setControlCheck("frmCheckValidity", "checkValidOn", (vo.checkValidOn==0)?false:true, true);
+			$("#frmCheckValidity #lblCheck").html((vo.checkValidOn==0)?"Off":"On");
+			
+			setControlRadio("frmCheckValidity", "invalidActionType", vo.invalidActionType, false);
+			
+			setControlRadio("frmCheckValidity", "period", (vo.checkValidHour==-1)?1:0, false);
+			
+			if(vo.checkValidHour!=-1){ // daily
+				$("#frmCheckValidity #checkValidHour").val(vo.checkValidHour);
+				$("#frmCheckValidity #checkValidMinute").val(vo.checkValidMinute);
+			}else{ // hourly
+				$("#frmCheckValidity #checkValidMinute").val(vo.checkValidMinute);
+			}
+		}
+	})
+}
+
+
+function togglePeriod(){
+	var period = getControlRadio("frmCheckValidity", "period");
+	if(period==1){ // Hourly
+		$("#frmCheckValidity #checkValidHour").val(-1);
+		
+		$("#frmCheckValidity [name=lblHour]").addClass("state-disabled");
+		$("#frmCheckValidity [name=lblMinute]").removeClass("state-disabled");
+		
+		$("#frmCheckValidity #checkValidHour").attr("disabled", true);
+		$("#frmCheckValidity #checkValidMinute").attr("disabled", false);
+	}else{ // Daily
+		$("#frmCheckValidity #checkValidMinute").val(-1);
+		
+		$("#frmCheckValidity [name=lblHour]").removeClass("state-disabled");
+		//$("#frmCheckValidity [name=lblMinute]").addClass("state-disabled");
+		
+		$("#frmCheckValidity #checkValidHour").attr("disabled", false);
+		//$("#frmCheckValidity #checkValidMinute").attr("disabled", true);
+	}
+}
+
+
+</script>				

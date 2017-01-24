@@ -1,0 +1,119 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Command Level List </h2>
+				</header>
+				<!-- widget div-->
+				<div >
+						
+						<table id="dtCommandLevel" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th>Level</th>
+									<th>Code</th>
+									<th>Command</th>
+									<th>Action</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+						</table>
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+
+
+<script type="text/javascript">
+var tableCommandLevel;
+
+var pagefunction = function() {
+	
+	
+	tableCommandLevel = $('#dtCommandLevel').DataTable({
+		"sDom":  sDomNoControl,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getUserCommandLevel",
+        	"type": "post",
+        },
+        'order': [[0, 'asc']],
+        "columns": [
+			        { "data": "level" },
+			        { "data": "commandCode" },
+			        { "data": "commandName" },
+			        { "data": "commandActionCode" },
+			        { "data": "commandDesc" },
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center', 'render': function (data, type, full, meta){ return getUserLevel(data); }}, 
+				{'targets': 1, 'className': 'text-center'},   
+				{'targets': 2, 'className': 'text-center'},   
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCommandAction(data); }},    
+				{'targets': 4, 'className': 'text-center'},   
+    	 ]
+	});
+	
+	
+	//	click row
+	tableCommandLevel.on( 'click', 'tr', function () {
+		tableCommandLevel.$('tr.selected').removeClass('selected');getDatetime
+		$(this).addClass('selected');
+		
+	});
+	
+	// refresh
+	$("#btnRefresh").click(function(){
+		tableCommandLevel.ajax.reload(null, false);
+	});
+	
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function getCommandAction(val){
+	if(val==0) return "none";
+	else if(val==1) return "retrieve";
+	else if(val==2) return "add";
+	else if(val==3) return "modify";
+	else if(val==4) return "delete";
+	else if(val==5) return "apply";
+	else if(val==6) return "upload";
+	else if(val==7) return "download";
+	else if(val==8) return "excute";
+	else if(val==9) return "db-update";
+	else if(val==10) return "all";
+	else return "";
+}
+
+function getUserLevel(val){
+	if(val==0) return "Monitor";
+	else if(val==1) return "Admin";
+	else return "";
+}
+

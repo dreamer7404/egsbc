@@ -1,0 +1,157 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/security 
+ 	http://www.springframework.org/schema/security/spring-security-3.2.xsd
+ 	http://www.springframework.org/schema/websocket
+	http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd
+	http://www.springframework.org/schema/aop
+ 	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+ 	http://www.springframework.org/schema/task 
+	http://www.springframework.org/schema/task/spring-task-4.0.xsd
+   ">
+    
+    
+    <context:component-scan base-package="com.egsbc" />
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+    <!-- Security :  @Secured 어노테이션을 사용할 수 있다 -->
+	<security:global-method-security secured-annotations="enabled" />
+	<!-- Security : 추가 -->
+<!-- 	<bean id="userDetailsServiceImpl" class="com.jnc.blocksystem.security.UserDetailsServiceImpl"> -->
+<!--         <property name="sessionFactory" ref="sessionFactory"></property> -->
+<!--     </bean> -->
+    
+ 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+    
+    <!-- jsonView -->
+	<bean id="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView">
+		<property name="contentType" value="application/json;charset=UTF-8"></property>
+	</bean>
+    <bean id="beanNameResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+
+    
+    <mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"> <!-- @ResponseBody로 String 처리할때 한글처리 -->
+	            <property name="supportedMediaTypes">
+	                <list>
+	                    <value>text/html;charset=UTF-8</value>
+	                </list>
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
+	
+	<bean  class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+	   <property name="messageConverters">
+	      <list>
+	      	
+	         <bean class = "org.springframework.http.converter.StringHttpMessageConverter">
+	            <property name = "supportedMediaTypes">
+	               <list>
+	                  <value>text/plain;charset=UTF-8</value>
+	               </list>
+	            </property>
+	         </bean>
+	      </list>
+	   </property>
+	</bean>
+
+	
+<!-- 	 <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+<!--         <property name="defaultErrorView" value="error/bizError"/> -->
+<!--         <property name="exceptionMappings"> -->
+<!--             <props> -->
+<!--             	<prop key="DataNotFoundException">error/dataNotFoundError</prop> -->
+<!--             	<prop key="BusinessLogicException">error/businessLogicError</prop> -->
+<!--                 <prop key="org.springframework.dao.DataAccessException">error/dataAccessFailure</prop> -->
+<!--                 <prop key="org.springframework.transaction.TransactionException">error/transactionFailure</prop> -->
+<!--                 <prop key="org.springframework.security.AccessDeniedException">error/accessDenied</prop> -->
+<!--             </props> -->
+<!--         </property> -->
+<!--     </bean> -->
+    
+<!--      MULTIPART RESOLVERS -->
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="100000000" />
+        <property name="maxInMemorySize" value="100000000" />
+    </bean>
+
+    
+<!--     <bean id="webConfigService" class="com.jnc.blocksystem.security.WebConfigService" autowire="byType"/> -->
+
+
+	<!-- config properties file -->
+    <context:property-placeholder location="classpath:properties.xml" />
+    
+    
+    <!-- WebSocket -->
+    <bean id="webSocketService" class="com.egsbc.ws.service.WebSocketService" />
+    
+    <websocket:handlers>
+		<websocket:mapping handler="webSocketService" path="/ws/trace" />
+	</websocket:handlers>
+	
+	
+<!-- 	<websocket:message-broker application-destination-prefix="/app"> -->
+<!-- 		<websocket:stomp-endpoint path="/ws"> -->
+<!-- 			<websocket:sockjs /> -->
+<!-- 		</websocket:stomp-endpoint> -->
+		
+<!-- 		<websocket:simple-broker prefix="/topic" /> -->
+<!-- 	</websocket:message-broker> -->
+
+
+     <!--  AOP  -->
+    <aop:aspectj-autoproxy />
+    
+    <!-- Aspect -->
+	<bean id="loggerAspect" class="com.egsbc.common.logger.LoggerAspect" />
+	
+	<!-- Task -->
+	<task:scheduler id="jobScheduler" pool-size="10" />
+    <task:annotation-driven scheduler="jobScheduler" />
+	
+	<!-- Mail -->
+<!-- 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> -->
+<!-- 	 <property name="host" value="smtp.gmail.com"/> -->
+<!-- 	 <property name="username" value="ahnks1349@gmail.com"/> -->
+<!-- 	 <property name="password" value="ccas1999"/> -->
+<!-- 	 <property name="port" value="587"/> -->
+<!-- 	 <property name="javaMailProperties"> -->
+<!-- 	 <props> -->
+<!-- 		 <prop key="mail.smtp.auth">true</prop> -->
+<!-- 		 <prop key="hostname">smtp.gmail.com</prop> -->
+<!-- 	 </props> -->
+<!-- 	 </property> -->
+<!-- 	</bean> -->
+
+	
+	
+    
+</beans>

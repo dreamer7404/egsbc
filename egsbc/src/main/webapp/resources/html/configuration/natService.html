@@ -1,0 +1,659 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>NAT Service List </h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+						<table id="dtNatService" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="3" class="text-center">Name</th>
+									<th rowspan="3" class="text-center">protocol</th>
+									<th rowspan="3" class="text-center">Proxy Mode</th>
+									<th rowspan="3" class="text-center">IPKTS</th>
+									<th rowspan="3" class="text-center">Packet/second</th>
+									<th rowspan="3" class="text-center">Pin-hole duration</th>
+									
+									<th colspan="4" class="text-center">Source Side</th>
+									<th colspan="4" class="text-center">Destination Side</th>
+									
+								</tr>
+								<tr>
+									<th rowspan="2" class="text-center">Source Address</th>
+									<th rowspan="2" class="text-center">NIC Alias</th>
+									<th colspan="2" class="text-center">Port</th>
+									
+									<th rowspan="2" class="text-center">NIC Alias</th>
+									<th rowspan="2" class="text-center">Destination Address</th>
+									<th colspan="2" class="text-center">Port</th>
+								</tr>
+								<tr>
+									<th class="text-center">Min</th>
+									<th class="text-center">Max</th>
+									
+									<th class="text-center">Min</th>
+									<th class="text-center">Max</th>
+									
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-default btn-add" id="btnAddNatService"> Add</button>
+							<button type="button" class="btn btn-default btn-edit" id="btnChangeNatService"> Edit</button>
+							<button type="button" class="btn btn-default btn-delete" id="btnRemoveNatService"> Delete</button>
+							<button type="button" class="btn btn-default btn-refresh" id="btnRefreshNatService"> Refresh</button>
+						</div>
+				</div>
+			</div>
+			
+			
+		</article>
+	</div>
+</section>			
+
+<!------------------------------------------------ Modal Nat Service ------------------------------------------------------------------------>
+<div class="modal" id="modalNatService" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:780px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalNatService"></h6>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row">
+					
+					<form class="smart-form" id="frmNatService" novalidate="novalidate">
+					
+						<table width="740px" border="0" style="margin:0 auto;">
+						<tr>
+							<td class="td-label" name="tdClass">*Name</td>
+							<td colspan="2" >
+								<label class="input toggleState" name="lblClass">
+									<input type="text" id="name" name="name">
+								</label>
+							</td>
+							<td style="width:20px"></td>
+							<td class="td-label" style="width:110px">*Proxy Mode</td>
+							<td colspan="2" >
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="proxyMode"  checked >
+									<label class="onoffswitch-label" for="proxyMode"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="7" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label"  name="tdClass">*Protocol</td>
+							<td colspan="2" >
+								<div class="inline-group">
+									<label class="radio" name="lblClass">
+										<input type="radio" name="protocol" value="1">
+										<i></i>UDP.
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="protocol" value="2" checked>
+										<i></i>TCP
+									</label>
+									<label class="radio" name="lblClass">
+										<input type="radio" name="protocol" value="3" >
+										<i></i>ALL
+									</label>
+								</div>
+							</td>
+							<td></td>
+							<td class="td-label" name="tdClass">*IPKTS</td>
+							<td colspan="2" >
+								<span class="onoffswitch" >
+									<input type="checkbox"  class="onoffswitch-checkbox" id="ipkts" >
+									<label class="onoffswitch-label" for="ipkts"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF" ></span> 
+										<span class="onoffswitch-switch" ></span> 
+									</label> 
+								</span> 
+							</td>
+						</tr>
+						<tr> 
+							<td colspan="7" class="td-hr"><hr class="hr-form" /></td>  
+						</tr> 
+						<tr>
+							<td class="td-label">Packets per Second</td>
+							<td >
+								<label class="input" >
+									<input type="text" id="packetPerSec" name="packetPerSec">
+								</label>
+							</td>
+							<td style="width:80px">(0: limitless)</td>
+							<td></td>
+							<td class="td-label"> Pinhole timeout(sec)</td>
+							<td >
+								<label class="input" >
+									<input type="text" id="pineHoleDuration" name="pineHoleDuration">
+								</label>
+							</td>
+							<td style="width:80px">(0: limitless)</td>
+						</tr>
+						<tr> 
+							<td colspan="7" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr> 
+						<tr>
+							<td colspan="7" class="td-label">Source Side</td>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<table width="100%" border="0">
+								<tr>
+									<td rowspan="3" class="td-label" style="width:110px" name="tdClass">*Source Address</td>
+									<td rowspan="3" style="padding:12px 10px;width:170px">
+										<label class="input" name="lblClass">
+											<input type="text" id="sourceIp" name="sourceIp">
+										</label>
+									</td>
+									<td rowspan="3" >
+										<span style="font-size:24px;color:#9B9B9B" class="glyphicon glyphicon-arrow-right" ></span>
+									</td>
+									<td class="td-label" style="padding:3px 10px;width:130px" name="tdClass">*NIC Alias</td>
+									<td colspan="3" style="padding:3px 10px;width:160px">
+										<label class="select" name="lblClass" name="lblClass">
+											<select  id="incommingIntfAlias" name="incommingIntfAlias">
+											</select> <i></i> 
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:3px 10px;" name="tdClass">*Port Range(1 ~ 65535)</td>	
+									<td style="padding:3px 2px 3px 10px;width:90px">
+										<label class="input" name="lblClass">
+											<input type="text" id="incommingIntfMinPort" name="incommingIntfMinPort" class="portGroup1">
+										</label>
+									</td>	
+									<td>
+										<span style="font-size:12px;color:#9B9B9B" class="glyphicon glyphicon-minus" ></span>
+									</td>
+									<td style="padding:3px 10px 3px 2px;">
+										<label class="input" name="lblClass">
+											<input type="text" id="incommingIntfMaxPort" name="incommingIntfMaxPort" class="portGroup1">
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="3"  class="text-center" ><label id="lblPort1"></label></td>
+								</tr>
+								<tr> 
+							<td colspan="7" class="td-hr"><hr class="hr-form-seperate" /></td>  
+						</tr> 
+								<tr>
+									<td colspan="7" class="td-label">Destination Side</td>
+								</tr>
+								<tr>
+									<td rowspan="3" align="left" style="padding:12px 10px" name="tdClass">*NIC Alias</td>
+									<td rowspan="3" style="padding:12px 10px">
+										<label class="select" name="lblClass" >
+											<select  id="outgoingIntfAlias" name="outgoingIntfAlias">
+											</select> <i></i> 
+										</label>
+									</td>
+									<td rowspan="3" >
+										<span style="font-size:24px;color:#9B9B9B" class="glyphicon glyphicon-arrow-right" ></span>
+									</td>
+									<td align="left" style="padding:3px 10px;" name="tdClass">*Destination Address</td>
+									<td colspan="3" style="padding:3px 10px;">
+										<label class="input" name="lblClass">
+											<input type="text" id="destinationIp" name="destinationIp">
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:3px 10px;" name="tdClass">*Port Range(1~65535)</td>	
+									<td style="padding:3px 2px 3px 10px;">
+										<label class="input" name="lblClass">
+											<input type="text" id="destinationMinPort" name="destinationMinPort" class="portGroup2">
+										</label>
+									</td>	
+									<td style="padding:0;">
+										<span style="font-size:12px;color:#9B9B9B" class="glyphicon glyphicon-minus" name="lblClass"></span>
+									</td>
+									<td style="padding:3px 10px 3px 2px;">
+										<label class="input" name="lblClass">
+											<input type="text" id="destinationMaxPort" name="destinationMaxPort" class="portGroup2">
+										</label>
+									</td>
+								</tr>
+								<tr>
+									<td></td>
+									<td colspan="3" class="text-center" ><label id="lblPort2"></label></td>
+								</tr>
+								</table>
+							</td>
+							
+						</tr>
+						
+						
+						</table>
+						
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>		
+				</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveNatService">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+<script type="text/javascript">
+var validatorNatService;
+var tableNatService;
+
+var pagefunction = function() {
+	//============================== NatService =============================================
+	tableNatService = $('#dtNatService').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getNatService",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+    				{ "data": "name"},       
+    				{ "data": "protocol"},       
+    				{ "data": "proxyMode"},       
+    				{ "data": "ipkts"},       
+    				{ "data": "packetPerSec"},       
+    				{ "data": "pineHoleDuration"},   
+    				
+    				{ "data": "sourceIp"},       
+    				{ "data": "incommingIntfAlias"},       
+    				{ "data": "incommingIntfMinPort"},       
+    				{ "data": "incommingIntfMaxPort"}, 
+    				
+    				{ "data": "outgoingIntfAlias"},   
+    				{ "data": "destinationIp"},    
+    				{ "data": "destinationMinPort"},  
+    				{ "data": "destinationMaxPort"},  
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},
+				{'targets': 1, 'className': 'text-center', 'render': function (data, type, full, meta){ return getProtocol(data); }}, 
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getOnOff(data); }},   
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getOnOff(data); }}, 
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center'}, 
+				{'targets': 6, 'className': 'text-center'}, 
+				{'targets': 7, 'className': 'text-center'}, 
+				{'targets': 8, 'className': 'text-center'}, 
+				{'targets': 9, 'className': 'text-center'}, 
+				{'targets': 10, 'className': 'text-center'},
+				{'targets': 11, 'className': 'text-center'},
+				{'targets': 12, 'className': 'text-center'}, 
+				{'targets': 13, 'className': 'text-center'}, 
+    	 ]
+	});	
+	//	click row
+	tableNatService.on( 'click', 'tr', function () {
+		tableNatService.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	//====================================== Nat SeRvice Modal ========================================
+	
+	// NatService 추가버튼
+	$("#btnAddNatService").click(function(){  
+		
+ 		validatorNatService.resetForm();
+ 		setControlInput("frmNatService", "hidOpMode", 2, false); // add
+		$("#frmNatService [name=lblClass]").removeClass("state-disabled");
+		$("#frmNatService [name=tdClass]").removeClass("state-disabled-color");
+
+
+		setControlInput("frmNatService", "name", '', false); // name
+		setControlRadio("frmNatService", "protocol", 2, false); // protocol
+		setControlInput("frmNatService", "packetPerSec", '', false); // packetPerSec
+		setControlCheck("frmNatService", "proxyMode", true, false); // proxyMode
+		setControlCheck("frmNatService", "ipkts", false, false); // ipkts
+		setControlInput("frmNatService", "pineHoleDuration", '', false); // pineHoleDuration
+		
+		setControlInput("frmNatService", "sourceIp", '*.*.*.*', false); // sourceIp
+		setControlInput("frmNatService", "incommingIntfMinPort", '', false); // incommingIntfMinPort
+		setControlInput("frmNatService", "incommingIntfMaxPort", '', false); // incommingIntfMaxPort
+		
+		setControlInput("frmNatService", "destinationIp", '', false); // destinationIp
+		setControlInput("frmNatService", "destinationMinPort", '', false); // destinationMinPort
+		setControlInput("frmNatService", "destinationMaxPort", '', false); // destinationMaxPort
+		
+		$.post("getInterfaceAliasForNat", {},function(json){
+			var data = json.data;
+			setControlSelect("frmNatService", "incommingIntfAlias", "Select", data, false);
+			setControlSelect("frmNatService", "outgoingIntfAlias", "Select", data, false);
+			
+			// show modal
+			showModal($("#modalNatService"));
+			$("#titleModalNatService").html("Add NAT Service.");
+		});
+	});
+	
+	// NatService 변경버튼
+	$("#btnChangeNatService").click(function(){
+		var data = tableNatService.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Edit", "Select a row to delete.");
+		}else{
+			var item=data[0];
+ 			validatorNatService.resetForm();
+   			setControlInput("frmNatService", "hidOpMode", 3, false);  // change
+			$("#frmNatService [name=lblClass]").addClass("state-disabled");
+			$("#frmNatService [name=tdClass]").addClass("state-disabled-color");
+
+			setControlInput("frmNatService", "name", item.name, true); // name
+ 			setControlRadio("frmNatService", "protocol", item.protocol, true); // protocol
+ 			setControlInput("frmNatService", "packetPerSec", item.packetPerSec, false); // packetPerSec
+ 			setControlCheck("frmNatService", "proxyMode",  (item.proxyMode==0)?false:true, false); // proxyMode
+ 			setControlCheck("frmNatService", "ipkts", (item.ipkts==0)?false:true, true); // ipkts
+ 			setControlInput("frmNatService", "pineHoleDuration", item.pineHoleDuration, false); // pineHoleDuration
+ 			
+ 			setControlInput("frmNatService", "sourceIp", item.sourceIp, true); // sourceIp
+ 			setControlInput("frmNatService", "incommingIntfMinPort", item.incommingIntfMinPort, true); // incommingIntfMinPort
+ 			setControlInput("frmNatService", "incommingIntfMaxPort", item.incommingIntfMaxPort, true); // incommingIntfMaxPort
+ 			
+ 			setControlInput("frmNatService", "destinationIp", item.destinationIp, true); // destinationIp
+ 			setControlInput("frmNatService", "destinationMinPort", item.destinationMinPort, true); // destinationMinPort
+ 			setControlInput("frmNatService", "destinationMaxPort", item.destinationMaxPort, true); // destinationMaxPort
+
+			$.post("getInterfaceAliasForNat", {},function(json){
+				var data = json.data;
+				setControlSelect("frmNatService", "incommingIntfAlias", "Select", data, "vp_inner", true);
+				setControlSelect("frmNatService", "outgoingIntfAlias", "Select", data, "vp_inner",  true);
+				
+				
+				// show modal
+				showModal($("#modalNatService"));
+				$("#titleModalNatService").html("Edit NAT Service");
+			});
+		}
+	});
+	
+	// NatService 삭제버튼
+	$("#btnRemoveNatService").click(function(){ 
+		var data = tableNatService.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to delete!");
+		}else{
+			showConfirm('Confirm', "Do you want to delete [" + data[0].name + "] ?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: '/takeNatService',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableNatService, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefreshNatService").click(function(){
+		tableNatService.ajax.reload(null, false);
+	});
+	
+	//  NatService 저장버튼
+	$("#btnSaveNatService").click(function(){
+		var name = getControlInput("frmNatService", "name");
+		var sourceIp = getControlInput("frmNatService", "sourceIp");
+		var incommingIntfAlias = getControlSelect("frmNatService", "incommingIntfAlias");
+		var incommingIntfMinPort = getControlSelect("frmNatService", "incommingIntfMinPort");
+		var incommingIntfMaxPort = getControlSelect("frmNatService", "incommingIntfMaxPort");
+		
+		var destinationIp = getControlInput("frmNatService", "destinationIp");
+		var outgoingIntfAlias = getControlSelect("frmNatService", "outgoingIntfAlias");
+		var destinationMinPort = getControlSelect("frmNatService", "destinationMinPort");
+		var destinationMaxPort = getControlSelect("frmNatService", "destinationMaxPort");
+		
+		
+// 		if(name=='' || sourceIp=='' || incommingIntfAlias == '' || incommingIntfMinPort=='' || incommingIntfMaxPort=='' ||
+// 				destinationIp=='' || outgoingIntfAlias=='' || destinationMinPort=='' || destinationMaxPort=='' ){
+ 			
+//  		}
+		
+		if(!$("#frmNatService").valid()){
+			return;
+		}
+ 		
+		showConfirm('Confirm', "Do you want to save ?");
+	
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmNatService").submit();  
+		});
+	});
+
+	validatorNatService = $('#frmNatService').validate({
+// 		onfocusout: function(element) {$(element).valid()},
+// 		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			name:{
+				required : true,
+				maxlength: 50
+			},
+			packetPerSec: {
+				number:true,
+				min: 0,
+				max: 32767
+			},
+			pineHoleDuration: {
+				number:true,
+				min: 0,
+				max: 2147483647
+			}, 
+			sourceIp:{
+				required : true,
+				IP4Checker: true,
+				maxlength: 15
+			},
+			incommingIntfAlias:{required : true},
+			incommingIntfMinPort:{ 
+				require_from_group: [2, ".portGroup1"] , 
+				number:true, 
+				min:1, 
+				max:65535
+			}, // 1 :  at least one is complete
+			incommingIntfMaxPort:{ 
+				require_from_group: [2, ".portGroup1"] , 
+				number:true, 
+				min:1, 
+				max:65535
+			},
+			destinationIp:{
+				required : true,
+				IP4Checker: true,
+				maxlength: 15
+			},
+			outgoingIntfAlias:{required : true},
+			destinationMinPort:{
+				require_from_group: [2, ".portGroup2"] , 
+				number:true, 
+				min:1, 
+				max:65535
+			},
+			destinationMaxPort:{ 
+				require_from_group: [2, ".portGroup2"] , 
+				number:true, 
+				min:1, 
+				max:65535
+			}
+		},
+		messages : {
+			name:{
+				required : 'Input name',
+				maxlength: 'Input proper name'
+			},
+			packetPerSec: {
+				number : 'Input number',
+				min: 'Input proper number',
+				max: 'Input proper number'
+			},
+			pineHoleDuration: {
+				number : 'Input number',
+				min: 'Input proper number',
+				max: 'Input proper number'
+			},
+			sourceIp:{
+				required :'Input source address',
+				IP4Checker: 'Input proper address',
+				maxlength: 'Input proper address'
+			},
+			incommingIntfAlias:{required : 'Input NIC Alias'},
+			incommingIntfMinPort:{
+				require_from_group : 'Input port range',
+				number: 'Input number',
+				min : 'Port range is 10000~19999',
+				max : 'Port range is 10000~19999'
+			},
+			incommingIntfMaxPort:{
+				require_from_group : 'Input port range',
+				number: 'Input number',
+				min : 'Port range is 10000~19999',
+				max : 'Port range is 10000~19999'
+			},
+			destinationIp:{
+				required : 'Input destination address',
+				IP4Checker: 'Input proper address',
+				maxlength: 'Input proper address'
+			},
+			outgoingIntfAlias:{required : 'Input NIC Alias'},
+			destinationMinPort:{
+				require_from_group : 'Input port range',
+				number:  'Input number',
+				min : 'Port range is 1~65535',
+				max : 'Port range is 1~65535'
+			},
+			destinationMaxPort:{
+				require_from_group : 'Input port range',
+				number:'Input number',
+				min : 'Port range is 1~65535',
+				max : 'Port range is 1~65535'
+			},
+		},
+		groups: {
+		    group1: "incommingIntfMinPort incommingIntfMaxPort",  // group1 : arbitrary name
+		    group2: "destinationMinPort destinationMaxPort"  // group2 : arbitrary name
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr('name')=='incommingIntfMinPort' || element.attr('name')=='incommingIntfMaxPort'){
+				error.insertAfter("#frmNatService #lblPort1");
+			}else if(element.attr('name')=='destinationMinPort' || element.attr('name')=='destinationMaxPort'){
+					error.insertAfter("#frmNatService #lblPort2");
+			}else{
+				error.insertAfter(element.parent());
+			}
+		},
+	});
+	
+	$.validator.addMethod('IP4Checker', function(value) {
+	       var arr = value.split('.');
+	       if(arr.length != 4){
+	    	   return false;
+	       }
+	       var valid = true;
+	       for(var i=0; i<arr.length; i++){
+	    	   var val = arr[i];
+	    	   if(val == '' || (val != '*' && (isNaN(val) || val < 0 || val > 255))){ // isNaN(문자) => true
+	    		  return false;
+	    	   }  
+	       }
+	       return true;
+		}, 'Invalid IP address');
+	
+	
+	$("#frmNatService").ajaxForm({
+		url: "/takeNatService",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){ 
+			
+			//----------- checkbox 처리-----------------------------
+			//Proxy Mode
+			var proxyMode = getControlCheck("frmNatService", "proxyMode"); 
+			arr.push({name:'proxyMode', value: proxyMode?1:0});   
+			// ipkts
+			var ipkts = getControlCheck("frmNatService", "ipkts"); 
+			arr.push({name:'ipkts', value: ipkts?1:0});   
+
+			var opMode=getControlInput("frmNatService", "hidOpMode"); 
+			if(opMode==3){
+				var item = tableNatService.rows('.selected').data()[0];
+				//------------ disable fileds 처리 ------------------------
+ 				arr.push({name:'name', value: item.name}); 
+ 				arr.push({name:'protocol', value: item.protocol}); 
+ 				
+ 				arr.push({name:'sourceIp', value: item.sourceIp}); 
+ 				arr.push({name:'incommingIntfAlias', value: item.incommingIntfAlias}); 
+ 				arr.push({name:'incommingIntfMinPort', value: item.incommingIntfMinPort}); 
+ 				arr.push({name:'incommingIntfMaxPort', value: item.incommingIntfMaxPort}); 
+ 				
+ 				arr.push({name:'destinationIp', value: item.destinationIp}); 
+ 				arr.push({name:'outgoingIntfAlias', value: item.outgoingIntfAlias}); 
+ 				arr.push({name:'destinationMinPort', value: item.destinationMinPort}); 
+ 				arr.push({name:'destinationMaxPort', value: item.destinationMaxPort}); 
+ 				
+			}
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalNatService", tableNatService, null);
+		},
+		error:function(request,status,error){
+	    	//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	    }
+
+	});
+	
+	
+
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+	
+
+
+
+</script>

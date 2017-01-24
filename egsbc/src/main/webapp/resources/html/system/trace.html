@@ -1,0 +1,467 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article id="divTraceList" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display:block">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="divTrace" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call Trace List</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					<table id="dtTrace" class="table  table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th class="text-center">Created Time</th>
+									<th class="text-center">Trace Type</th>
+									<th class="text-center">Condition</th>
+									<th class="text-center">Duration(sec)</th>
+									<th class="text-center">aaa</th>
+								</tr>
+							</thead>
+					</table>	
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-traceview" id="btnTraceView"> Trace View</button>
+							<button class="btn btn-default btn-add" id="btnAdd"> Add</button>
+							<button class="btn btn-default btn-delete" id="btnDelete"> Delete</button>
+						</div>
+						
+				</div>
+			</div>
+		</article>
+		
+		
+		
+		<!-- NEW WIDGET START -->
+		<article id="divTraceResult" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="display:none">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="divTrace" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call Trace Result</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					<div style="margin-bottom:6px">
+						<form id="frmTraceResultHeader">
+						<table border="0" width="100%">
+						<tr>
+							<td align="right" style="width:120px;padding-right:10px">Created time :</td>
+							<td width="150px"><span id="createdTime"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Trace Type:</td>
+							<td width="50px"><span id="traceType"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Condition:</td>
+							<td width="100px"><span id="condition"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Duration:</td>
+							<td width="80px"><span id="duration"></span></td>
+							<td>&nbsp;</td>
+							<td align="right">
+								<button type="button" class="btn btn-default btn-tracelist" id="btnTraceList">Trace List</button>
+				          		<button type="button" class="btn btn-default btn-filesave" id="btnFileSave">File Save</button>
+							</td>
+						</tr>
+						</table>
+						</form>
+					</div>
+					
+					
+				
+					<table id="dtTraceResult" class="table  table-bordered table-hover"  width="100%"  >
+							<thead>
+								<tr>
+<!-- 									<th class="text-center" style="width:20px"><input id="selectAll" type="checkbox" value="1"></th> -->
+									<th class="text-center" style="width:20px"></th>
+									<th class="text-center">Start Time</th>
+									<th class="text-center">Call-ID</th>
+									<th class="text-center">From</th>
+									<th class="text-center">To</th>
+									<th class="text-center">Method</th>
+								</tr>
+							</thead>
+					</table>	
+					
+					
+					<div class="col-md-8" style="border:0px solid black">
+						<div style="width:100%;margin-bottom:7px"><strong><i class="fa fa-caret-right"></i>&nbsp;Flow</strong></div>
+						
+						<table id="tdFlowHeader" class="table table-bordered"  border="0" style="width:1054px;margin:0"  >
+								<thead>
+									<tr>
+										<th class="text-center" width="160px">Time</th>
+										<th class="text-center" width="110px">IP</th>
+										<th class="text-right" width="200px"><span id="Ip_b"></span></th>
+										<th class="text-center">SBC</th>
+										<th class="text-left" width="200px"><span id="Ip_c"></span></th>
+										<th class="text-center" width="110px">IP</th>
+									</tr>
+								</thead>
+						</table>	
+						
+						<div id="divFlow" style="padding:0;overflow-y:auto;border:0px solid red;">
+							<table id="dtFlow" class="table table-bordered"  >
+								<tbody id="dtFlowBody">
+								</tbody>
+							</table>
+						</div>
+						
+					</div>
+					
+					<div class="col-md-4" style="border:0px solid black">
+						<div style="width:100%;margin-bottom:7px"><strong><i class="fa fa-caret-right"></i>&nbsp;Message</strong></div>
+						<div id="divMessage" style="margin-bottom:20px;border:1px solid #ddd;overflow:auto"></div>
+					</div>
+					
+						
+				</div>
+			</div>
+		</article>
+		
+		
+		
+		
+		
+		
+	</div>
+</section>
+
+
+<!-- Add -->
+  <div class="modal" id="modalAddTrace" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:400px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#353D4B;height:40px;padding-top:10px;">
+          <h6 class="modal-title">Add Call Trace</h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmAdd" novalidate="novalidate">
+							
+							<table border="0" width="100%">
+							<tr>
+								<td class="td-label">*Trace Type</td>
+								<td>
+									<div class="inline-group">
+										<label class="radio" >
+											<input type="radio" name="traceType" value="num" checked>
+											<i></i>Number
+										</label>
+										<label class="radio" >
+											<input type="radio" name="traceType" value="ip">
+											<i></i>IP
+										</label>
+										<label class="radio" >
+											<input type="radio" name="traceType" value="all">
+											<i></i>All
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label">*Condition</td>
+								<td>
+									<label class="input" name="lblClass">
+										<input type="text" id="condition" name="condition">
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label">*Duration(sec)</td>
+								<td>
+									<table width="100%">
+									<tr>
+										<td width="150px">
+											<label class="input">
+												<input type="text" id="duration" name="duration">
+											</label>
+										</td>
+										<td class="td-label">(0: Continue)</td>
+									</tr>
+									</table>
+									
+								</td>
+							</tr>
+							</table>
+					</form>		
+					</div>
+				
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	        	<button type="button" class="btn btn-default btn-save"  id="btnSave">Save</button>
+	          	<button type="button" class="btn btn-default btn-close" id="btnCancel" data-dismiss="modal">Cancel</button>
+        	</div>
+		</div>
+	</div>	
+</div>	
+
+<script type="text/javascript">
+var tableTrace;
+var validatorTrace;
+
+var tableTraceResult;
+var tableFlow;
+
+var pagefunction = function() {
+	
+	//------------------------ trace list ------------------------------------------------------------------------
+	
+	tableTrace = $("#dtTrace").DataTable( {
+		 	"sDom": sDomNoControl,
+		 	"paging": false,
+		 	  "columns": [
+		    				{ "data": "createdTime"},       
+		    				{ "data": "traceType"},       
+		    				{ "data": "condition"},       
+		    				{ "data": "duration"},  
+		    				{ "data": "selected"}, 
+		    		    ],
+	        'columnDefs': [	 
+    				{'targets': 0, 'className': 'text-center'},
+    				{'targets': 1, 'className': 'text-center'},
+    				{'targets': 2, 'className': 'text-center'},
+    				{'targets': 3, 'className': 'text-center'},
+    				{'targets': 4, 'className': 'text-center', "visible": false},
+	           	 ],
+           	"fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+           		if ( aData.selected ){
+	           	  nRow.className = "selected";
+           		}
+           	}
+	    } );
+	
+	 
+	//	click row (select / deselect)
+	tableTrace.on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }else {
+        	tableTrace.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+		
+		// set list 'selected' 
+		TraceData.setListSelected(tableTrace.row(this).data(),  $(this).hasClass('selected'));
+		
+		// show result
+		TraceData.showResult();
+		
+	});
+	
+	
+	// show list 
+	if(typeof TraceData!= 'undefined'){
+		if(TraceData.getListSize() > 0){
+			TraceData.showList();
+		}
+	}
+	
+	
+	$("#btnAdd").click(function(){  
+		showModal($("#modalAddTrace"));
+		
+		setControlRadio("frmAdd", "traceType", "num", false);
+		setControlInput("frmAdd", "condition", "", false);
+		setControlInput("frmAdd", "duration", "", false);
+		
+		validatorTrace.resetForm();
+	});
+	
+	
+	findControlRadio("frmAdd", "traceType").change(function(){
+		toggleCondition();
+	});
+	
+	
+	
+	$("#btnTraceView").click(function(){
+		var data = tableTrace.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warn", "Select the condition first!");
+		}else{
+			var item=data[0];
+			
+			TraceData.setTraceCondition(item);
+			
+			$("#divTraceList").hide();
+			$("#divTraceResult").show();
+			
+			// header
+			var item = TraceData.getTraceCondition();
+			if(typeof item.createdTime == 'undefined'){
+//		 		setTimeout(function(){
+//		 			showMsg("Warn", "Choose a trace condition first!");
+//		 			$("#btnModalMsgOK").unbind('click');
+//		 			$("#btnModalMsgOK").click(function(){
+//		 				$("#menuTrace").trigger("click");
+//		 			});
+//		 		},500);
+			}else{
+			 	$("#frmTraceResultHeader #createdTime").html(item.createdTime);
+			 	$("#frmTraceResultHeader #traceType").html(item.traceType);
+			 	$("#frmTraceResultHeader #condition").html(item.condition);
+			 	$("#frmTraceResultHeader #duration").html(item.duration);
+			}
+			
+			TraceData.showResult();
+			
+		}
+	});
+	
+	$("#btnDelete").click(function(){
+		var data = tableTrace.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warn", "Select the condition first!");
+		}else{
+			showConfirm("Confirm", "Do you wat to delete?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				var item=data[0];
+				Egis.sendTrace("del", item.traceType, item.condition, 0);
+			});
+		}
+	});
+	
+	$("#btnSave").click(function(){
+		if($("#frmAdd").valid()){
+			var traceType =  getControlRadio("frmAdd", "traceType");
+			var condition =  getControlInput("frmAdd", "condition");
+			if(condition==''){
+				condition = "none";
+			}
+			var duration =  getControlInput("frmAdd", "duration");
+			Egis.sendTrace("add", traceType, condition, duration);
+			
+		}
+	});
+	
+	
+	validatorTrace = $('#frmAdd').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			condition: {
+				required:true,
+			},
+			duration:{
+				required:true,
+				number: true,
+				min:0,
+			}
+		},
+		messages : {
+			condition: {
+				required: 'Input condition.',
+			},
+			duration: {
+				required: 'Input duration.',
+				number: 'duration is number.',
+				min: 'duration must be positive number or zero',
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	
+	toggleCondition();
+
+	//TraceData.showList();
+
+	// 기존에 선택된것이 있으면, 선택한다.
+// 	var item = TraceData.getTraceCondition();
+// 	if(typeof item.createdTime == 'undefined'){
+		
+		
+		
+		
+// 	}
+
+
+
+	//------------------------ trace result ------------------------------------------------------------------------
+	
+	
+	
+	
+	
+ 	// result table
+ 	tableTraceResult = $("#dtTraceResult").DataTable( {
+	 	"sDom": sDomNoControl,
+	 	"paging": false,
+	 	  "columns": [
+						{ "data": "callId"},  
+	    				{ "data": "time"},       
+	    				{ "data": "callId"},       
+	    				{ "data": "from"},       
+	    				{ "data": "to"},      
+	    				{ "data": "method"},  
+	    		    ],
+        'columnDefs': [	 
+				{'targets': 0,
+		        	'width':'40px',
+		        	'searchable': false,
+		            'orderable': false,
+		        	'className': 'text-center',
+		        	'render': function (data, type, full, meta){
+		        		return getResultCheckbox(full.check, data);
+	        		},
+				},
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return  "<span style='color:"+full.color+"'>"+data+"</span>"; }},
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center'},
+				{'targets': 5, 'className': 'text-center'},
+           	 ],
+        //'order': [[1, 'asc']]
+         "ordering": false
+    } );
+ 	
+ 	
+ 	
+ 	$("#btnTraceList").click(function(){
+ 		$("#divTraceList").show();
+		$("#divTraceResult").hide();
+ 	});
+
+
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function toggleCondition(){
+	var val = getControlRadio("frmAdd", "traceType");
+	if(val!='all'){ // show condition
+		setControlInput("frmAdd",  "condition", '', false);
+		$("#frmAdd [name=lblClass]").removeClass("state-disabled");
+	}else{ // hide condition
+		$("#frmAdd [name=lblClass]").addClass("state-disabled");
+		setControlInput("frmAdd",  "condition", '', true);
+	}
+}
+
+
+function getResultCheckbox(check, data){
+	if(check) return  '<input type="checkbox" name="id[]" value="' + data + '" onclick="TraceData.checkResult(\''+data+'\', false)" checked>'; 
+	else return '<input type="checkbox" name="id[]" value="' + data + '" onclick="TraceData.checkResult(\''+data+'\', true)">'; 
+
+}
+
+</script>				

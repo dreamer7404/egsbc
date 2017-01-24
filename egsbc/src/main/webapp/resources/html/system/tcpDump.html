@@ -1,0 +1,161 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Tcp Dump</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+					
+					<div>
+						<form class="smart-form" id="frmTcpDump" novalidate="novalidate">
+						<table border="0">
+						<tr>
+							<td class="td-label">Interface</td>
+							<td width="80px">
+								<label class="select" >
+									<select  id="interface">
+										<option value="any">any</option>
+										<option value="eth0">eth0</option>
+										<option value="eth2">eth2</option>
+										<option value="eth3">eth3</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td class="td-label">Transport</td>
+							<td width="80px">
+								<label class="select" >
+									<select  id="transport">
+										<option value="any">any</option>
+										<option value="tcp">TCP</option>
+										<option value="udp">UDP</option>
+									</select> <i></i> 
+								</label>
+							</td>
+							<td class="td-label">Port</td>
+							<td>
+								<label class="input">
+									<input type="text" id="port" name="port" value="0"  style="width:70px">
+								</label>
+							</td>
+							<td class="td-label">(0:any)</td>
+							<td class="td-label">Duration(sec)</td>
+							<td>
+								<label class="input">
+									<input type="text" id="duration" name="duration" value="3600" style="width:70px">
+								</label>
+							</td>
+							<td class="td-label">(max:3600)</td>
+						</tr>
+						</table>
+						</form>
+						
+						<table>
+						<tr>
+							<td class="td-label"><button type="button" class="btn btn-default btn-start" id="btnStart"><i class="fa fa-play"></i>&nbsp;Start</button></td>
+							<td class="td-label"><button type="button" class="btn btn-default btn-stop" id="btnStop"><i class="fa fa-stop"></i>&nbsp;Stop</button></td>
+							<td class="td-label"><button type="button" class="btn btn-default btn-download" id="btnDownload"><i class="fa fa-download"></i>&nbsp;Download</button></td>
+						</tr>
+						</table>
+						
+					</div>
+					<div id="divTcpDumpMsg" style="margin-bottom:20px;border:1px solid #ddd;overflow:auto;height:200px"></div>
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+<script type="text/javascript">
+var validatorTcpDump;
+var pagefunction = function() {
+	
+	$("#btnStart").click(function(){
+		var intf = getControlSelect("frmTcpDump", "interface");
+		var transport = getControlSelect("frmTcpDump", "transport");
+		var port = getControlInput("frmTcpDump", "port");
+		var duration = getControlInput("frmTcpDump", "duration");
+		
+		if($("#frmTcpDump").valid()){
+			$("#divTcpDumpMsg").html('');
+			Egis.sendTcpDump("S", intf, transport, port, duration);
+			 $("#btnStart").prop('disabled', true);
+		}
+	});
+	
+	
+	validatorTcpDump = $('#frmTcpDump').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			port: {
+				required:true,
+				number: true,
+				min:0,
+				max:65535,
+			},
+			duration:{
+				required:true,
+				number: true,
+				min:0,
+				max:3600,
+			}
+		},
+		messages : {
+			port: {
+				required: 'Input port number.',
+				number: 'port is number.',
+				min: 'port number is 0 to 65535.',
+				max: 'port number is 0 to 65535.',
+			},
+			duration: {
+				required: 'Input duration.',
+				number: 'duration is number.',
+				min: 'duration is 0 to 3600.',
+				max: 'duration is 0 to 3600.',
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	
+	
+	$("#btnStop").click(function(){
+		Egis.sendTcpDump('K', '','', 0, 0);
+		 $("#btnStart").prop('disabled', false);
+	});
+	
+	
+	$("#btnDownload").click(function(){
+		window.location.href = "downloadDump";
+		// need re-init websocket, cause that "href" do close websocket!
+		Egis.initSocket();
+	});
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+
+
+
+</script>				

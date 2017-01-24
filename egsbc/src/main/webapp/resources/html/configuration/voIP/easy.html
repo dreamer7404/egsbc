@@ -1,0 +1,1604 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Configuration List </h2>
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+				
+						<table id="dtConfiguration" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Service Type</th>
+									<th colspan="5" class="text-center">Realm/Trunking</th>
+									<th colspan="5" class="text-center">Server/Trunking</th>
+								</tr>
+								<tr>
+									<th class="text-center">Name</th>
+									<th class="text-center">Domain</th>
+									<th class="text-center">Signal Transport</th>
+									<th class="text-center">Media Transport</th>
+									<th class="text-center">Reg Expires</th>
+									
+									<th class="text-center">Name</th>
+									<th class="text-center">Domain</th>
+									<th class="text-center">Signal Transport</th>
+									<th class="text-center">Media Transport</th>
+									<th class="text-center">Reg Expires</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-add-wide" id="btnAddRealmServer">Add Server/Realm</button>
+							<button class="btn btn-default btn-add-wide" id="btnAddTrunking">Add Trunking</button>
+							<button class="btn btn-default btn-edit" id="btnEdit">Edit</button>
+							<button class="btn btn-default btn-delete" id="btnDelete">Delete</button>
+							<button class="btn btn-default btn-refresh" id="btnRefresh"> Refresh</button>
+						</div>
+				</div>
+			</div>
+		</article>
+	</div>			
+</section>	
+
+<!-- Modal Server/Realm -->
+<div class="modal" id="modalServerRealm" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:900px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalServerRealm"></h6>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row" style="border:0px solid red;">
+				
+					<form class="smart-form" id="frmRealmServer" novalidate="novalidate">
+						<table>
+						<tr>
+							<td>
+								<div style="width:95%;border-bottom:1px solid #d1d1d1;margin-bottom:15px;">
+					        		<strong>Realm Information</strong>
+					        	</div>
+							</td>
+							<td>
+								<div style="width:95%;border-bottom:1px solid #d1d1d1;margin-bottom:15px;">
+					        		<strong>Server Information</strong>
+					        	</div>
+							</td>
+						</tr>
+						<tr>
+							<!-- ========================== Realm ============================================= -->
+							<td style="vertical-align:top" width="450px">
+									<table width="400px" border="0" style="margin:0 auto;">
+									<tr>
+										<td width="140px" class="td-label" name="tdClass">*Name</td>
+										<td colspan="3">
+											<label class="input" name="lblClass">
+												<input type="text" id="rlmName" name="rlmName">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >Domain</td>
+										<td colspan="3">
+											<label class="input">
+												<input type="text" id="rlmDomain" name="rlmDomain">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >*Signal Transport</td>
+										<td colspan="3">
+											<label class="select" >
+												<select  id="rlmSigTransName" name="rlmSigTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label">*Media Relay</td>
+										<td colspan="3">
+											<div class="inline-group">
+												<label class="radio" >
+													<input type="radio" name="rlmMediaPassFlag" value="1" checked>
+													<i></i>On
+												</label>
+												<label class="radio" >
+													<input type="radio" name="rlmMediaPassFlag" value="0">
+													<i></i>Off
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label">*Media Transport</td>
+										<td colspan="3">
+											<label class="select" name="rlmMediaTransName" >
+												<select  id="rlmMediaTransName" name="rlmMediaTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label">*RTP</td>
+										<td colspan="3">
+											<div class="inline-group"  id="lblRlmRTP">
+												<label class="checkbox"  name="lblMediaPassFlag">
+													<input type="checkbox"  id="rlmRtp"  class="RTP-group"><i></i>RTP
+												</label>
+												<label class="checkbox" name="lblMediaPassFlag" >
+													<input type="checkbox"  id="rlmSrtp"  class="RTP-group"><i></i>SRTP
+												</label>
+											</div>		
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr> 
+									<tr>
+										<td rowspan="7" class="td-label" style="vertical-align:top">Registration Duration</td>
+										<td colspan="3" class="td-label">
+											<label class="checkbox">
+													<input type="checkbox"  id="rlmRegPeriodBypass" ><i></i>Not Involved in R/D
+												</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">
+											- Public
+										</td>
+										<td>
+											<label class="input" name="lblRimRegPeriodBypass">
+												<input type="text" id="rlmRegPeriod" name=rlmRegPeriod  style="width:150px">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2" class="td-label">
+											- Nat
+										</td>
+										<td>
+											<label class="input" name="lblRimRegPeriodBypass">
+												<input type="text" id="rlmRegPeriodNat" name="rlmRegPeriodNat" style="width:150px">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="4" class="td-label">
+											<label class="checkbox">
+													<input type="checkbox"  id="rlmDeregDeactFlag" ><i></i>Call-disconnect after expiry time
+												</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr>
+									<tr>
+										<td rowspan="5" class="td-label" style="vertical-align:top">Session Refresh Duration</td>
+										<td colspan="3" style="padding:12px 0px;">
+											<label class="checkbox" >
+													<input type="checkbox"  id="rlmSessionFlag" ><i></i>Not Use
+												</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2" style="padding:12px 0px;">
+											- Expires
+										</td>
+										<td>
+											<label class="input" name="lblRimSessionRefresh">
+												<input type="text" id="rlmSessionExpires" name="rlmSessionExpires"  style="width:150px">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2" style="padding:12px 0px;">
+											- MINSE
+										</td>
+										<td>
+											<label class="input" name="lblRimSessionRefresh">
+												<input type="text" id="rlmSessionMinse" name="rlmSessionMinse"  style="width:150px">
+											</label>
+										</td>
+									</tr>
+									</table>
+							</td>
+							<!-- ========================== Server ============================================= -->
+							<td style="vertical-align:top" width="450px">
+									<table width="380px" border="0" style="margin:0 auto;">
+									<tr>
+										<td colspan="2" width="140px" class="td-label" name="tdClass">*Name</td>
+										<td colspan="2">
+											<label class="input" name="lblClass">
+												<input type="text" id="svrName" name="svrName">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label" >Domain</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrDomain" name="svrDomain">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label" >*Signal Transport</td>
+										<td colspan="2">
+											<label class="select" >
+												<select  id="svrSigTransName" name="svrSigTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >*Server</td>
+										<td name="tdClass">-IP Type</td>
+										<td colspan="2">
+											<div class="inline-group">
+												<label class="radio" >
+													<input type="radio" name="svrServerIPType" value="0" checked>
+													<i></i>IPv4
+												</label>
+												<label class="radio" >
+													<input type="radio" name="svrServerIPType" value="1">
+													<i></i>IPv6
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label">&nbsp;</td>
+										<td >-IP/Port</td>
+										<td colspan="2">
+											<table>
+											<tr>
+												<td width="150px">
+													<label class="input" >
+														<input type="text" id="svrServerIP" name="svrServerIP">
+													</label>
+												</td>
+												<td width="20px" align="center">/</td>
+												<td>
+													<label class="input" >
+														<input type="text" id="svrServerPort" name="svrServerPort" >
+													</label>
+												</td>
+											</tr>
+											</table>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label" >Media Transport</td>
+										<td colspan="2">
+											<label class="select" >
+												<select  id="svrMediaTransName" name="svrMediaTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">RTP</td>
+										<td colspan="2">
+											<div class="inline-group" >
+												<label class="checkbox"  >
+													<input type="checkbox"  id="svrRtp"   checked><i></i>RTP
+												</label>
+												<label class="checkbox"  >
+													<input type="checkbox"  id="svrSrtp" ><i></i>SRTP
+												</label>
+											</div>		
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="3" class="td-label">Registration Duration(Sec)</td>
+										<td colspan="1">
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td align="left" style="padding:0px 10px"></td>
+										<td align="left" ></td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrRegPeriod" name="svrRegPeriod" >
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">Max CPS</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrMaxCps" name="svrMaxCps" >
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">Max Session</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrMaxSession" name="svrMaxSession" >
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">Max Rps</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrMaxRps" name="svrMaxRps" >
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">Check Sever Status Periodically</td>
+										<td colspan="2">
+											<label class="checkbox"  >
+													<input type="checkbox"  id="pollFlag" ><i></i>Yes
+												</label>
+										</td>
+									</tr>
+									</table>
+								
+							</td>
+						</tr>
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>	
+					
+				</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveRealmServer">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" id="btnCloseNew">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+
+
+
+<!-- ================================  Trunking ================================================-->
+
+<div class="modal" id="modalTrunking" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:1400px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header backOceanBlue" style="height:40px;padding-top:10px;">
+          <h6 class="modal-title txt-color-white" id="titleModalTrunking"></h6>
+        </div>
+        <div class="modal-body">
+          
+				<div class="row" style="border:0px solid red;">
+				
+					<form class="smart-form" id="frmTrunking" novalidate="novalidate">
+						<table>
+						<tr>
+							<td>
+								<div style="width:95%;border-bottom:1px solid #d1d1d1;margin-bottom:15px;">
+					        		<strong>Realm Information</strong>
+					        	</div>
+							</td>
+							<td colspan="2">
+								<div style="width:95%;border-bottom:1px solid #d1d1d1;margin-bottom:15px;">
+					        		<strong>Server Information</strong>
+					        	</div>
+							</td>
+						</tr>
+						<tr>
+							<!-- ========================== Realm ============================================= -->
+							<td style="vertical-align:top" width="450px">
+									<table width="400px" border="0" style="margin:0 auto;">
+									<tr>
+										<td width="100px" class="td-label" name="tdClass">*Name</td>
+										<td colspan="3">
+											<label class="input" name="lblClass">
+												<input type="text" id="rlmName" name="rlmName">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >Domain</td>
+										<td colspan="3">
+											<label class="input">
+												<input type="text" id="rlmDomain" name="rlmDomain">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >*Signal Transport</td>
+										<td colspan="3">
+											<label class="select" >
+												<select  id="rlmSigTransName" name="rlmSigTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr> 
+									<tr>
+										<td rowspan="3" width="80px" class="td-label" style="vertical-align:top">Peer</td>
+										<td style="width:60px" class="td-label">-IP Type</td>
+										<td colspan="2" >
+											<div class="inline-group">
+												<label class="radio">
+													<input type="radio" name="rlmPeerIpType" value="0" checked>
+													<i></i>IPv4
+												</label>
+												<label class="radio" >
+													<input type="radio" name="rlmPeerIpType" value="1">
+													<i></i>IPv6
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">
+											- IP/Port
+										</td>
+										<td>
+											<table>
+											<tr>
+												<td style="width:120px">
+													<label class="input" >
+														<input type="text" id=rlmPeerIp name="rlmPeerIp">
+													</label>
+												</td>
+												<td width="20px" align="center">/</td>
+												<td>
+													<label class="input" >
+														<input type="text" id="rlmPeerPort"  name="rlmPeerPort">
+													</label>
+												</td>
+											</tr>
+											</table>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label">*Media Relay</td>
+										<td colspan="3">
+											<div class="inline-group">
+												<label class="radio" >
+													<input type="radio" name="rlmMediaPassFlag" value="1" checked>
+													<i></i>On
+												</label>
+												<label class="radio" >
+													<input type="radio" name="rlmMediaPassFlag" value="0">
+													<i></i>Off
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">Media Transport</td>
+										<td colspan="3">
+											<label class="select" name="lblMediaPassFlag" >
+												<select  id="rlmMediaTransName" name="rlmMediaTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td  class="td-label">RTP</td>
+										<td colspan="3">
+											<div class="inline-group"  id="lblRTP">
+												<label class="checkbox"  name="lblMediaPassFlag">
+													<input type="checkbox"  id="rlmRtp"><i></i>RTP
+												</label>
+												<label class="checkbox" name="lblMediaPassFlag" >
+													<input type="checkbox"  id="rlmSrtp" ><i></i>SRTP
+												</label>
+											</div>		
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">MAX-CPS</td>
+										<td colspan="3">
+											<label class="input" >
+												<input type="text" id="rlmMaxCps"  name="rlmMaxCps">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td  class="td-label">MAX-SESSION</td>
+										<td colspan="3">
+											<label class="input" >
+												<input type="text" id="rlmMaxSession" name="rlmMaxSession">
+											</label>
+										</td>
+									</tr>
+									</table>
+							</td>
+							<!-- ========================== Server ============================================= -->
+							<td style="vertical-align:top" width="450px">
+							
+									<table width="400px" border="0" style="margin:0 auto;">
+									<tr>
+										<td width="100px" class="td-label" name="tdClass">*Name</td>
+										<td colspan="3">
+											<label class="input" name="lblClass">
+												<input type="text" id="svrName" name="svrName">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td class="td-label" >Domain</td>
+										<td colspan="3">
+											<label class="input">
+												<input type="text" id="svrDomain" name="svrDomain">
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td class="td-label" colspan="4" style="background-color:#efefef;" ><strong>1st</strong></td>
+									</tr>
+									<tr>
+										<td class="td-label" >*Signal Transport</td>
+										<td colspan="3">
+											<label class="select" >
+												<select  id="svrSigTransName" name="svrSigTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td rowspan="3" width="80px" class="td-label" style="vertical-align:top">Peer</td>
+										<td style="width:60px" class="td-label">-IP Type</td>
+										<td colspan="2" >
+											<div class="inline-group">
+												<label class="radio">
+													<input type="radio" name="svrPeerIpType" value="0" checked>
+													<i></i>IPv4
+												</label>
+												<label class="radio" >
+													<input type="radio" name="svrPeerIpType" value="1">
+													<i></i>IPv6
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td colspan="2" class="td-label">
+											- IP/Port
+										</td>
+										<td>
+											<table>
+											<tr>
+												<td style="width:120px">
+													<label class="input" >
+														<input type="text" id=svrPeerIp name="svrPeerIp">
+													</label>
+												</td>
+												<td width="20px" align="center">/</td>
+												<td>
+													<label class="input" >
+														<input type="text" id="svrPeerPort"  name="svrPeerPort">
+													</label>
+												</td>
+											</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td class="td-label" colspan="4" style="background-color:#efefef;" ><strong>2nd (Option)</strong></td>
+									</tr>
+									<tr>
+										<td class="td-label" >*Signal Transport</td>
+										<td colspan="3">
+											<label class="select" >
+												<select  id="svrSigTransName2" name="svrSigTransName2">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr> 
+									<tr>
+										<td width="80px" class="td-label" style="vertical-align:top">Peer</td>
+										<td colspan="2" class="td-label">
+											- IP/Port
+										</td>
+										<td>
+											<table>
+											<tr>
+												<td style="width:120px">
+													<label class="input" >
+														<input type="text" id="svrPeerIp2" name="svrPeerIp2">
+													</label>
+												</td>
+												<td width="20px" align="center">/</td>
+												<td>
+													<label class="input" >
+														<input type="text" id="svrPeerPort2"  name="svrPeerPort2">
+													</label>
+												</td>
+											</tr>
+											</table>
+										</td>
+									</tr>	
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">*Media Relay</td>
+										<td colspan="3">
+											<div class="inline-group">
+												<label class="radio" >
+													<input type="radio" name="svrMediaPassFlag" value="1" checked>
+													<i></i>On
+												</label>
+												<label class="radio" >
+													<input type="radio" name="svrMediaPassFlag" value="0">
+													<i></i>Off
+												</label>
+											</div>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">Media Transport</td>
+										<td colspan="3">
+											<label class="select" name="lblMediaPassFlag" >
+												<select  id="svrMediaTransName" name="svrMediaTransName">
+												</select> <i></i> </label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td  class="td-label">RTP</td>
+										<td colspan="3">
+											<div class="inline-group"  id="lblRTP">
+												<label class="checkbox"  name="lblMediaPassFlag">
+													<input type="checkbox"  id="svrRtp" ><i></i>RTP
+												</label>
+												<label class="checkbox" name="lblMediaPassFlag" >
+													<input type="checkbox"  id="svrSrtp" ><i></i>SRTP
+												</label>
+											</div>		
+										</td>
+									</tr>
+<!-- 									<tr>  -->
+<!-- 										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>   -->
+<!-- 									</tr> -->
+									
+									</table>
+							</td>
+							<td style="vertical-align:top" width="450px">
+									<table width="400px" border="0" style="margin:0 auto;">
+									<tr>
+										<td colspan="2" class="td-label">Registration</td>
+										<td colspan="2">
+											<label class="checkbox" >
+												<input type="checkbox"  id="svrRegisterFlag" ><i></i>Enable
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="4" class="td-label">Registration Setting</td>
+									</tr>
+									<tr>
+										<td rowspan="9" class="td-label">&nbsp;</td>
+										<td class="td-label">-Duration(sec)</td>
+										<td colspan="2">
+											<label class="input" name="lblRegisterFlag">
+												<input type="text" id="svrRegPeriod" name="svrRegPeriod" >
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">-Domain</td>
+										<td colspan="2">
+											<label class="input" name="lblRegisterFlag">
+												<input type="text" id="svrRegisterDomain" name="svrRegisterDomain">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">-User ID</td>
+										<td colspan="2">
+											<label class="input" name="lblRegisterFlag">
+												<input type="text" id="svrRegisterUserId" name="svrRegisterUserId">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">-Auth ID</td>
+										<td colspan="2">
+											<label class="input" name="lblRegisterFlag">
+												<input type="text" id="svrRegisterAuthId" name="svrRegisterAuthId">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td class="td-label">-Auth PW</td>
+										<td colspan="2">
+											<label class="input" name="lblRegisterFlag">
+												<input type="text" id="svrRegisterAuthPw" name="svrRegisterAuthPw">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2" class="td-label">Periodical Server Status Check</td>
+										<td colspan="2">
+											<label class="checkbox" >
+												<input type="checkbox"  id="svrPollFlag" ><i></i>Enable
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2" class="td-label">Response to OPTIONs based on Server Status</td>
+										<td colspan="2">
+											<label class="checkbox" >
+												<input type="checkbox"  id="svrSelfResponseFlag"  ><i></i>Enable
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="4" class="td-hr"><hr class="hr-form-seperate" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2"  class="td-label">Max-CPS</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrMaxCps"  name="svrMaxCps">
+											</label>
+										</td>
+									</tr>
+									<tr> 
+										<td colspan="3" class="td-hr"><hr class="hr-form" /></td>  
+									</tr>
+									<tr>
+										<td colspan="2"  class="td-label">Max-Session</td>
+										<td colspan="2">
+											<label class="input" >
+												<input type="text" id="svrMaxSession" name="svrMaxSession">
+											</label>
+										</td>
+									</tr>
+									</table>
+							
+							</td>
+						</tr>
+						</table>
+						<input type="hidden" id="hidOpMode" name="opMode"  >	
+					</form>	
+					
+				</div>
+					
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	          	<button type="button" class="btn btn-default btn-save"  id="btnSaveTrunking">Save</button>
+          		<button type="button" class="btn btn-default btn-close" data-dismiss="modal" id="btnCloseNew">Close</button>
+        	</div>
+		</div>
+	</div>	
+</div>
+
+
+<script type="text/javascript">
+var validatorRealmServer, validatorTrunking;
+var tableConfiguration;
+
+var pagefunction = function() {
+	
+	tableConfiguration = $('#dtConfiguration').DataTable({
+		"sDom": sDom,
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : "400px",
+		"scrollX" : false,
+			"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+        "ajax": {
+        	"url": "/getEasy",
+        	"type": "post",
+        },
+        'order': [[1, 'asc']],
+        "columns": [
+					{ "data": "mode"},   
+					
+    				{ "data": "rlmName"},       
+    		        { "data": "rlmDomain"},	
+    		        { "data": "rlmSigTransName"},	
+    		        { "data": "rlmMediaTransName"},	
+    		        { "data": "rlmRegPeriod"},	
+    		        
+    		        { "data": "svrName"},       
+    		        { "data": "svrDomain"},	
+    		        { "data": "svrSigTransName"},	
+    		        { "data": "svrMediaTransName"},	
+    		        { "data": "svrRegPeriod"},	    
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center', 'render': function (data, type, full, meta){ return getServiceType(data); }},  
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center'},    
+				{'targets': 3, 'className': 'text-center'},    
+				{'targets': 4, 'className': 'text-center'},    
+				{'targets': 5, 'className': 'text-center'},    
+				
+				{'targets': 6, 'className': 'text-center'},  
+				{'targets': 7, 'className': 'text-center'},  
+				{'targets': 8, 'className': 'text-center'},  
+				{'targets': 9, 'className': 'text-center'},  
+				{'targets': 10, 'className': 'text-center'},  
+    	 ]
+	});	
+	//	click row
+	tableConfiguration.on( 'click', 'tr', function () {
+		tableConfiguration.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	
+	// btnAddRealmServer
+	$("#btnAddRealmServer").click(function(){ 
+		validatorRealmServer.resetForm();
+		$("#frmRealmServer #hidOpMode").val("2"); // add
+		$("#frmRealmServer [name=lblClass]").removeClass("state-disabled");
+		$("#frmRealmServer [name=tdClass]").removeClass("state-disabled-color");
+		
+		//------------------------- Realm -------------------------------------------------------
+		setControlInput("frmRealmServer", "rlmName", '', false); // name
+		setControlInput("frmRealmServer", "rlmDomain", '', false); // domain
+		setControlRadio("frmRealmServer", "rlmMediaPassFlag", 1, false); // mediaPassFlag
+		setControlCheck("frmRealmServer", "rlmRtp", false, false); // chkRTP
+		setControlCheck("frmRealmServer", "rlmSrtp", false, false); // chkSRTP
+		setControlCheck("frmRealmServer", "rlmRegPeriodBypass", false, false);  // 등록주기관여 
+		setControlCheck("frmRealmServer", "rlmSessionFlag", true, false); // session refresh 사용안함 체크
+		setControlInput("frmRealmServer", "rlmRegPeriod", '3600', false); // public
+		setControlInput("frmRealmServer", "rlmRegPeriodNat", '60', false); // nat
+		
+		listenerRegPeriodBypass_Rlm(false); // 등록주기관여 
+		listenerSessionRefresh_Rlm(true); // SESSION Refresh주기
+		
+		//------------------------- Server -------------------------------------------------------
+		setControlInput("frmRealmServer", "svrName", '', false); // name
+		setControlInput("frmRealmServer", "svrDomain", '', false); // domain
+ 		setControlRadio("frmRealmServer", "svrServerIPType",  0, false); // serverIPType
+ 		setControlInput("frmRealmServer", "svrServerIP", '', false); // serverIP
+ 		setControlInput("frmRealmServer", "svrServerPort", '', false); // serverPort
+ 		setControlInput("frmRealmServer", "svrRegPeriod", "3600", false);
+ 		setControlInput("frmRealmServer", "svrMaxCps", "100", false);
+ 		setControlInput("frmRealmServer", "svrMaxSession", "100", false);
+ 		setControlInput("frmRealmServer", "svrMaxRps", "1000", false);
+ 		
+ 		
+ 		// svcType 0:SERver/Realm , 1: Trunk
+		$.post("getSipTransportName", {svcType:0}, function(json2){
+			var data2 = json2.data;
+			setControlSelect("frmRealmServer", "rlmSigTransName", "Select", data2, '', false);  //시그널 transport 
+			setControlSelect("frmRealmServer", "svrSigTransName", "Select", data2, '', false);  //시그널 transport 
+			
+			$.post("/getMediaTransportName", {}, function(json){ 
+				var data3 = json.data;
+				setControlSelect("frmRealmServer", "rlmMediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+				setControlSelect("frmRealmServer", "svrMediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+			
+				// show modal
+				showModal($("#modalServerRealm"));
+				$("#titleModalServerRealm").html("Add Server/Realm");
+			});
+		});
+	});
+	
+	
+	//  Server/Realm 저장버튼
+	$("#btnSaveRealmServer").click(function(){
+		
+		if(!$('#frmRealmServer').valid()){
+			return;
+		}
+		
+		if($("#frmRealmServer #rlmSessionExpires").val()=='') $("#frmRealmServer #rlmSessionExpires").val(0)
+		if($("#frmRealmServer #rlmSessionMinse").val()=='') $("#frmRealmServer #rlmSessionMinse").val(0)
+		
+		showConfirm('Confirm', "Do you want to save?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmRealmServer").submit();  
+		});
+	});
+	
+	
+	validatorRealmServer = $('#frmRealmServer').validate({
+		rules : {
+			rlmName:{
+				required : true,
+				rangelength: [1, 16],
+			},
+			rlmSigTransName:{required : true},
+			rlmMediaTransName:{ required: function(element){
+					var mediaPassFlag = $("#frmRealmServer input:radio[name='rlmMediaPassFlag']:checked").val();
+					var mediaTransName = $("#frmRealmServer #rlmMediaTransName").val();
+					if(mediaPassFlag==1 && mediaTransName=='') return true;
+					return false
+			}},
+			rlmRtp:{ require_from_group: [1, ".RTP-group"] }, // 1 :  at least one is complete
+			rlmSrtp:{ require_from_group: [1, ".RTP-group"] },
+			rlmRegPeriod:{required : true, number: true},
+			rlmRegPeriodNat:{required : true, number: true},
+// 			rlmSessionExpires:{required : true, number: true},
+// 			rlmSessionMinse:{required : true, number: true},
+			
+			svrName:{required : true},
+			svrSigTransName:{required : true},
+			svrServerIP:{
+				required : true,
+				IP4Checker: true
+			},
+			svrServerPort:{
+				required : true,
+				min: 0,
+ 				max: 65535,
+			},
+			svrRegPeriod:{required : true, number: true},
+			svrMaxCps:{required : true, number: true},
+			svrMaxSession:{required : true, number: true},
+			svrMaxRps:{required : true, number: true},
+		},
+		messages : {
+			rlmName:{
+				required : 'Input name.',
+				rangelength: 'Name is 1~16 length'
+			},
+			rlmSigTransName:{
+				required : 'Select Signal Transport.',
+			},
+			rlmMediaTransName:{
+				required : 'Select Media Transport.'
+			},
+			rlmRtp:{ 
+				require_from_group : 'Check.'
+			},
+			rlmSrtp:{ 
+				require_from_group : 'Check.'
+			},
+			rlmRegPeriod:{
+				required : 'Input value',
+				number: 'Input number'
+			},
+			rlmRegPeriodNat:{
+				required : 'Input value', 
+				number: 'Input number'
+			},
+// 			rlmSessionExpires:{required : 'Input value', number: 'Input number'},
+// 			rlmSessionMinse:{required : 'Input value', number: 'Input number'},
+			
+			svrName:{
+				required : 'Input name.'
+			},
+			svrSigTransName:{
+				required : 'Select Signal Transport.'
+			},
+			svrServerIP:{
+				required : 'Input IP.'
+			},
+			svrServerPort:{
+				required : 'Input port.',
+				min: 'range is 0~65535',
+ 				max: 'range is 0~65535',
+			},
+			svrRegPeriod:{required : 'Input value', number: 'Input number'},
+			svrMaxCps:{required : 'Input value', number: 'Input number'},
+			svrMaxSession:{required : 'Input value', number: 'Input number'},
+			svrMaxRps:{required : 'Input value', number: 'Input number'},
+		},
+		groups: {
+			rlmSrtpGroup: "rlmRtp rlmSrtp"  // srtpGroup : arbitrary name
+		},
+		errorPlacement : function(error, element) {
+			if(element.attr('name')=='rlmRtp' || element.attr('name')=='rlmSrtp'){
+				error.insertAfter("#frmRealmServer #lblRlmRTP");
+			}else{
+				error.insertAfter(element.parent());
+			}
+		}
+	});
+	$.validator.addMethod('IP4Checker', function(value) {
+	       var arr = value.split('.');
+	       if(arr.length != 4){
+	    	   return false;
+	       }
+	       var valid = true;
+	       for(var i=0; i<arr.length; i++){
+	    	   var val = arr[i];
+	    	   if(isNaN(val) || val < 0 || val > 255){ // isNaN(문자) => true
+	    		  return false;
+	    	   }  
+	       }
+	       return true;
+		}, 'Invalid IP address');
+	
+	$("#frmRealmServer").ajaxForm({
+		url: "/takeRealmServer",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+			
+			// 변경일때 disable되므로.
+			if($("#frmRealmServer #rlmName").prop('disabled')){
+				arr.push({name:'rlmName', value: getControlInput("frmRealmServer", "rlmName")});  
+			}
+			if($("#frmRealmServer #svrName").prop('disabled')){
+				arr.push({name:'svrName', value: getControlInput("frmRealmServer", "svrName")});  
+			}
+			
+			// rlmSrtpFlag
+			var rlmRtp=$("#frmRealmServer input:checkbox[id='rlmRtp']").is(":checked"); 
+			var rlmSrtp=$("#frmRealmServer input:checkbox[id='rlmSrtp']").is(":checked");
+			arr.push({name:'rlmSrtpFlag', value: getSrtp(rlmRtp, rlmSrtp)});   
+			
+			// rlmSessionFlag(체크==0)
+			var rlmSessionFlag=$("#frmRealmServer input:checkbox[id='rlmSessionFlag']").is(":checked"); 
+			arr.push({name:'rlmSessionFlag', value: rlmSessionFlag?0:1});
+			
+			// svrSrtpFlag
+			var svrRtp=$("#frmRealmServer input:checkbox[id='svrRtp']").is(":checked"); 
+			var svrSrtp=$("#frmRealmServer input:checkbox[id='svrSrtp']").is(":checked");
+			arr.push({name:'svrSrtpFlag', value: getSrtp(svrRtp, svrSrtp)});   
+			
+			// pollFlag
+			var pollFlag=$("#frmRealmServer input:checkbox[id='pollFlag']").is(":checked"); 
+			arr.push({name:'pollFlag', value: pollFlag?1:0});
+			
+			var opMode = $("#frmRealmServer #hidOpMode").val();
+			if(opMode == 3){
+				var item = tableConfiguration.rows('.selected').data()[0]; 
+				
+				arr.push({name:'rlmGroupName', value: item.rlmGroupName});
+				arr.push({name:'svrGroupName', value: item.svrGroupName});
+				
+				arr.push({name:'rlmElemType', value: item.rlmElemType});
+				arr.push({name:'svrElemType', value: item.svrElemType});
+			}
+			
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalServerRealm", tableConfiguration, null);
+		}
+	});
+	
+	
+	
+	//========================= btnAddTrunking =================================================
+	$("#btnAddTrunking").click(function(){ 
+		validatorTrunking.resetForm();
+		$("#frmTrunking #hidOpMode").val("2"); // add
+		$("#frmTrunking [name=lblClass]").removeClass("state-disabled");
+		$("#frmTrunking [name=tdClass]").removeClass("state-disabled-color");
+		
+		//------------------------- Realm -------------------------------------------------------
+		setControlInput("frmTrunking", "rlmName", '', false); // name
+		setControlInput("frmTrunking", "rlmDomain", '', false); // domain
+		setControlRadio("frmTrunking", "rlmPeerIpType", 0, false); // rlmPeerIpType 
+		setControlInput("frmTrunking", "rlmPeerIp", '', false); // rlmPeerIp
+		setControlInput("frmTrunking", "rlmPeerPort", '', false); // rlmPeerPort 
+		setControlRadio("frmTrunking", "rlmMediaPassFlag", 1, false); // rlmMediaPassFlag  
+		
+		setControlCheck("frmTrunking", "rlmRtp", false, false); // chkRTP
+		setControlCheck("frmTrunking", "rlmSrtp", false, false); // chkSRTP
+		setControlInput("frmTrunking", "rlmMaxCps", '', false); // rlmMaxCps 
+		setControlInput("frmTrunking", "rlmMaxSession", '', false); // rlmMaxSession 
+		
+		//------------------------ Server ----------------------------------------------------------
+		setControlInput("frmTrunking", "svrName", '', false); // name
+		setControlInput("frmTrunking", "svrDomain", '', false); // domain
+		
+		setControlInput("frmTrunking", "svrPeerIp", '', false); // rlmPeerIp
+		setControlInput("frmTrunking", "svrPeerPort", '', false); // rlmPeerPort 
+		setControlInput("frmTrunking", "svrPeerIp2", '', false); // rlmPeerIp
+		setControlInput("frmTrunking", "svrPeerPort2", '', false); // rlmPeerPort 
+		
+		setControlRadio("frmTrunking", "svrMediaPassFlag", 1, false); // svrMediaPassFlag  
+		setControlCheck("frmTrunking", "svrRtp", false, false); // svrRtp
+		setControlCheck("frmTrunking", "svrSrtp", false, false); // svrSrtp
+		
+		setControlCheck("frmTrunking", "svrRegisterFlag", false, false); // svrRegisterFlag
+		
+		setControlInput("frmTrunking", "svrRegPeriod", '', false); // svrRegPeriod
+		setControlInput("frmTrunking", "svrRegisterDomain", '', false); // svrRegisterDomain
+		setControlInput("frmTrunking", "svrRegisterUserId", '', false); // svrRegisterUserId
+		setControlInput("frmTrunking", "svrRegisterAuthId", '', false); // svrRegisterAuthId
+		setControlInput("frmTrunking", "svrRegisterAuthPw", '', false); // svrRegisterAuthPw
+		
+		setControlCheck("frmTrunking", "svrPollFlag", false, false); // svrPollFlag
+		setControlCheck("frmTrunking", "svrSelfResponseFlag", false, false); // svrSelfResponseFlag
+		
+		setControlInput("frmTrunking", "svrMaxCps", '', false); // svrMaxCps 
+		setControlInput("frmTrunking", "svrMaxSession", '', false); // svrMaxSession 
+		
+		// svcType 0:SERver/Realm , 1: Trunk
+		$.post("getSipTransportName", {svcType: 1}, function(json2){
+			var data2 = json2.data;
+			setControlSelect("frmTrunking", "rlmSigTransName", "Select", data2, '', false);  //시그널 transport 
+			setControlSelect("frmTrunking", "svrSigTransName", "Select", data2, '', false);  //시그널 transport 
+			setControlSelect("frmTrunking", "svrSigTransName2", "Select", data2, '', false);  //시그널 transport 
+			
+			$.post("/getMediaTransportName", {}, function(json){ 
+				var data3 = json.data;
+				setControlSelect("frmTrunking", "rlmMediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+				setControlSelect("frmTrunking", "svrMediaTransName", "Select", data3, '', false);  //미디어 TRANSPORT
+			
+				// show modal
+				showModal($("#modalTrunking"));
+				$("#titleModalTrunking").html("Add Trunking");
+				
+			});
+		});
+	});
+	
+	//  Trunking 저장버튼
+	$("#btnSaveTrunking").click(function(){
+		
+		if(!$('#frmTrunking').valid()){
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to save?");
+		
+		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmTrunking").submit();  
+		});
+	});
+	
+	validatorTrunking = $('#frmTrunking').validate({
+		rules : {
+			rlmName:{required : true},
+			rlmSigTransName:{required : true},
+			rlmMediaTransName:{ required: function(element){
+					var mediaPassFlag = $("#frmTrunking input:radio[name='rlmMediaPassFlag']:checked").val();
+					var mediaTransName = $("#frmTrunking #rlmMediaTransName").val();
+					if(mediaPassFlag==1 && mediaTransName=='') return true;
+					return false
+			}},
+			
+			svrName:{required : true},
+			svrSigTransName:{required : true},
+			svrServerIP:{required : true},
+			svrServerPort:{required : true},
+		},
+		messages : {
+			rlmName:{required : 'Input name.'},
+			rlmSigTransName:{required : 'Select Signal Transport.'},
+			rlmMediaTransName:{required : 'Select Media Transport.'},
+			rlmRtp:{ require_from_group : 'Check.'},
+			rlmSrtp:{ require_from_group : 'Check.'},
+			
+			svrName:{required : 'Input name.'},
+			svrSigTransName:{required : 'Select Signal Transport.'},
+			svrPeerIp:{required : 'Input IP.'},
+			svrPeerPort:{required : 'Input port.'},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	$("#frmTrunking").ajaxForm({
+		url: "/takeTrunking",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+			
+			// rlmSrtpFlag
+			var rlmRtp=$("#frmTrunking input:checkbox[id='rlmRtp']").is(":checked"); 
+			var rlmSrtp=$("#frmTrunking input:checkbox[id='rlmSrtp']").is(":checked");
+			arr.push({name:'rlmSrtpFlag', value: getSrtp(rlmRtp, rlmSrtp)});   
+			
+			// svrSrtpFlag
+			var svrRtp=$("#frmTrunking input:checkbox[id='svrRtp']").is(":checked"); 
+			var svrSrtp=$("#frmTrunking input:checkbox[id='svrSrtp']").is(":checked");
+			arr.push({name:'svrSrtpFlag', value: getSrtp(svrRtp, svrSrtp)});   
+			
+			// svrRegisterFlag 데리레지 
+			var svrRegisterFlag=$("#frmTrunking input:checkbox[id='svrRegisterFlag']").is(":checked"); 
+			arr.push({name:'svrRegisterFlag', value: svrRegisterFlag?1:0});
+			
+			// Periodical Server Status Check
+			var svrPollFlag=$("#frmTrunking input:checkbox[id='svrPollFlag']").is(":checked"); 
+			arr.push({name:'svrPollFlag', value: svrPollFlag?1:0});
+			
+			// Response to OPTIONs based on Server Status
+			var svrSelfResponseFlag=$("#frmTrunking input:checkbox[id='svrSelfResponseFlag']").is(":checked"); 
+			arr.push({name:'svrSelfResponseFlag', value: svrSelfResponseFlag?1:0});
+			
+			var opMode = $("#frmTrunking #hidOpMode").val();
+			if(opMode == 3){
+				var item = tableConfiguration.rows('.selected').data()[0]; 
+				
+				arr.push({name:'rlmGroupName', value: item.rlmGroupName});
+				arr.push({name:'svrGroupName', value: item.svrGroupName});
+				
+				arr.push({name:'rlmElemType', value: item.rlmElemType});
+				//arr.push({name:'rlmElemType', value:"aaa"}); // ahnks test
+				arr.push({name:'svrElemType', value: item.svrElemType});
+			}
+
+		},
+		success: function(responseText, statusText, xhr, $form){
+			processResult(responseText.result, "modalTrunking", tableConfiguration, null);
+		}
+	});
+	
+	
+	
+	//======================== 변경 ==============================================================
+		
+	$("#btnEdit").click(function(){ 
+		
+		var data = tableConfiguration.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warning", "Select a row to edit.");
+		}else{
+			var item=data[0];
+			
+			if(item.mode==0){ // Server/Realm 변경
+				
+				//alert(item.rlmElemType + ' , ' + item.svrElemType);
+				
+				validatorRealmServer.resetForm();
+				$("#frmRealmServer #hidOpMode").val("3"); // change
+				$("#frmRealmServer [name=lblClass]").addClass("state-disabled");
+				
+				//------------------------- Realm ---------------------------------------------------------------------------
+				setControlInput("frmRealmServer", "rlmName", item.rlmName, true); // name
+				setControlInput("frmRealmServer", "rlmDomain", item.rlmDomain, false); // domain
+				setControlRadio("frmRealmServer", "rlmMediaPassFlag", item.mediaPassFlag, false); // mediaPassFlag
+				
+				var rlmSrtpFlag=item.rlmSrtpFlag;
+				$("#frmRealmServer input:checkbox[id='rlmRtp']").prop("checked", (rlmSrtpFlag==1 || rlmSrtpFlag==3)?true:false);
+				$("#frmRealmServer input:checkbox[id='rlmSrtp']").prop("checked",(rlmSrtpFlag==2 || rlmSrtpFlag==3)?true:false);
+				
+				setControlCheck("frmRealmServer", "rlmRegPeriodBypass", (item.rlmRegPeriodBypass==0)?true:false, false); 
+				setControlCheck("frmRealmServer", "rlmSessionFlag", (item.rlmSessionFlag==0)?false:true, false); 
+				setControlInput("frmRealmServer", "rlmRegPeriod", item.rlmRegPeriod, false); // public
+				setControlInput("frmRealmServer", "rlmRegPeriodNat", item.rlmRegPeriodNat, false); // nat
+				
+				listenerRegPeriodBypass_Rlm(false); // 등록주기관여 
+				listenerSessionRefresh_Rlm(false); // SESSION Refresh주기 
+				
+// 				if($("#frmRealmServer #rlmSessionExpires").val()=='') $("#frmRealmServer #rlmSessionExpires").val(0)
+// 				if($("#frmRealmServer #rlmSessionMinse").val()=='') $("#frmRealmServer #rlmSessionMinse").val(0)
+				
+				//------------------------- Server ---------------------------------------------------------------------------
+				setControlInput("frmRealmServer", "svrName", item.svrName, true); // name
+				setControlInput("frmRealmServer", "svrDomain", item.svrDomain, false); // domain
+		 		setControlRadio("frmRealmServer", "svrServerIPType",  item.svrServerIPType, false); // serverIPType
+		 		setControlInput("frmRealmServer", "svrServerIP", item.svrServerIP, false); // serverIP
+		 		setControlInput("frmRealmServer", "svrServerPort", item.svrServerPort, false); // serverPort
+		 		
+		 		var svrSrtpFlag=item.svrSrtpFlag;
+				$("#frmRealmServer input:checkbox[id='svrRtp']").prop("checked", (svrSrtpFlag==1 || svrSrtpFlag==3)?true:false);
+				$("#frmRealmServer input:checkbox[id='svrSrtp']").prop("checked",(svrSrtpFlag==2 || svrSrtpFlag==3)?true:false);
+				
+				
+		 		setControlInput("frmRealmServer", "svrRegPeriod", item.svrRegPeriod, false);
+		 		setControlInput("frmRealmServer", "svrMaxCps", item.svrMaxCps, false);
+		 		setControlInput("frmRealmServer", "svrMaxSession", item.svrMaxSession, false);
+		 		setControlInput("frmRealmServer", "svrMaxRps", item.svrMaxRps, false);
+		 		
+		 		$("#frmRealmServer input:checkbox[id='pollFlag']").prop("checked", (item.pollFlag==1)?true:false); // pollFlag
+		 		
+		 		// svcType 0:SERver/Realm , 1: Trunk
+		 		$.post("getSipTransportName", {svcType:0}, function(json2){
+					var data2 = json2.data;
+					setControlSelect("frmRealmServer", "rlmSigTransName", "Select", data2, item.rlmSigTransName, false);  //시그널 transport 
+					setControlSelect("frmRealmServer", "svrSigTransName", "Select", data2, item.svrSigTransName, false);  //시그널 transport 
+					
+					$.post("/getMediaTransportName", {}, function(json){ 
+						var data3 = json.data;
+						setControlSelect("frmRealmServer", "rlmMediaTransName", "Select", data3, item.rlmMediaTransName, false);  //미디어 TRANSPORT
+						setControlSelect("frmRealmServer", "svrMediaTransName", "Select", data3, item.svrMediaTransName, false);  //미디어 TRANSPORT
+					
+						// show modal
+						showModal($("#modalServerRealm"));
+						$("#titleModalServerRealm").html("Edit Server/Realm");
+					});
+				});
+				
+			}else{ // Trunking 변경
+				
+				validatorTrunking.resetForm();
+				$("#frmTrunking #hidOpMode").val("3"); // change
+				$("#frmTrunking [name=lblClass]").addClass("state-disabled");
+				
+				//------------------------- Realm -------------------------------------------------------
+				setControlInput("frmTrunking", "rlmName", item.rlmName, false); // name
+				setControlInput("frmTrunking", "rlmDomain", item.rlmDomain, false); // domain
+				setControlRadio("frmTrunking", "rlmPeerIpType", item.rlmDomain, false); // rlmPeerIpType 
+				setControlInput("frmTrunking", "rlmPeerIp", item.rlmPeerIp, false); // rlmPeerIp
+				setControlInput("frmTrunking", "rlmPeerPort", item.rlmPeerPort, false); // rlmPeerPort 
+				setControlRadio("frmTrunking", "rlmMediaPassFlag", item.rlmMediaPassFlag, false); // rlmMediaPassFlag  
+				
+				var rlmSrtpFlag=item.rlmSrtpFlag;
+				$("#frmTrunking input:checkbox[id='rlmRtp']").prop("checked", (rlmSrtpFlag==1 || rlmSrtpFlag==3)?true:false);
+				$("#frmTrunking input:checkbox[id='rlmSrtp']").prop("checked",(rlmSrtpFlag==2 || rlmSrtpFlag==3)?true:false);
+				
+				setControlInput("frmTrunking", "rlmMaxCps", item.rlmMaxCps, false); // rlmMaxCps 
+				setControlInput("frmTrunking", "rlmMaxSession", item.rlmMaxSession, false); // rlmMaxSession 
+				
+			
+				
+				//------------------------ Server ----------------------------------------------------------
+				
+				
+				setControlInput("frmTrunking", "svrName", item.svrName, false); // name
+				setControlInput("frmTrunking", "svrDomain", item.svrDomain, false); // domain
+				
+				setControlInput("frmTrunking", "svrPeerIp", item.svrPeerIp, false); // rlmPeerIp
+				setControlInput("frmTrunking", "svrPeerPort", item.svrPeerPort, false); // rlmPeerPort 
+				setControlInput("frmTrunking", "svrPeerIp2", item.svrPeerIp2, false); // rlmPeerIp2
+				setControlInput("frmTrunking", "svrPeerPort2", item.svrPeerPort2, false); // rlmPeerPort2
+				
+				setControlRadio("frmTrunking", "svrMediaPassFlag", item.svrMediaPassFlag, false); // svrMediaPassFlag  
+				
+				var svrSrtpFlag=item.svrSrtpFlag;
+				$("#frmTrunking input:checkbox[id='svrRtp']").prop("checked", (svrSrtpFlag==1 || svrSrtpFlag==3)?true:false);
+				$("#frmTrunking input:checkbox[id='svrSrtp']").prop("checked",(svrSrtpFlag==2 || svrSrtpFlag==3)?true:false);
+				
+				setControlCheck("frmTrunking", "svrRegisterFlag", (item.svrRegisterFlag==0)?false:true, false); // svrRegisterFlag
+				
+				setControlInput("frmTrunking", "svrRegPeriod", item.svrRegPeriod, false); // svrRegPeriod
+				setControlInput("frmTrunking", "svrRegisterDomain", item.svrRegisterDomain, false); // svrRegisterDomain
+				setControlInput("frmTrunking", "svrRegisterUserId", item.svrRegisterUserId, false); // svrRegisterUserId
+				setControlInput("frmTrunking", "svrRegisterAuthId", item.svrRegisterAuthId, false); // svrRegisterAuthId
+				setControlInput("frmTrunking", "svrRegisterAuthPw", item.svrRegisterAuthPw, false); // svrRegisterAuthPw
+				
+				setControlCheck("frmTrunking", "svrPollFlag", (item.svrPollFlag==0)?false:true, false); // svrPollFlag
+				setControlCheck("frmTrunking", "svrSelfResponseFlag", (item.svrSelfResponseFlag==0)?false:true, false); // svrSelfResponseFlag
+				
+				setControlInput("frmTrunking", "svrMaxCps", item.svrMaxCps, false); // svrMaxCps 
+				setControlInput("frmTrunking", "svrMaxSession", item.svrMaxSession, false); // svrMaxSession 
+				
+				// svcType 0:SERver/Realm , 1: Trunk
+				$.post("getSipTransportName", {svcType: 1}, function(json2){
+					var data2 = json2.data;
+					setControlSelect("frmTrunking", "rlmSigTransName", "Select", data2, item.rlmSigTransName, false);  //시그널 transport 
+					setControlSelect("frmTrunking", "svrSigTransName", "Select", data2, item.svrSigTransName, false);  //시그널 transport 
+					setControlSelect("frmTrunking", "svrSigTransName2", "Select", data2, item.svrSigTransName2, false);  //시그널 transport 
+					
+					$.post("/getMediaTransportName", {}, function(json){ 
+						var data3 = json.data;
+						setControlSelect("frmTrunking", "rlmMediaTransName", "Select", data3, item.rlmMediaTransName, false);  //미디어 TRANSPORT
+						setControlSelect("frmTrunking", "svrMediaTransName", "Select", data3, item.svrMediaTransName, false);  //미디어 TRANSPORT
+					
+						// show modal
+						showModal($("#modalTrunking"));
+						$("#titleModalTrunking").html("Edit Trunking");
+						
+					});
+				});
+				
+			}
+		}
+	});
+	
+	
+	// 삭제버튼 
+	$("#btnDelete").click(function(){ 
+		var data = tableConfiguration.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Delete", "Select a row to delete.");
+		}else{
+			showConfirm('Confirm', "Do you want to delete?");
+			
+			var url='';
+			var item=data[0];
+			if(item.mode==0) url = 'takeRealmServer';
+			else url = 'takeTrunking';
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				var param = data[0];
+				param.opMode=4; // remove opMode
+				$.ajax({
+					url: url,
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	processResult(json.result, null, tableConfiguration, null);
+				    }
+				});
+			});
+		}
+	});
+	
+	//  새로고침
+	$("#btnRefresh").click(function(){
+		tableConfiguration.ajax.reload(null, false);
+	});
+	
+	
+	
+
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function getServiceType(val){
+	if(val==0) return "Server/Realm";
+	else if(val==1) return "Trunking";
+	else return "";
+}
+
+function listenerRegPeriodBypass_Rlm(val){
+	if(val){
+		$("#frmRealmServer [name=lblRimRegPeriodBypass]").addClass("state-disabled");
+		
+		$("#frmRealmServer #rlmRegPeriod").attr("disabled", true);
+		$("#frmRealmServer #rlmRegPeriodNat").attr("disabled", true);
+	}else{
+		$("#frmRealmServer [name=lblRimRegPeriodBypass]").removeClass("state-disabled");
+		
+		$("#frmRealmServer #rlmRegPeriod").attr("disabled", false);
+		$("#frmRealmServer #rlmRegPeriodNat").attr("disabled", false);
+	}
+}
+
+function listenerSessionRefresh_Rlm(val){
+	if(!val){
+		$("#frmRealmServer [name=lblRimSessionRefresh]").removeClass("state-disabled");
+		$("#frmRealmServer #sessionExpires").attr("disabled", false);
+		$("#frmRealmServer #sessionMinse").attr("disabled", false);
+		
+		$("#frmRealmServer #sessionExpires").val('');
+		$("#frmRealmServer #sessionMinse").val('');
+	}else{ // 사용안함체크
+		$("#frmRealmServer [name=lblRimSessionRefresh]").addClass("state-disabled");
+	
+		$("#frmRealmServer #sessionExpires").attr("disabled", true);
+		$("#frmRealmServer #sessionMinse").attr("disabled", true);
+		
+		$("#frmRealmServer #sessionExpires").val(0);
+		$("#frmRealmServer #sessionMinse").val(0);
+	}
+}	
+
+
+function getSrtp(isRTP, isSRTP){
+	if(isRTP && !isSRTP) return "1";
+	else if(!isRTP && isSRTP) return "2";
+	else if(isRTP && isSRTP) return "3";
+	else return "0";
+}
+
+
+</script>

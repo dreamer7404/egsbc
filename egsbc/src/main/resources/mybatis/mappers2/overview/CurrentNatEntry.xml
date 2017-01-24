@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="OverviewDao" >  
+
+	<select id="getCurrentNatEntry"  resultType="com.egsbc.overview.CurrentNatEntryVO">
+ 		SELECT
+ 			T_INDEX 					idx,	
+			T_CREATE_DATETIME	createDatetime, 	
+			T_NAT_SVC_NAME 		natSvcName,
+			T_BUCKET_INDEX 		bucketIndex,
+			T_ENTRY_INDEX 			entryIndex,
+			T_IN_SRC_IP 				inSrcIp,
+			T_IN_SRC_PORT			inSrcPort,
+			T_IN_DST_IP 				inDstIp,
+			T_IN_DST_PORT 			inDstPort,
+			T_OUT_SRC_IP 			outSrcIp,
+			T_OUT_SRC_PORT 		outSrcPort,
+			T_OUT_DST_IP 			outDstIp,
+			T_OUT_DST_PORT 		outDstPort,
+			T_PROTOCOL 				protocol,
+			T_PROXY_MODE			proxyMode,
+			T_IPKTS						ipkts
+		FROM
+			R_NAT_ENTRY_CURRENT
+		ORDER BY
+			T_NAT_SVC_NAME, T_CREATE_DATETIME DESC
+	</select>
+	
+	
+</mapper>	

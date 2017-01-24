@@ -1,0 +1,250 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="divTrace" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call Trace Result</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					<div style="margin-bottom:6px">
+						<form id="frmTraceResultHeader">
+						<table border="0" width="100%">
+						<tr>
+							<td align="right" style="width:120px;padding-right:10px">Created time :</td>
+							<td width="150px"><span id="createdTime"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Trace Type:</td>
+							<td width="50px"><span id="traceType"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Condition:</td>
+							<td width="100px"><span id="condition"></span></td>
+							<td align="right" style="width:100px;padding-right:10px">Duration:</td>
+							<td width="80px"><span id="duration"></span></td>
+							<td>&nbsp;</td>
+							<td align="right">
+								<button class="btn btn-default btn-multiview" id="btnMultiView">Multi-View</button>
+				          	<button class="btn btn-default btn-filesave" id="btnFileSave">File Save</button>
+							</td>
+						</tr>
+						</table>
+						</form>
+					</div>
+					
+					
+				
+					<table id="dtTraceResult" class="table  table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th class="text-center" style="width:20px"><input id="selectAll" type="checkbox" value="1"></th>
+									<th class="text-center">Start Time</th>
+									<th class="text-center">Call-ID</th>
+									<th class="text-center">From</th>
+									<th class="text-center">To</th>
+									<th class="text-center">Method</th>
+								</tr>
+							</thead>
+					</table>	
+					
+					
+					<div class="col-md-8" style="border:0px solid black">
+						<div style="width:100%;margin-bottom:7px"><strong><i class="fa fa-caret-right"></i>&nbsp;Flow</strong></div>
+						<table id="dtFlow" class="table  table-bordered table-hover"   >
+								<thead>
+									<tr>
+										<th class="text-center">Time</th>
+										<th class="text-center">IP</th>
+										<th class="text-right" colspan="2">1.1.1.1</th>
+										<th class="text-left" colspan="2">2.2.2.2</th>
+										<th class="text-center">IP</th>
+										<th class="text-center">Call-ID</th>
+									</tr>
+								</thead>
+<!-- 								<tbody> -->
+<!-- 									<tr> -->
+<!-- 										<td width="130px" align="center" style="padding-right:0px;padding-left:0px;padding-top:14px">2016-10-10 10:10:10</td> -->
+<!-- 										<td width="110px" align="center" style="padding-right:0px;padding-left:0px;padding-top:14px">192.192.192.192</td> -->
+<!-- 										<td style="padding:0"> -->
+<!-- 											<table border="0" width="100%" > -->
+<!-- 											<tr> -->
+<!-- 												<td colspan="2" align="center" height="25px" style="vertical-align:bottom">INVITE</td> -->
+<!-- 											</tr> -->
+<!-- 											<tr> -->
+<!-- 												<td height="18px" style="background-image:url(/resources/img/line-one.gif);background-repeat:repeat-x"></td> -->
+<!-- 												<td height="18px" width="7px" style="padding:0;background-image:url(/resources/img/right.gif);background-repeat:no-repeat"></td> -->
+<!-- 											</tr> -->
+<!-- 											</table> -->
+<!-- 										</td> -->
+<!-- 										<td width="30px" colspan="2" rowspan="2" align="center" style="vertical-align:middle;background-color:#ddd">SBC</td> -->
+<!-- 										<td style="padding:0"> -->
+<!-- 											<table border="0" width="100%" > -->
+<!-- 											<tr> -->
+<!-- 												<td colspan="2" align="center" height="25px" style="vertical-align:bottom">INVITE</td> -->
+<!-- 											</tr> -->
+<!-- 											<tr> -->
+<!-- 												<td height="12px" style="background-image:url(/resources/img/line-one.gif);background-repeat:repeat-x"></td> -->
+<!-- 												<td width="7px" height="12px" style="padding:0;background-image:url(/resources/img/right.gif);background-repeat:no-repeat"></td> -->
+<!-- 											</tr> -->
+<!-- 											</table> -->
+<!-- 										</td> -->
+<!-- 										<td width="110px" style="padding-right:0px;padding-left:0px">100.100.100.100</td> -->
+<!-- 										<td width="200px" style="padding-right:0px;padding-left:0px">121212121212121212121212</td> -->
+<!-- 									</tr> -->
+<!-- 									<tr> -->
+<!-- 										<td width="130px" align="center" style="padding-right:0px;padding-left:0px;padding-top:14px">2016-10-10 10:10:10</td> -->
+<!-- 										<td width="110px" align="center" style="padding-right:0px;padding-left:0px;padding-top:14px">192.192.192.192</td> -->
+<!-- 										<td style="padding:0"> -->
+<!-- 											<table border="0" width="100%" > -->
+<!-- 											<tr> -->
+<!-- 												<td colspan="2" align="center" height="25px" style="vertical-align:bottom">INVITE</td> -->
+<!-- 											</tr> -->
+<!-- 											<tr> -->
+<!-- 												<td height="18px" style="background-image:url(/resources/img/line-one.gif);background-repeat:repeat-x"></td> -->
+<!-- 												<td height="18px" width="7px" style="padding:0;background-image:url(/resources/img/right.gif);background-repeat:no-repeat"></td> -->
+<!-- 											</tr> -->
+<!-- 											</table> -->
+<!-- 										</td> -->
+<!-- 										<td style="padding:0"> -->
+<!-- 											<table border="0" width="100%" > -->
+<!-- 											<tr> -->
+<!-- 												<td colspan="2" align="center" height="25px" style="vertical-align:bottom">INVITE</td> -->
+<!-- 											</tr> -->
+<!-- 											<tr> -->
+<!-- 												<td height="12px" style="background-image:url(/resources/img/line-one.gif);background-repeat:repeat-x"></td> -->
+<!-- 												<td width="7px" height="12px" style="padding:0;background-image:url(/resources/img/right.gif);background-repeat:no-repeat"></td> -->
+<!-- 											</tr> -->
+<!-- 											</table> -->
+<!-- 										</td> -->
+<!-- 										<td width="110px" style="padding-right:0px;padding-left:0px">100.100.100.100</td> -->
+<!-- 										<td width="200px" style="padding-right:0px;padding-left:0px">121212121212121212121212</td> -->
+<!-- 									</tr> -->
+
+<!-- 								</tbody> -->
+						</table>	
+					</div>
+					<div class="col-md-4" style="border:0px solid black">
+						<div style="width:100%;margin-bottom:7px"><strong><i class="fa fa-caret-right"></i>&nbsp;Message</strong></div>
+						<div id="divMessage" style="margin-bottom:20px;border:1px solid #ddd;overflow:auto"></div>
+					</div>
+					
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+<script type="text/javascript">
+var tableTraceResult, tableFlow;
+var pagefunction = function() {
+	
+	
+	
+	// header
+	var item = TraceData.getTraceCondition();
+	if(typeof item.createdTime == 'undefined'){
+		setTimeout(function(){
+			showMsg("Warn", "Choose a trace condition first!");
+			$("#btnModalMsgOK").unbind('click');
+			$("#btnModalMsgOK").click(function(){
+				$("#menuTrace").trigger("click");
+			});
+		},500);
+	}else{
+	 	$("#frmTraceResultHeader #createdTime").html(item.createdTime);
+	 	$("#frmTraceResultHeader #traceType").html(item.traceType);
+	 	$("#frmTraceResultHeader #condition").html(item.condition);
+	 	$("#frmTraceResultHeader #duration").html(item.duration);
+	}
+ 	
+ 	// result table
+ 	
+ 	tableTraceResult = $("#dtTraceResult").DataTable( {
+	 	"sDom": sDomNoControl,
+	 	"paging": false,
+	 	  "columns": [
+						{ "data": "callId"},  
+	    				{ "data": "time"},       
+	    				{ "data": "callId"},       
+	    				{ "data": "from"},       
+	    				{ "data": "to"},      
+	    				{ "data": "method"},  
+	    		    ],
+        'columnDefs': [	 
+				{'targets': 0,
+		        	'width':'40px',
+		        	'searchable': false,
+		            'orderable': false,
+		        	'className': 'text-center',
+		        	'render': function (data, type, full, meta){
+		        		return '<input type="checkbox" name="id[]" value="' + data + '">'; 
+	        		},
+				},
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center'},
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center'},
+				{'targets': 5, 'className': 'text-center'},
+           	 ],
+        'order': [[1, 'asc']],
+    } );
+ 	
+ 	
+// result table
+ 	
+ 	tableFlow = $("#dtFlow").DataTable( {
+	 	"sDom": sDomNoControl,
+	 	"paging": false,
+	 	  "columns": [
+						{ "data": "time"},  
+	    				{ "data": "srcIp"},       
+	    				{ "data": "srcIp"},          
+	    				{ "data": "srcIp"},           
+	    				{ "data": "dstIp"},      
+	    		    ],
+        'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},
+				{'targets': 1, 'className': 'text-center'},
+				{'targets': 2, 'className': 'text-center'},
+				{'targets': 3, 'className': 'text-center'},
+				{'targets': 4, 'className': 'text-center'},
+           	 ],
+        'order': [[0, 'asc']],
+    } );
+	
+	
+	
+	
+// 	var $divMessage = $("#divMessage");
+	
+// 	for(var i=0; i<300; i++){
+// 		$divMessage.append( i + "<br />");
+// 	}
+	
+// 	setTimeout(function(){
+// 		$divMessage.scrollTop($divMessage.prop("scrollHeight"));
+// 	},500);
+	
+
+	
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+function getKey(full){
+	return "";
+}
+
+
+</script>				

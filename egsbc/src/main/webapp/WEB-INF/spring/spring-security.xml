@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd	
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd"
+	>
+ 
+	<http pattern="/error/**" security="none"></http>
+ 	<http pattern="/login" security="none"></http>
+ 	<http pattern="/lockPage" security="none"></http>
+ 	<http pattern="/register" security="none"></http> 
+ 	<http pattern="/loginFailure" security="none"></http>
+ 	<http pattern="/loginDup" security="none"></http>
+ 	<http pattern="/getUserSessionSize" security="none"></http>
+ 	<http pattern="/resources/**" security="none"></http>
+ 	<http pattern="/favicon.ico" security="none"></http> <!-- 파폭용 -->
+ 	
+<!--  	<http auto-config="true" use-expressions="true" > -->
+	<http auto-config="false" use-expressions="true" disable-url-rewriting="true">
+		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/lockPage" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/loginFailure" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/loginDup" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/getUserSessionSize" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<!-- 임시로 모두풀기 -->
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_SYSTEM')"  />
+		
+		<form-login 
+		 			login-page="/login"
+                    username-parameter="id"
+                    password-parameter="pw"    
+					login-processing-url="/loginProcess"
+					default-target-url="/loginSuccess"
+                    authentication-failure-url="/loginFailure"
+                    always-use-default-target="false"  
+                    />
+                    <!-- ########################################################## -->
+<!--                      always-use-default-target -->
+<!--                     	=> 'false' : 로그인후 default-target-url(/loginSuccess)로 안가고, 입력한 다른URL로 이동원할때사용. ROLE로 처리   -->
+<!--                      => 'true'  : 항상 default-target-url로 간다. -->
+                     <!-- ########################################################## -->
+                     
+         
+         <!-- j_spring_security_logout 대신 -->
+         <!-- invalidate-session="true" => jsession 안나오게 -->
+<!--          <logout logout-url="/logout"  logout-success-url="/login" />  -->
+         <logout logout-url="/logout" success-handler-ref="customLogoutSuccessHandler" invalidate-session="true" />
+                    
+<!--          <session-management invalid-session-url="/loginDup"> -->
+
+         <session-management>
+<!--             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" expired-url="/loginDup"/> -->
+					<concurrency-control max-sessions="1"  session-registry-ref="sessionRegistry" expired-url="/loginDup" />
+<!-- 					<concurrency-control max-sessions="1" /> -->
+					
+     	</session-management>     
+     	
+     	<custom-filter after="EXCEPTION_TRANSLATION_FILTER" ref="ajaxSessionTimeoutFilter" />
+     		
+     	     
+	</http>
+
+	 <beans:bean name="customLogoutSuccessHandler" id="customLogoutSuccessHandler" class="com.egsbc.security.CustomLogoutSuccessHandler"/> 
+	 
+	 <beans:bean id="userService" class="com.egsbc.system.service.UserService" />
+	 <beans:bean id="userDao" class="com.egsbc.system.service.UserDao" />
+	 
+	 <beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/> 
+	 
+ 	<beans:bean id="customAuthenticationProvider" class="com.egsbc.security.CustomAuthenticationProvider"/> 
+ 	
+ 	<beans:bean id="customUserDetailsService" class="com.egsbc.security.service.CustomUserDetailsService" />    
+ 	
+ 	<authentication-manager alias="authenticationManager">
+	    <authentication-provider ref="customAuthenticationProvider" />
+<!-- 	    <authentication-provider user-service-ref="customUserDetailsService" /> -->
+	</authentication-manager>
+ 	
+ 	  <beans:bean id="ajaxSessionTimeoutFilter" class="com.egsbc.security.CustomFilter">
+<!-- 		<beans:property name="ajaxHeader" value="AJAX" /> -->
+	</beans:bean>            
+ 
+	
+<!-- 	<beans:bean id="userDetailsServiceImpl" class="com.egsbc.security.UserDetailsServiceImpl" /> -->
+
+
+
+	<!-- =================== new method =============================================== -->
+	
+<!-- 	<beans:bean id="loginSuccessHandler" class="org.springframework.web.security.nw.LoginSuccessHandler"> -->
+<!--         <beans:property name="sessionRegistry" ref="sessionRegistry"/> -->
+<!--         <beans:property name="sqlSession" ref="sqlSessionTemplate"/> -->
+<!--     </beans:bean> -->
+     
+<!--     <beans:bean id="loginFailureHandler" class="com.egsbc.security.LoginFailureHandler" /> -->
+ 
+<!--     <beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> -->
+ 
+ 
+    <beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+	     
+<!--     <beans:bean class="com.egsbc.security.URLAuthorizeProcessor"> -->
+<!--         <beans:property name="programURLSource"> -->
+<!--             <beans:bean class="com.security.sample.ProgramURLSource"> -->
+<!--                 <beans:property name="sqlSession" ref="sqlSessionTemplate"></beans:property> -->
+<!--             </beans:bean> -->
+<!--         </beans:property> -->
+<!--     </beans:bean> -->
+
+
+
+ 
+</beans:beans>

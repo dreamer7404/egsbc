@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="DbBackupHistoryDao" >   
+
+
+	<insert id="addDbBackupHistory"  parameterType="com.egsbc.report.DbBackupHistoryVO">
+ 		INSERT INTO
+ 			 R_DB_BACKUP_HISTORY  (T_SIDE, T_MODE, T_BACKUP_TIME, T_BACKUP_DB_NAME, T_BACKUP_FILE_NAME)
+ 		VALUES
+ 			(SELECT T_DUP_SIDE FROM localinfo.R_DUP_INFO, 1, NOW(), #{backupDbName}, #{backupFileName})	 
+ 	</insert> 
+ 	
+ 	<select id="getDbBackupHistory"  parameterType="com.egsbc.report.SearchDateVO" resultType="com.egsbc.report.DbBackupHistoryVO">
+ 		SELECT 
+			T_INDEX						idx,
+			T_SIDE						side,
+			T_MODE						mode,
+			T_BACKUP_TIME			backupTime,
+			T_BACKUP_DB_NAME 	backupDbName,
+			T_BACKUP_FILE_NAME 	backupFileName
+		FROM 
+			R_DB_BACKUP_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_BACKUP_TIME &gt;= #{date1} AND T_BACKUP_TIME &lt;= #{date2}
+		</if>
+		ORDER BY 
+	  		T_INDEX DESC, T_SIDE
+	    LIMIT 
+	    	#{offset}, #{pageSize} 	
+		
+ 	</select>
+ 	
+ 	<select id="getDbBackupHistoryCnt" parameterType="com.egsbc.report.SearchDateVO"  resultType="int">
+ 		SELECT 
+			COUNT(*)
+		FROM 
+			R_DB_BACKUP_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_BACKUP_TIME &gt;= #{date1} AND T_BACKUP_TIME &lt;= #{date2}
+		</if>	
+		
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="getLogBackupHistory"  parameterType="com.egsbc.report.SearchDateVO" resultType="com.egsbc.report.LogBackupHistoryVO">
+ 		SELECT 
+			T_INDEX						idx,
+			T_SIDE						side,
+			T_MODE						mode,
+			T_BACKUP_TIME			backupTime,
+			T_BACKUP_LOG_NAME 	backupLogName,
+			T_BACKUP_FILE_NAME 	backupFileName
+		FROM 
+			R_LOG_BACKUP_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_BACKUP_TIME &gt;= #{date1} AND T_BACKUP_TIME &lt;= #{date2}
+		</if>
+		ORDER BY 
+	  		T_INDEX DESC, T_SIDE
+	    LIMIT 
+	    	#{offset}, #{pageSize} 	
+		
+ 	</select>
+ 	
+ 	<select id="getLogBackupHistoryCnt" parameterType="com.egsbc.report.SearchDateVO"  resultType="int">
+ 		SELECT 
+			COUNT(*)
+		FROM 
+			R_LOG_BACKUP_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_BACKUP_TIME &gt;= #{date1} AND T_BACKUP_TIME &lt;= #{date2}
+		</if>	
+		
+ 	</select>
+ 	
+ 	
+ 	
+ 	<select id="getCheckValidityHistory"  parameterType="com.egsbc.report.SearchDateVO" resultType="com.egsbc.report.CheckValidityHistoryVO">
+ 		SELECT 
+			T_INDEX						idx,
+			T_SIDE						side,
+			T_MODE						mode,
+			T_FILE_TYPE				fileType,
+			T_CHECK_TIME 			checkTime,
+			T_CHECK_RESULT 		checkResult,
+			T_ERROR_STATEMENT 	errorStatement,
+			T_ERROR_ACTION			errorAction
+		FROM 
+			R_CHECK_VALIDITY_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_CHECK_TIME &gt;= #{date1} AND T_CHECK_TIME &lt;= #{date2}
+		</if>
+		ORDER BY 
+	  		T_INDEX DESC, T_SIDE
+	    LIMIT 
+	    	#{offset}, #{pageSize} 	
+		
+ 	</select>
+ 	
+ 	<select id="getCheckValidityHistoryCnt" parameterType="com.egsbc.report.SearchDateVO"  resultType="int">
+ 		SELECT 
+			COUNT(*)
+		FROM 
+			R_CHECK_VALIDITY_HISTORY
+		WHERE
+			1=1
+		<if test="side== 0 or side==1">
+		AND	
+			T_SIDE = #{side}	
+		</if>	
+		<if test="date1 !=  null and date1 != '' and date2 != null and date2 != ''">
+		AND 
+			T_CHECK_TIME &gt;= #{date1} AND T_CHECK_TIME &lt;= #{date2}
+		</if>	
+		
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ </mapper>	

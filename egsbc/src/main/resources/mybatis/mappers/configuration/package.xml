@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="PackageDao" >    
+
+	<select id="getPackage" parameterType="int" resultType="com.egsbc.pkg.PackageVO">
+	
+		SELECT 
+			T_SIDE					side,
+			T_PKG_VER				pkgVer,
+			T_RUNNING				running,
+			T_SIZE					size,
+			T_BUILDER				builder,
+			T_VALIDATE			validate,
+			T_DATE_BUILD			dateBuild,
+			T_DATE_INSTALL		dateInstall,
+			T_LICENSE				license
+		FROM
+			R_PRIMITIVE_SYS_PACKAGE
+		<if test="value==0 or value==1"	>
+		WHERE
+			T_SIDE = #{value}	
+		</if>	
+	</select>
+	
+	<select id="getPackageBlock" parameterType="com.egsbc.pkg.PackageBlockVO" resultType="com.egsbc.pkg.PackageBlockVO">
+		SELECT
+			T_SIDE			side,
+			T_PKG_VER		pkgVer,
+			T_BLK_NAME	blkName,
+			T_BLK_SIZE		blkSize
+		FROM
+			R_PRIMITIVE_SYS_PACKAGE_BLOCK
+		WHERE
+			T_SIDE = #{side} 
+		AND 
+			T_PKG_VER = #{pkgVer}
+	</select>
+</mapper>	

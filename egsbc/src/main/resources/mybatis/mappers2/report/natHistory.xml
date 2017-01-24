@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="NatHistoryDao" >  
+
+	<select id="getNatHistory"  parameterType="com.egsbc.report.SearchDateVO" resultType="com.egsbc.report.NatHistoryVO">
+ 		SELECT
+ 			 T_INDEX 							idx,
+			 T_CREATE_DATETIME 			createDatetime,
+			 T_NAT_SVC_NAME 				natSvcName,
+			 T_DATA_FLAG 					dataFlag,
+			 T_EVENT_CODE 					eventCode,
+			 T_REASON_CODE 				reasonCode,
+			 T_IN_SRC_IP 						inSrcIp,
+			 T_IN_SRC_PORT 					inSrcPort,
+			 T_IN_DST_IP 						inDstIp,
+			 T_IN_DST_PORT 					inDstPort,
+			 T_OUT_SRC_IP 					outSrcIp,
+			 T_OUT_SRC_PORT 				outSrcPort,
+			 T_OUT_DST_IP 					outDstIp,
+			 T_OUT_DST_PORT 				outDstPort,
+			 T_PROTOCOL 						protocol,
+			 T_PROXY_MODE 					proxyMode,
+			 T_IPKTS 							ipkts,
+			 T_MAX_PACKET_PER_SEC 	maxPacketPerSec,
+			 T_PINE_HOLE_DUARTION 		pineHoleDuration,
+			 T_IN_MATCH_COUNT 			inMatchCount,
+			 T_IN_MATCH_RELAY 			inMatchRelay,
+			 T_IN_MATCH_DROP 				inMatchDrop,
+			 T_OUT_MATCH_COUNT 		outMatchCount,
+			 T_OUT_MATCH_RELAY 			outMatchRelay,
+			 T_OUT_MATCH_DROP 			outMatchDrop
+		FROM
+			R_NAT_ENTRY_HISTORY
+		WHERE
+			T_CREATE_DATETIME  &gt;= #{startDate} AND T_CREATE_DATETIME &lt;= #{endDate} 
+		ORDER BY
+			T_INDEX DESC
+		LIMIT 
+			#{offset}, #{pageSize} 	
+	</select>
+	
+	<select id="getNatHistoryCnt" parameterType="com.egsbc.report.SearchDateVO" resultType="int" >
+		SELECT 
+			COUNT(*)
+		FROM
+			R_NAT_ENTRY_HISTORY
+		WHERE
+			T_CREATE_DATETIME  &gt;= #{startDate} AND T_CREATE_DATETIME &lt;= #{endDate} 	
+	</select>
+	
+	
+</mapper>	

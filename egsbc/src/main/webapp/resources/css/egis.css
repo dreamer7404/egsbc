@@ -1,0 +1,649 @@
+
+ .text-center {
+  	text-align:center;
+}
+ .text-right {
+  	text-align:right;
+}
+ .text-left {
+  	text-align:left;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+
+.align-middle {
+  margin-top: 15%;
+/*   margin-bottom: 25%; */
+}
+
+/* alarm circle tag */
+.tagCircle{
+	font-size:12px;
+	width:20px;"
+}
+
+/* ahnks color */
+.colorRed{color:#ff0033;}
+.colorLightRed{color:#A65858;}
+.colorRedRose{color:#C02631;}
+.colorOrange{color:#ff6c00;}
+.colorYellow{color:#ffc000;}
+.colorGreen{color:#64cd43;}
+
+.backRed{background-color:#ff0e17;}
+.backLightOrange{background-color:#ff6c00;}
+.backYellow{background-color:#ffc000;}
+.backGreen{background-color:#64cd43;}
+
+/* smark color */
+.backGreenGrass{background:#356E35;}
+.backDarkGreen{background:#496949;}
+.backLightGreen{background:#96B447}
+.backPurple{background:#6E587A}
+.backPink{background:#DB8EBB}
+.backFadePink{background:#A8829F}
+.backLightBlue{ background:#92A2A8;}
+.backTeal{ background:#568A89;}
+.backOceanBlue{ background:#688F9E;}
+.backNightSky{ background:#4C4F53;}
+.backNight{ background:#404040;}
+.backDayLight{ background:#FDD01C;}
+.backOrange{ background:#C79121;}
+.backDarkOrange{ background:#A57225;}
+.backRedRose{ background:#C02631;}
+.backLightRed{ background:#A65858;}
+
+hr {
+    display: block;
+    height: 100px;
+    border: 0;
+    border-top: 1px solid #868695;
+    margin: 1em 0;
+    padding: 0; 
+}
+
+/* widget div */
+.div-widget {
+	padding: 12px 20px 0 20px !important;
+	 background-color : #F1F1F1 !important;	
+}
+
+.jarviswidget {
+	background-color : #F1F1F1 !important;	
+}
+
+.radio.active { 
+	background-color:red !important;	
+	border-color:red !important;	
+	color:#000 !important;	
+}
+
+/* =================== login page ================================================== */
+
+/* login page */
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =================== buttons ================================================== */
+
+/* add  */
+.btn-add, .btn-add:hover, .btn-add:active, .btn-add:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+/* edit  */
+.btn-edit,.btn-edit:hover,  .btn-edit:active, .btn-edit:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+/* delete  */
+.btn-delete,.btn-delete:hover,  .btn-delete:active, .btn-delete:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+/* refresh  */
+.btn-refresh,.btn-refresh:hover,  .btn-refresh:active, .btn-refresh:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+
+/* apply  */
+.btn-apply,.btn-apply:hover,  .btn-apply:active, .btn-apply:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+
+/* save  */
+.btn-save,.btn-save:hover,  .btn-save:active, .btn-save:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+	height: 30px;
+}
+/* close  */
+.btn-close,.btn-close:hover,  .btn-close:active, .btn-close:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	font-size: 12px;
+}
+
+/* search  */
+.btn-search,.btn-search:hover,  .btn-search:active, .btn-search:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* bonding */
+.btn-bonding,.btn-bonding:hover,  .btn-bonding:active, .btn-bonding:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* upload */
+.btn-upload,.btn-upload:hover,  .btn-upload:active, .btn-upload:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* detail */
+.btn-detail,.btn-detail:hover,  .btn-detail:active, .btn-detail:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* view */
+.btn-view,.btn-view:hover,  .btn-view:active, .btn-view:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* update */
+.btn-update,.btn-update:hover,  .btn-update:active, .btn-update:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+}
+/* cancel */
+.btn-cancel,.btn-cancel:hover,  .btn-cancel:active, .btn-cancel:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+}
+
+
+/* confirm */
+.btn-confirm,.btn-confirm:hover,  .btn-confirm:active, .btn-confirm:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* browse */
+.btn-browse ,.btn-browse:hover,  .btn-browse:active, .btn-browse:focus{
+	background:#535F73 !important;
+	color: #fff !important;
+}
+
+/* traceview */
+.btn-traceview,.btn-traceview:hover,  .btn-traceview:active, .btn-traceview:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* tracelist */
+.btn-tracelist,.btn-tracelist:hover,  .btn-tracelist:active, .btn-tracelist:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+
+/* filesave */
+.btn-filesave,.btn-filesave:hover,  .btn-filesave:active, .btn-filesave:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* ping */
+.btn-ping,.btn-ping:hover,  .btn-ping:active, .btn-ping:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* start */
+.btn-start,.btn-start:hover,  .btn-start:active, .btn-start:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* stop */
+.btn-stop,.btn-stop:hover,  .btn-stop:active, .btn-stop:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* download */
+.btn-download,.btn-download:hover,  .btn-download:active, .btn-download:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 95px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* refreshNow */
+.btn-refreshNow,.btn-refreshNow:hover,  .btn-refreshNow:active, .btn-refreshNow:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* testGeoIp */
+.btn-testGeoIp,.btn-testGeoIp:hover,  .btn-testGeoIp:active, .btn-testGeoIp:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* selectAll */
+.btn-selectAll,.btn-selectAll:hover,  .btn-selectAll:active, .btn-selectAll:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* unselectAll */
+.btn-unselectAll,.btn-unselectAll:hover,  .btn-unselectAll:active, .btn-unselectAll:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* test */
+.btn-test,.btn-test:hover,  .btn-test:active, .btn-test:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 70px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* btn-goDetail */
+.btn-goDetail,.btn-goDetail:hover,  .btn-goDetail:active, .btn-goDetail:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 230px;
+	height: 30px;
+	font-size: 12px;
+	vertical-align: bottom;
+}
+
+/* modify */
+.btn-modify,.btn-modify:hover,  .btn-modify:active, .btn-modify:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* btn-add-wide */
+.btn-add-wide,.btn-add-wide:hover,  .btn-add-wide:active, .btn-add-wide:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 120px;
+	height: 30px;
+	font-size: 12px;
+}
+
+
+/* btn-logout */
+.btn-logout,.btn-logout:hover,  .btn-logout:active, .btn-logout:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* btn-forcedBlock */
+.btn-forcedBlock,.btn-forcedBlock:hover,  .btn-forcedBlock:active, .btn-forcedBlock:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 120px;
+	height: 30px;
+	font-size: 12px;
+}
+/* btn-releaseBlock */
+.btn-releaseBlock,.btn-releaseBlock:hover,  .btn-releaseBlock:active, .btn-releaseBlock:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 120px;
+	height: 30px;
+	font-size: 12px;
+}
+
+/* btn-checkDup */
+.btn-checkDup,.btn-checkDup:hover,  .btn-checkDup:active, .btn-checkDup:focus {
+	background:#fff !important;
+	color: #800000 !important;
+	width: 110px;
+	height: 30px;
+	font-size: 12px;
+}
+/* btn-enable */
+.btn-enable,.btn-enable:hover,  .btn-enable:active, .btn-enable:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* btn-disable */
+.btn-disable,.btn-disable:hover,  .btn-disable:active, .btn-disable:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+}
+/* terminateCall */
+.btn-terminateCall,.btn-terminateCall:hover,  .btn-terminateCall:active, .btn-terminateCall:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 120px;
+	height: 30px;
+	font-size: 12px;
+}
+/* unregister */
+.btn-unregister,.btn-unregister:hover,  .btn-unregister:active, .btn-unregister:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 90px;
+	height: 30px;
+	font-size: 12px;
+}
+/* btn-checkValidity */
+.btn-checkValidity,.btn-checkValidity:hover,  .btn-checkValidity:active, .btn-checkValidity:focus {
+	background:#fff !important;
+	color: #000 !important;
+	width: 100px;
+	height: 30px;
+	font-size: 12px;
+}
+/* =================== datatables ================================================== */
+
+/*  header */
+table.dataTable thead th{
+  background-color : #F1F1F1 !important;	
+  color: #415555 !important;
+  vertical-align: middle !important;
+  font-weight:normal !important;
+  font-size:12px;
+  padding:5px;
+/*   border-bottom:0px solid red !important;	 */
+}
+
+/*  body */
+table.dataTable tbody td{
+	font-size:12px;
+	padding:7px;
+	vertical-align: middle !important;
+}
+
+/* select table row : added jquery.dataTables.min.css */
+table.dataTable tbody tr.selected{
+	background-color:#B0BED9
+}
+
+
+
+/* datatable background color */
+/*
+div.dataTables_wrapper {
+    background-color: red;
+}
+*/
+
+
+
+/* pagenation */
+.pagination > li > a, .pagination > li > span{
+     color:black !Important; 
+}
+/* pagenation active */
+.pagination > li.active > a, .pagination > li.active > span{
+     color:#fff !Important; 
+     background: #535F73 !Important;
+     border:1px solid #535F73 !Important;
+}
+
+#dtFlow tbody td{
+	padding:0;
+ }
+ 
+ 
+
+/* =================== search table ================================================== */
+.search-table {
+	font-size:12px;
+	margin:0 0 0px 0px;
+}
+
+
+/* =================== popup modal ================================================== */
+
+/* ----- modal center -----  */
+.modal {
+  text-align: center;
+}
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/* //-----  modal center-----  */
+
+/* header */
+.modal-header {
+	/*background-color: #CBD2D5;*/
+	background-color: #353D4B;
+	color: red;
+	font-size: 14px;
+}
+
+/* title */
+.modal-title {
+/* 	color: #415555 !important; */
+	color: #fff !important;
+	font-weight:normal;
+}
+
+/* body */
+.modal-body {
+	padding:10px 30px;
+	font-size:12px;
+}
+
+
+/* =================== form ======================================================= */
+
+.td-label {
+	text-align: left;
+	padding:10px 10px;
+}
+.td-label-right {
+	text-align: right;
+	padding:10px 10px;
+}
+.td-label-center {
+	text-align: center;
+	padding:10px 10px;
+}
+.td-border {
+	border:1px solid #ddd;
+}
+.hr-form {
+	height:1px;
+	border-top: dotted 1px;
+	color:#ccc;
+}
+.hr-form-seperate {
+	height:2px;
+	border-top: solid 2px;
+	color:#ccc;
+	margin: 8px 0;
+}
+
+.td-hr {
+	height:1px;
+	text-align: center;
+}
+
+
+.state-disabled-color{
+	color: #ccc;
+}
+/* validate color */
+.error {
+	color:#C02631 !important;
+}
+
+
+
+
+/* =================== alarm event ======================================================= */
+
+.alarm-critical{
+	position:relative;
+	top:-20px;
+	left:12px;
+	font-size: 8px;
+	height:14px;
+	background: #ff0000;
+}
+.alarm-major{
+	position:relative;
+	top:-20px;
+	left:12px;
+	font-size: 8px;
+	height:14px;
+	background: #ff6c00;
+}
+.alarm-minor{
+	position:relative;
+	top:-20px;
+	left:12px;
+	font-size: 8px;
+	height:14px;
+	background: #ffc000;
+}
+.alarm-event{
+	position:relative;
+	top:-20px;
+	left:12px;
+	font-size: 8px;
+	height:14px;
+	background: #64cd43;
+}
+
+/*------------------------------- dashbors --------------------------- */
+.vertical-dotted-line{
+	border-left: 1px dotted #ccc;
+	height:80px;
+}
+.subtitle{
+	text-align:center;
+	font-size:11px;
+	font-weight:bold
+}
+.degree-sign:after{
+	content:"°C" 
+}
+
+/*------------------------------- Geo-IP : geo nation list --------------------------- */
+.tr-underline{
+	border-bottom:1pt solid #efefef;
+}
+
+
+/*------------------------------- dashboard chart --------------------------- */
+.chart-canvas {
+ 	width: 100% !important;
+ 	min-height: 90px !important;
+}
+

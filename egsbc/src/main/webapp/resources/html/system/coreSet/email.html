@@ -1,0 +1,456 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>E-mail server configuration</h2>
+				</header>
+				<!-- widget div-->
+				<div style="padding-bottom:15px">
+						
+					<form class="smart-form" id="frmEmailServer"  novalidate="novalidate">	
+						<table border="0">
+						<tr>
+							<td class="td-label" style="padding-bottom:20px">
+								Send mail on alarm
+							</td>
+							<td>
+								<span class="onoffswitch">
+									<input type="checkbox"  class="onoffswitch-checkbox" id="sendMailFlag">
+									<label class="onoffswitch-label" for="sendMailFlag"> 
+										<span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span> 
+										<span class="onoffswitch-switch"></span> 
+									</label> 
+								</span> 
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="border-bottom:1px solid #404065">
+								Server Information
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								SMTP Server
+							</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td>
+										<label class="input">
+											<input type="text" id="serverDomain" name="serverDomain">
+										</label>
+									</td>
+									<td class="td-label">
+										(5~64)
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								SMTP Server Port
+							</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td>
+										<label class="input">
+											<input type="text" id="port" name="port">
+										</label>
+									</td>
+									<td class="td-label">
+										(100~65535)
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label" colspan="2">
+								<label class="checkbox">
+									<input type="checkbox"  id="useSsl"><i></i>This server requires a secure connection (SSL)
+								</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="border-bottom:1px solid #404065; padding-top:20px">
+								Authentication Information
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								Account Name (e-mail address)
+							</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td>
+										<label class="input">
+											<input type="text" id="emailAddress" name="emailAddress">
+										</label>
+									</td>
+									<td class="td-label">
+										(5~64)
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label">
+								Password
+							</td>
+							<td class="td-label">
+								<table>
+								<tr>
+									<td>
+										<label class="input">
+											<input type="password" id="password" name="password">
+										</label>
+									</td>
+									<td class="td-label">
+										(4~32)
+									</td>
+								</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="td-label-right">
+								<button type="button" class="btn btn-default btn-save" id="btnSave">Save</button>
+							</td>
+							<td></td>
+						</tr>
+						</table>
+					</form>
+					
+				</div>
+			</div>
+		</article>
+		
+		<article class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-2" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>E-mail List </h2>
+				</header>
+				
+				<!-- widget div-->
+				<div style="padding-bottom:143px">
+						
+					<form class="smart-form" id="frmEmail"  novalidate="novalidate">	
+						<table border="0">
+						<tr>
+							<td class="td-label">
+								E-mail address
+							</td>
+							<td >
+								<label class="input">
+									<input type="text" id="email1" name="email1">
+								</label>
+							</td>
+							<td style="padding:0 5px">
+								@
+							</td>
+							<td >
+								<label class="input">
+									<input type="text" id="email2" name="email2">
+								</label>
+							</td>
+							<td class="td-label">
+								<button type="button" class="btn btn-default btn-add" id="btnAdd">Add</button>
+							</td>
+						</tr>
+						<tr>
+							<td class="td-label" width="100px"></td>
+							<td colspan="3">
+								<label class="select select-multiple" >
+									<select multiple="" id="emailList" class="custom-scroll" style="width:100%;height:190px">
+									</select>
+								</label>
+							</td>
+							<td style="vertical-align:top;padding-left:8px">
+								<button type="button" class="btn btn-default btn-delete" id="btnRemove">Delete</button>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="3">(max 5)</td>
+							<td></td>
+						</tr>
+						</table>	
+					</form>
+					
+				</div>		
+				
+			</div>
+		</article>
+		
+			
+	</div>			
+</section>	
+
+
+<script type="text/javascript">
+var validatorEmailServer, validatorEmail
+
+var pagefunction = function() {
+	
+	
+	//================================= E-mail Server =======================================================
+		
+	showUserEmailServer();
+	
+ 	$("#frmEmailServer #btnSave").click(function(){
+		
+		if(!$("#frmEmailServer").valid()){
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to save?");
+ 		
+ 		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmEmailServer").submit();
+		});
+		
+ 	});
+	
+	validatorEmailServer = $('#frmEmailServer').validate({
+		rules : {
+			serverDomain:{
+				required : true, 
+				minlength: 5,
+				maxlength: 64,
+				pattern: /^[a-zA-Z0-9][a-zA-Z0-9-_]{0,61}[a-zA-Z0-9]{0,1}\.([a-zA-Z]{1,6}|[a-zA-Z0-9-]{1,30}\.[a-zA-Z]{2,3})$/
+			},
+			port:{
+				required : true, 
+				number: true,
+				min:100,
+				max:65535
+			},
+			emailAddress:{
+				required : true, 
+				minlength: 5,
+				maxlength: 64,
+				pattern: /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+			},
+			password:{
+				required : true, 
+				minlength: 4,
+				maxlength: 32,
+				pattern: /^[a-zA-Z\d\-\=\~\!@#\%&\*\(\)_\+\\\/<>\?\{\}\.\$‘\^\+\"\';:,\s]+$/
+			},
+		},
+		messages : {
+			serverDomain:{
+				required : 'Input domain', 
+				minlength: 'length is 5~64', 
+				maxlength: 'length is 5~64', 
+				pattern: 'Input proper domain'
+			},
+			port:{
+				required : 'Input port!', 
+				number: 'Input number!', 
+				min:'Range is 100~65535', 
+				max:'Range is 100~65535', 
+			},
+			emailAddress:{
+				required : 'Input email address!', 
+				minlength: 'Length is 5~64', 
+				maxlength: 'Length is 5~64', 
+				pattern: 'Input proper email'
+			},
+			password:{
+				required : 'Input password!', 
+				minlength: 'Length is 4~32', 
+				maxlength: 'Length is 4~32', 
+				pwcheck: 'Input proper password.',	
+			},
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmEmailServer").ajaxForm({
+		url: "/saveUserEmailServer",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+			
+			var sendMailFlag = getControlCheck("frmEmailServer", "sendMailFlag")?1:0;
+			arr.push({name: 'sendMailFlag', value: sendMailFlag});
+			
+			var useSsl = getControlCheck("frmEmailServer", "useSsl")?1:0;
+			arr.push({name: 'useSsl', value: useSsl});
+			
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				showUserEmailServer();
+			}
+		}
+	});
+	
+	//================================= E-mail List =======================================================
+		
+	showEmailList();	
+		
+	$("#btnAdd").click(function(){
+		var email1 = $("#frmEmail #email1").val();
+		var email2 = $("#frmEmail #email2").val();
+
+		if(!$("#frmEmail").valid()){
+			return;
+		}
+		
+		var len = $("#frmEmail #emailList option").length;
+		if(len >= 5){
+			showMsg("Warning", "Email list size is over.");
+			return;
+		}
+		
+		showConfirm('Confirm', "Do you want to add?");
+ 		
+ 		$("#btnConfirm").unbind('click');
+		$("#btnConfirm").click(function(){
+			showLoader();
+			$("#frmEmail").submit();
+		});
+	});
+	
+	validatorEmail = $('#frmEmail').validate({
+		rules : {
+			email1:{
+				required : true, 
+				rangelength:[3, 32] 
+			},
+			email2:{
+				required : true, 
+				rangelength:[3, 32],
+				pattern: /^[a-zA-Z0-9][a-zA-Z0-9-_]{0,61}[a-zA-Z0-9]{0,1}\.([a-zA-Z]{1,6}|[a-zA-Z0-9-]{1,30}\.[a-zA-Z]{2,3})$/
+			}
+		},
+		messages : {
+			email1:{
+				required : 'Input email', 
+				rangelength: 'range is 3~32', 
+			},	
+			email2:{
+				required : 'Input email', 
+				rangelength: 'range is 3~32', 
+				pattern: 'proper email'
+			},	
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		},
+	});
+	
+	$("#frmEmail").ajaxForm({
+		url: "/addEmail",
+		type: "POST",
+		beforeSubmit: function(arr, $form, options){
+		},
+		success: function(responseText, statusText, xhr, $form){
+			if(responseText.result==1){
+				hideConfirm();
+				showEmailList();
+				
+				$("#frmEmail #email1").val('');
+				$("#frmEmail #email2").val('');
+			}
+		}
+	});
+	
+	
+	// delete user email
+	
+	$("#frmEmail #btnRemove").click(function(){
+		var arr = $("#frmEmail #emailList").val();
+		if(arr==null){
+			showMsg('Warning', 'Select a item to delete.')
+		}else if(arr.length>1){
+			showMsg('Warning', 'Select a item to delete.')
+		}else{
+			
+			showConfirm("Confirm", "Do you want to delete ["+arr[0]+"] ?");
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				showLoader();
+				
+				var param = {emailAddress: arr[0]};
+				$.ajax({
+					url: '/removeUserEmail',
+				    type: "post",
+				    data: param,
+				    success: function(json) {
+				    	if(json.result==1){
+				    		hideConfirm();
+				    		showEmailList();
+				    	}
+				    }
+				});
+				
+			});
+		}
+	});
+	
+	
+} // pagefunction
+
+$('body').append( $('<div>').load("/resources/html/common.html"));
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});;
+
+function showUserEmailServer(){
+	$.post("getUserEmailServer", {}, function(json){
+		var item=json.result;
+		
+		if(!$.isEmptyObject(item)){ 
+			
+			setControlCheck("frmEmailServer", "sendMailFlag", (item.sendMailFlag==0)?false:true, false);
+			
+			setControlInput("frmEmailServer", "serverDomain", item.serverDomain, false);
+			setControlInput("frmEmailServer", "port", item.port, false);
+			
+			setControlCheck("frmEmailServer", "useSsl", (item.useSsl==0)?false:true, false);
+			
+			setControlInput("frmEmailServer", "emailAddress", item.emailAddress, false);
+			setControlInput("frmEmailServer", "password", item.password, false);
+		}
+		
+	});
+}
+
+function showEmailList(){
+	$.post("getUserEmailList", {}, function(json){
+		var list = json.result;
+		
+		var obj=$("#frmEmail #emailList");
+		obj.empty();
+		for(var i=0; i<list.length; i++){
+			obj.append("<option value='"+list[i].emailAddress+"'>"+list[i].emailAddress+"</option>");
+		}
+	});
+}
+
+

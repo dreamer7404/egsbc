@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="ResourceMonitoringDao" >    
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getResourceMonitoring"  resultType="com.egsbc.system.AlarmCodeVO">
+ 		SELECT 
+			T_ALARM_CODE 								alarmCode,
+		    T_ALARM_LEVEL_THRESHOLD_VALUE	alarmLevelThresholdValue,
+		    T_ALARM_ACTION							alarmAction
+		FROM 
+			R_ALARM_CODE
+		WHERE 
+			T_ALARM_CODE &gt;= 301 AND T_ALARM_CODE &lt;= 312
+ 	</select>
+ 	
+ 	
+ 	<update id="chgResourceMonitoring" parameterType="com.egsbc.system.AlarmCodeChangeVO">
+ 		UPDATE 
+			R_ALARM_CODE t1,
+		    R_ALARM_CODE t2,
+		    R_ALARM_CODE t3,
+		    R_ALARM_CODE t4,
+		    R_ALARM_CODE t5,
+		    R_ALARM_CODE t6,
+		    R_ALARM_CODE t7,
+		    R_ALARM_CODE t8,
+		    R_ALARM_CODE t9,
+		    R_ALARM_CODE t10,
+		    R_ALARM_CODE t11,
+		    R_ALARM_CODE t12          
+		SET
+			t1.T_ALARM_LEVEL_THRESHOLD_VALUE = ${cpu1},
+		    t2.T_ALARM_LEVEL_THRESHOLD_VALUE = ${cpu2}, 
+		   	t3.T_ALARM_LEVEL_THRESHOLD_VALUE = ${cpu3}, 
+		   	t1.T_ALARM_ACTION = ${cpu4},
+		   	
+		   	t4.T_ALARM_LEVEL_THRESHOLD_VALUE = ${memory1},
+		   	t5.T_ALARM_LEVEL_THRESHOLD_VALUE = ${memory2}, 
+		   	t6.T_ALARM_LEVEL_THRESHOLD_VALUE = ${memory3}, 
+		   	t4.T_ALARM_ACTION = ${memory4},
+		   	
+		   	t7.T_ALARM_LEVEL_THRESHOLD_VALUE = ${disk1},
+		   	t8.T_ALARM_LEVEL_THRESHOLD_VALUE = ${disk2},
+		   	t9.T_ALARM_LEVEL_THRESHOLD_VALUE = ${disk3},
+		   	t7.T_ALARM_ACTION = ${disk4},
+		   	
+		   	t10.T_ALARM_LEVEL_THRESHOLD_VALUE = ${temp1},
+		   	t11.T_ALARM_LEVEL_THRESHOLD_VALUE = ${temp2},
+		   	t12.T_ALARM_LEVEL_THRESHOLD_VALUE = ${temp3},
+		   	t10.T_ALARM_ACTION = ${temp4}
+		   	
+		WHERE 1=1
+		AND t1.T_ALARM_CODE=301 
+		AND t2.T_ALARM_CODE=302
+		AND t3.T_ALARM_CODE=303
+		AND t4.T_ALARM_CODE=304
+		AND t5.T_ALARM_CODE=305
+		AND t6.T_ALARM_CODE=306
+		AND t7.T_ALARM_CODE=307
+		AND t8.T_ALARM_CODE=308
+		AND t9.T_ALARM_CODE=309
+		AND t10.T_ALARM_CODE=310
+		AND t11.T_ALARM_CODE=311
+		AND t12.T_ALARM_CODE=312
+
+ 	</update>
+ 	
+ 	
+	
+</mapper>	

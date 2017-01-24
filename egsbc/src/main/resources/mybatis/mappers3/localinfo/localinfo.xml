@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="LocalInfoDao" >  
+
+	<select id="getDupInfo"  resultType="com.egsbc.main.LocalInfoVO">
+ 		SELECT
+ 			T_DUP_SIDE 			dupSide,	
+			T_DUP_ROLE			dupRole, 	
+			T_DUP_MODE 			dupMode,
+			T_DUP_STATUS 		dupStatus,
+			T_DUP_STATUS_XS	dupStatusXs
+		FROM
+			R_DUP_INFO
+	</select>
+	
+	
+</mapper>	

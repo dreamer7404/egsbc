@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="SecuritySpamDao" >    
+ 	
+ 	<select id="getSecSpam"  resultType="com.egsbc.securityIp.SecSpamVO">
+ 		SELECT 
+			T_ENABLE				enable,
+			T_ACTION_MODE		actionMode,
+			T_DURATION			duration,
+			T_DROP_DURATION	dropDuration
+		FROM 
+			R_SEC_SPAM
+ 	</select>
+ 	
+ 	<select id="getSecSpamCall"  resultType="com.egsbc.securityIp.SecSpamCallVO">
+ 		SELECT 
+			T_LIMIT_ENABLE				limitEnable,
+			T_LIMIT_COUNT				limitCount,
+			T_DURATION_ENABLE		durationEnable,
+			T_DURATION_COUNT			durationCount,
+			T_DURATION_S				durationS,
+			T_INTERVAL_ENABLE			intervalEnable,
+			T_INTERVAL_COUNT			intervalCount,
+			T_INTERVAL_S					intervalS,
+			T_REJECT_ENABLE			rejectEnable,
+			T_REJECT_COUNT				rejectCount
+		FROM 
+			R_SEC_SPAM_CALL
+ 	</select>
+ 	
+ 	<select id="getSecSpamIm"  resultType="com.egsbc.securityIp.SecSpamImVO">
+ 		SELECT 
+			T_LIMIT_ENABLE			limitEnable,
+			T_LIMIT_COUNT			limitCount,
+			T_INTERVAL_ENABLE		intervalEnable,
+			T_INTERVAL_COUNT		intervalCount,
+			T_INTERVAL_S				intervalS
+		FROM 
+			R_SEC_SPAM_IM
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ </mapper>	

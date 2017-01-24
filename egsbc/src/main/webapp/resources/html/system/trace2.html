@@ -1,0 +1,289 @@
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-blueDark" id="divTrace" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call Trace List</h2>
+				</header>
+				<!-- widget div-->
+				<div>
+				
+					<table id="dtTrace" class="table  table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th class="text-center">Created Time</th>
+									<th class="text-center">Trace Type</th>
+									<th class="text-center">Condition</th>
+									<th class="text-center">Duration(sec)</th>
+								</tr>
+							</thead>
+<!-- 							<tbody> -->
+<!-- 								<tr> -->
+<!-- 									<td>2016-07-20 10:08:03.030</td> -->
+<!-- 									<td>3848276298220188511@kt.com</td> -->
+<!-- 									<td>0701234998@kt.com</td> -->
+<!-- 									<td>0703998876@egis.co.kr</td> -->
+<!-- 								</tr>	 -->
+<!-- 								<tr> -->
+<!-- 									<td>2016-07-20 10:08:03.030</td> -->
+<!-- 									<td>3848276298220188511@kt.com</td> -->
+<!-- 									<td>0701234998@kt.com</td> -->
+<!-- 									<td>0703998876@egis.co.kr</td> -->
+<!-- 								</tr>	 -->
+					</table>	
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-traceview" id="btnTraceView"> Trace View</button>
+							<button class="btn btn-default btn-add" id="btnAdd"> Add</button>
+							<button class="btn btn-default btn-delete" id="btnDelete"> Delete</button>
+						</div>
+						
+				</div>
+			</div>
+		</article>
+		
+		
+		
+		
+		
+		
+		
+	</div>
+</section>
+
+
+<!-- Add -->
+  <div class="modal" id="modalAddTrace" role="dialog">
+    <div class="modal-dialog modal-vertical-centered"  style="width:400px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background-color:#353D4B;height:40px;padding-top:10px;">
+          <h6 class="modal-title">Add Call Trace</h6>
+        </div>
+        <div class="modal-body">
+          
+					<div class="row" style="border:0px solid red;">
+					
+					<form class="smart-form" id="frmAdd" novalidate="novalidate">
+							
+							<table border="0" width="100%">
+							<tr>
+								<td class="td-label">*Trace Type</td>
+								<td>
+									<div class="inline-group">
+										<label class="radio" >
+											<input type="radio" name="traceType" value="num" checked>
+											<i></i>Number
+										</label>
+										<label class="radio" >
+											<input type="radio" name="traceType" value="ip">
+											<i></i>IP
+										</label>
+										<label class="radio" >
+											<input type="radio" name="traceType" value="all">
+											<i></i>All
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label">*Condition</td>
+								<td>
+									<label class="input" name="lblClass">
+										<input type="text" id="condition" name="condition">
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="td-label">*Duration(sec)</td>
+								<td>
+									<table width="100%">
+									<tr>
+										<td width="150px">
+											<label class="input">
+												<input type="text" id="duration" name="duration">
+											</label>
+										</td>
+										<td class="td-label">(0: Continue)</td>
+									</tr>
+									</table>
+									
+								</td>
+							</tr>
+							</table>
+					</form>		
+					</div>
+				
+			</div>
+			<div class="modal-footer" style="height:50px;padding:10px 20px 0 0;">
+	        	<button type="button" class="btn btn-default btn-save"  id="btnSave">Save</button>
+	          	<button type="button" class="btn btn-default btn-close" data-dismiss="modal">Cancel</button>
+        	</div>
+		</div>
+	</div>	
+</div>	
+
+<script type="text/javascript">
+var tableTrace;
+var validatorTrace;
+
+var pagefunction = function() {
+	
+	
+	
+	tableTrace = $("#dtTrace").DataTable( {
+		 	"sDom": sDomNoControl,
+		 	"paging": false,
+		 	  "columns": [
+		    				{ "data": "createdTime"},       
+		    				{ "data": "traceType"},       
+		    				{ "data": "condition"},       
+		    				{ "data": "duration"},       
+		    		    ],
+	        'columnDefs': [	 
+    				{'targets': 0, 'className': 'text-center'},
+    				{'targets': 1, 'className': 'text-center'},
+    				{'targets': 2, 'className': 'text-center'},
+    				{'targets': 3, 'className': 'text-center'},
+	           	 ]
+	    } );
+	 
+	//	click row
+	tableTrace.on( 'click', 'tr', function () {
+		tableTrace.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+	});
+	
+	
+	
+	
+	$("#btnAdd").click(function(){  
+		
+		showModal($("#modalAddTrace"));
+		
+		setControlRadio("frmAdd", "traceType", "num", false);
+		setControlInput("frmAdd", "condition", "", false);
+		setControlInput("frmAdd", "duration", "", false);
+		
+	});
+	
+	findControlRadio("frmAdd", "traceType").change(function(){
+		toggleCondition();
+	});
+	
+	
+	
+	$("#btnTraceView").click(function(){
+		var data = tableTrace.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warn", "Choose the row to view!");
+		}else{
+			var item=data[0];
+			
+			//TraceData.clearResult();
+			TraceData.setTraceCondition(item);
+			
+			$("#menuTraceResult").trigger("click");
+		}
+	});
+	
+	$("#btnDelete").click(function(){
+		var data = tableTrace.rows('.selected').data();
+		if(data.length==0){
+			showMsg("Warn", "Choose the row to delete!");
+		}else{
+			showConfirm("Confirm", "Do you wat to delete?");
+			
+			$("#btnConfirm").unbind('click');
+			$("#btnConfirm").click(function(){
+				var item=data[0];
+				Egis.sendTrace("del", item.traceType, item.condition, 0);
+			});
+		}
+	});
+	
+	$("#btnSave").click(function(){
+		if($("#frmAdd").valid()){
+			var traceType =  getControlRadio("frmAdd", "traceType");
+			var condition =  getControlInput("frmAdd", "condition");
+			if(condition==''){
+				condition = "none";
+			}
+			var duration =  getControlInput("frmAdd", "duration");
+			Egis.sendTrace("add", traceType, condition, duration);
+			
+		}
+	});
+	
+	validatorTrace = $('#frmAdd').validate({
+		onfocusout: function(element) {$(element).valid()},
+		onkeyup: function(element) {$(element).valid();},
+		rules : {
+			condition: {
+				required:true,
+			},
+			duration:{
+				required:true,
+				number: true,
+				min:0,
+			}
+		},
+		messages : {
+			condition: {
+				required: 'Input condition.',
+			},
+			duration: {
+				required: 'Input duration.',
+				number: 'duration is number.',
+				min: 'duration must be positive number or zero',
+			}
+		},
+		errorPlacement : function(error, element) {
+			error.insertAfter(element.parent());
+		}
+	});
+	
+	
+	toggleCondition();
+
+	//TraceData.showList();
+
+	// 기존에 선택된것이 있으면, 선택한다.
+// 	var item = TraceData.getTraceCondition();
+// 	if(typeof item.createdTime == 'undefined'){
+		
+		
+		
+		
+// 	}
+	
+} // pagefunction
+$('body').append( $('<div>').load("/resources/html/common.html"));
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/scripts/common/dataTables.js", function(){
+		loadScript("/resources/scripts/common/controls.js", pagefunction);
+	});
+});
+
+
+function toggleCondition(){
+	var val = getControlRadio("frmAdd", "traceType");
+	if(val!='all'){ // show condition
+		setControlInput("frmAdd",  "condition", '', false);
+		$("#frmAdd [name=lblClass]").removeClass("state-disabled");
+	}else{ // hide condition
+		$("#frmAdd [name=lblClass]").addClass("state-disabled");
+		setControlInput("frmAdd",  "condition", '', true);
+	}
+}
+
+
+
+
+</script>				

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="RateLimitDao" >    
+ 	
+ 	<select id="getRateLimit"  resultType="com.egsbc.securityIp.RateLimitVO">
+ 		SELECT 
+			T_PROFILE_ID											profileId,
+			T_CATEGORY 											category,
+			T_MAIN_PACKET_TYPE 								mainPacketType,
+			T_MAIN_PACKET_NAME 							mainPacketName,
+			T_SUB_PACKET_TYPE 								subPacketType,
+			T_SUB_PACKET_NAME 								subPacketName,
+			T_LIMIT_TYPE 										limitType,
+			T_LIMIT_VALUE 										limitValue,
+			T_LIMIT_DETECT_ACTION_RULE 					limitDetectActionRule,
+			T_ALARM_CODE 										alarmCode,
+			T_ALARM_LEVEL 										alarmLevel,
+			T_ALARM_TYPE 										alarmType,
+			T_RE_LIMIT_CHECK_INTERVAL 					reLimitCheckInterval,
+			T_RE_DETECT_ACTION_RULE 						reDetectActionRule,
+			T_RE_DETECT_CNT_4_NEXT_ALARM_LEVEL 	reDetectCnt4NextAlarmLevel,
+			T_ETC etc
+		FROM 
+			R_RATE_LIMIT
+		ORDER BY
+			T_ALARM_CODE	
+ 	</select>
+ 	
+ 	<update id="setRateLimit" parameterType="com.egsbc.securityIp.RateLimitVO" >
+ 		UPDATE 
+ 			R_RATE_LIMIT
+ 		SET
+ 			T_LIMIT_VALUE = #{limitValue},
+ 			T_LIMIT_DETECT_ACTION_RULE = #{limitDetectActionRule},
+ 			T_LIMIT_TYPE = #{limitType},
+ 			T_RE_LIMIT_CHECK_INTERVAL = #{reLimitCheckInterval},
+ 			T_RE_DETECT_CNT_4_NEXT_ALARM_LEVEL = #{reDetectCnt4NextAlarmLevel},
+ 			T_RE_DETECT_ACTION_RULE = #{reDetectActionRule}
+ 		WHERE
+ 			T_CATEGORY	= #{category}
+ 		AND
+ 			T_MAIN_PACKET_TYPE = #{mainPacketType}
+ 		AND
+ 			T_SUB_PACKET_TYPE = #{subPacketType}
+ 	</update>
+ 	
+ 	
+ </mapper>	

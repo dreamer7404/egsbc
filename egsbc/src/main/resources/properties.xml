@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+     	<entry key="Host">localhost</entry> 
+     	
+		<entry key="Port">2000</entry>   <!-- IPC / Trace :Trace는 나중에 바꿀예정 -->
+		<entry key="PortChart">3000</entry>  <!-- Chart -->
+		
+		<entry key="SoTimeout">5000</entry>  
+
+		<!-- Package Management -->  
+		<entry key="UploadPath">/usr/local/sbcupload/</entry> 
+		
+		<!-- Db Backup Path -->  
+		<entry key="DbBackupUploadPath">/home/egis/backup/db/</entry> 
+		
+		<!-- Db MariaDB Data Path -->  
+		<entry key="DbDataPath">/usr/local/mariadb/data</entry> 
+		
+		<!-- Certification  -->
+		<entry key="EccPath">/etc/pki/ecc/</entry> 
+		<entry key="RsaPath">/etc/pki/rsa/</entry> 
+		<entry key="RsaPemPath">/etc/pki/rsa/pem/</entry> 
+		<entry key="RsaDerPath">/etc/pki/rsa/der/</entry> 
+		<entry key="EccPemPath">/etc/pki/ecc/pem/</entry> 
+		<entry key="EccDerPath">/etc/pki/ecc/der/</entry> 
+		
+		<!-- TCP Dump -->
+		<entry key="TcpDumpPath">/home/egis/data/tcpdump/</entry> 
+		<entry key="TcpDumpFileName">tcpdump_captured.pcap</entry> 
+		<entry key="TcpDumpZipName">tcpdump_captured.pcap.tar.gz</entry> 
+		
+		
+		
+</properties>	        	

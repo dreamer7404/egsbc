@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="CoreSetDao" >    
+ 	
+ 	
+ 	
+ 	
+ 	<select id="getConfigNtp"  resultType="com.egsbc.configuration.PrimitiveConfigVO">
+ 		SELECT 
+			T_ARG_STRING 		argString,
+		    T_VALUE_STRING		valueString
+		FROM 
+			R_PRIMITIVE_CONFIG
+		WHERE 
+			T_ARG_STRING 
+			IN ('NTP_TIME_MODE', 'NTP_TIME_SERVER_MODE', 'NTP_MIN_POLL', 'NTP_MAX_POLL')
+ 	</select>
+ 	
+ 	<select id="getNtpServer"  resultType="com.egsbc.system.NtpServerVO">
+ 		SELECT 
+ 			T_INDEX			idx,
+			T_NTP_HOST	ntpHost
+		FROM 
+			R_NTP_SERVER
+		ORDER BY 
+			T_INDEX
+ 	</select>
+ 	
+ 	<select id="addNtpServer" parameterType="String">
+ 		INSERT INTO R_NTP_SERVER (T_NTP_HOST) VALUES (#{value})
+ 	</select>
+ 	
+ 	<delete id="removeNtpServer" parameterType="String">
+ 		DELETE FROM R_NTP_SERVER
+ 		WHERE T_NTP_HOST IN
+ 		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+ 	</delete>
+ 	
+ 	
+ 	
+ 	<select id="getNtpConfig"  resultType="com.egsbc.system.NtpConfigVO">
+ 		SELECT 
+			T_SIDE 					side,
+			T_CLIENT_FLAG 		clientFlag,
+			T_SERVER_FLAG 		serverFlag,
+			T_PERIODIC_HOUR 	periodicHour,
+			T_INT_RESERVED 	intReserved
+		FROM 
+			R_NTP_CONFIG
+ 	</select>
+ 	
+ 	
+ 	<select id="getUserEmailServer" resultType="com.egsbc.system.UserEmailServerVO">
+ 		SELECT
+ 			T_SEND_MAIL_FLAG		sendMailFlag,
+ 			T_EMAIL_ADDRESS		emailAddress,
+ 			T_PASSWORD				password,
+ 			T_SERVER_DOMAIN		serverDomain,
+ 			T_PORT						port,
+ 			T_PROTOCOL				protocol,
+ 			T_USE_SSL					useSsl
+ 		FROM
+ 			R_WEB_USER_EMAIL_SERVER	
+ 	</select>
+ 	
+ 	<insert id="addUserEmailServer" parameterType="com.egsbc.system.UserEmailServerVO">
+ 		INSERT INTO
+ 			R_WEB_USER_EMAIL_SERVER
+ 		VALUES
+ 			(#{sendMailFlag},#{emailAddress},#{password},#{serverDomain},#{port},#{protocol}, #{useSsl})	
+ 	
+ 	</insert>
+ 	
+ 	<update id="setUserEmailServer"  parameterType="com.egsbc.system.UserEmailServerVO">
+ 		UPDATE 
+ 			R_WEB_USER_EMAIL_SERVER
+ 		SET
+ 			T_SEND_MAIL_FLAG = 	#{sendMailFlag},
+ 			T_EMAIL_ADDRESS = 	#{emailAddress},
+ 			T_PASSWORD = 	#{password},
+ 			T_SERVER_DOMAIN = 	#{serverDomain},
+ 			T_PORT = 	#{port},
+ 			T_PROTOCOL = 	#{protocol},
+ 			T_USE_SSL = 	#{useSsl}
+ 	</update>
+ 	
+	
+</mapper>	

@@ -1,0 +1,524 @@
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+	<!-- row -->
+	<div class="row">
+
+		<!-- NEW WIDGET START -->
+		<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget jarviswidget-color-lightBlue" id="wid-id-1" data-widget-editbutton="false">
+				<header >
+					<span class="widget-icon"> <i class="fa fa-table"></i> </span>
+					<h2>Call List</h2> 
+				</header>
+				<!-- widget div-->
+				<div class="div-widget" >
+					<form class="smart-form" id="frmCall"  novalidate="novalidate">
+					<div style="width:900px;max-width:900px;display:inline-block;border:0px solid red">
+						<table  border="0">
+						<tr>
+							<td width="80px" class="td-label">
+								User ID
+							</td>
+							<td>
+								<label class="input">
+									<input class="form-control"  placeholder="Input User ID..." type="text" id="userId" >
+								</label>	
+							</td>
+							<td style="padding:10px 10px 10px 20px">
+								<div class="inline-group" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="callState" ><i></i>기존호정보 포함
+									</label>
+								</div>
+							</td>
+							<td style="padding:10px 10px 10px 20px">
+								<div class="inline-group" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="caller" ><i></i>발신호
+									</label>
+								</div>
+							</td>
+							<td style="padding:10px 10px 10px 20px">
+								<div class="inline-group" >
+									<label class="checkbox"  >
+										<input type="checkbox"  id="callee" ><i></i>수신호
+									</label>
+								</div>
+							</td>
+							<td style="padding:10px 0px">
+								<div class="inline-group" >
+									<label class="checkbox" >
+										<input type="checkbox"  id="dateTime" ><i></i>Date/Time
+									</label>
+								</div>
+							</td>
+							<td style="padding:10px 10px">
+								<button type="button" class="btn btn-default btn-search">Search</button>
+							</td>
+						</tr>
+						</table>
+						<div>
+							<input type="text" id="demo" value="01/01/2015 - 01/31/2015" />
+						</div>
+						
+						<div id="divDateTime" style="display:none">
+							<table>
+							<tr>
+								<td width="80px" class="td-label">
+									Date Time
+								</td>
+								<td style="padding:10px 2px">
+									<label class="input"> <i class="icon-append fa fa-calendar"></i>
+										<input type="text" name="date1" id="date1" placeholder="start date" style="width:150px">
+									</label>
+								</td>
+								<td style="padding:10px 2px">
+									<div class="input-group">
+										<input class="form-control" id="time1" type="text" placeholder="start time" style="width:100px">
+										<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+									</div>
+								</td>
+								<td style="padding:10px 2px">
+									~
+								</td>
+								<td style="padding:10px 2px">
+									<label class="input"> <i class="icon-append fa fa-calendar"></i>
+										<input type="text" name="date2" id="date2" placeholder="finish date" style="width:150px">
+									</label>
+								</td>
+								<td style="padding:10px 2px">
+									<div class="input-group">
+										<input class="form-control" id="time2" type="text" placeholder="finish time" style="width:100px">
+										<span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+									</div>
+								</td>
+							</tr>
+							</table>
+						</div>
+							
+					</div>
+					</form>
+					
+					
+					<table id="dtCall" class="table table-striped table-bordered table-hover"   >
+							<thead>
+								<tr>
+									<th rowspan="2" class="text-center">Caller</th>
+									<th rowspan="2" class="text-center">Callee</th>
+									<th rowspan="2" class="text-center">Type</th>
+									<th rowspan="2" class="text-center">Call State</th>
+									<th rowspan="2" class="text-center">Started Time</th>
+									<th rowspan="2" class="text-center">Connected Time</th>
+									<th rowspan="2" class="text-center">Disconnected Time</th>
+									<th rowspan="2" class="text-center">Call Time(Sec)</th>
+									
+									<th colspan="2" class="text-center">Call Cancel Info</th>
+								</tr>
+								<tr>
+									<th class="text-center">Dropper</th>
+									<th class="text-center">Reason</th>
+								</tr>
+							</thead>
+						</table>
+						
+						<div class="form-group text-right">
+							<button class="btn btn-default btn-cancel" id="btnCancel"> 강제호종료</button>
+							<button class="btn btn-default btn-refresh" id="btnRefresh"> Refresh</button>
+						</div>
+						
+						<form class="smart-form">
+							<table border="0" width="100%">
+							<tr>
+								<td width="40px">Show</td>
+								<td width="60px">
+										<label class="select" > 
+											<select  id="pageSize"> 
+												<option value="10" selected>10</option> 
+												<option value="20">20</option> 
+												<option value="30">30</option> 
+												<option value="50">50</option> 
+											</select> <i></i> 
+			 							</label>
+		 							</div>
+								</td>
+								<td width="40px">entries</td>
+								<td align="center" >
+									<ul class="pagination pagination-sm" id="ulPage">
+											
+									</ul>
+								</td>
+								<td width="140px">&nbsp;</td>
+							</tr>
+							</table>
+						</form>
+						
+						
+						
+						<div id="divDetail" style="display:none">
+							<div class="hr-form" style="margin:20px 0"></div>
+							
+							<form class="smart-form" id="frmDetail"  novalidate="novalidate">
+							<div style="width:900px;max-width:700px;display:inline-block;border:0px solid red">
+								
+								<table width="100%" border="0">
+								<tr>
+									<td width="100px" class="td-label">
+										Caller ID
+									</td>
+									<td  style="padding-right:10px" >
+										<label class="input">
+											<input class="form-control" type="text" id="caller" >
+										</label>	
+									</td>
+									<td colspan="3">&nbsp;</td>
+								</tr>
+								<tr>
+									<td width="100px" class="td-label">
+										Caller IP
+									</td>
+									<td style="padding-right:10px" >
+										<label class="input">
+											<input class="form-control"  type="text" id="intfCallerIp" >
+										</label>	
+									</td>
+									<td width="80px" class="td-label">
+										Callee IP
+									</td>
+									<td>
+										<label class="input">
+											<input class="form-control"  type="text" id="intfCalleeIp" >
+										</label>	
+									</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td width="100px" class="td-label">
+										호해제부가정보
+									</td>
+									<td colspan="3">
+										<label class="input">
+											<input class="form-control"  type="text" id="debugInfo" >
+										</label>	
+									</td>
+									<td width="80px" style="padding-left:6px">
+										<label class="input">
+											<input class="form-control"  type="text" id="reason" >
+										</label>	
+									</td>
+									
+								</tr>
+								</table>
+							</div>
+							</form>
+						</div>
+						
+						
+				</div>
+			</div>
+		</article>
+	</div>
+</section>		
+
+
+<script type="text/javascript">
+var validatorCall;
+var tableCall;
+var page=1;
+
+var pagefunction = function() {
+	//============================== Call =============================================
+	tableCall = $('#dtCall').DataTable({
+		"sDom": "<'dt-toolbar'<'cnt col-xs-12 col-sm-6'><'col-sm-6 col-xs-6 hidden-xs'CT>r>"+
+					"t"+
+					"<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'><'col-sm-6 col-xs-12'>>",
+		"oLanguage": oLanguage,
+		"autoWidth" : true,
+		"tableTools":tableTools,
+		"scrollY" : false, //"800px",
+		"scrollX" : false,
+		"scrollCollapse": true,
+		"paging": false,
+		"processing": true,
+		"iDisplayLength": 50,
+        "ajax": {
+        	"url": "/getStaticCall",
+        	"type": "post",
+        	"data": function(d){
+         		d.callState = getControlCheck("frmCall", "callState") ? 1 : 0;
+         		
+         		var userId = $("#frmCall #userId").val();
+         		if(getControlCheck("frmCall", "caller")){
+         			d.caller = userId;
+         		}
+         		if(getControlCheck("frmCall", "callee")){
+         			d.callee = userId;
+         		}
+         		
+         		d.page=page;
+         		d.pageSize=$("#pageSize").val();
+        		
+        		if($("#frmCall #dateTime").is(":checked")){
+        			var time1 =  $("#frmCall #time1").val();
+	        		var time2 =  $("#frmCall #time2").val();
+	        		if(time1.length == 7) time1 = "0" + time1;
+	        		if(time2.length == 7) time2 = "0" + time2;
+        			d.date1 = $("#frmCall #date1").val() + " " + time1;
+	        		d.date2 = $("#frmCall #date2").val() + " " + time2;
+        		}
+        	},
+        },
+        'order': [[0, 'asc']], 
+        "columns": [
+    				{ "data": "caller"},       
+    		        { "data": "callee"},	
+    		        { "data": "type"},
+    		        { "data": "callState"},	
+    		        { "data": "timeStarted"},	
+    		        { "data": "timeConnected"},	
+    		        { "data": "timeDisconnected"},	
+    		        { "data": "timeCall"},	
+    		        { "data": "dropper"},	
+    		        { "data": "rCode"},	
+    		    ],
+    	'columnDefs': [	 
+				{'targets': 0, 'className': 'text-center'},   
+				{'targets': 1, 'className': 'text-center'}, 
+				{'targets': 2, 'className': 'text-center', 'render': function (data, type, full, meta){ return getType(data); }}, 
+				{'targets': 3, 'className': 'text-center', 'render': function (data, type, full, meta){ return getCallState(data); }}, 
+				{'targets': 4, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }}, 
+				{'targets': 5, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }}, 
+				{'targets': 6, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDatetime(data); }}, 
+				{'targets': 7, 'className': 'text-right', 'render': function (data, type, full, meta){ return getComma(data); }}, 
+				{'targets': 8, 'className': 'text-center', 'render': function (data, type, full, meta){ return getDropper(data); }},   
+				{'targets': 9, 'className': 'text-center', 'render': function (data, type, full, meta){ return getReason(data); }},   
+    	 ],
+    	 "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    	 }
+
+	});	
+	//	click row
+	tableCall.on( 'click', 'tr', function () {
+		tableCall.$('tr.selected').removeClass('selected');
+		$(this).addClass('selected');
+		
+		// show detail
+		var item = tableCall.rows('.selected').data()[0];
+		
+		
+		$("#frmDetail #caller").val(item.caller);
+		$("#frmDetail #intfCallerIp").val(item.intfCallerIp);
+		$("#frmDetail #intfCalleeIp").val(item.intfCalleeIp);
+		$("#frmDetail #debugInfo").val(item.debugInfo);
+		$("#frmDetail #reason").val(item.reason);
+		
+		if(!$("#divDetail").is(":visible")){
+			$("#divDetail").show(200);
+		}
+		
+	});
+
+	// pagenation, cnt
+	tableCall.on( 'xhr', function () {
+	    var json = tableCall.ajax.json();
+	    showPagenation(json.vo);
+	    $("div.cnt").html("Calling Count: " + json.vo.cntCalling + " / " + json.vo.cntAll);
+	} );
+	
+	//======================== form ============================================
+		
+		
+		
+	// START AND FINISH DATE
+	$('#date1').datepicker({
+		dateFormat : 'yy-mm-dd',
+		prevText : '<i class="fa fa-chevron-left"></i>',
+		nextText : '<i class="fa fa-chevron-right"></i>',
+		onSelect : function(selectedDate) {
+			$('#date2').datepicker('option', 'minDate', selectedDate);
+		}
+	});
+	
+	$('#date2').datepicker({
+		dateFormat : 'yy-mm-dd',
+		prevText : '<i class="fa fa-chevron-left"></i>',
+		nextText : '<i class="fa fa-chevron-right"></i>',
+		onSelect : function(selectedDate) {
+			$('#date1').datepicker('option', 'maxDate', selectedDate);
+		}
+	});	
+	
+	
+	// dateTime 체크박스
+	$("#frmCall #dateTime").change(function(){
+		if( $(this).is(":checked")){
+			$.post("getStaticCallDate",{},function(result){
+				if(result.vo != null && result.vo.minDate.length > 10 && result.vo.maxDate.length > 10){
+					$("#frmCall #date1").val(result.vo.minDate.substring(0, 10));
+					$("#frmCall #date2").val(result.vo.maxDate.substring(0, 10));
+				}
+				$("#divDateTime").show();
+			});
+		}else{
+			$("#divDateTime").hide();
+		}
+	});
+	
+	
+	
+	// 검색버튼
+	$("#frmCall button").click(function(){
+		page=1;
+		do_table();
+	});
+	
+	// 페이지크기 변경
+	$("#pageSize").change(function(){
+		page=1;
+		do_table();
+	});
+	
+	// 리플래시
+	$("#btnRefresh").click(function(){
+		do_table();
+	});
+	
+	//
+	$('#demo').daterangepicker({
+		 timePicker: true, 
+		 timePickerIncrement: 30 
+	});
+	
+} // pagefunction
+	
+$('body').append( $('<div>').load("/resources/html/common.html") );
+
+
+loadScript("/resources/scripts/common/dataTables.js", function(){
+	loadScript("/resources/scripts/common/controls.js", null);
+});
+
+loadScript("/resources/js/plugin/datatables/jquery.dataTables.min.js", function(){
+	loadScript("/resources/js/plugin/datatables/dataTables.colVis.min.js", function(){
+		loadScript("/resources/js/plugin/datatables/dataTables.tableTools.min.js", function(){
+			loadScript("/resources/js/plugin/datatables/dataTables.bootstrap.min.js", function(){
+				loadScript("/resources/js/plugin/datatable-responsive/datatables.responsive.min.js", pagefunction)
+			});
+		});
+	});
+});
+
+// datarangepicker
+
+
+
+
+//Load time picker script
+loadScript("/resources/js/plugin/bootstrap-timepicker/bootstrap-timepicker.min.js", runTimePicker);  
+function runTimePicker() {
+    $('#time1').timepicker({
+    	minuteStep: 1,
+    	showSeconds: true,
+    	secondStep: 1,
+    	showMeridian: false,
+    	defaultTime: '0:00:00'
+    });
+    $('#time2').timepicker({
+    	minuteStep: 1,
+    	showSeconds: true,
+    	secondStep: 1,
+    	showMeridian: false,
+    	defaultTime: '23:59:59'
+    });
+}
+
+function do_table(){
+	
+	if($("#frmCall #dateTime").is(":checked")){
+		var date1 = $("#frmCall #date1").val();
+		var date2 = $("#frmCall #date2").val();
+		if(date1==''){
+			showMsg("Warning", "Input start date!");
+			return;
+		}
+		if(date2==''){
+			showMsg("Warning", "Input finish date!");
+			return;
+		}
+	}
+		
+	tableCall.ajax.reload(null, false);
+}
+
+function showPagenation(vo){ //page, totalPages, pageLength){
+	var html = '';
+	
+	if(vo.page > vo.pageLength){
+		html +='<li><a href="javascript:pageListener('+(vo.pageStart-1)+')" ><i class="fa fa-chevron-left"></i></a></li>';
+	}
+
+	for(var no=vo.pageStart; no<=vo.pageEnd; no++){
+		if(no==vo.page){
+			html+='<li class="active"><a href="javascript:void(0);">'+no+'</a></li>';
+		}else{
+			html+='<li><a href="javascript:pageListener('+no+')">'+no+'</a></li>';
+		}
+	}
+	
+	if(vo.totalPages > vo.pageLength && vo.pageEnd < vo.totalPages ){
+		html+='<li><a href="javascript:pageListener('+(vo.pageEnd+1)+')"><i class="fa fa-chevron-right"></i></a></li>';
+	}
+	$("#ulPage").html(html);
+}
+
+function pageListener(no){
+	page = no;
+	tableCall.ajax.reload(null, false);
+}
+
+
+function getReason(data){
+	if(data==1) return "Unreg";
+	else if(data==2) return "Cancel";
+	else if(data==3) return "Bye";
+	else if(data==4) return "User";
+	else if(data==5) return "Reboot";
+	else if(data==6) return "Unknown";
+	else return "0x"+data.toString(16);
+}
+
+function getType(data){
+	if(data==0) return "Realm Call";
+	else if(data==1) return "Server Call";
+	else if(data==2) return "Trunking Call";
+	else return "";
+}
+
+function getCallState(data){
+	if(data==0) return "Started";
+	else if(data==1) return "Connected";
+	else if(data==2) return "Disconnected";
+	else return "";
+}
+function getDropper(data){
+	if(data==0) return "Caller";
+	else if(data==1) return "System(UAS)";
+	else if(data==2) return "Callee";
+	else if(data==3) return "System(UAC)";
+	else return "";
+}
+function getComma(n) {
+	if(n==-1) return "";
+
+  	var reg = /(^[+-]?\d+)(\d{3})/;  
+  	n += '';                        
+  	while (reg.test(n))
+    	n = n.replace(reg, '$1' + ',' + '$2');
+
+  	return n;
+}
+
+
+
